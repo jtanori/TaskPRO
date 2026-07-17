@@ -16,16 +16,7 @@
     { "domain": "payment-gateway-sequencing", "confidence": "DEFERRED", "authority": null, "derivation_type": "UNRESOLVED" },
     { "domain": "i18n-library", "confidence": "HIGH", "authority": "TASKPRO-I18N-001", "derivation_type": "DIRECT" }
   ],
-  "open_decisions": [
-    {
-      "id": "D2",
-      "claim": "Payment gateway sequencing. TASKPRO-TECH-001 names Stripe Connect Express primary and Mercado Pago secondary; integration order is unspecified.",
-      "derivation_type": "UNRESOLVED",
-      "confidence": "DEFERRED",
-      "evidence_sources": ["TASKPRO-TECH-001"],
-      "blocks": ["E9"]
-    }
-  ],
+  "open_decisions": [],
   "reconciliations": [
     {
       "id": "R1",

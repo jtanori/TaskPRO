@@ -1,0 +1,35 @@
+{
+  "primitive": "Replay",
+  "record_type": "GovernanceUpdate",
+  "record_id": "governance-0020",
+  "preceding_record": "governance-0019",
+  "timestamp": "2026-07-17T20:45:30Z",
+  "approved_by": "human ratification selecting Stripe Connect Express first for payment gateway sequencing (D2)",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "changes": [
+    {
+      "target": ".synth/state.json",
+      "change": "Removed D2 from open_decisions; D2 is now resolved.",
+      "justification": "Human ratification: Stripe Connect Express is the first payment provider, consistent with TASKPRO-TECH-001 naming it primary."
+    },
+    {
+      "target": ".synth/expeditions.json",
+      "change": "E9 confidence changed from MEDIUM to HIGH and open_decision_dependencies removed.",
+      "justification": "D2 resolution removes the last governance gate blocking E9."
+    }
+  ],
+  "invariants_verified": [
+    "knowledge/ untouched: input snapshot hash identical to genesis-0001.",
+    "No implementation capabilities invoked during this governance update.",
+    "Resolution traces to evidence (TASKPRO-TECH-001) and human ratification.",
+    "No change to governance kernel semantics."
+  ],
+  "result": "governed-updated"
+}

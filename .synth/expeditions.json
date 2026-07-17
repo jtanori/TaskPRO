@@ -124,8 +124,7 @@
       "transformation": "Listings, seller profiles, transactions, payment integration hardening.",
       "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-DOM-001", "TASKPRO-API-002"],
       "derivation_type": "DIRECT",
-      "confidence": "MEDIUM",
-      "open_decision_dependencies": ["D2 (payment gateway sequencing)"]
+      "confidence": "HIGH"
     },
     {
       "id": "E10",
