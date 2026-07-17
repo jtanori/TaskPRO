@@ -1,0 +1,175 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e6-0013",
+  "preceding_record": "governance-0012",
+  "governing_replay": "governance-0012",
+  "expedition": "E6",
+  "timestamp": "2026-07-17T05:03:13Z",
+  "approved_by": "human governance decision approving E6 bootstrap execution and resolving D1 in favor of i18next + react-i18next + expo-localization",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": "v24.14.1",
+    "primary_tool_versions": {
+      "turbo": "^2.3.3",
+      "typescript": "^5.7.2",
+      "eslint": "^9.17.0",
+      "prettier": "^3.4.2",
+      "vitest": "^2.1.8",
+      "expo": "~52.0.0",
+      "expo-router": "~4.0.0",
+      "i18next": "^24.2.0",
+      "react-i18next": "^15.4.0",
+      "@supabase/supabase-js": "^2.47.10"
+    },
+    "note": "Tool versions are an execution snapshot, not normative governance."
+  },
+  "mutations": {
+    "created_files": [
+      "apps/mobile/.env.example",
+      "apps/mobile/app/(auth)/complete-profile.tsx",
+      "apps/mobile/app/(customer)/profile.tsx",
+      "apps/mobile/app/(customer)/profile/edit.tsx",
+      "apps/mobile/app/(customer)/services/[id].tsx",
+      "apps/mobile/app/(customer)/services/index.tsx",
+      "apps/mobile/src/components/AppErrorBoundary.tsx",
+      "apps/mobile/src/components/DefaultErrorFallback.tsx",
+      "apps/mobile/src/features/auth/AuthContext.ts",
+      "apps/mobile/src/features/auth/AuthProvider.tsx",
+      "apps/mobile/src/features/auth/AuthService.ts",
+      "apps/mobile/src/features/auth/SupabaseAuthService.ts",
+      "apps/mobile/src/features/auth/index.ts",
+      "apps/mobile/src/features/auth/screens/CompleteProfileScreen.tsx",
+      "apps/mobile/src/features/auth/screens/LoginScreen.tsx",
+      "apps/mobile/src/features/auth/screens/RegisterScreen.tsx",
+      "apps/mobile/src/features/auth/types.ts",
+      "apps/mobile/src/features/marketplace/FakeServiceCatalogService.ts",
+      "apps/mobile/src/features/marketplace/ServiceCatalogService.ts",
+      "apps/mobile/src/features/marketplace/__tests__/FakeServiceCatalogService.test.ts",
+      "apps/mobile/src/features/marketplace/components/CategoryChip.tsx",
+      "apps/mobile/src/features/marketplace/components/ServiceCard.tsx",
+      "apps/mobile/src/features/marketplace/index.ts",
+      "apps/mobile/src/features/marketplace/screens/HomeScreen.tsx",
+      "apps/mobile/src/features/marketplace/screens/ServiceDetailScreen.tsx",
+      "apps/mobile/src/features/marketplace/screens/ServiceListScreen.tsx",
+      "apps/mobile/src/features/marketplace/useServiceCatalog.ts",
+      "apps/mobile/src/features/profile/FakeProfileService.ts",
+      "apps/mobile/src/features/profile/ProfileService.ts",
+      "apps/mobile/src/features/profile/__tests__/FakeProfileService.test.ts",
+      "apps/mobile/src/features/profile/index.ts",
+      "apps/mobile/src/features/profile/screens/EditProfileScreen.tsx",
+      "apps/mobile/src/features/profile/screens/ProfileScreen.tsx",
+      "apps/mobile/src/features/profile/types.ts",
+      "apps/mobile/src/features/profile/useProfile.ts",
+      "apps/mobile/src/features/technician/screens/TechnicianHomeScreen.tsx",
+      "apps/mobile/src/lib/__tests__/i18n.test.ts",
+      "apps/mobile/src/lib/i18n.ts",
+      "apps/mobile/src/lib/supabase.ts",
+      "apps/mobile/src/locales/es-MX/auth.json",
+      "apps/mobile/src/locales/es-MX/common.json",
+      "apps/mobile/src/locales/es-MX/marketplace.json",
+      "apps/mobile/src/locales/es-MX/profile.json",
+      "packages/domain/src/__tests__/value-objects/Password.test.ts",
+      "packages/domain/src/value-objects/Password.ts"
+    ],
+    "modified_files": [
+      "apps/mobile/package.json — added i18next, react-i18next, expo-localization, @supabase/supabase-js, and react-native-url-polyfill dependencies.",
+      "apps/mobile/app/_layout.tsx — imported i18n, replaced mock NavigationGuard with Supabase-backed auth + profile completion redirect.",
+      "apps/mobile/app/(auth)/_layout.tsx — registered complete-profile screen.",
+      "apps/mobile/app/(auth)/login.tsx — re-exports feature LoginScreen.",
+      "apps/mobile/app/(auth)/register.tsx — re-exports feature RegisterScreen.",
+      "apps/mobile/app/(customer)/_layout.tsx — registered services and profile routes.",
+      "apps/mobile/app/(customer)/index.tsx — re-exports feature HomeScreen.",
+      "apps/mobile/app/(shared)/settings.tsx — uses useAuth from feature and i18n translations.",
+      "apps/mobile/app/(technician)/index.tsx — re-exports feature TechnicianHomeScreen.",
+      "apps/mobile/app/+not-found.tsx — uses i18n translations.",
+      "apps/mobile/src/providers/RootProviders.tsx — added I18nextProvider and AppErrorBoundary.",
+      "packages/domain/src/value-objects/index.ts — exported Password value object.",
+      "packages/types/src/dto/index.ts — added optional phone field to ProfileDto.",
+      ".gitignore — added .turbo/ directory to ignore local Turbo cache artifacts.",
+      "pnpm-lock.yaml — updated by pnpm install after dependency changes."
+    ],
+    "deleted_files": [
+      "apps/mobile/src/hooks/useAuth.tsx",
+      "apps/mobile/src/lib/session.ts",
+      "apps/mobile/src/providers/AuthProvider.tsx",
+      "apps/mobile/src/types/auth.ts"
+    ],
+    "note": "node_modules/ and .turbo/ directories are install/build artifacts and are not listed as authored mutations."
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "i18n library (D1)",
+      "choice": "i18next + react-i18next + expo-localization; initial locale es-MX; namespace-based JSON resources under src/locales/.",
+      "reason": "Approved governance decision resolving D1; matches I18N-001 t('key') contract and future English/Portuguese expansion."
+    },
+    {
+      "decision": "Authentication provider",
+      "choice": "Supabase Auth via @supabase/supabase-js with Expo SecureStore-backed session persistence.",
+      "reason": "AUTH-001 delegates identity to Supabase Auth; SecureStore matches E5 session persistence contract."
+    },
+    {
+      "decision": "Feature module layout",
+      "choice": "src/features/{auth,profile,marketplace,technician} with screens, services, hooks, and tests; app/ contains only route re-exports.",
+      "reason": "Approved E5 architectural recommendation; keeps Expo Router as a routing layer."
+    },
+    {
+      "decision": "Service/profile data for discovery slice",
+      "choice": "In-memory fake services (FakeServiceCatalogService) and fake profile service (FakeProfileService) seeded from E4 domain DTOs.",
+      "reason": "E6 delivers the discovery vertical slice without requiring a live backend or new migrations."
+    },
+    {
+      "decision": "Password policy",
+      "choice": "Domain Password value object enforcing 8+ chars, uppercase, lowercase, digit, and special character.",
+      "reason": "AUTH-001 password policy implemented as a domain value object."
+    },
+    {
+      "decision": "Error boundary",
+      "choice": "AppErrorBoundary accepts a translated fallback; DefaultErrorFallback uses i18n common keys.",
+      "reason": "No hardcoded text in fallback UI; boundary is composed in RootProviders."
+    }
+  ],
+  "deviations_from_plan": [
+    {
+      "deviation": "Added optional phone field to ProfileDto in packages/types.",
+      "justification": "Profile completion screen requires phone capture; minimal additive contract change."
+    },
+    {
+      "deviation": "Added Password value object to packages/domain.",
+      "justification": "Domain layer is the correct place for AUTH-001 password policy; no existing value object covered it."
+    },
+    {
+      "deviation": "Added .turbo/ to .gitignore.",
+      "justification": "Turbo cache is a local build artifact and should not be committed."
+    }
+  ],
+  "validation_results": {
+    "format": "PASS — pnpm format:check",
+    "lint": "PASS — @taskpro/mobile, @taskpro/domain, @taskpro/types",
+    "typecheck": "PASS — @taskpro/mobile, @taskpro/domain, @taskpro/types",
+    "test": "PASS — @taskpro/mobile 11 tests, @taskpro/domain 25 tests",
+    "knowledge_hash_unchanged": "PASS (1529ed50…)",
+    "note": "Supabase Auth integration was not validated against a live project in this expedition; it depends on EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY at runtime."
+  },
+  "exclusions": [
+    "No booking lifecycle (E7, gated by R1).",
+    "No payments (D2 deferred).",
+    "No messaging/notifications (E8).",
+    "No real-time location tracking.",
+    "No supabase/config.toml (hand-authoring deferred).",
+    "No backend seed data or migrations beyond E4.",
+    "No changes to knowledge/ authored artifacts.",
+    "No changes to .synth/ governance primitives beyond this replay record and governance-0014.",
+    "No git commits, branches, or pushes performed."
+  ],
+  "result": "bootstrap-e6-accepted"
+}

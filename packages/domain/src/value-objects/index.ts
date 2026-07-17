@@ -4,5 +4,6 @@ export * from './Duration';
 export * from './Email';
 export * from './FullName';
 export * from './Money';
+export * from './Password';
 export * from './Phone';
 export * from './Rating';

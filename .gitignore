@@ -32,6 +32,9 @@ expo-env.d.ts
 # Testing
 coverage/
 
+# Turbo
+.turbo/
+
 # Supabase
 supabase/.temp/
 

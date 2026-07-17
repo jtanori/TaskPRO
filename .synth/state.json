@@ -14,17 +14,9 @@
     { "domain": "delivery-order", "confidence": "HIGH", "authority": "TASKPRO-BUILD-001", "derivation_type": "DIRECT" },
     { "domain": "workflow-state-machines", "confidence": "MEDIUM", "authority": "TASKPRO-FLOW-001 + TASKPRO-STATE-002 (jointly, pending R1)", "derivation_type": "INFERRED" },
     { "domain": "payment-gateway-sequencing", "confidence": "DEFERRED", "authority": null, "derivation_type": "UNRESOLVED" },
-    { "domain": "i18n-library", "confidence": "DEFERRED", "authority": null, "derivation_type": "UNRESOLVED" }
+    { "domain": "i18n-library", "confidence": "HIGH", "authority": "TASKPRO-I18N-001", "derivation_type": "DIRECT" }
   ],
   "open_decisions": [
-    {
-      "id": "D1",
-      "claim": "i18n library selection. TASKPRO-I18N-001 mandates t() keys and forbids hardcoded text, but names no library.",
-      "derivation_type": "UNRESOLVED",
-      "confidence": "DEFERRED",
-      "evidence_sources": ["TASKPRO-I18N-001"],
-      "blocks": ["E6"]
-    },
     {
       "id": "D2",
       "claim": "Payment gateway sequencing. TASKPRO-TECH-001 names Stripe Connect Express primary and Mercado Pago secondary; integration order is unspecified.",

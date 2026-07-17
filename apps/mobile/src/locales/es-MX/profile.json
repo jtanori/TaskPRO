@@ -1,0 +1,13 @@
+{
+  "title": "Perfil",
+  "editTitle": "Editar perfil",
+  "firstName": "Nombre",
+  "lastName": "Apellidos",
+  "displayName": "Nombre para mostrar",
+  "bio": "Biografía",
+  "phone": "Teléfono",
+  "avatar": "Foto de perfil",
+  "completeTitle": "Completa tu perfil",
+  "completeSubtitle": "Necesitamos conocerte un poco más para empezar.",
+  "saveSuccess": "Perfil actualizado"
+}

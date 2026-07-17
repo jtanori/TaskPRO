@@ -50,6 +50,7 @@ export interface ProfileDto {
   displayName: string;
   avatarUrl?: string;
   bio?: string;
+  phone?: string;
   locale: Locale;
   timezone: string;
   currency: Currency;

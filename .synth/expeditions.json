@@ -77,14 +77,15 @@
     {
       "id": "E6",
       "name": "Identity & discovery vertical slice (BUILD-001 Phase 1)",
-      "status": "registered",
+      "status": "completed",
       "depends_on": ["E5"],
       "gates": [],
       "transformation": "Registration, login, session handling, profile setup, home dashboard, service search/categories/listings/detail — first usable capability: register -> login -> browse services.",
       "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-AUTH-001", "TASKPRO-UI-001", "TASKPRO-SCREEN-001", "TASKPRO-CAP-001", "TASKPRO-UI-ASSETS", "TASKPRO-I18N-001"],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
-      "open_decision_dependencies": ["D1 (i18n library) must be resolved before screen text is synthesized"]
+      "completed_at": "2026-07-17T05:03:13Z",
+      "supporting_replay": "bootstrap-e6-0013"
     },
     {
       "id": "E7",

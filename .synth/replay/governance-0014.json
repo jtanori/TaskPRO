@@ -1,0 +1,35 @@
+{
+  "primitive": "Replay",
+  "record_type": "GovernanceUpdate",
+  "record_id": "governance-0014",
+  "preceding_record": "bootstrap-e6-0013",
+  "timestamp": "2026-07-17T05:03:13Z",
+  "approved_by": "bootstrap execution result — E6 validation passed",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "changes": [
+    {
+      "target": ".synth/state.json",
+      "change": "Open decision D1 (i18n library) resolved and removed from open_decisions; i18n-library confidence map entry updated from DEFERRED to HIGH with authority TASKPRO-I18N-001.",
+      "justification": "Human-approved selection of i18next + react-i18next + expo-localization during E6 planning."
+    },
+    {
+      "target": ".synth/expeditions.json",
+      "change": "E6 status transitioned from 'registered' to 'completed'; added completed_at and supporting_replay: 'bootstrap-e6-0013'. Removed D1 open_decision_dependencies reference.",
+      "justification": "E6 bootstrap was executed and validated successfully; expedition lifecycle state is projected in the Expedition primitive."
+    }
+  ],
+  "invariants_verified": [
+    "knowledge/ untouched: input snapshot hash identical to prior expeditions.",
+    "No implementation capabilities invoked during this governance update.",
+    "Status transition supported by replay record bootstrap-e6-0013.",
+    "No change to governance kernel semantics."
+  ],
+  "result": "governed-updated"
+}

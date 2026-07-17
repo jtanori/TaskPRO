@@ -1,0 +1,15 @@
+{
+  "homeTitle": "Inicio",
+  "searchPlaceholder": "¿Qué servicio buscas?",
+  "categoriesTitle": "Categorías",
+  "servicesTitle": "Servicios",
+  "serviceDetailTitle": "Detalle del servicio",
+  "requestService": "Solicitar servicio",
+  "noResults": "No encontramos servicios con ese criterio",
+  "browseServices": "Explorar servicios",
+  "recentActivity": "Actividad reciente",
+  "quickActions": "Accesos rápidos",
+  "estimatedDuration": "Duración estimada",
+  "basePrice": "Precio base",
+  "description": "Descripción"
+}

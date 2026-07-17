@@ -1,0 +1,20 @@
+{
+  "appName": "TaskPRO",
+  "continue": "Continuar",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "close": "Cerrar",
+  "retry": "Reintentar",
+  "loading": "Cargando...",
+  "error": "Ocurrió un error",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "name": "Nombre",
+  "phone": "Teléfono",
+  "signIn": "Iniciar sesión",
+  "signOut": "Cerrar sesión",
+  "signUp": "Crear cuenta",
+  "customer": "Cliente",
+  "technician": "Técnico",
+  "settings": "Configuración"
+}

@@ -1,19 +1,22 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'expo-router';
 import { Button, Card, Typography } from '@taskpro/ui';
 import { tokens } from '@taskpro/design-tokens';
 
 export default function NotFoundScreen() {
+  const { t } = useTranslation('common');
+
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-        <Typography variant="headingL">Not Found</Typography>
+        <Typography variant="headingL">{t('error')}</Typography>
         <Typography variant="bodyM" color="textSecondary" style={styles.message}>
           This screen does not exist.
         </Typography>
         <Link href="/login" asChild>
-          <Button title="Go to Sign In" />
+          <Button title={t('signIn')} />
         </Link>
       </Card>
     </View>
