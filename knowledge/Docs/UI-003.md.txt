@@ -1,0 +1,1076 @@
+# UI-003 — Component Library Architecture & Primitive Catalog v0.1
+
+## Purpose
+
+This document defines the **implementation architecture** of the TaskPRO Design System.
+
+It is **not** a component inventory.
+
+It defines:
+
+* Component hierarchy
+* Ownership
+* Composition rules
+* API conventions
+* Variant system
+* Extensibility
+
+The objective is to create a library that can build **100% of the application** without requiring one-off UI components.
+
+---
+
+# Design Philosophy
+
+The component library follows a simple rule:
+
+> **Composition over customization.**
+
+Instead of building:
+
+* BookingButton
+* PaymentButton
+* AIButton
+* PremiumButton
+
+We build:
+
+```text
+Button
+
+↓
+
+Variants
+
+↓
+
+Composition
+```
+
+The design system owns presentation.
+
+Modules own business meaning.
+
+---
+
+# Component Hierarchy
+
+The library has six layers.
+
+```text
+Design Tokens
+
+↓
+
+Primitives
+
+↓
+
+Foundation Components
+
+↓
+
+Composite Components
+
+↓
+
+Patterns
+
+↓
+
+Screens
+```
+
+Only the first four belong to the Design System.
+
+---
+
+# Layer 1 — Primitives
+
+These wrap React Native.
+
+Nothing more.
+
+```text
+Box
+
+Stack
+
+Text
+
+Image
+
+Icon
+
+Pressable
+
+ScrollView
+
+Spacer
+
+Divider
+```
+
+Every other component depends on these.
+
+Never React Native directly.
+
+Example:
+
+```tsx
+<Box>
+
+<Text>
+
+<Stack>
+```
+
+Not
+
+```tsx
+<View>
+
+<Text>
+
+<Image>
+```
+
+---
+
+# Primitive Responsibilities
+
+## Box
+
+Layout.
+
+Supports
+
+```text
+Padding
+
+Margin
+
+Radius
+
+Border
+
+Background
+
+Shadow
+
+Flex
+
+Width
+
+Height
+```
+
+---
+
+## Stack
+
+Layout composition.
+
+Variants
+
+```text
+HStack
+
+VStack
+
+ZStack
+```
+
+Supports
+
+```text
+Gap
+
+Alignment
+
+Distribution
+```
+
+---
+
+## Text
+
+Supports
+
+```text
+Variant
+
+Color
+
+Alignment
+
+Weight
+
+Number of Lines
+```
+
+Never accepts raw font sizes.
+
+---
+
+## Icon
+
+Supports
+
+```text
+Token
+
+Size
+
+Color
+
+State
+```
+
+---
+
+# Layer 2 — Foundation Components
+
+These become the building blocks.
+
+---
+
+## Button
+
+Variants
+
+```text
+Primary
+
+Secondary
+
+Ghost
+
+Outline
+
+Destructive
+
+AI
+```
+
+States
+
+```text
+Default
+
+Pressed
+
+Loading
+
+Disabled
+```
+
+---
+
+## Input
+
+Supports
+
+```text
+Label
+
+Placeholder
+
+Leading Icon
+
+Trailing Icon
+
+Validation
+
+Helper Text
+```
+
+---
+
+## Card
+
+Variants
+
+```text
+Flat
+
+Raised
+
+Interactive
+
+Selectable
+
+Glass
+```
+
+---
+
+## Badge
+
+Variants
+
+```text
+Success
+
+Warning
+
+Error
+
+Info
+
+Neutral
+
+AI
+```
+
+---
+
+## Avatar
+
+Variants
+
+```text
+Circle
+
+Rounded
+
+Square
+```
+
+Supports
+
+```text
+Image
+
+Initials
+
+Status
+
+Verification
+```
+
+---
+
+## Chip
+
+Supports
+
+```text
+Selectable
+
+Removable
+
+Filter
+
+Action
+```
+
+---
+
+## Progress
+
+Variants
+
+```text
+Linear
+
+Circular
+
+Timeline
+
+Stepper
+```
+
+---
+
+## Divider
+
+Horizontal
+
+Vertical
+
+Inset
+
+---
+
+## Loader
+
+```text
+Spinner
+
+Skeleton
+
+Pulse
+
+Progress
+```
+
+---
+
+# Layer 3 — Composite Components
+
+Built from foundation components.
+
+Examples
+
+```text
+Search Bar
+
+Navigation Bar
+
+Toolbar
+
+Section Header
+
+Profile Header
+
+Timeline
+
+Calendar
+
+Rating
+
+Media Gallery
+
+Bottom Sheet Header
+```
+
+These are still business-agnostic.
+
+---
+
+# Layer 4 — Patterns
+
+Patterns solve recurring UI problems.
+
+Examples
+
+```text
+Empty State
+
+Error State
+
+Loading State
+
+Confirmation Dialog
+
+Wizard
+
+Master Detail
+
+Timeline
+
+Dashboard
+
+List Detail
+
+Search Results
+```
+
+Patterns are reusable layouts.
+
+---
+
+# Layer 5 — Feature Components
+
+These belong inside modules.
+
+Never inside the design system.
+
+Example
+
+```text
+BookingCard
+
+ProfessionalCard
+
+InvoiceSummary
+
+BookingTimeline
+
+AvailabilityCalendar
+
+ReviewSummary
+```
+
+Notice every name contains business vocabulary.
+
+---
+
+# Component Composition Rules
+
+Allowed
+
+```text
+Primitive
+
+↓
+
+Foundation
+
+↓
+
+Composite
+
+↓
+
+Pattern
+
+↓
+
+Feature
+```
+
+Never
+
+```text
+Feature
+
+↓
+
+Foundation
+```
+
+Business components never flow back into the design system.
+
+---
+
+# Component API
+
+Every component follows the same API philosophy.
+
+Example
+
+```tsx
+<Button
+
+variant="primary"
+
+size="large"
+
+state="loading"
+
+icon="calendar"
+
+>
+
+Book Now
+
+</Button>
+```
+
+Avoid:
+
+```tsx
+backgroundColor
+
+fontSize
+
+padding
+
+shadowColor
+```
+
+Everything comes from tokens.
+
+---
+
+# Variant System
+
+Every component shares the same variant model.
+
+```text
+Appearance
+
+↓
+
+Size
+
+↓
+
+State
+
+↓
+
+Density
+```
+
+Example
+
+```text
+Appearance
+
+Primary
+
+Secondary
+
+Ghost
+
+Outline
+
+↓
+
+Size
+
+XS
+
+SM
+
+MD
+
+LG
+
+XL
+
+↓
+
+State
+
+Default
+
+Pressed
+
+Loading
+
+Disabled
+
+↓
+
+Density
+
+Compact
+
+Default
+
+Comfortable
+```
+
+One consistent API.
+
+---
+
+# Slots
+
+Composite components expose slots.
+
+Example
+
+```text
+Card
+
+Header
+
+Body
+
+Footer
+
+Actions
+```
+
+Example
+
+```tsx
+<Card>
+
+<Card.Header />
+
+<Card.Body />
+
+<Card.Footer />
+
+</Card>
+```
+
+Avoid dozens of props.
+
+---
+
+# Component States
+
+Every interactive component shares:
+
+```text
+Default
+
+Hover
+
+Focused
+
+Pressed
+
+Selected
+
+Disabled
+
+Loading
+
+Success
+
+Error
+```
+
+Never invent new state names.
+
+---
+
+# Responsive Behavior
+
+Components define behavior.
+
+Not breakpoints.
+
+Example
+
+```text
+Phone
+
+Tablet
+
+Desktop
+```
+
+The component decides how to adapt.
+
+---
+
+# Motion
+
+Motion belongs to components.
+
+Never screens.
+
+Example
+
+```text
+Button Press
+
+Card Expand
+
+FAB
+
+Modal
+
+Bottom Sheet
+
+Toast
+```
+
+Uses Motion Tokens.
+
+---
+
+# Accessibility
+
+Every component includes:
+
+```text
+Accessibility Label
+
+Hint
+
+Role
+
+Focus Order
+
+Screen Reader Support
+
+Hit Target
+
+Reduced Motion
+```
+
+Accessibility is never optional.
+
+---
+
+# AI Components
+
+TaskPRO is AI-native.
+
+The Design System should include dedicated AI primitives.
+
+Examples
+
+```text
+AI Prompt
+
+AI Suggestion
+
+AI Card
+
+AI Action
+
+AI Confidence
+
+AI Insight
+
+AI Conversation Bubble
+
+AI Recommendation
+
+AI Progress
+```
+
+These become reusable across every capability.
+
+---
+
+# Navigation Components
+
+Shared navigation.
+
+```text
+Top Bar
+
+Bottom Navigation
+
+Navigation Rail
+
+Breadcrumb
+
+Tab Bar
+
+Segment Control
+```
+
+Business navigation belongs elsewhere.
+
+---
+
+# Feedback Components
+
+```text
+Toast
+
+Snackbar
+
+Banner
+
+Alert
+
+Dialog
+
+Confirmation
+
+Success
+```
+
+Centralized.
+
+---
+
+# Overlay Components
+
+```text
+Modal
+
+Bottom Sheet
+
+Popover
+
+Tooltip
+
+Context Menu
+
+Image Viewer
+```
+
+Owned by the shell.
+
+---
+
+# Data Display Components
+
+```text
+List
+
+Grid
+
+Table
+
+Timeline
+
+Statistic
+
+Chart
+
+Metric
+
+Calendar
+```
+
+Charts should be provider-independent.
+
+---
+
+# Component Package Structure
+
+```text
+packages/ui/
+
+primitives/
+
+foundation/
+
+composite/
+
+patterns/
+
+providers/
+
+hooks/
+
+theme/
+
+icons/
+
+animations/
+
+stories/
+
+tests/
+```
+
+This package should contain **zero business logic**.
+
+---
+
+# Storybook Organization
+
+Every component should have:
+
+```text
+Overview
+
+Variants
+
+States
+
+Accessibility
+
+Dark Theme
+
+Interactions
+
+Examples
+```
+
+Storybook becomes the visual regression platform.
+
+---
+
+# Testing Strategy
+
+Each component includes:
+
+* Unit tests
+* Interaction tests
+* Accessibility tests
+* Visual regression tests
+
+Feature modules test behavior, not shared UI.
+
+---
+
+# Component Maturity
+
+Every component progresses through:
+
+```text
+Draft
+
+↓
+
+Experimental
+
+↓
+
+Stable
+
+↓
+
+Production
+
+↓
+
+Deprecated
+```
+
+This avoids premature API freezes.
+
+---
+
+# Component Registry
+
+Maintain a machine-readable registry.
+
+Example:
+
+```yaml
+button:
+  layer: foundation
+  status: stable
+  variants:
+    - primary
+    - secondary
+    - ghost
+    - outline
+    - destructive
+    - ai
+  owner: Design System
+```
+
+This registry can generate:
+
+* Storybook navigation
+* Documentation
+* Component catalogs
+* Design audits
+* AI prompts for screen generation
+
+---
+
+# Missing Layer: Layout Primitives
+
+After reviewing both the architecture and the UI direction, I believe one important layer is still missing from most modern design systems: **Layout Primitives**.
+
+Between **Primitives** and **Foundation Components**, I would introduce reusable layout objects.
+
+Examples:
+
+```text
+Screen
+
+Section
+
+Container
+
+Panel
+
+Sidebar
+
+Canvas
+
+Inspector
+
+Toolbar
+
+Floating Dock
+
+Command Palette
+
+Split View
+
+Resizable Panel
+```
+
+These are not business components and they are not simple primitives—they are architectural building blocks. They define how entire screens are assembled.
+
+For TaskPRO, this is especially important because many screens (dashboard, booking workspace, AI assistant, profile editor) reuse the same structural layouts. Having these as first-class components dramatically reduces duplication and ensures every screen follows a consistent composition model.
+
+This addition also aligns perfectly with the visual direction you've been developing in Gemini, where the workspace itself is a reusable design primitive rather than something recreated for every screen.
+
+---
+
+**Current document:** `UI-003 — Component Library Architecture & Primitive Catalog`
+
+**Next document:** `UI-004 — Screen Composition System & Layout Primitives`

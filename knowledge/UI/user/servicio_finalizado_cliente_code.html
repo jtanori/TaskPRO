@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#88d4c7",
+                    "primary-fixed-dim": "#88d4c7",
+                    "on-secondary-container": "#5b6765",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#00571b",
+                    "on-tertiary-fixed-variant": "#00531a",
+                    "on-secondary": "#ffffff",
+                    "status-warning": "#FFC107",
+                    "on-primary-fixed-variant": "#005047",
+                    "surface-variant": "#e2e2e2",
+                    "primary-container": "#1a6e63",
+                    "primary-fixed": "#a4f1e3",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-fixed-variant": "#3d4948",
+                    "border-subtle": "#E0E0E0",
+                    "secondary": "#55615f",
+                    "on-tertiary-fixed": "#002106",
+                    "surface-container-highest": "#e2e2e2",
+                    "outline-variant": "#bec9c5",
+                    "secondary-fixed-dim": "#bcc9c7",
+                    "surface-tint": "#136a5f",
+                    "tertiary-container": "#007227",
+                    "background": "#f9f9f9",
+                    "on-primary-fixed": "#00201c",
+                    "primary": "#00554b",
+                    "text-secondary": "#666666",
+                    "outline": "#6f7976",
+                    "status-danger": "#DC3545",
+                    "surface-dim": "#dadada",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#d8e5e3",
+                    "on-primary-container": "#a1eddf",
+                    "tertiary-fixed-dim": "#66df75",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#121e1d",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f9f9f9",
+                    "on-background": "#1a1c1c",
+                    "on-surface-variant": "#3f4946",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eeeeee",
+                    "secondary-fixed": "#d8e5e3",
+                    "on-surface": "#1a1c1c",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-high": "#e8e8e8",
+                    "tertiary-fixed": "#83fc8e",
+                    "inverse-on-surface": "#f1f1f1",
+                    "text-primary": "#000000",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-container": "#7ff88a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "gutter": "16px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .success-checkmark-bounce {
+            animation: bounce 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes bounce {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-14 fixed top-0 z-50 bg-surface shadow-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Task Pro MX-Ca</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-2xl mx-auto space-y-lg">
+<!-- Success Hero Section -->
+<section class="text-center py-8">
+<div class="w-24 h-24 bg-tertiary-container/20 rounded-full flex items-center justify-center mx-auto mb-md success-checkmark-bounce">
+<span class="material-symbols-outlined text-tertiary text-6xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">¡Servicio Finalizado!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">El trabajo ha sido completado exitosamente por tu Tasker.</p>
+</section>
+<!-- Payment & Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Cost Card -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] border border-border-subtle flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">COSTO TOTAL</span>
+<h3 class="font-headline-lg text-headline-lg text-primary">$1,450.00 MXN</h3>
+</div>
+<div class="mt-md pt-md border-t border-border-subtle flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-body-lg">payments</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Cargado a Visa **** 4242</span>
+</div>
+</div>
+<!-- Tasker Mini Profile -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] border border-border-subtle flex items-center gap-md">
+<div class="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly handyman in his late 30s, wearing a clean teal polo shirt with a subtle Task Pro logo. He is smiling warmly against a blurred outdoor background of a residential area in Tijuana. The lighting is bright and natural, evoking a sense of reliability and trust within a corporate modern design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfb9J7zQszQegodxhCyS7eZtyOiVKmgtwzRObU4u0AOhCEEnTni-RFcY1GEJmbA1vyx1wYNSu8YsN6FSaib1zNuMNoYQjq66fRskIebMmLAwVPBU7Oe8exi6NCVAe1h3K7S5-V_tl50QfpbnzZ4PDrPDfQCnzqqEjrgucDKPNWnOFMCMNljEn3dB93_0OLZUK4N7-z6BFW8aSD2wOfUxuCzzu1YIj1h6ysOJPC41ReN07YeSueMTDFrqXFki1SjQutpjT_ViJ-YB4"/>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Roberto Mendez</h4>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-status-warning text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.9 (124 servicios)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Before/After Comparison Card -->
+<section class="bg-surface-container-lowest p-md rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] border border-border-subtle">
+<h3 class="font-headline-md text-headline-md mb-md">Evidencia del Trabajo</h3>
+<div class="grid grid-cols-2 gap-sm">
+<div class="relative rounded-lg overflow-hidden group">
+<div class="absolute top-2 left-2 bg-on-background/60 text-white font-label-sm text-label-sm px-2 py-0.5 rounded backdrop-blur-sm z-10">Antes</div>
+<div class="bg-cover bg-center aspect-square w-full" data-alt="A photo showing a broken wooden fence panel in a backyard garden. The wood is splintered and gray from weathering, clearly needing repair. The setting is a suburban home in Southern California during midday with bright, clear lighting. The visual style is crisp and documentary-like, emphasizing the initial problem state before a service." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABQCKVD6yF834K59sGZuu4ERPZr9C3VgVTOHJjcOtCtEB9lqyZs1yyYltQHvOJwbZJqCtWCnR9GiLxeIiK7GX8jUG-A9DhjOgGsPgO4RJnohrtekAj3I1dyPCqkP6-GmpkP2L-TZVBKt0dikJHe27w5NZIV1kJwuTACIaFbubU2gT8kz-LzysNrZPS1T6JO3wriF0QlYbTHca_JKX7vJxs5BAkGyp2QGQt-ciZVw7HbTc45ahGje_tSMjBXyJ-zwGCJOyMnzOEZpg')"></div>
+</div>
+<div class="relative rounded-lg overflow-hidden group">
+<div class="absolute top-2 left-2 bg-primary/80 text-white font-label-sm text-label-sm px-2 py-0.5 rounded backdrop-blur-sm z-10">Después</div>
+<div class="bg-cover bg-center aspect-square w-full" data-alt="The same wooden fence panel from before, now expertly repaired with fresh, cedar-colored planks. The craftsmanship is professional and clean, fitting perfectly with the existing structure. The backyard is tidy, and the sunlight highlights the new wood texture. This represents a successful completion of an on-demand task in a modern, reliable service environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9SD-Lj7EoQXzMB0nFhkJYan8G9905OXyU1ywjWtRJVmVgeucHTbTij8kZP4DaMk1oCdtyE_nVkHpBYsMqQPVOjZ8FPeeQKaANplceK6jt9NnqCjl-fec2oBmDcyAep9nHRR14v6DvERT19ZZwPTUG7G8o6n7QNxRVCxeE5lbotDrNKr4rVgqqLPnOI97efYIc_-CtgS2-WWamxt7MmCXtMW3lSCQDTYpfhDtXmc_g1d_PH4IMjvMZrfwqogVI5UO0_ppoqb_5HZs')"></div>
+</div>
+</div>
+<div class="mt-md space-y-sm">
+<p class="font-body-md text-body-md text-on-surface-variant">
+<span class="font-bold text-on-surface">Resumen:</span> Reparación de sección de cerca perimetral, ajuste de bisagras en puerta principal y limpieza de área de trabajo. Todo quedó nivelado y asegurado.
+                </p>
+<div class="flex flex-wrap gap-xs">
+<span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-3 py-1 rounded-full">Carpintería</span>
+<span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-3 py-1 rounded-full">Reparación</span>
+</div>
+</div>
+</section>
+<!-- Final Actions -->
+<section class="space-y-md">
+<button class="w-full h-12 bg-primary text-on-primary font-headline-md text-headline-md rounded-xl shadow-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-sm">
+<span>Calificar y Confirmar</span>
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-full h-12 bg-surface-container-lowest text-primary border border-primary font-headline-md text-headline-md rounded-xl hover:bg-primary-fixed/20 active:scale-[0.98] transition-all">
+                Reportar un problema
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-16 z-50 flex justify-around items-center px-4 pb-safe bg-surface-container-lowest border-t border-border-subtle">
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explorar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary bg-secondary-container/30 rounded-xl px-3 py-1 scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">handyman</span>
+<span class="font-label-sm text-label-sm">Servicios</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Mensajes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Perfil</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for the confirm button
+        const confirmBtn = document.querySelector('button.bg-primary');
+        confirmBtn.addEventListener('click', () => {
+            confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span>';
+            setTimeout(() => {
+                confirmBtn.innerHTML = '¡Confirmado!';
+                confirmBtn.classList.remove('bg-primary');
+                confirmBtn.classList.add('bg-tertiary');
+            }, 1000);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,14 @@
+{
+  "name": "@taskpro/config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared configuration presets for TaskPRO",
+  "exports": {
+    "./tsconfig.base.json": "./tsconfig.base.json"
+  },
+  "scripts": {
+    "lint": "echo 'No lintable source in @taskpro/config'",
+    "typecheck": "echo 'No TypeScript source in @taskpro/config'",
+    "test": "echo 'No tests in @taskpro/config'"
+  }
+}

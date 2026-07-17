@@ -1,0 +1,30 @@
+{
+  "primitive": "Replay",
+  "record_type": "GovernanceUpdate",
+  "record_id": "governance-0004",
+  "preceding_record": "bootstrap-e1-0003",
+  "timestamp": "2026-07-16T22:04:22Z",
+  "approved_by": "human governance decision confirming expedition lifecycle state is projected in .synth/expeditions.json",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "2c38853aa42e11ed935918d2c57f356a4595f00ba0774de915c911c9524ef8a2",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "changes": [
+    {
+      "target": ".synth/expeditions.json",
+      "change": "E1 status transitioned from 'registered' to 'completed'; added completed_at and supporting_replay: 'bootstrap-e1-0003'.",
+      "justification": "Expedition lifecycle state is part of the governed Expedition primitive. Replay records remain the authoritative history; the status field is the current-state projection derived from replay. E1 bootstrap was successfully executed and validated, so the status transition is warranted."
+    }
+  ],
+  "invariants_verified": [
+    "knowledge/ untouched: input snapshot hash identical to genesis-0001.",
+    "No implementation capabilities invoked during this governance update.",
+    "Status transition supported by existing replay record bootstrap-e1-0003.",
+    "No change to governance kernel semantics (Mission, Evidence, Expedition, State, Replay primitives unchanged)."
+  ],
+  "result": "governed-updated"
+}

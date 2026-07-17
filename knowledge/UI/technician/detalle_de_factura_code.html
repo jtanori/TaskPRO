@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Billing &amp; Receipts - Invoice Detail</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#66df75",
+                      "on-tertiary-fixed-variant": "#00531a",
+                      "surface-bright": "#f9f9f9",
+                      "status-danger": "#DC3545",
+                      "on-surface": "#1a1c1c",
+                      "outline-variant": "#bec9c5",
+                      "surface-tint": "#136a5f",
+                      "primary-fixed-dim": "#88d4c7",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#88d4c7",
+                      "tertiary": "#00571b",
+                      "primary-fixed": "#a4f1e3",
+                      "inverse-on-surface": "#f1f1f1",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#55615f",
+                      "on-tertiary-fixed": "#002106",
+                      "border-subtle": "#E0E0E0",
+                      "surface": "#f9f9f9",
+                      "inverse-surface": "#2f3131",
+                      "on-secondary-fixed-variant": "#3d4948",
+                      "on-tertiary-container": "#7ff88a",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#dadada",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#00554b",
+                      "on-secondary-fixed": "#121e1d",
+                      "surface-container-low": "#f3f3f3",
+                      "secondary-fixed": "#d8e5e3",
+                      "on-background": "#1a1c1c",
+                      "secondary-fixed-dim": "#bcc9c7",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#005047",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#d8e5e3",
+                      "text-primary": "#000000",
+                      "status-warning": "#FFC107",
+                      "surface-container": "#eeeeee",
+                      "tertiary-fixed": "#83fc8e",
+                      "surface-container-high": "#e8e8e8",
+                      "background": "#f9f9f9",
+                      "surface-container-highest": "#e2e2e2",
+                      "text-secondary": "#666666",
+                      "error-container": "#ffdad6",
+                      "outline": "#6f7976",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#5b6765",
+                      "on-primary-container": "#a1eddf",
+                      "primary-container": "#1a6e63",
+                      "tertiary-container": "#007227",
+                      "surface-variant": "#e2e2e2",
+                      "on-primary-fixed": "#00201c",
+                      "on-surface-variant": "#3f4946"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "md": "16px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "caption": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+        }
+        .invoice-card {
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim flex justify-between items-center px-margin-mobile h-[64px] border-b border-border-subtle dark:border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="active:scale-95 transition-transform duration-150 p-sm rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed-dim">Billing &amp; Receipts</h1>
+</div>
+<button class="active:scale-95 transition-transform duration-150 p-sm rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline">more_vert</span>
+</button>
+</header>
+<main class="pt-[80px] px-margin-mobile max-w-2xl mx-auto">
+<!-- Status Banner -->
+<div class="mb-lg p-md bg-tertiary-fixed-dim/15 rounded-xl flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-tertiary-fixed-variant">Payment Successful</p>
+<p class="font-caption text-caption text-on-tertiary-fixed-variant/80">Processed on Oct 24, 2023</p>
+</div>
+</div>
+<!-- Main Invoice Card -->
+<div class="invoice-card bg-surface-container-lowest rounded-xl p-md mb-lg">
+<!-- Service Header -->
+<div class="flex justify-between items-start mb-lg border-b border-border-subtle pb-md">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-secondary uppercase tracking-wider">Service ID #INV-8829</span>
+<h2 class="font-headline-md text-headline-md mt-xs">Plumbing Maintenance</h2>
+</div>
+<div class="bg-primary/10 px-sm py-xs rounded-lg">
+<span class="font-label-sm text-label-sm text-primary">Service Completed</span>
+</div>
+</div>
+<!-- Detail Grid -->
+<div class="grid grid-cols-2 gap-y-lg mb-xl">
+<div>
+<p class="font-label-sm text-label-sm text-text-secondary">Service Date</p>
+<p class="font-body-lg text-body-lg font-semibold">Oct 24, 2023</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-text-secondary">Payment Method</p>
+<div class="flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">credit_card</span>
+<p class="font-body-md text-body-md">Visa •••• 4242</p>
+</div>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-text-secondary">Technician</p>
+<div class="flex items-center gap-sm mt-xs">
+<div class="w-8 h-8 rounded-full bg-cover bg-center border border-border-subtle" data-alt="A professional headshot of a service technician wearing a clean company uniform with a friendly expression. The lighting is bright and professional, set against a neutral, high-key studio background that matches a corporate modern aesthetic. The technician appears reliable and task-oriented." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIvwaA_v0wu3K6o_UV0L6euCPnXFScizmVTpmWgZBwentZOKmu3ELQx9wYiGQzRPWOg_meemEyx-KstmxrW81AVaN_ezgGu8T_yIx7LDq2aYMBklb_xOfN_UPJcLpHj_Bf3n78ZC2avRF0y1s10udjuWDxgLjH8nPdqktcU42cF3X7mNzzhA6xvKFfyd57bIVIeuYmd4TJfVRvxSvwR0LETxlPzySdTrHjWAlkDinl-4axbsMuXnm6ZV_74ccf4f62X2tl5Yj1rNw')"></div>
+<p class="font-body-md text-body-md">Carlos Mendoza</p>
+</div>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-text-secondary">Location</p>
+<p class="font-body-md text-body-md">Tijuana, BC</p>
+</div>
+</div>
+<!-- Calculation Breakdown -->
+<div class="bg-surface-container-low rounded-lg p-md space-y-md">
+<div class="flex justify-between items-center">
+<p class="font-body-md text-body-md text-text-secondary">Subtotal</p>
+<p class="font-body-md text-body-md font-medium">$1,250.00 MXN</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="font-body-md text-body-md text-text-secondary">VAT (IVA 16%)</p>
+<p class="font-body-md text-body-md font-medium">$200.00 MXN</p>
+</div>
+<div class="border-t border-border-subtle pt-md flex justify-between items-center">
+<p class="font-headline-md text-headline-md">Total Amount</p>
+<p class="font-headline-md text-headline-md text-primary">$1,450.00 MXN</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<button class="h-[48px] bg-primary text-white rounded-xl flex items-center justify-center gap-sm active:scale-95 transition-transform duration-150 font-label-md">
+<span class="material-symbols-outlined">download</span>
+                Download PDF
+            </button>
+<button class="h-[48px] bg-secondary-container text-primary rounded-xl flex items-center justify-center gap-sm active:scale-95 transition-transform duration-150 font-label-md">
+<span class="material-symbols-outlined">mail</span>
+                Send to Email
+            </button>
+</div>
+<!-- Footer Note -->
+<div class="mt-xl text-center">
+<p class="font-caption text-caption text-text-secondary px-lg">
+                Need help with this receipt? Contact our support team for billing inquiries or visit our Help section.
+            </p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-[80px] px-2 bg-surface border-t border-border-subtle rounded-t-xl shadow-[0px_-2px_8px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-on-secondary-fixed rounded-full px-4 py-1 active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-sm text-label-sm">Invoices</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Payments</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-sm text-label-sm">Help</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-sm text-label-sm">Legal</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,30 @@
+{
+  "primitive": "Mission",
+  "version": "1.0",
+  "assertions": [
+    {
+      "id": "mission-001",
+      "claim": "Synthesize the TaskPRO platform from canonical knowledge into a TurboRepo monorepo: an Expo/React Native mobile application (customer and technician roles) with a Supabase backend, delivered in the BUILD-001 phase order, each phase producing a usable vertical slice.",
+      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-MOD-001", "TASKPRO-TECH-001", "TASKPRO-CAP-001", "knowledge/UI"],
+      "derivation_type": "INFERRED",
+      "confidence": "HIGH",
+      "derivation_note": "BUILD-001 defines phase order and vertical-slice philosophy; MOD-001 defines the TurboRepo target structure; TECH-001 locks the stack; CAP-001 and the UI asset groups establish the two-role (customer/technician) scope. No element of this claim originates outside the evidence set."
+    }
+  ],
+  "scope_boundaries": {
+    "in_scope": [
+      "apps/mobile (Expo React Native, customer + technician)",
+      "apps/api (Supabase Edge Functions, jobs, webhooks, provider adapters)",
+      "packages/* (ui, design-tokens, domain, sdk, config, eslint, types, testing)",
+      "supabase/ (schema, migrations, RLS, realtime)"
+    ],
+    "out_of_scope": [
+      "apps/admin (marked future in MOD-001)",
+      "apps/docs (marked future in MOD-001)",
+      "English and Portuguese locales (marked future in TASKPRO-I18N-001)"
+    ],
+    "evidence_sources": ["TASKPRO-MOD-001", "TASKPRO-I18N-001"],
+    "derivation_type": "DIRECT",
+    "confidence": "HIGH"
+  }
+}

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task Pro MX-Ca | Confirmar y Evaluar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .star-active {
+            font-variation-settings: 'FILL' 1 !important;
+            color: #FFC107 !important;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(224, 224, 224, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#88d4c7",
+                        "primary-fixed-dim": "#88d4c7",
+                        "on-secondary-container": "#5b6765",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#00571b",
+                        "on-tertiary-fixed-variant": "#00531a",
+                        "on-secondary": "#ffffff",
+                        "status-warning": "#FFC107",
+                        "on-primary-fixed-variant": "#005047",
+                        "surface-variant": "#e2e2e2",
+                        "primary-container": "#1a6e63",
+                        "primary-fixed": "#a4f1e3",
+                        "surface-bright": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#3d4948",
+                        "border-subtle": "#E0E0E0",
+                        "secondary": "#55615f",
+                        "on-tertiary-fixed": "#002106",
+                        "surface-container-highest": "#e2e2e2",
+                        "outline-variant": "#bec9c5",
+                        "secondary-fixed-dim": "#bcc9c7",
+                        "surface-tint": "#136a5f",
+                        "tertiary-container": "#007227",
+                        "background": "#f9f9f9",
+                        "on-primary-fixed": "#00201c",
+                        "primary": "#00554b",
+                        "text-secondary": "#666666",
+                        "outline": "#6f7976",
+                        "status-danger": "#DC3545",
+                        "surface-dim": "#dadada",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#d8e5e3",
+                        "on-primary-container": "#a1eddf",
+                        "tertiary-fixed-dim": "#66df75",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#121e1d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "on-background": "#1a1c1c",
+                        "on-surface-variant": "#3f4946",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "secondary-fixed": "#d8e5e3",
+                        "on-surface": "#1a1c1c",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-high": "#e8e8e8",
+                        "tertiary-fixed": "#83fc8e",
+                        "inverse-on-surface": "#f1f1f1",
+                        "text-primary": "#000000",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "on-tertiary-container": "#7ff88a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center w-full px-4 h-14 fixed top-0 z-50 bg-surface dark:bg-on-background shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Confirmar y Evaluar</h1>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">help_outline</span>
+</button>
+</header>
+<main class="pt-20 pb-24 px-margin-mobile max-w-2xl mx-auto">
+<!-- Service Identity Header -->
+<section class="mb-lg text-center">
+<div class="inline-flex items-center justify-center p-xs bg-primary-fixed rounded-full mb-md">
+<span class="material-symbols-outlined text-primary px-sm">handyman</span>
+<span class="font-label-md text-primary pr-md">Servicio Finalizado</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-xs">¿Cómo fue tu experiencia?</h2>
+<p class="font-body-md text-on-surface-variant">Califica el trabajo de <strong>Carlos Méndez</strong> en Reparación de Tubería.</p>
+</section>
+<!-- Dynamic Feedback Container -->
+<div class="space-y-lg">
+<!-- Pro Card -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-border-subtle flex items-center gap-md">
+<div class="w-16 h-16 rounded-full bg-cover bg-center overflow-hidden border-2 border-primary-fixed" data-alt="A professional headshot of a friendly handyman in his late 40s, smiling warmly at the camera. He is wearing a clean branded uniform in teal and grey. The lighting is soft and natural, suggesting a reliable and trustworthy persona. The background is a clean, out-of-focus suburban setting in Tijuana." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSpdqlUVBvMFZ47io2-5nG3u9WmjKGz7KgwfNBwAvKQKu3RSsa77Wkm85zQndmrCdJw16zZTLzcqAjsvCCPIxPNQ7yfmia8DuSgYeZp1Ls50_SOvdkXoKRos-1dZm97ruGx_vl-tJ6DzziZTeeI-ox9U9RU9J2AXqSUyPjZpL1ZjIFNQvj1DOrPPpWUd9sszyEbsn4NsKiV_Lwx7b5401Q5cb0GVK21WJ_INcPXoEgcw2W-Hz9uhWRfrDejKoJVlknN2HjW-IvBxQ')"></div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md">Carlos Méndez</h3>
+<p class="font-caption text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Especialista en Plomería
+                    </p>
+</div>
+<div class="text-right">
+<span class="block font-label-md text-on-surface-variant">Folio</span>
+<span class="font-body-md font-bold">#TK-8921</span>
+</div>
+</div>
+<!-- Rating Section -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-border-subtle">
+<label class="block font-label-md text-on-surface-variant mb-md text-center">Calidad del servicio</label>
+<div class="flex justify-center gap-sm mb-lg" id="star-rating">
+<button class="star-btn transition-transform active:scale-90" onclick="setRating(1)"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+<button class="star-btn transition-transform active:scale-90" onclick="setRating(2)"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+<button class="star-btn transition-transform active:scale-90" onclick="setRating(3)"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+<button class="star-btn transition-transform active:scale-90" onclick="setRating(4)"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+<button class="star-btn transition-transform active:scale-90" onclick="setRating(5)"><span class="material-symbols-outlined text-4xl text-outline-variant">star</span></button>
+</div>
+<div class="space-y-md">
+<label class="block font-label-md text-on-surface-variant">Cuéntanos más (Opcional)</label>
+<textarea class="w-full p-md rounded-xl border border-border-subtle focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md resize-none" placeholder="Escribe aquí tus comentarios sobre la puntualidad, limpieza y calidad..." rows="4"></textarea>
+</div>
+</div>
+<!-- Resolution Status Toggle -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-border-subtle">
+<div class="flex items-start justify-between gap-md mb-md">
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md mb-xs">Resolución del problema</h4>
+<p class="font-body-md text-on-surface-variant" id="status-desc">Marca si el servicio se completó correctamente según lo acordado.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="status-toggle" onchange="handleStatusChange(this)" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-7 after:w-7 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="hidden animate-fade-in space-y-md pt-md border-t border-border-subtle mt-md" id="issue-options">
+<p class="font-label-md text-status-danger">¿Qué salió mal?</p>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center gap-xs px-md py-sm border border-border-subtle rounded-lg font-label-sm hover:bg-error-container/10 transition-colors">
+<span class="material-symbols-outlined text-[18px]">timer_off</span> Incompleto
+                        </button>
+<button class="flex items-center gap-xs px-md py-sm border border-border-subtle rounded-lg font-label-sm hover:bg-error-container/10 transition-colors">
+<span class="material-symbols-outlined text-[18px]">report</span> Daños/Error
+                        </button>
+</div>
+</div>
+</div>
+<!-- Confirmation Action -->
+<div class="pt-md pb-xl">
+<button class="w-full h-12 bg-primary text-on-primary rounded-xl font-headline-md shadow-lg shadow-primary/20 flex items-center justify-center gap-md hover:opacity-90 active:scale-[0.98] transition-all" id="main-action">
+                    Confirmar y Finalizar
+                    <span class="material-symbols-outlined">check_circle</span>
+</button>
+<p class="text-center font-caption text-on-surface-variant mt-md px-lg">
+                    Al confirmar, el pago será liberado al proveedor de servicios.
+                </p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Contextual) -->
+<nav class="fixed bottom-0 left-0 w-full h-16 z-50 flex justify-around items-center px-4 pb-safe bg-surface-container-lowest dark:bg-on-background border-t border-border-subtle dark:border-outline-variant">
+<div class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explorar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-on-primary-container bg-secondary-container/30 dark:bg-primary-container/20 rounded-xl px-3 py-1">
+<span class="material-symbols-outlined">handyman</span>
+<span class="font-label-sm text-label-sm">Servicios</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Mensajes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Perfil</span>
+</div>
+</nav>
+<script>
+        let currentRating = 0;
+
+        function setRating(rating) {
+            currentRating = rating;
+            const stars = document.querySelectorAll('.star-btn span');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('star-active');
+                } else {
+                    star.classList.remove('star-active');
+                }
+            });
+
+            // Micro-feedback
+            const container = document.getElementById('star-rating');
+            container.classList.add('scale-105');
+            setTimeout(() => container.classList.remove('scale-105'), 150);
+        }
+
+        function handleStatusChange(checkbox) {
+            const issueOptions = document.getElementById('issue-options');
+            const statusDesc = document.getElementById('status-desc');
+            const mainAction = document.getElementById('main-action');
+
+            if (!checkbox.checked) {
+                issueOptions.classList.remove('hidden');
+                statusDesc.innerText = "Lamentamos que el servicio no fuera exitoso. Por favor detalla el problema.";
+                statusDesc.classList.add('text-status-danger');
+                mainAction.classList.remove('bg-primary');
+                mainAction.classList.add('bg-status-danger');
+                mainAction.innerHTML = 'Reportar Incidencia <span class="material-symbols-outlined">report</span>';
+            } else {
+                issueOptions.classList.add('hidden');
+                statusDesc.innerText = "Marca si el servicio se completó correctamente según lo acordado.";
+                statusDesc.classList.remove('text-status-danger');
+                mainAction.classList.remove('bg-status-danger');
+                mainAction.classList.add('bg-primary');
+                mainAction.innerHTML = 'Confirmar y Finalizar <span class="material-symbols-outlined">check_circle</span>';
+            }
+        }
+
+        // Simple form submission feedback
+        document.getElementById('main-action').addEventListener('click', function() {
+            if (currentRating === 0 && document.getElementById('status-toggle').checked) {
+                alert('Por favor selecciona una calificación antes de continuar.');
+                return;
+            }
+            
+            this.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Procesando...';
+            this.disabled = true;
+            this.style.opacity = '0.7';
+
+            setTimeout(() => {
+                const isSuccess = document.getElementById('status-toggle').checked;
+                const message = isSuccess ? '¡Gracias! El servicio se ha cerrado exitosamente.' : 'Reporte enviado. Soporte se contactará contigo pronto.';
+                
+                document.querySelector('main').innerHTML = `
+                    <div class="flex flex-col items-center justify-center min-h-[530px] text-center animate-fade-in px-margin-mobile">
+                        <div class="w-20 h-20 bg-primary-fixed rounded-full flex items-center justify-center mb-lg">
+                            <span class="material-symbols-outlined text-4xl text-primary">${isSuccess ? 'verified_user' : 'support_agent'}</span>
+                        </div>
+                        <h2 class="font-headline-lg text-headline-lg mb-md">${isSuccess ? 'Servicio Finalizado' : 'Reporte Recibido'}</h2>
+                        <p class="font-body-lg text-on-surface-variant mb-xl">${message}</p>
+                        <button onclick="location.reload()" class="px-xl py-md bg-secondary-container text-on-secondary-container rounded-xl font-label-md">Volver al Inicio</button>
+                    </div>
+                `;
+            }, 1500);
+        });
+    </script>
+<style>
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.4s ease-out forwards;
+        }
+    </style>
+</body></html>

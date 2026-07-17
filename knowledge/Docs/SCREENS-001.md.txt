@@ -1,0 +1,1989 @@
+Proceeding with the next artifact:
+
+# TASKPRO-SCREEN-001 — TaskPRO Screen Specification Catalog v0.1
+
+## Purpose
+
+The Screen Specification Catalog defines the complete TaskPRO application screen system.
+
+This artifact translates:
+
+* design files
+* React Native implementation patterns
+* component catalog
+* navigation structure
+* user workflows
+
+into a reusable screen-level specification.
+
+The goal is not pixel documentation. The goal is to establish the **screen architecture** required for:
+
+* engineering implementation
+* AI-assisted generation
+* UX validation
+* feature expansion
+* design/code synchronization
+
+---
+
+# 1. Screen System Overview
+
+## 1.1 Screen Architecture Principles
+
+TaskPRO screens follow the structure:
+
+```text
+Screen Context
+
+        ↓
+
+Information Hierarchy
+
+        ↓
+
+Primary User Goal
+
+        ↓
+
+Primary Action
+
+        ↓
+
+Supporting Actions
+```
+
+Every screen should answer:
+
+1. Where am I?
+2. What information matters?
+3. What can I do next?
+
+---
+
+# 1.2 Screen Categories
+
+TaskPRO screens are organized into:
+
+```text
+1. Entry Screens
+2. Authentication Screens
+3. Home / Dashboard Screens
+4. Discovery Screens
+5. Service Screens
+6. Marketplace Screens
+7. Workflow Screens
+8. Communication Screens
+9. Profile Screens
+10. Settings Screens
+```
+
+---
+
+# 2. Screen Specification Format
+
+Each screen definition contains:
+
+```text
+Screen Name
+
+Purpose
+
+User Intent
+
+Navigation Entry
+
+Layout Structure
+
+Components Used
+
+Primary Actions
+
+Secondary Actions
+
+States
+
+Interactions
+
+Data Requirements
+```
+
+---
+
+# 3. Entry Screens
+
+---
+
+# SCREEN-001 — Splash / Launch Screen
+
+## Purpose
+
+Initial application entry point.
+
+---
+
+## User Intent
+
+Open TaskPRO and determine application readiness.
+
+---
+
+## Layout
+
+```text
+Brand Identity
+
+Loading Indicator
+
+Initialization State
+```
+
+---
+
+## Components
+
+* Logo
+* Surface
+* Loading Indicator
+
+---
+
+## States
+
+### Initializing
+
+Application loading.
+
+---
+
+### Ready
+
+Navigate to:
+
+* authentication
+* dashboard
+
+---
+
+### Error
+
+Display:
+
+* problem
+* retry action
+
+---
+
+# SCREEN-002 — Welcome Screen
+
+## Purpose
+
+Introduce TaskPRO value proposition.
+
+---
+
+## User Intent
+
+Understand the platform and continue.
+
+---
+
+## Layout
+
+```text
+Illustration
+
+Headline
+
+Description
+
+Primary Action
+
+Secondary Action
+```
+
+---
+
+## Components
+
+* Typography
+* Illustration
+* Button Group
+
+---
+
+## Actions
+
+Primary:
+
+```text
+Get Started
+```
+
+Secondary:
+
+```text
+Sign In
+```
+
+---
+
+# 4. Authentication Screens
+
+---
+
+# SCREEN-010 — Login Screen
+
+## Purpose
+
+Authenticate existing users.
+
+---
+
+## Layout
+
+```text
+Header
+
+Email Input
+
+Password Input
+
+Login Button
+
+Recovery Link
+
+Registration Link
+```
+
+---
+
+## Components
+
+* Screen Container
+* Text Input
+* Button
+* Link Action
+
+---
+
+## States
+
+### Default
+
+Empty form.
+
+---
+
+### Loading
+
+Authentication request.
+
+---
+
+### Error
+
+Invalid credentials.
+
+---
+
+### Success
+
+Navigate to application.
+
+---
+
+# SCREEN-011 — Registration Screen
+
+## Purpose
+
+Create a new account.
+
+---
+
+## Layout
+
+```text
+Header
+
+Identity Fields
+
+Account Fields
+
+Terms Agreement
+
+Create Account
+```
+
+---
+
+## Components
+
+* Form Section
+* Inputs
+* Checkbox
+* Button
+
+---
+
+# SCREEN-012 — Verification Screen
+
+## Purpose
+
+Verify account identity.
+
+---
+
+## Layout
+
+```text
+Verification Message
+
+Code Input
+
+Resend Action
+
+Continue
+```
+
+---
+
+# 5. Main Application Screens
+
+---
+
+# SCREEN-020 — Home Dashboard
+
+## Purpose
+
+Primary application entry after authentication.
+
+---
+
+## User Intent
+
+Understand current activity and next actions.
+
+---
+
+## Layout
+
+```text
+Header
+
+Summary Area
+
+Quick Actions
+
+Active Tasks
+
+Recommended Services
+
+Recent Activity
+
+Bottom Navigation
+```
+
+---
+
+## Components
+
+* App Header
+* Cards
+* Task Cards
+* Service Cards
+* Activity Feed
+* Bottom Navigation
+
+---
+
+## Primary Actions
+
+Examples:
+
+* Create request
+* Browse services
+* Continue task
+
+---
+
+## States
+
+### New User
+
+Show onboarding guidance.
+
+---
+
+### Active User
+
+Show current work.
+
+---
+
+### Empty
+
+Show discovery actions.
+
+---
+
+# SCREEN-021 — Search / Discovery Screen
+
+## Purpose
+
+Find services or marketplace items.
+
+---
+
+## Layout
+
+```text
+Search Bar
+
+Filters
+
+Categories
+
+Results
+
+Sorting
+```
+
+---
+
+## Components
+
+* Search Input
+* Filter Panel
+* Category Selector
+* Listing Cards
+
+---
+
+## Interactions
+
+* search
+* filter
+* sort
+* open result
+
+---
+
+# 6. Service Screens
+
+---
+
+# SCREEN-030 — Service Listing Screen
+
+## Purpose
+
+Browse available services.
+
+---
+
+## Layout
+
+```text
+Header
+
+Search
+
+Categories
+
+Service Results
+
+Filters
+```
+
+---
+
+## Components
+
+* Service Card
+* Category Selector
+* Filter Panel
+
+---
+
+# SCREEN-031 — Service Detail Screen
+
+## Purpose
+
+Evaluate a service before requesting.
+
+---
+
+## Layout
+
+```text
+Service Header
+
+Provider Summary
+
+Description
+
+Availability
+
+Pricing
+
+Reviews
+
+Primary Action
+```
+
+---
+
+## Components
+
+* Service Detail Header
+* Provider Card
+* Rating Display
+* Pricing Summary
+* Booking Action
+
+---
+
+## Primary Action
+
+```text
+Request Service
+```
+
+---
+
+# SCREEN-032 — Booking Flow Screen
+
+## Purpose
+
+Complete service request.
+
+---
+
+## Flow
+
+```text
+Select Options
+
+↓
+
+Schedule
+
+↓
+
+Review
+
+↓
+
+Confirm
+```
+
+---
+
+## Components
+
+* Step Progress
+* Selectors
+* Booking Summary
+* Confirmation Panel
+
+---
+
+# 7. Marketplace Screens
+
+---
+
+# SCREEN-040 — Marketplace Home
+
+## Purpose
+
+Browse marketplace offerings.
+
+---
+
+## Layout
+
+```text
+Search
+
+Featured Items
+
+Categories
+
+Listings
+
+Recommendations
+```
+
+---
+
+## Components
+
+* Listing Cards
+* Category Selector
+* Search Input
+
+---
+
+# SCREEN-041 — Listing Detail Screen
+
+## Purpose
+
+Review marketplace item.
+
+---
+
+## Layout
+
+```text
+Image Gallery
+
+Title
+
+Description
+
+Seller Information
+
+Price
+
+Actions
+```
+
+---
+
+## Components
+
+* Image Viewer
+* Seller Card
+* Pricing Display
+* Action Group
+
+---
+
+# 8. Workflow Screens
+
+---
+
+# SCREEN-050 — Task Detail Screen
+
+## Purpose
+
+Manage active work.
+
+---
+
+## Layout
+
+```text
+Task Header
+
+Current Status
+
+Timeline
+
+Details
+
+Actions
+```
+
+---
+
+## Components
+
+* Task Card
+* Status Tracker
+* Timeline
+* Action Buttons
+
+---
+
+# SCREEN-051 — Task Progress Screen
+
+## Purpose
+
+Monitor lifecycle.
+
+---
+
+## Layout
+
+```text
+Progress Indicator
+
+Current Step
+
+History
+
+Next Action
+```
+
+---
+
+# 9. Communication Screens
+
+---
+
+# SCREEN-060 — Messages Screen
+
+## Purpose
+
+Manage conversations.
+
+---
+
+## Layout
+
+```text
+Header
+
+Conversation List
+
+Search
+
+Filters
+```
+
+---
+
+## Components
+
+* Conversation Preview
+* Search Input
+* Notification States
+
+---
+
+# SCREEN-061 — Conversation Detail Screen
+
+## Purpose
+
+Communicate with another user.
+
+---
+
+## Layout
+
+```text
+Header
+
+Messages
+
+Attachments
+
+Composer
+```
+
+---
+
+## Components
+
+* Message Bubble
+* Attachment Preview
+* Input Composer
+
+---
+
+# 10. Profile Screens
+
+---
+
+# SCREEN-070 — Profile Screen
+
+## Purpose
+
+Manage user identity.
+
+---
+
+## Layout
+
+```text
+Avatar
+
+Information
+
+Verification
+
+Activity
+
+Actions
+```
+
+---
+
+## Components
+
+* Avatar
+* Badge
+* List Items
+
+---
+
+# SCREEN-071 — Edit Profile Screen
+
+## Purpose
+
+Update account information.
+
+---
+
+## Components
+
+* Form Inputs
+* Upload Component
+* Save Action
+
+---
+
+# 11. Settings Screens
+
+---
+
+# SCREEN-080 — Settings Screen
+
+## Purpose
+
+Application configuration.
+
+---
+
+## Layout
+
+```text
+Account
+
+Preferences
+
+Notifications
+
+Security
+
+Support
+```
+
+---
+
+## Components
+
+* List Items
+* Toggles
+* Navigation Actions
+
+---
+
+# SCREEN-081 — Notification Settings
+
+## Purpose
+
+Control communication preferences.
+
+---
+
+## Components
+
+* Toggle Controls
+* Preference Groups
+
+---
+
+# 12. Global Screen States
+
+Every screen must support:
+
+---
+
+## Loading
+
+Preferred:
+
+* skeleton loading
+* progressive rendering
+
+---
+
+## Empty
+
+Must provide:
+
+* explanation
+* next action
+
+---
+
+## Error
+
+Must provide:
+
+* cause
+* recovery path
+
+---
+
+## Offline
+
+Should communicate:
+
+* connection state
+* available actions
+
+---
+
+# 13. Screen Governance
+
+## New Screen Checklist
+
+Before creating a screen:
+
+### Structure
+
+* Does this screen have a clear purpose?
+* Is the primary action obvious?
+* Does it reuse existing components?
+
+---
+
+### UX
+
+* Is navigation predictable?
+* Are states defined?
+* Are errors handled?
+
+---
+
+### Design
+
+* Uses DS tokens
+* Uses COMP components
+* Supports accessibility
+
+---
+
+# TASKPRO Screen Architecture Status
+
+Completed:
+
+✅ TASKPRO-DS-001 Design System
+✅ TASKPRO-DS-002 Component Specifications
+✅ TASKPRO-DS-003 Interaction Guidelines
+✅ TASKPRO-DS-004 Motion Guidelines
+✅ TASKPRO-DS-005 Theme System
+✅ TASKPRO-COMP-001 Component Catalog
+✅ TASKPRO-SCREEN-001 Screen Specification Catalog
+
+Next artifact:
+
+# TASKPRO-FLOW-001 — TaskPRO User Workflow Specification v0.1
+
+This will connect screens into actual user journeys:
+
+* onboarding
+* service discovery
+* service booking
+* marketplace purchase/request
+* task completion
+* communication
+* account management
+
+That will complete the product behavior layer.
+Proceeding with the next artifact.
+
+# TASKPRO-FLOW-001 — TaskPRO User Workflow Specification v0.1
+
+## Purpose
+
+The Workflow Specification defines how users move through TaskPRO to accomplish meaningful goals.
+
+While:
+
+* **DS-001 → DS-005** define the design language
+* **COMP-001** defines reusable UI building blocks
+* **SCREEN-001** defines individual screens
+
+this artifact defines the **behavioral system connecting screens together**.
+
+The workflow layer answers:
+
+* What is the user trying to accomplish?
+* What screens are involved?
+* What decisions occur?
+* What states exist?
+* What happens when something succeeds, fails, or requires intervention?
+
+---
+
+# 1. Workflow System Overview
+
+## 1.1 Workflow Principles
+
+TaskPRO workflows follow:
+
+```text
+Intent
+
+↓
+
+Discovery
+
+↓
+
+Decision
+
+↓
+
+Action
+
+↓
+
+Confirmation
+
+↓
+
+Progress
+
+↓
+
+Completion
+```
+
+---
+
+## 1.2 Workflow Design Rules
+
+### Minimize User Uncertainty
+
+At every step users should understand:
+
+* current status
+* next action
+* expected outcome
+
+---
+
+### Preserve Progress
+
+Users should not lose completed work.
+
+Examples:
+
+* partially completed forms
+* selected services
+* uploaded information
+
+---
+
+### Make States Visible
+
+Every workflow has explicit states.
+
+Example:
+
+```text
+Requested
+
+↓
+
+Accepted
+
+↓
+
+Scheduled
+
+↓
+
+In Progress
+
+↓
+
+Completed
+```
+
+---
+
+### Recovery Is Part of the Flow
+
+Failures are expected.
+
+Every workflow defines:
+
+* failure states
+* recovery actions
+* retry paths
+
+---
+
+# 2. Workflow Model
+
+Every TaskPRO workflow consists of:
+
+```text
+Workflow
+
+├── Entry Point
+├── User Intent
+├── Screens
+├── Actions
+├── Decisions
+├── States
+├── Events
+└── Completion Criteria
+```
+
+---
+
+# 3. WF-001 — User Onboarding Workflow
+
+## Purpose
+
+Guide a new user from installation to first meaningful action.
+
+---
+
+## Entry Point
+
+Application launch.
+
+---
+
+## User Intent
+
+"I want to start using TaskPRO."
+
+---
+
+## Flow
+
+```text
+Welcome
+
+↓
+
+Create Account / Login
+
+↓
+
+Verify Identity
+
+↓
+
+Complete Profile
+
+↓
+
+Discover Services
+
+↓
+
+First Action
+```
+
+---
+
+# Step 1 — Welcome
+
+Screen:
+
+```text
+SCREEN-002
+Welcome
+```
+
+Actions:
+
+Primary:
+
+```text
+Get Started
+```
+
+Secondary:
+
+```text
+Sign In
+```
+
+---
+
+# Step 2 — Authentication
+
+Screens:
+
+```text
+SCREEN-010
+Login
+
+SCREEN-011
+Registration
+```
+
+---
+
+States:
+
+```text
+Unauthenticated
+
+↓
+
+Authenticating
+
+↓
+
+Authenticated
+```
+
+---
+
+# Step 3 — Profile Setup
+
+Screen:
+
+```text
+SCREEN-071
+Edit Profile
+```
+
+Collect:
+
+* identity information
+* preferences
+* profile image
+
+---
+
+# Step 4 — Discovery
+
+Screen:
+
+```text
+SCREEN-020
+Dashboard
+```
+
+or
+
+```text
+SCREEN-021
+Search
+```
+
+---
+
+## Completion Criteria
+
+User has:
+
+* account
+* profile
+* access to main application
+
+---
+
+# 4. WF-002 — Service Discovery Workflow
+
+## Purpose
+
+Allow users to find appropriate services.
+
+---
+
+## User Intent
+
+"I need help with something."
+
+---
+
+## Flow
+
+```text
+Dashboard
+
+↓
+
+Search
+
+↓
+
+Browse Categories
+
+↓
+
+Filter Results
+
+↓
+
+Review Service
+
+↓
+
+Select Service
+```
+
+---
+
+## Screens
+
+```text
+SCREEN-020 Dashboard
+
+SCREEN-021 Search
+
+SCREEN-030 Service Listing
+
+SCREEN-031 Service Detail
+```
+
+---
+
+# Search Behavior
+
+Inputs:
+
+* keywords
+* category
+* location
+* availability
+
+---
+
+## Results States
+
+### Results Available
+
+Show:
+
+* service cards
+* sorting
+* filters
+
+---
+
+### No Results
+
+Show:
+
+* explanation
+* suggestions
+* alternative categories
+
+---
+
+# 5. WF-003 — Service Booking Workflow
+
+## Purpose
+
+Convert service discovery into a confirmed request.
+
+---
+
+## User Intent
+
+"I want to schedule this service."
+
+---
+
+## Flow
+
+```text
+Service Detail
+
+↓
+
+Select Options
+
+↓
+
+Choose Schedule
+
+↓
+
+Review
+
+↓
+
+Confirm
+
+↓
+
+Tracking
+```
+
+---
+
+# Step 1 — Service Selection
+
+Screen:
+
+```text
+SCREEN-031
+Service Detail
+```
+
+Action:
+
+```text
+Request Service
+```
+
+---
+
+# Step 2 — Configure Request
+
+Collect:
+
+* options
+* location
+* requirements
+
+---
+
+# Step 3 — Schedule
+
+Components:
+
+* Date Selector
+* Time Selector
+
+---
+
+# Step 4 — Review
+
+Screen:
+
+```text
+SCREEN-032
+Booking Flow
+```
+
+Show:
+
+* service
+* provider
+* schedule
+* pricing
+
+---
+
+# Step 5 — Confirmation
+
+Result:
+
+```text
+Booking Created
+```
+
+---
+
+## Booking States
+
+```text
+Draft
+
+↓
+
+Submitted
+
+↓
+
+Accepted
+
+↓
+
+Scheduled
+
+↓
+
+Completed
+
+↓
+
+Cancelled
+```
+
+---
+
+# 6. WF-004 — Service Execution Workflow
+
+## Purpose
+
+Manage service lifecycle after booking.
+
+---
+
+## User Intent
+
+"Track and complete my service."
+
+---
+
+## Flow
+
+```text
+Confirmed
+
+↓
+
+Preparation
+
+↓
+
+Execution
+
+↓
+
+Review
+
+↓
+
+Completion
+```
+
+---
+
+## Screen
+
+```text
+SCREEN-050
+Task Detail
+```
+
+---
+
+# Status Model
+
+## Requested
+
+Waiting for provider response.
+
+---
+
+## Accepted
+
+Provider confirmed.
+
+---
+
+## Scheduled
+
+Date/time confirmed.
+
+---
+
+## In Progress
+
+Service underway.
+
+---
+
+## Completed
+
+Work finished.
+
+---
+
+## Cancelled
+
+Workflow ended.
+
+---
+
+# 7. WF-005 — Marketplace Purchase Workflow
+
+## Purpose
+
+Allow users to discover and acquire marketplace items.
+
+---
+
+## Flow
+
+```text
+Marketplace
+
+↓
+
+Search
+
+↓
+
+Listing Detail
+
+↓
+
+Seller Review
+
+↓
+
+Purchase / Request
+
+↓
+
+Confirmation
+```
+
+---
+
+## Screens
+
+```text
+SCREEN-040 Marketplace Home
+
+SCREEN-041 Listing Detail
+```
+
+---
+
+# Marketplace States
+
+```text
+Available
+
+Reserved
+
+Sold
+
+Unavailable
+```
+
+---
+
+# 8. WF-006 — Communication Workflow
+
+## Purpose
+
+Enable coordination between users.
+
+---
+
+## Flow
+
+```text
+Conversation List
+
+↓
+
+Conversation Detail
+
+↓
+
+Send Message
+
+↓
+
+Receive Response
+```
+
+---
+
+## Screens
+
+```text
+SCREEN-060 Messages
+
+SCREEN-061 Conversation Detail
+```
+
+---
+
+# Message States
+
+```text
+Draft
+
+↓
+
+Sending
+
+↓
+
+Sent
+
+↓
+
+Delivered
+
+↓
+
+Read
+```
+
+---
+
+# 9. WF-007 — Notification Workflow
+
+## Purpose
+
+Keep users informed of important changes.
+
+---
+
+## Notification Sources
+
+Examples:
+
+* booking updates
+* messages
+* status changes
+* account events
+
+---
+
+## Flow
+
+```text
+Event Occurs
+
+↓
+
+Notification Generated
+
+↓
+
+User Opens
+
+↓
+
+User Takes Action
+```
+
+---
+
+# 10. WF-008 — Profile Management Workflow
+
+## Purpose
+
+Maintain user information.
+
+---
+
+## Flow
+
+```text
+Profile
+
+↓
+
+Edit
+
+↓
+
+Validate
+
+↓
+
+Save
+
+↓
+
+Updated
+```
+
+---
+
+## Screens
+
+```text
+SCREEN-070 Profile
+
+SCREEN-071 Edit Profile
+```
+
+---
+
+# 11. WF-009 — Error Recovery Workflow
+
+## Purpose
+
+Define behavior when things fail.
+
+---
+
+## Error Types
+
+### Network Failure
+
+Flow:
+
+```text
+Error
+
+↓
+
+Retry
+
+↓
+
+Success
+```
+
+---
+
+### Validation Failure
+
+Flow:
+
+```text
+Invalid Input
+
+↓
+
+Explain Problem
+
+↓
+
+Correct
+
+↓
+
+Continue
+```
+
+---
+
+### Permission Failure
+
+Flow:
+
+```text
+Blocked
+
+↓
+
+Explain Why
+
+↓
+
+Request Permission
+```
+
+---
+
+# 12. Workflow Events
+
+Workflows generate system events.
+
+Examples:
+
+```text
+USER_REGISTERED
+
+PROFILE_COMPLETED
+
+SERVICE_SEARCHED
+
+SERVICE_SELECTED
+
+BOOKING_CREATED
+
+BOOKING_UPDATED
+
+MESSAGE_SENT
+
+TASK_COMPLETED
+```
+
+---
+
+# 13. Workflow State Management
+
+## Principles
+
+State should be:
+
+* explicit
+* recoverable
+* observable
+
+---
+
+Example:
+
+Booking state:
+
+```json
+{
+  "status": "scheduled",
+  "service": "installation",
+  "provider": "assigned",
+  "date": "confirmed"
+}
+```
+
+---
+
+# 14. Workflow Governance
+
+New workflows require:
+
+## Definition
+
+* user goal
+* entry point
+* completion condition
+
+---
+
+## UX
+
+* screens identified
+* states defined
+* errors handled
+
+---
+
+## Implementation
+
+* events defined
+* state transitions documented
+* analytics points identified
+
+---
+
+# TASKPRO Product Specification Foundation Complete
+
+Completed artifact stack:
+
+```text
+TASKPRO-DS-001
+Design System Specification
+
+TASKPRO-DS-002
+Component Specifications
+
+TASKPRO-DS-003
+Interaction Guidelines
+
+TASKPRO-DS-004
+Motion Guidelines
+
+TASKPRO-DS-005
+Theme System
+
+        ↓
+
+TASKPRO-COMP-001
+Component Catalog
+
+        ↓
+
+TASKPRO-SCREEN-001
+Screen Catalog
+
+        ↓
+
+TASKPRO-FLOW-001
+Workflow Specification
+```
+
+The next logical artifact is:
+
+# TASKPRO-ARCH-001 — TaskPRO Application Architecture Specification v0.1
+
+This would connect the UX/product layer with implementation:
+
+* application structure
+* navigation architecture
+* state management
+* data models
+* service boundaries
+* API integration points
+* React Native architecture
+
+That will allow moving from design specification into engineering execution.

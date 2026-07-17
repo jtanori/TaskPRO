@@ -1,0 +1,987 @@
+Proceeding with the next artifact.
+
+# TASKPRO-DEV-001 — TaskPRO Development Implementation Specification v0.1
+
+## Purpose
+
+The Development Implementation Specification defines how TaskPRO is built.
+
+This artifact converts the product, UX, architecture, domain, API, and quality specifications into an actionable engineering system.
+
+It establishes:
+
+* implementation structure
+* development conventions
+* feature delivery model
+* coding standards
+* AI-assisted development workflow
+* implementation sequencing
+* completion criteria
+
+This is the bridge between **system definition** and **software construction**.
+
+---
+
+# 1. Development Philosophy
+
+## 1.1 Implementation Principles
+
+TaskPRO development follows these principles:
+
+---
+
+## Build From the System
+
+Implementation begins from:
+
+```text id="4z8w2q"
+Design System
+
+↓
+
+Components
+
+↓
+
+Screens
+
+↓
+
+Workflows
+
+↓
+
+Architecture
+
+↓
+
+Code
+```
+
+Not:
+
+```text id="1m8c6h"
+Screen
+
+↓
+
+Custom Code
+
+↓
+
+Repeated Patterns
+```
+
+---
+
+## Reuse Before Creating
+
+Before creating a new component:
+
+Check:
+
+* existing component catalog
+* existing patterns
+* existing workflows
+
+---
+
+## Feature Ownership
+
+Each capability owns its implementation.
+
+Avoid:
+
+* giant shared folders
+* unrelated dependencies
+* cross-feature coupling
+
+---
+
+## Behavior Before Appearance
+
+A feature is complete when:
+
+1. workflow works
+2. state is correct
+3. errors are handled
+4. UI matches design
+
+---
+
+# 2. Technology Foundation
+
+## 2.1 Recommended Stack
+
+## Mobile Application
+
+```text id="0fhj2p"
+React Native
+
+TypeScript
+
+React Navigation
+
+State Management Layer
+
+Query/Data Layer
+
+Design Token System
+```
+
+---
+
+## Backend
+
+```text id="h9w3f7"
+API Service
+
+Database
+
+Authentication
+
+Storage
+
+Realtime Services
+```
+
+---
+
+## Tooling
+
+```text id="k4m9z0"
+TypeScript
+
+ESLint
+
+Prettier
+
+Testing Framework
+
+CI Pipeline
+```
+
+---
+
+# 3. Repository Architecture
+
+Recommended structure:
+
+```text id="2t0q8x"
+taskpro/
+
+├── src/
+
+│   ├── app/
+
+│   ├── features/
+
+│   ├── components/
+
+│   ├── screens/
+
+│   ├── navigation/
+
+│   ├── services/
+
+│   ├── domain/
+
+│   ├── state/
+
+│   ├── hooks/
+
+│   ├── theme/
+
+│   ├── assets/
+
+│   └── utils/
+
+│
+
+├── tests/
+
+├── docs/
+
+├── scripts/
+
+└── config/
+```
+
+---
+
+# 4. Feature Module Structure
+
+Each feature follows:
+
+```text id="2x8r9j"
+features/
+
+booking/
+
+├── components/
+
+├── screens/
+
+├── hooks/
+
+├── state/
+
+├── services/
+
+├── models/
+
+├── tests/
+
+└── index.ts
+```
+
+---
+
+# 5. Component Development Rules
+
+## 5.1 Component Hierarchy
+
+Components follow:
+
+```text id="h7x1pk"
+Foundation Components
+
+↓
+
+Composite Components
+
+↓
+
+Feature Components
+
+↓
+
+Screen Components
+```
+
+---
+
+## Foundation Components
+
+Examples:
+
+```text id="0f1m7b"
+Button
+
+Input
+
+Card
+
+Typography
+
+Container
+```
+
+---
+
+## Composite Components
+
+Examples:
+
+```text id="v8r2qm"
+SearchBar
+
+ProfileCard
+
+BookingSummary
+```
+
+---
+
+## Feature Components
+
+Examples:
+
+```text id="3j6p9v"
+ServiceBookingCard
+
+TaskTimeline
+
+ProviderProfile
+```
+
+---
+
+# 6. Screen Implementation Rules
+
+Screens should:
+
+* compose components
+* connect workflows
+* handle navigation
+
+Screens should not:
+
+* contain API calls
+* contain business rules
+* duplicate UI logic
+
+---
+
+Example:
+
+```typescript
+ServiceDetailScreen
+
+↓
+
+useService()
+
+↓
+
+ServiceHeader
+
+ProviderCard
+
+BookingButton
+```
+
+---
+
+# 7. State Implementation Rules
+
+State follows:
+
+```text id="8k3m4w"
+Server Data
+
+↓
+
+Domain State
+
+↓
+
+Feature State
+
+↓
+
+UI State
+```
+
+---
+
+## Server State
+
+Examples:
+
+* services
+* bookings
+* messages
+
+Managed by:
+
+* API/query layer
+
+---
+
+## Domain State
+
+Examples:
+
+* booking lifecycle
+* task lifecycle
+
+Managed by:
+
+* domain models
+* state machines
+
+---
+
+## UI State
+
+Examples:
+
+* modal visibility
+* selected filters
+
+Managed locally.
+
+---
+
+# 8. API Integration Rules
+
+All backend communication goes through services.
+
+Correct:
+
+```text id="7p0q3v"
+Screen
+
+↓
+
+Feature Hook
+
+↓
+
+Service
+
+↓
+
+API Client
+```
+
+---
+
+Incorrect:
+
+```text id="m2w8fj"
+Screen
+
+↓
+
+fetch()
+
+↓
+
+Render
+```
+
+---
+
+# 9. Type System Rules
+
+TypeScript is the contract layer.
+
+---
+
+Every domain object requires:
+
+```typescript
+interface Booking {
+ id: string;
+ status: BookingStatus;
+ createdAt: Date;
+}
+```
+
+---
+
+Avoid:
+
+```typescript
+any
+```
+
+---
+
+Prefer:
+
+```typescript
+unknown
+
++
+
+validation
+```
+
+---
+
+# 10. Naming Standards
+
+## Files
+
+Components:
+
+```text id="5k0r8w"
+PascalCase.tsx
+```
+
+Example:
+
+```text
+ServiceCard.tsx
+```
+
+---
+
+Hooks:
+
+```text id="z9x4nb"
+useSomething.ts
+```
+
+Example:
+
+```text
+useBooking.ts
+```
+
+---
+
+Services:
+
+```text id="9q1c7h"
+something.service.ts
+```
+
+Example:
+
+```text
+booking.service.ts
+```
+
+---
+
+# 11. Styling Standards
+
+All UI styling uses:
+
+```text id="3g8m2v"
+Design Tokens
+
+↓
+
+Theme
+
+↓
+
+Component Styles
+```
+
+---
+
+Avoid:
+
+```typescript
+margin: 17
+```
+
+---
+
+Prefer:
+
+```typescript
+spacing.md
+```
+
+---
+
+# 12. Feature Development Lifecycle
+
+Every feature follows:
+
+```text id="5m9v2a"
+Specification
+
+↓
+
+Design Review
+
+↓
+
+Component Mapping
+
+↓
+
+Implementation
+
+↓
+
+Testing
+
+↓
+
+Validation
+
+↓
+
+Release
+```
+
+---
+
+# 13. AI-Assisted Development Workflow
+
+TaskPRO development should support AI collaboration.
+
+---
+
+## AI Context Package
+
+Every feature should provide:
+
+```text id="x8m3p0"
+Feature Specification
+
+Workflow
+
+Screens
+
+Components
+
+Domain Models
+
+API Contracts
+
+Tests
+```
+
+---
+
+## AI Development Loop
+
+```text id="4k9z7s"
+Understand Specification
+
+↓
+
+Generate Plan
+
+↓
+
+Implement Small Unit
+
+↓
+
+Validate
+
+↓
+
+Review Against System
+
+↓
+
+Continue
+```
+
+---
+
+# 14. Implementation Phases
+
+---
+
+# Phase 1 — Foundation
+
+Goal:
+
+Create application skeleton.
+
+Includes:
+
+* project setup
+* navigation
+* theme system
+* tokens
+* base components
+
+---
+
+Deliverables:
+
+```text id="8w3q6v"
+App Shell
+
+Navigation
+
+Design System
+
+Testing Setup
+```
+
+---
+
+# Phase 2 — Identity
+
+Implement:
+
+* registration
+* login
+* profile
+
+---
+
+Artifacts:
+
+```text id="2x9m5d"
+AUTH
+
+USER
+
+PROFILE
+```
+
+---
+
+# Phase 3 — Discovery
+
+Implement:
+
+* search
+* categories
+* services
+
+---
+
+Artifacts:
+
+```text id="6f0p8r"
+SEARCH
+
+SERVICE
+```
+
+---
+
+# Phase 4 — Booking
+
+Implement:
+
+* booking creation
+* scheduling
+* tracking
+
+---
+
+Artifacts:
+
+```text id="3r7m9x"
+BOOKING
+
+TASK
+```
+
+---
+
+# Phase 5 — Communication
+
+Implement:
+
+* conversations
+* messages
+* notifications
+
+---
+
+# Phase 6 — Marketplace
+
+Implement:
+
+* listings
+* seller workflows
+* transactions
+
+---
+
+# 15. Definition of Done
+
+A feature is complete when:
+
+---
+
+## Product
+
+✅ User goal documented
+
+✅ Workflow implemented
+
+---
+
+## Design
+
+✅ Uses design tokens
+
+✅ Uses approved components
+
+---
+
+## Engineering
+
+✅ Type-safe
+
+✅ Tested
+
+✅ Error handling implemented
+
+---
+
+## Quality
+
+✅ Accessibility checked
+
+✅ Performance acceptable
+
+---
+
+## Documentation
+
+✅ API updated
+
+✅ State documented
+
+---
+
+# 16. Pull Request Standards
+
+Every change should include:
+
+## Description
+
+* what changed
+* why
+
+---
+
+## Validation
+
+Include:
+
+* tests run
+* screenshots
+* workflow verified
+
+---
+
+## Review Checklist
+
+Reviewers verify:
+
+* architecture alignment
+* design consistency
+* maintainability
+
+---
+
+# 17. Release Process
+
+Release pipeline:
+
+```text id="1z7c5p"
+Feature Complete
+
+↓
+
+Automated Validation
+
+↓
+
+QA Review
+
+↓
+
+Release Candidate
+
+↓
+
+Production Release
+
+↓
+
+Monitoring
+```
+
+---
+
+# 18. Engineering Governance
+
+New implementation must answer:
+
+## Does it belong?
+
+Correct location?
+
+---
+
+## Does it reuse?
+
+Existing components?
+
+---
+
+## Does it preserve?
+
+Architecture?
+
+---
+
+## Can it evolve?
+
+Future changes supported?
+
+---
+
+# TASKPRO Engineering Foundation Complete
+
+The specification system now contains:
+
+```text
+TASKPRO-DS-001
+Design System Specification
+
+TASKPRO-DS-002
+Component Specifications
+
+TASKPRO-DS-003
+Interaction Guidelines
+
+TASKPRO-DS-004
+Motion Guidelines
+
+TASKPRO-DS-005
+Theme System
+
+        ↓
+
+TASKPRO-COMP-001
+Component Catalog
+
+        ↓
+
+TASKPRO-SCREEN-001
+Screen Catalog
+
+        ↓
+
+TASKPRO-FLOW-001
+Workflow Specification
+
+        ↓
+
+TASKPRO-ARCH-001
+Application Architecture
+
+        ↓
+
+TASKPRO-DATA-001
+Domain Model
+
+        ↓
+
+TASKPRO-API-001
+API Specification
+
+        ↓
+
+TASKPRO-STATE-001
+State Specification
+
+        ↓
+
+TASKPRO-TEST-001
+Quality Specification
+
+        ↓
+
+TASKPRO-DEV-001
+Implementation Specification
+```
+
+Next recommended artifact:
+
+# TASKPRO-BUILD-001 — TaskPRO Implementation Roadmap & Delivery Plan v0.1
+
+This will define:
+
+* development milestones
+* dependency ordering
+* MVP scope
+* sprint structure
+* engineering sequencing
+* launch preparation
+
+This becomes the execution plan for building TaskPRO.

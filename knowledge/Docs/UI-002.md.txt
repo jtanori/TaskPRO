@@ -1,0 +1,860 @@
+# UI-002 — Design Token & Visual Foundation Specification v0.1
+
+## Purpose
+
+This document defines the **visual DNA** of TaskPRO.
+
+It is **not** a style guide.
+
+It is the contract between:
+
+* Design
+* React Native
+* Expo
+* Figma
+* Documentation
+* Future Web App
+
+Nothing should contain hardcoded colors, spacing, radii, or typography.
+
+Everything comes from design tokens.
+
+---
+
+# Philosophy
+
+TaskPRO should feel like:
+
+> **A premium AI-powered operations platform disguised as an elegant mobile application.**
+
+The UI should communicate:
+
+* Intelligence
+* Precision
+* Trust
+* Speed
+* Calmness
+
+It should never feel:
+
+* playful
+* overly colorful
+* cluttered
+* enterprise-heavy
+* material-design generic
+* iOS-clone
+
+The design language should be uniquely TaskPRO.
+
+---
+
+# Token Hierarchy
+
+The design system should have four levels.
+
+```text
+Primitive Tokens
+
+↓
+
+Semantic Tokens
+
+↓
+
+Component Tokens
+
+↓
+
+Screen Tokens
+```
+
+Only Primitive Tokens contain literal values.
+
+Everything else references another token.
+
+---
+
+# Layer 1 — Primitive Tokens
+
+These never reference anything else.
+
+## Colors
+
+```text
+White
+
+Black
+
+Gray 50-950
+
+Blue
+
+Indigo
+
+Green
+
+Amber
+
+Red
+
+Purple
+
+Teal
+```
+
+No business meaning.
+
+Only raw colors.
+
+---
+
+## Typography
+
+Primitive typography
+
+```text
+Font Family
+
+Font Weight
+
+Font Size
+
+Line Height
+
+Letter Spacing
+```
+
+---
+
+## Radius
+
+```text
+0
+
+2
+
+4
+
+6
+
+8
+
+12
+
+16
+
+20
+
+24
+
+32
+```
+
+---
+
+## Spacing
+
+Use a 4-point grid.
+
+```text
+0
+
+4
+
+8
+
+12
+
+16
+
+20
+
+24
+
+32
+
+40
+
+48
+
+64
+
+80
+```
+
+No arbitrary spacing.
+
+---
+
+## Elevation
+
+```text
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+```
+
+One shadow system.
+
+---
+
+## Motion
+
+```text
+Fast
+
+Normal
+
+Slow
+
+Spring
+
+Bounce
+```
+
+---
+
+# Layer 2 — Semantic Tokens
+
+These describe meaning.
+
+Instead of:
+
+```text
+Blue500
+```
+
+Use
+
+```text
+Primary
+
+Success
+
+Warning
+
+Danger
+
+Info
+
+Surface
+
+Background
+
+Border
+
+Text
+
+Disabled
+```
+
+Semantic tokens may change themes without changing components.
+
+---
+
+# Surface System
+
+Based on the UI you designed, I recommend a layered surface model.
+
+```text
+App Background
+
+↓
+
+Canvas
+
+↓
+
+Surface
+
+↓
+
+Raised Surface
+
+↓
+
+Floating Surface
+
+↓
+
+Overlay
+
+↓
+
+Modal
+```
+
+Every card belongs to one of these layers.
+
+---
+
+# Typography Scale
+
+Use a consistent semantic scale.
+
+```text
+Display
+
+Headline
+
+Title
+
+Subtitle
+
+Body
+
+Body Small
+
+Caption
+
+Label
+
+Button
+
+Overline
+```
+
+Never reference font sizes directly.
+
+Example:
+
+```tsx
+<Text variant="body" />
+```
+
+instead of
+
+```tsx
+fontSize:16
+```
+
+---
+
+# Icon System
+
+Icons become tokens too.
+
+Categories:
+
+```text
+Navigation
+
+Actions
+
+Services
+
+Status
+
+Communication
+
+Profile
+
+AI
+
+System
+```
+
+Every icon receives:
+
+```text
+Size
+
+Weight
+
+Color
+
+State
+```
+
+---
+
+# Border Tokens
+
+```text
+None
+
+Hairline
+
+Thin
+
+Medium
+
+Thick
+```
+
+Referenced semantically:
+
+```text
+Input Border
+
+Card Border
+
+Selected Border
+
+Error Border
+```
+
+---
+
+# Animation Tokens
+
+Never hardcode durations.
+
+```text
+Instant
+
+Fast
+
+Standard
+
+Slow
+```
+
+Curves
+
+```text
+Linear
+
+Ease
+
+Ease In
+
+Ease Out
+
+Spring
+```
+
+---
+
+# Opacity Tokens
+
+```text
+0%
+
+5%
+
+10%
+
+20%
+
+40%
+
+60%
+
+80%
+
+100%
+```
+
+Used for:
+
+Disabled
+
+Pressed
+
+Hover
+
+Skeleton
+
+Glass
+
+---
+
+# Blur Tokens
+
+Future-ready.
+
+```text
+None
+
+Small
+
+Medium
+
+Large
+```
+
+---
+
+# Z-Index Layers
+
+```text
+Base
+
+Sticky
+
+FAB
+
+Bottom Sheet
+
+Modal
+
+Dialog
+
+Toast
+
+Assistant
+
+Debug
+```
+
+No arbitrary z-index values.
+
+---
+
+# Grid System
+
+Mobile grid
+
+```text
+4-point base
+
+8-point composition
+```
+
+Cards align to an 8-point rhythm.
+
+---
+
+# Layout Tokens
+
+```text
+Screen Padding
+
+Section Gap
+
+Card Gap
+
+List Gap
+
+Button Gap
+
+Bottom Safe Area
+
+Header Height
+
+Tab Bar Height
+```
+
+These should be configurable for tablets in the future.
+
+---
+
+# Color Roles
+
+Rather than:
+
+```text
+Gray 100
+```
+
+Components consume:
+
+```text
+Primary Text
+
+Secondary Text
+
+Muted Text
+
+Placeholder
+
+Interactive
+
+Accent
+
+Success
+
+Danger
+
+Warning
+```
+
+---
+
+# Theme System
+
+Support multiple themes.
+
+```text
+Light
+
+Dark
+
+High Contrast
+
+Future Brand Themes
+```
+
+The component library never knows which theme is active.
+
+---
+
+# State Tokens
+
+Every interactive component shares the same state model.
+
+```text
+Default
+
+Hover
+
+Focused
+
+Pressed
+
+Selected
+
+Disabled
+
+Loading
+
+Error
+
+Success
+```
+
+No component invents its own state names.
+
+---
+
+# AI Tokens
+
+TaskPRO contains an AI-first experience.
+
+Introduce semantic tokens specifically for AI interactions.
+
+```text
+Assistant Bubble
+
+Assistant Background
+
+Assistant Accent
+
+AI Suggestion
+
+AI Action
+
+AI Confidence
+
+AI Warning
+```
+
+These create a consistent AI visual identity across the app.
+
+---
+
+# Status Tokens
+
+Booking lifecycle colors should never be hardcoded.
+
+Instead:
+
+```text
+Booking Requested
+
+Professional Assigned
+
+Traveling
+
+Arrived
+
+Working
+
+Completed
+
+Cancelled
+```
+
+Each maps to semantic color roles.
+
+---
+
+# Notification Tokens
+
+```text
+Unread
+
+Read
+
+Mention
+
+Priority
+
+Critical
+```
+
+---
+
+# Badge Tokens
+
+```text
+Information
+
+Warning
+
+Danger
+
+Success
+
+Neutral
+
+Premium
+```
+
+---
+
+# Skeleton Tokens
+
+Loading placeholders
+
+```text
+Avatar Skeleton
+
+Text Skeleton
+
+Card Skeleton
+
+List Skeleton
+
+Image Skeleton
+```
+
+The loading experience becomes consistent throughout the app.
+
+---
+
+# Accessibility Tokens
+
+Support:
+
+```text
+Large Text
+
+Reduced Motion
+
+High Contrast
+
+Increased Hit Targets
+
+Screen Reader
+```
+
+Tokens should adapt automatically based on accessibility settings.
+
+---
+
+# Export Targets
+
+Design tokens should be generated into multiple formats from a single source.
+
+```text
+JSON
+
+TypeScript
+
+CSS Variables
+
+Figma Variables
+
+Style Dictionary
+
+Documentation
+```
+
+A single source of truth eliminates divergence between design and implementation.
+
+---
+
+# Token Repository Structure
+
+```text
+packages/design-tokens/
+
+colors/
+
+spacing/
+
+typography/
+
+radius/
+
+motion/
+
+opacity/
+
+z-index/
+
+themes/
+
+semantic/
+
+generated/
+```
+
+The `generated/` directory contains artifacts consumed by Expo, future web applications, and design tools.
+
+---
+
+# Token Governance
+
+Every token should include metadata.
+
+Example:
+
+```yaml
+token: color.primary
+type: semantic
+owner: Design System
+status: approved
+introduced: v1.0
+deprecated: false
+```
+
+This enables automated linting, documentation, and deprecation management as the design system evolves.
+
+---
+
+# Architectural Observation
+
+This is where I would introduce one concept that most design systems overlook:
+
+## **Behavior Tokens**
+
+Instead of limiting tokens to visual properties, define reusable interaction behaviors.
+
+Examples:
+
+```text
+Tap Feedback
+
+Swipe Threshold
+
+Pull-to-Refresh Resistance
+
+Bottom Sheet Snap Points
+
+Card Expansion Animation
+
+Long Press Duration
+
+Selection Delay
+```
+
+These behaviors are part of the user experience just as much as colors and typography. By tokenizing them, interactions become consistent across every screen and can evolve centrally without rewriting components.
+
+For an AI-native product like TaskPRO, I consider **Behavior Tokens** just as important as Color Tokens—they ensure the application not only looks consistent, but also *feels* consistent.
+
+---
+
+**Current document:** `UI-002 — Design Token & Visual Foundation Specification v0.1`
+
+**Next document:** `UI-003 — Component Library Architecture & Primitive Catalog`

@@ -1,0 +1,807 @@
+# UI-001 — Application Shell & Navigation Architecture v0.1
+
+## Purpose
+
+This document defines the **structural skeleton** of the application.
+
+It does **not** define colors, buttons, typography, or spacing.
+
+Instead, it defines:
+
+* Navigation
+* Shell
+* Screen hierarchy
+* Layout zones
+* Global UI services
+* Platform behaviors
+
+Think of this as the operating system of TaskPRO.
+
+The Design System (DS-001+) provides the visual language, while UI-001 defines how the application is assembled.
+
+---
+
+# Design Philosophy
+
+The application should feel like an **AI-native workspace**, not a collection of mobile screens.
+
+Instead of navigating between isolated pages, the user moves through **contexts**.
+
+A context owns:
+
+* navigation
+* state
+* actions
+* AI assistant
+* overlays
+* workflows
+
+---
+
+# Root Architecture
+
+```text
+TaskPRO App
+
+    ↓
+
+Application Shell
+
+    ↓
+
+Navigation Shell
+
+    ↓
+
+Capability Shell
+
+    ↓
+
+Screen
+
+    ↓
+
+Components
+```
+
+Only the Application Shell understands the entire app.
+
+---
+
+# Application Shell
+
+The shell owns everything global.
+
+```text
+AppShell
+
+├── Theme Provider
+
+├── Authentication Provider
+
+├── Session Provider
+
+├── Navigation
+
+├── AI Assistant
+
+├── Overlay Manager
+
+├── Notification Manager
+
+├── Connectivity Manager
+
+├── Sync Manager
+
+├── Toast Manager
+
+├── Modal Manager
+
+└── Bottom Sheet Manager
+```
+
+Every screen lives inside the shell.
+
+---
+
+# Global Layout
+
+The shell consists of persistent layers.
+
+```text
+──────────────────────────────────
+
+Safe Area
+
+──────────────────────────────────
+
+Status Bar
+
+──────────────────────────────────
+
+Navigation Layer
+
+──────────────────────────────────
+
+Content Layer
+
+──────────────────────────────────
+
+Overlay Layer
+
+──────────────────────────────────
+
+Assistant Layer
+
+──────────────────────────────────
+
+Toast Layer
+
+──────────────────────────────────
+
+System Dialog Layer
+
+──────────────────────────────────
+```
+
+This prevents modal stacking chaos.
+
+---
+
+# Navigation Philosophy
+
+Navigation is capability-based.
+
+Not screen-based.
+
+Example
+
+```text
+Booking
+
+↓
+
+Booking Context
+
+↓
+
+Timeline
+
+↓
+
+Payment
+
+↓
+
+Evidence
+
+↓
+
+Review
+```
+
+The user stays inside the Booking capability.
+
+---
+
+# Root Navigation
+
+```text
+Authentication
+
+↓
+
+Onboarding
+
+↓
+
+Application
+
+↓
+
+Settings
+
+↓
+
+Developer
+```
+
+These become root navigation stacks.
+
+---
+
+# Main Navigation
+
+Based on the designs, I recommend five primary contexts.
+
+```text
+Home
+
+Bookings
+
+Messages
+
+Notifications
+
+Profile
+```
+
+Not ten.
+
+Not twelve.
+
+Five.
+
+Everything else is contextual.
+
+---
+
+# Home Context
+
+Acts as the command center.
+
+Contains
+
+```text
+Greeting
+
+AI Assistant
+
+Upcoming Booking
+
+Recommended Services
+
+Recent Activity
+
+Quick Actions
+
+Search
+```
+
+The home screen should answer:
+
+> "What should I do next?"
+
+---
+
+# Booking Context
+
+Owns the entire service lifecycle.
+
+```text
+Booking List
+
+↓
+
+Booking Details
+
+↓
+
+Timeline
+
+↓
+
+Evidence
+
+↓
+
+Invoice
+
+↓
+
+Review
+```
+
+No jumping between tabs.
+
+Everything remains inside the booking.
+
+---
+
+# Messaging Context
+
+```text
+Conversation List
+
+↓
+
+Conversation
+
+↓
+
+Media
+
+↓
+
+Booking Shortcut
+```
+
+Messages should deep-link into the associated booking.
+
+---
+
+# Notifications Context
+
+Contains
+
+```text
+Unread
+
+System
+
+Payments
+
+Bookings
+
+Messages
+```
+
+Notification selection navigates into the owning capability.
+
+Notifications never become destinations themselves.
+
+---
+
+# Profile Context
+
+Contains
+
+```text
+Profile
+
+Settings
+
+Payment Methods
+
+Addresses
+
+Preferences
+
+Help
+```
+
+This keeps account management isolated.
+
+---
+
+# Context Navigation
+
+Each capability owns an internal navigator.
+
+Example
+
+```text
+Booking Navigator
+
+Booking List
+
+↓
+
+Booking Details
+
+↓
+
+Booking Timeline
+
+↓
+
+Complete Booking
+```
+
+The App Router assembles these navigators.
+
+---
+
+# AI Assistant
+
+Unlike most apps, AI should be part of the shell.
+
+Not a feature.
+
+Persistent assistant.
+
+```text
+Application
+
+↓
+
+Assistant Layer
+
+↓
+
+Current Context
+
+↓
+
+Context Awareness
+
+↓
+
+Suggestions
+```
+
+Examples
+
+Booking screen
+
+Assistant knows:
+
+* booking
+
+* technician
+
+* payment
+
+* timeline
+
+Home
+
+Assistant knows:
+
+* recommendations
+
+* history
+
+* reminders
+
+---
+
+# Overlay Architecture
+
+The shell owns all overlays.
+
+Never screens.
+
+```text
+Bottom Sheets
+
+Dialogs
+
+Alerts
+
+Context Menus
+
+Image Viewer
+
+Document Viewer
+
+Camera
+
+Scanner
+```
+
+Single overlay manager.
+
+---
+
+# Global Search
+
+Search is global.
+
+Not capability specific.
+
+Search should understand:
+
+```text
+Services
+
+Professionals
+
+Bookings
+
+Messages
+
+Invoices
+
+Help
+
+Settings
+```
+
+One search experience.
+
+---
+
+# Deep Linking
+
+Every capability owns URLs.
+
+Example
+
+```text
+taskpro://booking/123
+
+taskpro://chat/456
+
+taskpro://professional/789
+```
+
+Deep links map directly into module routes.
+
+---
+
+# Navigation Guards
+
+Every route defines:
+
+```text
+Authentication Required
+
+Permissions Required
+
+Connectivity Required
+
+Feature Flags
+```
+
+The router validates before rendering.
+
+---
+
+# Empty States
+
+Every capability defines:
+
+```text
+Loading
+
+Empty
+
+Offline
+
+Error
+
+Permission Denied
+```
+
+These become standardized UI states rather than one-off implementations.
+
+---
+
+# Connectivity Layer
+
+The shell continuously monitors:
+
+```text
+Internet
+
+Authentication
+
+Realtime
+
+Synchronization
+
+API
+
+GPS
+```
+
+The user should always know whether the application is operating online, offline, or synchronizing.
+
+---
+
+# Global Managers
+
+The shell owns the following services:
+
+```text
+Authentication
+
+Theme
+
+Localization
+
+Analytics
+
+Crash Reporting
+
+Permissions
+
+Updates
+
+Feature Flags
+
+Notifications
+
+Connectivity
+
+Synchronization
+```
+
+Modules consume these services—they do not instantiate them.
+
+---
+
+# Platform Behaviors
+
+## Android
+
+Use:
+
+* Material transitions
+* Native back behavior
+* Predictive back gestures
+* Edge-to-edge layouts
+
+## iOS
+
+Use:
+
+* Native sheet presentation
+* Interactive swipe navigation
+* Large titles where appropriate
+* Haptic feedback
+
+The shell abstracts these differences.
+
+---
+
+# Expo Router Structure
+
+```text
+app/
+
+(auth)/
+
+(app)/
+
+(modals)/
+
+(settings)/
+
+(dev)/
+
++not-found
+```
+
+Within `(app)`:
+
+```text
+(app)/
+
+home/
+
+booking/
+
+messages/
+
+notifications/
+
+profile/
+```
+
+Each folder delegates immediately to its owning module.
+
+---
+
+# Screen Composition Standard
+
+Every screen follows the same layout contract:
+
+```text
+Screen
+
+↓
+
+Header
+
+↓
+
+Primary Content
+
+↓
+
+Context Actions
+
+↓
+
+Floating Actions (optional)
+
+↓
+
+Bottom Actions (optional)
+```
+
+This consistency improves usability and simplifies implementation.
+
+---
+
+# Application Lifecycle
+
+```text
+Launch
+
+↓
+
+Restore Session
+
+↓
+
+Initialize Providers
+
+↓
+
+Initialize Sync
+
+↓
+
+Initialize Notifications
+
+↓
+
+Restore Navigation
+
+↓
+
+Render Home
+```
+
+Background resume:
+
+```text
+Resume
+
+↓
+
+Refresh Session
+
+↓
+
+Sync Pending Commands
+
+↓
+
+Refresh Visible Queries
+
+↓
+
+Continue
+```
+
+---
+
+# Navigation Telemetry
+
+Track navigation as first-class product events:
+
+```text
+Screen Viewed
+
+Capability Entered
+
+Capability Exited
+
+Flow Started
+
+Flow Completed
+
+Flow Abandoned
+```
+
+This provides valuable insights into user behavior and friction points without relying solely on generic analytics.
+
+---
+
+# Architectural Observation
+
+This is where I would diverge slightly from a conventional Expo application.
+
+Rather than centering the shell around **navigation**, I would center it around **contexts**.
+
+A navigation stack answers *"Where am I?"*
+
+A context answers:
+
+* What capability am I in?
+* What data is active?
+* What actions are available?
+* What should the AI assistant know?
+* What should notifications, overlays, and realtime subscriptions be scoped to?
+
+That subtle distinction is what makes the application feel AI-native rather than simply mobile-native. It also aligns with the architectural direction we've established throughout the previous documents.
+
+---
+
+**Current document:** `UI-001 — Application Shell & Navigation Architecture v0.1`
+
+**Next document:** `UI-002 — Design Token & Visual Foundation Specification`

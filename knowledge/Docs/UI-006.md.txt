@@ -1,0 +1,814 @@
+# UI-006 — Screen Implementation Roadmap & Development Plan v1.0
+
+## Purpose
+
+This document transforms the entire TaskPRO architecture into an executable implementation plan.
+
+It combines everything we've produced:
+
+* DOM-001
+* DB-001
+* API-001
+* AUTH-001
+* STATE-001
+* MOD-001
+* CAP-001
+* UI-001
+* UI-002
+* UI-003
+* UI-004
+* UI-005
+
+At this point, **the UI is no longer the project**.
+
+The UI is simply the final projection of a well-defined architecture.
+
+---
+
+# Development Philosophy
+
+We will **not** build screens.
+
+We will build **capabilities**.
+
+Each capability reaches production by passing through a maturity pipeline.
+
+```text
+Architecture
+
+↓
+
+Domain
+
+↓
+
+API
+
+↓
+
+Repositories
+
+↓
+
+State
+
+↓
+
+Components
+
+↓
+
+Screens
+
+↓
+
+Testing
+
+↓
+
+Production
+```
+
+No screen begins until its architectural foundations exist.
+
+---
+
+# Development Waves
+
+Instead of milestones based on features, I recommend **Development Waves**.
+
+Each wave produces a fully integrated slice of the application.
+
+---
+
+# WAVE 0 — Foundation
+
+**Goal**
+
+Create the engineering platform.
+
+Nothing user-facing.
+
+## Deliverables
+
+```text
+Monorepo
+
+Expo SDK
+
+TypeScript
+
+TurboRepo
+
+Supabase
+
+Authentication
+
+Navigation Shell
+
+Design Tokens
+
+Component Library
+
+Repository Infrastructure
+
+Offline Engine
+
+Theme
+
+Storybook
+
+CI/CD
+
+Testing Infrastructure
+
+Developer Tooling
+```
+
+Completion
+
+```text
+No business screens.
+
+Everything ready for feature development.
+```
+
+---
+
+# WAVE 1 — Design System
+
+Deliver:
+
+## Tokens
+
+```text
+Colors
+
+Spacing
+
+Typography
+
+Elevation
+
+Motion
+
+Icons
+```
+
+---
+
+## Layout Primitives
+
+```text
+Screen
+
+Header
+
+Section
+
+Surface
+
+Panel
+
+Canvas
+
+Inspector
+
+Dock
+
+Overlay
+```
+
+---
+
+## Foundation Components
+
+```text
+Button
+
+Input
+
+Card
+
+Badge
+
+Avatar
+
+Chip
+
+Divider
+
+Loader
+
+Progress
+```
+
+---
+
+## Composite Components
+
+```text
+Search
+
+Toolbar
+
+Timeline
+
+Section Header
+
+Navigation Bar
+
+Bottom Sheet Header
+
+Rating
+
+Calendar
+
+Media Viewer
+```
+
+No business logic yet.
+
+---
+
+# WAVE 2 — Authentication
+
+Capability
+
+```text
+Authentication
+```
+
+Screens
+
+```text
+Welcome
+
+Sign In
+
+Register
+
+Forgot Password
+
+Verification
+
+Complete Profile
+```
+
+Dependencies
+
+```text
+Design System
+
+Authentication
+
+Navigation
+
+Repositories
+```
+
+---
+
+# WAVE 3 — Marketplace
+
+Capability
+
+```text
+Marketplace
+```
+
+Screens
+
+```text
+Home
+
+Categories
+
+Search
+
+Favorites
+
+Professional List
+
+Professional Profile
+
+Service Details
+```
+
+Shared Components
+
+```text
+Professional Card
+
+Category Card
+
+Search Bar
+
+Service Card
+
+Rating
+
+Recommendation Card
+```
+
+---
+
+# WAVE 4 — Booking
+
+Largest capability.
+
+Screens
+
+```text
+Booking Wizard
+
+Booking Confirmation
+
+Booking Details
+
+Timeline
+
+History
+
+Cancellation
+
+Reschedule
+```
+
+Shared Components
+
+```text
+Booking Card
+
+Booking Timeline
+
+Booking Status
+
+Booking Summary
+
+Booking Actions
+
+Price Breakdown
+```
+
+---
+
+# WAVE 5 — Professional Workspace
+
+Screens
+
+```text
+Dashboard
+
+Today's Jobs
+
+Job Details
+
+Evidence
+
+Checklist
+
+Navigation
+
+Complete Job
+```
+
+This wave introduces the first Workspace archetype.
+
+---
+
+# WAVE 6 — Messaging
+
+Screens
+
+```text
+Conversation List
+
+Conversation
+
+Media
+
+Attachments
+```
+
+---
+
+# WAVE 7 — Payments
+
+Screens
+
+```text
+Checkout
+
+Payment Status
+
+Invoices
+
+Receipt
+```
+
+---
+
+# WAVE 8 — Reviews
+
+Screens
+
+```text
+Review Form
+
+Review History
+
+Professional Reviews
+```
+
+---
+
+# WAVE 9 — Profile & Settings
+
+Screens
+
+```text
+Profile
+
+Edit Profile
+
+Addresses
+
+Preferences
+
+Notifications
+
+Security
+
+About
+
+Support
+```
+
+---
+
+# WAVE 10 — Production Readiness
+
+Deliverables
+
+```text
+Offline
+
+Push Notifications
+
+Accessibility
+
+Analytics
+
+Crash Reporting
+
+Performance
+
+Security
+
+Localization
+
+Monitoring
+```
+
+---
+
+# Parallel Workstreams
+
+One of the biggest opportunities is to **separate UI implementation from business implementation**.
+
+## Team A — Platform
+
+```text
+Supabase
+
+Authentication
+
+API
+
+Repositories
+
+Sync Engine
+
+State
+```
+
+---
+
+## Team B — Design System
+
+```text
+Tokens
+
+Components
+
+Patterns
+
+Storybook
+```
+
+---
+
+## Team C — Features
+
+```text
+Booking
+
+Marketplace
+
+Messaging
+
+Payments
+```
+
+---
+
+## Team D — QA & Automation
+
+```text
+Testing
+
+Accessibility
+
+Performance
+
+Visual Regression
+```
+
+This allows four parallel streams with minimal merge conflicts.
+
+---
+
+# Screen Dependency Graph
+
+Not every screen can be built immediately.
+
+```text
+Authentication
+        │
+        ▼
+Home
+        │
+        ▼
+Marketplace
+        │
+        ▼
+Booking
+        │
+   ┌────┴────┐
+   ▼         ▼
+Messaging  Payments
+   │         │
+   └────┬────┘
+        ▼
+     Reviews
+```
+
+Notice how capabilities—not screens—define the dependency order.
+
+---
+
+# Reusable Screen Archetypes
+
+This is where we gain enormous leverage.
+
+From all of the screens, we only need to perfect five archetypes.
+
+| Archetype  | Used By                           |
+| ---------- | --------------------------------- |
+| Dashboard  | Home, Professional Dashboard      |
+| Collection | Bookings, Messages, Notifications |
+| Detail     | Booking, Professional, Invoice    |
+| Wizard     | Registration, Booking Flow        |
+| Workspace  | Job Execution, AI Assistant       |
+
+Everything else is configuration.
+
+---
+
+# Component Reuse Matrix
+
+Approximate reuse:
+
+| Component    | Estimated Usage |
+| ------------ | --------------: |
+| Button       |            100+ |
+| Card         |             80+ |
+| Section      |             70+ |
+| Surface      |            120+ |
+| Header       |    Every screen |
+| Search Bar   |             20+ |
+| Timeline     |             10+ |
+| Badge        |             60+ |
+| Avatar       |             40+ |
+| Bottom Sheet |             30+ |
+
+This validates investing heavily in the Design System before feature implementation.
+
+---
+
+# Screen Readiness Checklist
+
+Every screen should satisfy:
+
+```text
+Architecture
+
+Capability
+
+Navigation
+
+Permissions
+
+Offline
+
+Accessibility
+
+Dark Mode
+
+Localization
+
+Telemetry
+
+Performance
+
+Testing
+```
+
+Only then is the screen considered complete.
+
+---
+
+# Development Workflow
+
+For every capability:
+
+```text
+Capability
+
+↓
+
+Domain
+
+↓
+
+API
+
+↓
+
+Repository
+
+↓
+
+State
+
+↓
+
+Feature Components
+
+↓
+
+Screen
+
+↓
+
+Integration
+
+↓
+
+Testing
+
+↓
+
+Production
+```
+
+No shortcuts.
+
+---
+
+# Definition of Done
+
+A capability is complete only when:
+
+* Domain implemented
+* Database complete
+* APIs complete
+* Repository complete
+* Offline supported
+* Realtime supported
+* Components complete
+* Screens complete
+* Accessibility verified
+* Tests passing
+* Documentation updated
+* Telemetry instrumented
+
+This prevents "UI complete but not production ready."
+
+---
+
+# Engineering Metrics
+
+Track progress by capability.
+
+| Metric                | Target                 |
+| --------------------- | ---------------------- |
+| Domain Coverage       | 100%                   |
+| API Coverage          | 100%                   |
+| Component Reuse       | >80%                   |
+| Offline Coverage      | 100% of commands       |
+| Accessibility         | WCAG AA                |
+| Unit Test Coverage    | >90%                   |
+| Visual Regression     | 100% shared components |
+| Cold Start            | <2s                    |
+| Navigation Transition | <200ms                 |
+
+---
+
+# What Comes Next
+
+At this point, I **would not write React Native code yet**.
+
+There is one architectural layer still missing that will dramatically accelerate implementation:
+
+## The Blueprint Layer
+
+Instead of immediately implementing components, define every screen as structured metadata.
+
+For example:
+
+```yaml
+screen: booking-details
+
+archetype: detail
+
+capability: booking
+
+layout:
+  - Header
+  - BookingSummary
+  - Timeline
+  - PaymentSummary
+  - EvidenceGallery
+  - ActionBar
+
+permissions:
+  - booking:view
+
+queries:
+  - GetBooking
+  - GetTimeline
+
+commands:
+  - CancelBooking
+  - CompleteBooking
+
+events:
+  - BookingUpdated
+
+components:
+  - BookingCard
+  - Timeline
+  - Badge
+  - Section
+
+supports:
+  offline: true
+  ai: true
+  inspector: true
+```
+
+I would create one of these blueprint files for **every screen**.
+
+Once that's done, we can automatically derive:
+
+* Expo Router structure
+* React Native screen scaffolds
+* TanStack Query hooks
+* Navigation registration
+* Permission guards
+* Telemetry events
+* Storybook scenarios
+* Test templates
+* AI prompts for implementation
+
+## My recommendation before writing any code
+
+I think we've now completed roughly **80–85% of the architectural work**. The remaining high-value step is to introduce a **Blueprint Specification series (`BP-XXX`)**.
+
+Instead of jumping into Expo, we would first create:
+
+* **BP-001** — Screen Blueprint Specification (schema)
+* **BP-002** — Component Blueprint Catalog
+* **BP-003** — Screen Blueprints (one per screen from your design package)
+* **BP-004** — Navigation Blueprint
+* **BP-005** — Data Binding Blueprint (queries, commands, events per screen)
+
+Those blueprints become the deterministic input for implementation. Once they exist, generating the React Native application becomes a largely mechanical process instead of an architectural exercise.
+
+---
+
+**Current document:** `UI-006 — Screen Implementation Roadmap & Development Plan v1.0`
+
+**Next document:** `BP-001 — Screen Blueprint Specification`

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TaskPro | Iniciar Sesión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#3d4948",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#00201c",
+                    "tertiary": "#00571b",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2f3131",
+                    "surface-tint": "#136a5f",
+                    "secondary-container": "#d8e5e3",
+                    "on-secondary-fixed": "#121e1d",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#a1eddf",
+                    "surface-bright": "#f9f9f9",
+                    "surface-container-low": "#f3f3f3",
+                    "primary": "#00554b",
+                    "status-danger": "#DC3545",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#bcc9c7",
+                    "secondary": "#55615f",
+                    "inverse-primary": "#88d4c7",
+                    "border-subtle": "#E0E0E0",
+                    "on-surface": "#1a1c1c",
+                    "surface-dim": "#dadada",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#1a6e63",
+                    "on-tertiary-fixed": "#002106",
+                    "on-surface-variant": "#3f4946",
+                    "outline": "#6f7976",
+                    "surface-variant": "#e2e2e2",
+                    "status-warning": "#FFC107",
+                    "on-error-container": "#93000a",
+                    "text-primary": "#000000",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-container": "#eeeeee",
+                    "on-tertiary-fixed-variant": "#00531a",
+                    "inverse-on-surface": "#f1f1f1",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary-container": "#007227",
+                    "on-tertiary-container": "#7ff88a",
+                    "on-primary-fixed-variant": "#005047",
+                    "primary-fixed-dim": "#88d4c7",
+                    "outline-variant": "#bec9c5",
+                    "text-secondary": "#666666",
+                    "tertiary-fixed-dim": "#66df75",
+                    "on-background": "#1a1c1c",
+                    "tertiary-fixed": "#83fc8e",
+                    "primary-fixed": "#a4f1e3",
+                    "surface": "#f9f9f9",
+                    "on-secondary-container": "#5b6765",
+                    "secondary-fixed": "#d8e5e3",
+                    "background": "#f9f9f9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "margin-desktop": "32px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .login-card {
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+        }
+        .focus-ring:focus-within {
+            border-color: #00554b;
+            ring: 1px;
+            ring-color: #00554b;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+<!-- Background Decoration (Subtle Gradient) -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute -top-1/2 -left-1/4 w-[150%] h-[150%] opacity-20">
+
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full max-w-[440px] px-margin-mobile md:px-0 flex flex-col items-center justify-center min-h-screen py-xl">
+<!-- Logo Section -->
+<div class="flex flex-col items-center mb-lg">
+<div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-md shadow-lg transform hover:scale-105 transition-transform cursor-pointer">
+<span class="text-white font-extrabold text-[32px] tracking-tight">TP</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Task Pro MX-Ca</h2>
+</div>
+<!-- Headline Section -->
+<div class="text-center mb-xl">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xs">Bienvenido de nuevo</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                Accede a la red de servicios más confiable en la región fronteriza.
+            </p>
+</div>
+<!-- Login Card -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-lg login-card border border-border-subtle">
+<form class="space-y-md" id="loginForm">
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">Correo Electrónico</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-outline">mail</span>
+<input class="w-full h-[48px] pl-11 pr-md bg-transparent border border-outline-variant rounded-lg font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="email" placeholder="nombre@ejemplo.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Contraseña</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline transition-all" href="#">¿Olvidaste tu contraseña?</a>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-outline">lock</span>
+<input class="w-full h-[48px] pl-11 pr-[48px] bg-transparent border border-outline-variant rounded-lg font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-xs w-10 h-10 flex items-center justify-center text-outline hover:text-on-surface transition-colors" id="togglePassword" type="button">
+<span class="material-symbols-outlined" id="eyeIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full h-[48px] bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-sm mt-lg" type="submit">
+                    Iniciar Sesión
+                </button>
+</form>
+<!-- Divider -->
+<div class="relative flex items-center my-lg">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="px-md font-label-sm text-label-sm text-outline bg-surface-container-lowest">o continuar con</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-md">
+<button class="h-[48px] border border-outline-variant rounded-lg flex items-center justify-center gap-sm hover:bg-surface-container-low transition-colors active:scale-95">
+<img class="w-5 h-5" data-alt="A clean, flat vector logo of the Google 'G' icon in its signature four colors, centered in a white circle. Professional minimalist icon design for mobile interface login options." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3p8aJrVhFbPNkcilEeoZ_2BmOSmnNuSn7gBlcay9OLeLYbNlT5M-JdN1_lWorrc9Ng0cTeGzBzdXjrlN0DWjKRZ7I34RAWIjlFkJm9S-JQ_rEvJ4pfdYzUo7_ZPbBAYZFs0Kq9P8wCYhz7lI6k1bYf1nnLSvZSfZo3Q3FkFTTHt7ho1gAa6IzNuCu8V4jTCJa-C62lAplvihD39_XgJIbhuL9dM10x33IRlUkLT4TDAjN0w3fS54XsxcIrFr8Zd_X1Ov7kCsorEE"/>
+<span class="font-label-md text-label-md">Google</span>
+</button>
+<button class="h-[48px] border border-outline-variant rounded-lg flex items-center justify-center gap-sm hover:bg-surface-container-low transition-colors active:scale-95">
+<img class="w-5 h-5" data-alt="A minimalist black Apple logo icon, perfectly centered. Sleek and high-contrast vector art designed for a premium corporate mobile login interface with a modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4pdUotZaoaeu4hEaOB4U9DBik-ikSmT3tyPLsJesaJWNVKOKgtS_4ASDitgR0R8BNI_NDAKZr5_vORfZtex1xVpX4aN5xhaaUls0eeK8fMYlQjrHD65OQwinPVdKp4vxCtQ2mXb9FErhOlDvUOdtzoDVH2KDpF2JtwIO3yuxMeJVyuyJx3lWAIfl9EAhMP8eapPyFVjYBE8Sl3zYXEewxzwaH_8ht4ZSRe7avGFux9zcZt3AonAimwAORudMXDw8a7FEXa8OMJR4"/>
+<span class="font-label-md text-label-md">Apple</span>
+</button>
+</div>
+</div>
+<!-- Sign Up Link -->
+<p class="mt-xl font-body-md text-body-md text-on-surface-variant">
+            ¿No tienes cuenta? <a class="text-primary font-bold hover:underline" href="#">Regístrate gratis</a>
+</p>
+</main>
+<!-- Footer - Reconstructed from Shared Components JSON -->
+<footer class="w-full mt-auto border-t border-border-subtle flex flex-col items-center gap-sm py-lg px-margin-mobile relative z-10 bg-background">
+<div class="flex gap-lg mb-xs">
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-primary underline transition-colors" href="#">Ayuda</a>
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-primary underline transition-colors" href="#">Términos</a>
+</div>
+<p class="font-label-sm text-label-sm text-text-secondary">© 2024 TaskPro</p>
+</footer>
+<script>
+        // Password Visibility Toggle
+        const passwordInput = document.getElementById('password');
+        const toggleBtn = document.getElementById('togglePassword');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        toggleBtn.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            eyeIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+        });
+
+        // Simple Form Submission feedback
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = loginForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin material-symbols-outlined">progress_activity</span> Validando...`;
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                alert('Funcionalidad de inicio de sesión no disponible en esta vista previa.');
+            }, 1500);
+        });
+    </script>
+</body></html>

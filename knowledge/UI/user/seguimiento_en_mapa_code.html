@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task Pro MX-Ca | Seguimiento en Tiempo Real</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#136a5f",
+                        "inverse-on-surface": "#f1f1f1",
+                        "inverse-primary": "#88d4c7",
+                        "primary-fixed-dim": "#88d4c7",
+                        "on-secondary-fixed-variant": "#3d4948",
+                        "primary-fixed": "#a4f1e3",
+                        "on-surface-variant": "#3f4946",
+                        "text-primary": "#000000",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-container": "#7ff88a",
+                        "background": "#f9f9f9",
+                        "primary": "#00554b",
+                        "tertiary-fixed-dim": "#66df75",
+                        "on-primary-fixed": "#00201c",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#00571b",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#bec9c5",
+                        "on-tertiary-fixed": "#002106",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#00531a",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "tertiary-container": "#007227",
+                        "tertiary-fixed": "#83fc8e",
+                        "secondary-container": "#d8e5e3",
+                        "inverse-surface": "#2f3131",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary-container": "#5b6765",
+                        "on-primary-container": "#a1eddf",
+                        "text-secondary": "#666666",
+                        "on-primary-fixed-variant": "#005047",
+                        "secondary": "#55615f",
+                        "surface-container-high": "#e8e8e8",
+                        "on-background": "#1a1c1c",
+                        "status-danger": "#DC3545",
+                        "on-surface": "#1a1c1c",
+                        "primary-container": "#1a6e63",
+                        "surface-container": "#eeeeee",
+                        "secondary-fixed": "#d8e5e3",
+                        "status-warning": "#FFC107",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-fixed-dim": "#bcc9c7",
+                        "surface": "#f9f9f9",
+                        "border-subtle": "#E0E0E0",
+                        "outline": "#6f7976",
+                        "on-secondary-fixed": "#121e1d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .map-container {
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+        .pulsing-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col h-screen overflow-hidden">
+<!-- Top Navigation Shell -->
+<header class="flex justify-between items-center w-full px-4 h-14 fixed top-0 z-50 bg-surface dark:bg-on-background shadow-sm">
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low rounded-full transition-colors">arrow_back</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">Tu técnico está en camino</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low rounded-full transition-colors">notifications</button>
+</div>
+</header>
+<!-- Main Content: Map Tracking -->
+<main class="flex-grow pt-14 relative flex flex-col">
+<!-- Full Screen Map Representation -->
+<div class="absolute inset-0 z-0 map-container bg-surface-container-low overflow-hidden">
+<!-- Simulated Map Visual -->
+<div class="w-full h-full relative" data-location="Tijuana, Mexico" style="">
+<img class="w-full h-full object-cover opacity-80" data-alt="A top-down stylized map of a modern residential neighborhood in Tijuana, Mexico. The map uses a sophisticated Corporate Modernism aesthetic with soft teal and neutral gray paths, showing building footprints and green areas. A highlighted blue route line curves through the streets. Minimalist UI markers indicate the user's location and the technician's real-time position, creating a clean and functional interface feel with high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-7ehH3m642e1qQRJuPRu3oFNkyr7IT-FN5Ii30TNwx3hvEmqoE7FCAIvLUq9bUBUYkh7CXlxebRbTj90DVrN6idjavidqtKbhmV3-Z303BtYzId1xcG9-zHJPOlx3frw0WYVypYsVMefk6YD5Q506aPiiYNNSSaXfxsicsVqnU4VkFR7ec4JAypaQ6zCTGaMLet13-jpn53luLDlT374uehiaFxqn_V67W8daqpWePT4RvB1i94yAy2_XWqDGQpP70dpqlOl2-2Q"/>
+<!-- Animated Route Tracking Overlay -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 400 800">
+<path class="text-primary-container opacity-40" d="M 200,600 Q 250,500 150,400 T 200,200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="6"></path>
+<path class="text-primary" d="M 200,600 Q 250,500 150,400 T 200,200" fill="none" id="route-path" stroke="currentColor" stroke-dasharray="10, 10" stroke-linecap="round" stroke-width="4">
+<animate attributename="stroke-dashoffset" dur="1s" from="20" repeatcount="indefinite" to="0"></animate>
+</path>
+<!-- Technician Indicator -->
+<g transform="translate(145, 390)">
+<circle class="shadow-lg" cx="0" cy="0" fill="white" r="8"></circle>
+<circle class="text-primary" cx="0" cy="0" fill="currentColor" r="4"></circle>
+<circle class="text-primary opacity-20 pulsing-dot" cx="0" cy="0" fill="currentColor" r="15"></circle>
+</g>
+</svg>
+</div>
+</div>
+<!-- Floating Info Cards -->
+<div class="relative z-10 px-margin-mobile pt-lg flex flex-col gap-gutter h-full pb-20 justify-end pointer-events-none">
+<!-- ETA Status Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-lg flex items-center justify-between border border-border-subtle pointer-events-auto max-w-md mx-auto w-full transition-all hover:scale-[1.02]">
+<div class="flex items-center gap-md">
+<div class="bg-primary-container rounded-full p-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-text-secondary uppercase tracking-wider">Llegada estimada</p>
+<h2 class="font-headline-md text-headline-md text-text-primary">10 min <span class="text-text-secondary font-normal ml-sm">• 2.4 km</span></h2>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/10 text-tertiary font-label-sm text-label-sm border border-tertiary/20">En camino</span>
+</div>
+</div>
+<!-- Technician Details Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-lg border border-border-subtle pointer-events-auto max-w-md mx-auto w-full">
+<div class="flex items-start justify-between mb-lg">
+<div class="flex gap-md">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover border-2 border-primary-fixed" data-alt="Close-up professional portrait of Carlos Martinez, a friendly Hispanic technician in his 30s. He is wearing a clean, professional navy blue polo shirt with a subtle Task Pro MX-Ca logo. The background is a soft, out-of-focus urban environment with natural daylight. He has a warm, confident smile, conveying reliability and professionalism in a modern Corporate Modernism style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0p5pRsUa9Yx8HaqMJpIU-T8tmJwcWVVREmrl-Gcn6Gy4fh8cbyP-3Sk6ZFnVXkzvvCNDP_vgvIB_Qhww9-QWmeIM1rxytiazM7Bw6Bo42jTG2A9C4z0T0mSMXdcYtkcJR-wLJNtHbFZnWJwK2X-udpUXQW99kG-5LmyMDoDzpeJkMxc9kHBxt9aNDhWkXG3FZjldaj3KwzKRPh_AOBjWJ6khbTltj3xEo3EtDMWmka_VF_mu7pkviqANWw8qLxubD5I5cr1a5eYI"/>
+<div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 border border-border-subtle">
+<span class="material-symbols-outlined text-status-warning text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-text-primary">Carlos Martinez</h3>
+<div class="flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-status-warning text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-text-primary">4.8</span>
+<span class="font-body-md text-body-md text-text-secondary">(156 reseñas)</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-xs">Electricista • Toyota Hilux Blanca</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="w-11 h-11 flex items-center justify-center rounded-full bg-secondary-container text-primary hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<button class="w-11 h-11 flex items-center justify-center rounded-full bg-primary text-white hover:bg-primary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+</div>
+<!-- Booking Summary Detail -->
+<div class="bg-surface-container rounded-lg p-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-text-secondary">receipt_long</span>
+<p class="font-label-md text-label-md text-text-primary">Instalación eléctrica residencial</p>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">$480 MXN</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar Shell -->
+<nav class="fixed bottom-0 left-0 w-full h-16 z-50 flex justify-around items-center px-4 pb-safe bg-surface-container-lowest dark:bg-on-background shadow-lg rounded-t-xl border-t border-border-subtle">
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm mt-1">Explorar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-on-primary-container bg-secondary-container/30 dark:bg-primary-container/20 rounded-xl px-3 py-1 scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">handyman</span>
+<span class="font-label-sm text-label-sm mt-1 font-bold">Servicios</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Mensajes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Perfil</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for technician movement simulation
+        document.addEventListener('DOMContentLoaded', () => {
+            const techIcon = document.querySelector('g[transform^="translate"]');
+            let progress = 0;
+            
+            // Note: In a real app this would be driven by real coordinates
+            setInterval(() => {
+                progress += 0.001;
+                if (progress > 1) progress = 0;
+                
+                // Simple oscillation for demo effect
+                const x = 145 + Math.sin(progress * 10) * 10;
+                const y = 390 + Math.cos(progress * 5) * 5;
+                
+                techIcon.setAttribute('transform', `translate(${x}, ${y})`);
+            }, 50);
+        });
+    </script>
+</body></html>

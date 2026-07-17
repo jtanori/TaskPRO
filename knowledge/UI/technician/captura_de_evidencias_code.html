@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Captura de Evidencia - TaskPro Tech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .photo-slot-dashed {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23BEC9C5FF' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "text-secondary": "#666666",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#007227",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "tertiary-fixed-dim": "#66df75",
+                        "secondary-fixed": "#d8e5e3",
+                        "on-background": "#1a1c1c",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "primary-container": "#1a6e63",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#002106",
+                        "secondary-container": "#d8e5e3",
+                        "text-primary": "#000000",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#3d4948",
+                        "tertiary": "#00571b",
+                        "outline-variant": "#bec9c5",
+                        "error-container": "#ffdad6",
+                        "outline": "#6f7976",
+                        "on-secondary": "#ffffff",
+                        "border-subtle": "#E0E0E0",
+                        "tertiary-fixed": "#83fc8e",
+                        "on-surface-variant": "#3f4946",
+                        "primary": "#00554b",
+                        "on-primary-container": "#a1eddf",
+                        "primary-fixed-dim": "#88d4c7",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#bcc9c7",
+                        "primary-fixed": "#a4f1e3",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary-fixed": "#121e1d",
+                        "secondary": "#55615f",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-tertiary-fixed-variant": "#00531a",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#00201c",
+                        "status-danger": "#DC3545",
+                        "status-warning": "#FFC107",
+                        "on-tertiary-container": "#7ff88a",
+                        "background": "#f9f9f9",
+                        "inverse-primary": "#88d4c7",
+                        "on-secondary-container": "#5b6765",
+                        "surface-bright": "#f9f9f9",
+                        "surface-tint": "#136a5f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile h-14 z-50 bg-surface dark:bg-on-background border-b border-border-subtle dark:border-outline-variant fixed top-0">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">arrow_back</span>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">TaskPro Tech</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a Hispanic service technician in his late 30s, Alex Rivera, wearing a clean charcoal grey technical uniform with a small teal company logo. The background is a soft-focus modern office environment with warm morning lighting. He has a friendly, trustworthy expression suitable for a service marketplace profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6lcHiCHsyZKcCJRV86aDRD4djbA6YZfA4Ge3uRMAIVk01S-PafqULroOBIYpik93wH2LeMvkNvdIN5075osSfbBT_NNJ0s64ndTbbOuN-bgO3qENKsgSPhBA_v0KALN9pFqDx1ejaZ9p1TiGeEhXKflm0oF2FkaQm1phg_yN9WMJudHcQ1-JkcBvB0joM6RM7VV4Y3iLIQcReM4GhhNJIQqpUCw-x4m7Uq5nn31RR4j94L9LzVUW9V-d3ztBhUJn0AS-waQDuxkI"/>
+</div>
+</div>
+</header>
+<main class="flex-1 mt-14 mb-24 px-margin-mobile py-lg max-w-2xl mx-auto w-full">
+<section class="space-y-lg">
+<!-- Header Section -->
+<div class="space-y-xs">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-text-primary">Captura de Evidencia</h1>
+<p class="text-body-md text-text-secondary">Documenta el estado del servicio para validación del cliente.</p>
+</div>
+<!-- Evidence Tabs / Grid Layout -->
+<div class="space-y-xl">
+<!-- BEFORE PHOTOS -->
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<h2 class="text-label-md font-label-md uppercase tracking-wider text-on-surface-variant">Fotos: Antes</h2>
+<span class="text-caption font-caption text-primary">Obligatorio</span>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<!-- Filled State Example -->
+<div class="relative aspect-square rounded-xl overflow-hidden shadow-sm bg-surface-container-low group">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a faulty electrical panel with loose wiring, taken as 'before' evidence for a repair job. The lighting is bright and clear, highlighting the technical issue. The image has a professional, documentary feel with a clean, high-resolution aesthetic consistent with a service technician app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8tanSrbk_Z3zNusUtR-hchesbmPMQDnOTqKPEXPZ9lAbjb_p5vHFlpYbA_s1KIUmUhqMKRxv7b9Y2-p4vX8jMJ39JK7bJWQmQmu0qwUyOBpsSqx0KHTMUMDCn7gqZWpGSyid2acM7r5Bf0G_Ksqo-kFv2RMm5JMZkQ078VX2kHe72f4wF_cK3MBtmdtqivJZuj8FGX_AUieN2_ALwOl5yIMxessI2FUMT0xcPe2TnofUks7KTd2SRLuRE_RQmld2hoiRh8obQUPg"/>
+<div class="absolute top-2 right-2 bg-on-background/60 backdrop-blur-sm rounded-full p-1 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</div>
+</div>
+<!-- Empty State Slot -->
+<button class="photo-slot-dashed aspect-square flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-container transition-colors rounded-xl">
+<span class="material-symbols-outlined text-[32px]">add_a_photo</span>
+<span class="text-label-sm font-label-sm">Tomar Foto</span>
+</button>
+</div>
+<button class="w-full h-[48px] border-2 border-primary text-primary font-label-md rounded-xl flex items-center justify-center gap-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined">camera_alt</span>
+                        Tomar Foto (Antes)
+                    </button>
+</div>
+<!-- AFTER PHOTOS -->
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<h2 class="text-label-md font-label-md uppercase tracking-wider text-on-surface-variant">Fotos: Después</h2>
+<span class="text-caption font-caption text-on-surface-variant">0/4 Capturadas</span>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<button class="photo-slot-dashed aspect-square flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-container transition-colors rounded-xl">
+<span class="material-symbols-outlined text-[32px]">add_a_photo</span>
+<span class="text-label-sm font-label-sm">Subir Foto</span>
+</button>
+<button class="photo-slot-dashed aspect-square flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-container transition-colors rounded-xl opacity-40">
+<span class="material-symbols-outlined text-[32px]">image</span>
+</button>
+</div>
+<button class="w-full h-[48px] bg-primary-container text-white font-label-md rounded-xl flex items-center justify-center gap-sm active:scale-95 transition-transform shadow-sm">
+<span class="material-symbols-outlined">camera_alt</span>
+                        Tomar Foto (Después)
+                    </button>
+</div>
+<!-- OBSERVATIONS -->
+<div class="space-y-md">
+<label class="text-label-md font-label-md text-on-surface-variant" for="observations">Observaciones Finales</label>
+<div class="relative">
+<textarea class="w-full p-md bg-surface-container-lowest border border-border-subtle rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-body-md text-on-surface placeholder:text-outline" id="observations" placeholder="Describe brevemente los hallazgos o recomendaciones..." rows="4"></textarea>
+<div class="absolute bottom-3 right-3 text-caption font-caption text-outline">
+                            0 / 250
+                        </div>
+</div>
+</div>
+<!-- SAVE BUTTON -->
+<div class="pt-lg">
+<button class="w-full h-[56px] bg-primary text-white font-headline-md rounded-xl flex items-center justify-center gap-md shadow-lg active:scale-[0.98] transition-all hover:brightness-110">
+                        Guardar y Continuar
+                        <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-on-background shadow-[0px_-2px_8px_rgba(0,0,0,0.05)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-label-sm font-label-sm">Schedule</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-sm font-label-sm">Earnings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-label-sm font-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple character count logic for the textarea
+        const textarea = document.getElementById('observations');
+        const counter = textarea.nextElementSibling;
+        
+        textarea.addEventListener('input', (e) => {
+            const count = e.target.value.length;
+            counter.textContent = `${count} / 250`;
+            if (count > 250) {
+                counter.classList.add('text-error');
+            } else {
+                counter.classList.remove('text-error');
+            }
+        });
+
+        // Simulating haptic feedback on large buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                if (window.navigator.vibrate) window.navigator.vibrate(5);
+            });
+        });
+    </script>
+</body></html>

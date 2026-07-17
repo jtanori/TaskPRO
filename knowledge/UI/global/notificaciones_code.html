@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Notificaciones - TaskPro MX-Ca</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dadada",
+                    "on-primary-fixed": "#00201c",
+                    "primary-fixed-dim": "#88d4c7",
+                    "status-warning": "#FFC107",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface": "#f9f9f9",
+                    "on-secondary-container": "#5b6765",
+                    "border-subtle": "#E0E0E0",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#bec9c5",
+                    "inverse-surface": "#2f3131",
+                    "status-danger": "#DC3545",
+                    "surface-tint": "#136a5f",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#1a6e63",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary-fixed": "#a4f1e3",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#005047",
+                    "secondary": "#55615f",
+                    "on-tertiary-container": "#7ff88a",
+                    "text-primary": "#000000",
+                    "on-background": "#1a1c1c",
+                    "surface-bright": "#f9f9f9",
+                    "inverse-on-surface": "#f1f1f1",
+                    "text-secondary": "#666666",
+                    "on-surface-variant": "#3f4946",
+                    "tertiary-fixed-dim": "#66df75",
+                    "secondary-fixed": "#d8e5e3",
+                    "tertiary-container": "#007227",
+                    "on-secondary-fixed-variant": "#3d4948",
+                    "outline": "#6f7976",
+                    "secondary-fixed-dim": "#bcc9c7",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-fixed-variant": "#00531a",
+                    "secondary-container": "#d8e5e3",
+                    "on-tertiary-fixed": "#002106",
+                    "tertiary-fixed": "#83fc8e",
+                    "tertiary": "#00571b",
+                    "on-error": "#ffffff",
+                    "primary": "#00554b",
+                    "on-secondary": "#ffffff",
+                    "background": "#f9f9f9",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-fixed": "#121e1d",
+                    "on-primary-container": "#a1eddf",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e2e2e2",
+                    "surface-container-high": "#e8e8e8",
+                    "on-surface": "#1a1c1c",
+                    "inverse-primary": "#88d4c7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "margin-desktop": "32px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Micro-interactions */
+        .tap-scale:active { transform: scale(0.96); transition: transform 0.1s ease; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-20">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-14 fixed top-0 z-50 bg-surface dark:bg-on-background shadow-sm">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low transition-colors rounded-full tap-scale">
+                arrow_back
+            </button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary">Notificaciones</h1>
+</div>
+<div class="flex items-center">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low transition-colors rounded-full tap-scale">
+                more_vert
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-margin-mobile max-w-2xl mx-auto">
+<!-- Category Chips -->
+<div class="flex gap-2 overflow-x-auto pb-4 scroll-hide">
+<span class="px-4 py-1.5 bg-primary text-on-primary rounded-full font-label-md text-label-md whitespace-nowrap">Todas</span>
+<span class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest transition-colors cursor-pointer">Servicios</span>
+<span class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest transition-colors cursor-pointer">Promociones</span>
+<span class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-highest transition-colors cursor-pointer">Mensajes</span>
+</div>
+<!-- Section: Today -->
+<section class="mt-4">
+<h2 class="font-label-md text-label-md text-text-secondary uppercase tracking-wider mb-3">Hoy</h2>
+<div class="space-y-3">
+<!-- Notification 1: Progress -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] border border-border-subtle flex gap-4 items-start tap-scale cursor-pointer group">
+<div class="w-12 h-12 flex-shrink-0 bg-primary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[16px] text-on-surface leading-tight">Tu técnico está en camino</h3>
+<span class="font-caption text-caption text-text-secondary">Ahora</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Carlos llegará a tu ubicación en aproximadamente 12 minutos para el servicio de fontanería.</p>
+<div class="mt-3 flex items-center gap-2">
+<div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+<span class="font-caption text-caption text-primary font-bold">66%</span>
+</div>
+</div>
+</div>
+<!-- Notification 2: Success -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] border border-border-subtle flex gap-4 items-start tap-scale cursor-pointer">
+<div class="w-12 h-12 flex-shrink-0 bg-tertiary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[16px] text-on-surface leading-tight">Servicio completado</h3>
+<span class="font-caption text-caption text-text-secondary">2h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">El servicio de limpieza profunda ha finalizado. Por favor, califica tu experiencia con Ana.</p>
+<div class="mt-3 flex gap-2">
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-primary-fixed transition-colors">Ver Recibo</button>
+<button class="px-4 py-1.5 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Calificar</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Offers -->
+<section class="mt-lg">
+<h2 class="font-label-md text-label-md text-text-secondary uppercase tracking-wider mb-3">Ofertas para ti</h2>
+<!-- Notification 3: Promo Card -->
+<div class="relative bg-surface-container-lowest rounded-xl shadow-[0px_2px_8px_rgba(0,0,0,0.05)] border border-border-subtle overflow-hidden tap-scale cursor-pointer">
+<div class="absolute top-0 right-0 p-3">
+<span class="bg-status-warning/15 text-[#856404] px-2 py-0.5 rounded text-[10px] font-bold uppercase">Limited Time</span>
+</div>
+<div class="p-md flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" style="font-variation-settings: 'FILL' 1;">sell</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-[16px] text-on-surface leading-tight">Promoción: 20% en limpieza</h3>
+<span class="font-caption text-caption text-text-secondary">5h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Usa el código <span class="font-bold text-primary">TASK20</span> en tu próximo servicio de limpieza de hogar.</p>
+</div>
+</div>
+<!-- Visual Accent -->
+<div class="h-48 w-full relative overflow-hidden bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="A premium, lifestyle photograph of a bright and modern minimalist living room in Tijuana. The room features sunlight streaming through large windows, highlighting clean surfaces and a fresh, professional cleaning service result. The color palette consists of soft whites, warm wood tones, and subtle teal accents, evoking a sense of reliability, freshness, and high-quality labor fulfillment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMlcdkZbmzV2_JOWRhR2iBvxpj18DWes0kZ59pzevAnYkq0MwixlayRz-jxpeuoyqbprnH0Aj5IqffKXW5ZT4OEk-A28Ub0MpRCZfMKUX_8mTX5G4N9Nwq3TGVDPTi3wJxZOoudBoJHeCqB7pGp-7HRbsJeG2XWscdZht2Lo_P6tDjX7xUUSwppGuwCWQ_2hskkXdVr7z3_Ql3WEu5u_xTecLUA3bi3A_vgovSN8G9eE8qvU3HD0DBK6RLiqQeDm8g6EMmvKlfjLA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-3 left-4 text-white">
+<p class="font-label-sm text-label-sm opacity-90">Válido hasta el 30 de Nov</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Older -->
+<section class="mt-lg">
+<h2 class="font-label-md text-label-md text-text-secondary uppercase tracking-wider mb-3">Anteriores</h2>
+<div class="space-y-3 opacity-70">
+<div class="bg-surface-container-low p-md rounded-xl border border-transparent flex gap-4 items-start">
+<div class="w-10 h-10 flex-shrink-0 bg-surface-container-high rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Nuevo mensaje de Soporte</h3>
+<span class="font-caption text-caption text-text-secondary">Ayer</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-1">Tu ticket #4921 ha sido actualizado por nuestro equipo.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-transparent flex gap-4 items-start">
+<div class="w-10 h-10 flex-shrink-0 bg-surface-container-high rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">payments</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Pago procesado</h3>
+<span class="font-caption text-caption text-text-secondary">2 días</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Se ha realizado el cobro de $450 MXN por el servicio...</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Empty State Filler Space -->
+<div class="py-xl flex flex-col items-center justify-center text-center opacity-30">
+<span class="material-symbols-outlined text-[48px] mb-2">notifications_off</span>
+<p class="font-label-md text-label-md">No hay más notificaciones</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-16 z-50 flex justify-around items-center px-4 pb-safe bg-surface-container-lowest dark:bg-on-background border-t border-border-subtle rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors group tap-scale" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explorar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors group tap-scale" href="#">
+<span class="material-symbols-outlined">handyman</span>
+<span class="font-label-sm text-label-sm">Servicios</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors group tap-scale" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Mensajes</span>
+</a>
+<!-- Active Tab: Perfil (Representing the user context area) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-on-primary-container bg-secondary-container/30 dark:bg-primary-container/20 rounded-xl px-3 py-1 scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Perfil</span>
+</a>
+</nav>
+<script>
+        // Simple logic for category filter toggle
+        const chips = document.querySelectorAll('.rounded-full.cursor-pointer');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const active = document.querySelector('.bg-primary.text-on-primary');
+                if (active) {
+                    active.classList.replace('bg-primary', 'bg-surface-container-high');
+                    active.classList.replace('text-on-primary', 'text-on-surface-variant');
+                }
+                chip.classList.replace('bg-surface-container-high', 'bg-primary');
+                chip.classList.replace('text-on-surface-variant', 'text-on-primary');
+            });
+        });
+
+        // Add visual feedback to list items
+        const notifItems = document.querySelectorAll('.tap-scale.cursor-pointer');
+        notifItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Future: link to details
+                console.log('Notification clicked');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,876 @@
+# UI-004 — Screen Composition System & Layout Primitives v0.1
+
+## Purpose
+
+This document defines **how every screen in TaskPRO is constructed**.
+
+It sits between:
+
+* **UI-003** (Component Library)
+* **Individual Screen Specifications**
+
+Instead of designing screens independently, every screen becomes a composition of reusable **Layout Primitives** and **Composition Patterns**.
+
+This document is arguably one of the most important in the entire UI architecture because it makes the UI **systematic instead of artistic**.
+
+---
+
+# Philosophy
+
+The application should never ask:
+
+> "How do we design this screen?"
+
+Instead, it asks:
+
+> "Which composition pattern does this screen use?"
+
+Every screen becomes a predictable arrangement of reusable building blocks.
+
+---
+
+# Composition Hierarchy
+
+Every screen is assembled from six layers.
+
+```text
+Design Tokens
+
+↓
+
+Primitives
+
+↓
+
+Foundation Components
+
+↓
+
+Layout Primitives
+
+↓
+
+Composition Patterns
+
+↓
+
+Feature Screen
+```
+
+Notice that **Layout Primitives** now become a first-class architectural layer.
+
+---
+
+# The 12 Layout Primitives
+
+After analyzing the TaskPRO designs, I believe almost every screen can be composed from only twelve structural primitives.
+
+## LP-001 — Screen
+
+The root container.
+
+Responsibilities:
+
+* Safe Areas
+* Background
+* Keyboard
+* Insets
+* Gestures
+
+```text
+┌─────────────────────────────┐
+│                             │
+│         Screen              │
+│                             │
+└─────────────────────────────┘
+```
+
+Every screen starts here.
+
+---
+
+## LP-002 — Header
+
+Owns:
+
+* Title
+* Subtitle
+* Navigation
+* Search
+* Context Actions
+
+```text
+──────────────────────────────
+←  Booking          ⋮
+Today's Service
+──────────────────────────────
+```
+
+Variants
+
+```text
+Large
+
+Compact
+
+Transparent
+
+Search
+
+Collapsible
+```
+
+---
+
+## LP-003 — Section
+
+Groups related information.
+
+```text
+Upcoming
+
+Recent Activity
+
+Payments
+
+Reviews
+```
+
+Instead of spacing things manually, every screen uses Sections.
+
+---
+
+## LP-004 — Surface
+
+A semantic container.
+
+Variants
+
+```text
+Flat
+
+Elevated
+
+Floating
+
+Glass
+
+Interactive
+```
+
+Every card derives from Surface.
+
+---
+
+## LP-005 — Panel
+
+A larger semantic container.
+
+Examples
+
+```text
+AI Assistant
+
+Booking Summary
+
+Inspector
+
+Settings Panel
+```
+
+Panels organize complex information.
+
+---
+
+## LP-006 — Toolbar
+
+Owns actions.
+
+Examples
+
+```text
+Search
+
+Filters
+
+Sort
+
+Selection
+
+Commands
+```
+
+---
+
+## LP-007 — Sidebar
+
+Future-ready.
+
+Tablet
+
+Desktop
+
+Landscape
+
+Contains:
+
+Navigation
+
+Filters
+
+Context
+
+Folders
+
+---
+
+## LP-008 — Canvas
+
+The primary work area.
+
+Examples
+
+Booking Timeline
+
+Calendar
+
+Chat
+
+Map
+
+Checklist
+
+Dashboard
+
+The Canvas is where work happens.
+
+---
+
+## LP-009 — Inspector
+
+One of the most important additions.
+
+Displays contextual information.
+
+Example
+
+```text
+Booking Selected
+
+↓
+
+Inspector
+
+↓
+
+Customer
+
+↓
+
+Payment
+
+↓
+
+Evidence
+```
+
+Instead of opening another screen.
+
+This mirrors modern AI workspaces.
+
+---
+
+## LP-010 — Dock
+
+Floating actions.
+
+Examples
+
+```text
+AI
+
+Voice
+
+Camera
+
+Scan
+
+Create
+```
+
+Persistent.
+
+Context aware.
+
+---
+
+## LP-011 — Overlay
+
+Everything above the canvas.
+
+Examples
+
+Bottom Sheets
+
+Dialogs
+
+Command Palette
+
+Image Viewer
+
+Scanner
+
+Assistant
+
+---
+
+## LP-012 — Status Layer
+
+Displays application health.
+
+Examples
+
+Offline
+
+Syncing
+
+GPS
+
+Realtime
+
+Uploading
+
+Never part of business UI.
+
+---
+
+# Canonical Screen Formula
+
+Almost every screen should follow this formula.
+
+```text
+Screen
+
+↓
+
+Header
+
+↓
+
+Sections
+
+↓
+
+Canvas
+
+↓
+
+Inspector (optional)
+
+↓
+
+Dock (optional)
+
+↓
+
+Overlay (runtime)
+```
+
+This becomes the canonical composition model.
+
+---
+
+# Five Canonical Screen Types
+
+After reviewing the designs, I believe every screen falls into one of five archetypes.
+
+---
+
+## Type A — Dashboard
+
+Example
+
+Home
+
+```text
+Header
+
+↓
+
+Quick Actions
+
+↓
+
+Upcoming
+
+↓
+
+Recommendations
+
+↓
+
+Activity
+```
+
+---
+
+## Type B — Collection
+
+Example
+
+Bookings
+
+Messages
+
+Professionals
+
+Invoices
+
+```text
+Header
+
+↓
+
+Toolbar
+
+↓
+
+Filters
+
+↓
+
+List
+
+↓
+
+Dock
+```
+
+---
+
+## Type C — Detail
+
+Example
+
+Booking
+
+Professional
+
+Invoice
+
+```text
+Header
+
+↓
+
+Hero
+
+↓
+
+Sections
+
+↓
+
+Actions
+
+↓
+
+Timeline
+```
+
+---
+
+## Type D — Workspace
+
+The defining TaskPRO screen.
+
+```text
+Header
+
+↓
+
+Sidebar
+
+↓
+
+Canvas
+
+↓
+
+Inspector
+
+↓
+
+Assistant
+
+↓
+
+Dock
+```
+
+This is the screen type your Gemini explorations have been converging toward.
+
+It is ideal for:
+
+* AI-assisted workflows
+* Booking management
+* Evidence review
+* Scheduling
+* Professional management
+
+---
+
+## Type E — Wizard
+
+Booking flow.
+
+Registration.
+
+Onboarding.
+
+```text
+Header
+
+↓
+
+Stepper
+
+↓
+
+Canvas
+
+↓
+
+Bottom Actions
+```
+
+---
+
+# Section Types
+
+Every screen section belongs to one of these categories.
+
+```text
+Hero
+
+Information
+
+Statistics
+
+Timeline
+
+Actions
+
+Collection
+
+Media
+
+AI
+
+Settings
+```
+
+No arbitrary layouts.
+
+---
+
+# Action Placement Rules
+
+Instead of every designer choosing button locations:
+
+Primary
+
+↓
+
+Bottom
+
+Secondary
+
+↓
+
+Header
+
+Contextual
+
+↓
+
+Inspector
+
+Floating
+
+↓
+
+Dock
+
+This consistency reduces cognitive load.
+
+---
+
+# Information Density
+
+Three predefined densities.
+
+```text
+Comfort
+
+Balanced
+
+Expert
+```
+
+Future personalization.
+
+---
+
+# Adaptive Layout
+
+Phone
+
+```text
+Canvas
+```
+
+Tablet
+
+```text
+Sidebar
+
+Canvas
+```
+
+Desktop
+
+```text
+Sidebar
+
+Canvas
+
+Inspector
+```
+
+Same components.
+
+Different composition.
+
+---
+
+# AI-Aware Composition
+
+Every screen reserves optional AI zones.
+
+```text
+Suggestions
+
+Insights
+
+Recommendations
+
+Automation
+
+Predictions
+```
+
+These should never require redesigning screens later.
+
+---
+
+# Empty State Composition
+
+Every empty state follows the same structure.
+
+```text
+Illustration
+
+↓
+
+Title
+
+↓
+
+Description
+
+↓
+
+Primary Action
+
+↓
+
+Secondary Action
+```
+
+---
+
+# Error State Composition
+
+```text
+Icon
+
+↓
+
+Problem
+
+↓
+
+Explanation
+
+↓
+
+Retry
+
+↓
+
+Contact Support
+```
+
+---
+
+# Loading Composition
+
+Skeletons should mirror final layouts.
+
+Never use generic spinners for entire screens.
+
+---
+
+# Responsive Rules
+
+Rather than breakpoints:
+
+Components expose capabilities.
+
+Example
+
+```text
+supportsSidebar
+
+supportsInspector
+
+supportsDock
+
+supportsSplitView
+```
+
+The shell composes accordingly.
+
+---
+
+# Navigation Persistence
+
+Context should survive navigation.
+
+Example
+
+Booking
+
+↓
+
+Messages
+
+↓
+
+Back
+
+↓
+
+Booking remains exactly where the user left it.
+
+---
+
+# Screen Metadata
+
+Every screen should declare metadata.
+
+Example
+
+```yaml
+screen: Booking Details
+
+type: Detail
+
+supportsAI: true
+
+supportsOffline: true
+
+supportsInspector: true
+
+supportsDock: true
+
+permissions:
+  - booking:view
+
+capability:
+  - booking
+```
+
+This metadata can drive routing, permissions, analytics, and even AI-assisted testing.
+
+---
+
+# Screen Composition DSL
+
+Rather than manually building every screen, I recommend introducing a declarative composition model.
+
+Example:
+
+```yaml
+screen:
+  layout: detail
+
+header:
+  variant: large
+
+sections:
+  - booking-summary
+  - timeline
+  - payment
+  - evidence
+
+dock:
+  - camera
+  - assistant
+
+inspector:
+  booking-context
+
+overlays:
+  - image-viewer
+```
+
+This opens the door to:
+
+* screen generation
+* automated documentation
+* design validation
+* visual regression
+* AI-assisted scaffolding
+
+---
+
+# Architectural Observation
+
+This is the point where I would make one significant architectural leap beyond a traditional design system.
+
+Instead of documenting **screens**, we should document **screen archetypes** and **screen blueprints**.
+
+That means the next layer is no longer:
+
+> "Build the Booking Screen."
+
+Instead it becomes:
+
+> **"Instantiate the Detail Archetype using the Booking capability."**
+
+This separation means:
+
+* UI evolves independently from business logic.
+* New capabilities automatically inherit proven layouts.
+* AI can generate production-ready screens from metadata rather than handcrafted prompts.
+* Design, engineering, and documentation all speak the same language.
+
+This approach aligns perfectly with your original vision of using Gemini to generate foundational visual primitives first and then composing complete interfaces from those primitives.
+
+---
+
+**Current document:** `UI-004 — Screen Composition System & Layout Primitives`
+
+**Next document:** `UI-005 — Navigation Graph, User Journeys & Interaction Architecture`

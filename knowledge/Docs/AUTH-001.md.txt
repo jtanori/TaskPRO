@@ -1,0 +1,710 @@
+# AUTH-001 — Authentication, Authorization & Security Architecture v0.1
+
+## Purpose
+
+Authentication is not just about signing users in—it establishes **identity**, **trust**, and **permissions** across the entire TaskPRO platform.
+
+The architecture should be:
+
+* Secure by default
+* Stateless
+* Role-based
+* Permission-driven
+* Multi-device
+* Offline-aware
+* Auditable
+* Extensible
+
+Authentication should be completely independent from business modules.
+
+---
+
+# Authentication Principles
+
+TaskPRO should distinguish five different concepts:
+
+```text
+Authentication
+    Who are you?
+
+↓
+
+Identity
+    Who is this person?
+
+↓
+
+Authorization
+    What can they do?
+
+↓
+
+Verification
+    Can they be trusted?
+
+↓
+
+Session
+    Are they currently authenticated?
+```
+
+Keeping these separate prevents security logic from leaking into the domain.
+
+---
+
+# Identity Model
+
+Every authenticated person is a **User**.
+
+A User may own one or more Personas.
+
+```text
+User
+
+├── Customer
+├── Professional
+├── Administrator
+├── Support Agent
+└── Future Personas
+```
+
+This is preferable to a single `role` field because one person can legitimately operate in multiple capacities without maintaining separate accounts.
+
+Example:
+
+* A homeowner who also provides electrical services.
+* An administrator who occasionally books services.
+* A franchise owner who is also a technician.
+
+---
+
+# Authentication Provider
+
+Identity should be delegated to Supabase Auth.
+
+Supported methods:
+
+```text
+Email + Password
+
+Google
+
+Apple
+
+Facebook
+
+Microsoft
+
+Phone OTP
+
+Magic Link
+```
+
+New providers can be added without affecting the domain.
+
+---
+
+# Session Model
+
+Each authenticated device owns an independent session.
+
+```text
+Session
+
+id
+
+user_id
+
+device_id
+
+refresh_token
+
+created_at
+
+expires_at
+
+last_seen
+
+revoked_at
+```
+
+Users can revoke individual sessions remotely.
+
+---
+
+# Device Model
+
+Every login registers a trusted device.
+
+```text
+Device
+
+id
+
+platform
+
+model
+
+os
+
+app_version
+
+push_token
+
+last_seen
+
+trusted
+```
+
+This enables:
+
+* Push notifications
+* Session management
+* Device-specific security
+* Login history
+
+---
+
+# Authorization Model
+
+Avoid hard-coded role checks such as:
+
+```typescript
+if (user.role === "admin")
+```
+
+Instead, use permissions.
+
+```text
+Permission
+
+booking:create
+
+booking:update
+
+booking:cancel
+
+booking:assign
+
+payment:refund
+
+review:delete
+```
+
+Roles become collections of permissions.
+
+---
+
+# Default Roles
+
+## Customer
+
+```text
+Book services
+
+Pay invoices
+
+Review professionals
+
+Send messages
+
+Manage profile
+```
+
+---
+
+## Professional
+
+```text
+Accept bookings
+
+Manage availability
+
+Upload evidence
+
+Receive payments
+
+Manage portfolio
+```
+
+---
+
+## Administrator
+
+```text
+Manage users
+
+Verify professionals
+
+Suspend accounts
+
+Access analytics
+
+Moderate content
+```
+
+---
+
+## Support
+
+```text
+View bookings
+
+View conversations
+
+Assist customers
+
+Reset accounts
+```
+
+Support personnel deliberately have fewer permissions than administrators.
+
+---
+
+# Verification Levels
+
+Professional verification should be modeled independently of authentication.
+
+```text
+Level 0
+
+Registered
+
+↓
+
+Level 1
+
+Identity Verified
+
+↓
+
+Level 2
+
+Documents Verified
+
+↓
+
+Level 3
+
+Background Check
+
+↓
+
+Level 4
+
+Fully Certified
+```
+
+Different services may require different verification levels.
+
+---
+
+# Security Context
+
+Every request executes inside a Security Context.
+
+```text
+User
+
+↓
+
+Session
+
+↓
+
+Permissions
+
+↓
+
+Organization
+
+↓
+
+Request
+```
+
+Domain services never inspect JWT claims directly—they receive the resolved security context.
+
+---
+
+# JWT Claims
+
+The JWT should remain minimal.
+
+```text
+sub
+
+session_id
+
+issued_at
+
+expires_at
+```
+
+Avoid embedding business data such as ratings, permissions, or profile information inside tokens.
+
+These values change frequently and belong in the database.
+
+---
+
+# Row-Level Security (RLS)
+
+Supabase RLS should be the first security boundary.
+
+Examples:
+
+Customer:
+
+```text
+Can only read
+
+Own profile
+
+Own bookings
+
+Own messages
+
+Own invoices
+```
+
+Professional:
+
+```text
+Can read
+
+Assigned bookings
+
+Own portfolio
+
+Own availability
+
+Own payments
+```
+
+Administrator:
+
+```text
+Can access according to granted permissions.
+```
+
+No API should rely solely on client-side filtering.
+
+---
+
+# Permission Resolution
+
+Permissions should be resolved dynamically.
+
+```text
+User
+
+↓
+
+Assigned Roles
+
+↓
+
+Granted Permissions
+
+↓
+
+Security Context
+
+↓
+
+Domain Service
+```
+
+This supports future custom roles without schema changes.
+
+---
+
+# Sensitive Operations
+
+Certain actions require elevated verification.
+
+Examples:
+
+```text
+Delete Account
+
+Change Email
+
+Update Payment Method
+
+Issue Refund
+
+Modify Banking Information
+
+Verify Professional
+```
+
+These operations should require recent authentication or step-up verification.
+
+---
+
+# Password Policy
+
+```text
+Minimum length
+
+Uppercase
+
+Lowercase
+
+Number
+
+Special character
+
+Compromised password detection
+```
+
+Password storage is delegated to Supabase Auth.
+
+The application never stores password hashes.
+
+---
+
+# Multi-Factor Authentication
+
+Supported methods:
+
+```text
+Authenticator App (TOTP)
+
+SMS OTP
+
+Email OTP
+
+Passkeys (Future)
+```
+
+MFA should be optional for customers and configurable (or required) for professionals and administrators.
+
+---
+
+# Account Recovery
+
+Recovery methods:
+
+```text
+Magic Link
+
+Email Verification
+
+Phone Verification
+
+Recovery Codes
+```
+
+Recovery attempts should be audited.
+
+---
+
+# Audit Events
+
+Every authentication event generates an immutable audit record.
+
+```text
+UserSignedIn
+
+UserSignedOut
+
+PasswordChanged
+
+EmailChanged
+
+MFAEnabled
+
+MFADisabled
+
+SessionRevoked
+
+DeviceRegistered
+
+PermissionGranted
+
+PermissionRevoked
+```
+
+These are stored independently of business events.
+
+---
+
+# Security Layers
+
+```text
+Client Validation
+
+↓
+
+HTTPS
+
+↓
+
+JWT Validation
+
+↓
+
+RLS
+
+↓
+
+Authorization
+
+↓
+
+Domain Validation
+
+↓
+
+Business Rules
+```
+
+Every request passes through all applicable layers.
+
+---
+
+# Offline Authentication
+
+The mobile app should support limited offline functionality.
+
+Local storage:
+
+* Encrypted session token (Expo SecureStore)
+* User profile cache
+* Permission cache
+* Feature flags
+
+Offline users can:
+
+* View cached data
+* Complete permitted offline workflows
+* Queue commands
+
+They cannot perform operations requiring server validation until connectivity is restored.
+
+---
+
+# Secrets Management
+
+No secrets belong in the mobile application.
+
+Environment separation:
+
+```text
+Development
+
+Staging
+
+Production
+```
+
+Secrets reside in:
+
+* Supabase
+* Edge Functions
+* CI/CD
+* Secure backend services
+
+---
+
+# Authentication Flow
+
+```text
+User
+
+↓
+
+Supabase Auth
+
+↓
+
+JWT
+
+↓
+
+Session
+
+↓
+
+Security Context
+
+↓
+
+Domain Services
+
+↓
+
+Repositories
+```
+
+The domain never directly depends on the authentication provider.
+
+---
+
+# Folder Structure
+
+```text
+auth/
+
+providers/
+
+policies/
+
+permissions/
+
+roles/
+
+sessions/
+
+guards/
+
+middleware/
+
+mfa/
+
+audit/
+```
+
+This keeps authentication concerns isolated from business modules.
+
+---
+
+# Future Enterprise Readiness
+
+Although TaskPRO initially targets individual customers and professionals, the security architecture should support organizational deployments.
+
+Future capabilities include:
+
+* Organizations
+* Teams
+* Branches
+* Delegated administration
+* Custom roles
+* SSO (SAML/OIDC)
+* SCIM provisioning
+
+Designing for these now avoids major refactoring later.
+
+---
+
+# Architectural Observation
+
+I recommend **moving beyond traditional RBAC (Role-Based Access Control) to a hybrid RBAC + PBAC (Policy-Based Access Control) model**.
+
+Roles answer **who generally has access**, while policies answer **whether this specific action is allowed in this context**.
+
+For example:
+
+* A professional can only update **their own** availability.
+* An administrator can refund payments **up to a configured limit**.
+* A support agent can view a booking **only while assigned to the case**.
+
+This combination provides significantly greater flexibility while keeping the permission model understandable and maintainable.
+
+---
+
+**Current document:** `AUTH-001 — Authentication, Authorization & Security Architecture v0.1`
+
+**Next document:** `STATE-001 — Client State Management & Offline Synchronization Architecture`

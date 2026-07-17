@@ -1,0 +1,101 @@
+{
+  "primitive": "State",
+  "version": "1.0",
+  "phase": {
+    "claim": "governed / pre-implementation; knowledge complete; no expedition started",
+    "evidence_sources": ["TASKPRO-GAPS-001-CONTAINER", "TASKPRO-BUILD-001"],
+    "derivation_type": "INFERRED",
+    "confidence": "HIGH"
+  },
+  "confidence_map": [
+    { "domain": "technology-stack", "confidence": "HIGH", "authority": "TASKPRO-TECH-001", "derivation_type": "DIRECT" },
+    { "domain": "design-system", "confidence": "HIGH", "authority": "TASKPRO-DS-001..005", "derivation_type": "DIRECT" },
+    { "domain": "domain-model", "confidence": "HIGH", "authority": "TASKPRO-DOM-001 + TASKPRO-DATA-001 + TASKPRO-DB-001", "derivation_type": "DIRECT" },
+    { "domain": "delivery-order", "confidence": "HIGH", "authority": "TASKPRO-BUILD-001", "derivation_type": "DIRECT" },
+    { "domain": "workflow-state-machines", "confidence": "MEDIUM", "authority": "TASKPRO-FLOW-001 + TASKPRO-STATE-002 (jointly, pending R1)", "derivation_type": "INFERRED" },
+    { "domain": "payment-gateway-sequencing", "confidence": "DEFERRED", "authority": null, "derivation_type": "UNRESOLVED" },
+    { "domain": "i18n-library", "confidence": "DEFERRED", "authority": null, "derivation_type": "UNRESOLVED" }
+  ],
+  "open_decisions": [
+    {
+      "id": "D1",
+      "claim": "i18n library selection. TASKPRO-I18N-001 mandates t() keys and forbids hardcoded text, but names no library.",
+      "derivation_type": "UNRESOLVED",
+      "confidence": "DEFERRED",
+      "evidence_sources": ["TASKPRO-I18N-001"],
+      "blocks": ["E6"]
+    },
+    {
+      "id": "D2",
+      "claim": "Payment gateway sequencing. TASKPRO-TECH-001 names Stripe Connect Express primary and Mercado Pago secondary; integration order is unspecified.",
+      "derivation_type": "UNRESOLVED",
+      "confidence": "DEFERRED",
+      "evidence_sources": ["TASKPRO-TECH-001"],
+      "blocks": ["E9"]
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "R1",
+      "type": "conflict",
+      "claim": "Booking state-machine vocabulary conflict: TASKPRO-FLOW-001 models Draft -> Configured -> Awaiting Payment -> Booked -> Assigned -> En Route -> Arrived -> Working -> Completed -> Rated -> Archived; TASKPRO-DOM-001 models Draft -> Requested -> Searching Professional -> Assigned -> Accepted -> En Route -> Arrived -> In Progress -> ... -> Paid -> Reviewed. One canonical machine must be ratified before workflow synthesis.",
+      "evidence_sources": ["TASKPRO-FLOW-001", "TASKPRO-DOM-001", "TASKPRO-STATE-002"],
+      "derivation_type": "INFERRED",
+      "confidence": "HIGH",
+      "status": "open",
+      "blocks": ["E7"],
+      "resolution_rule": "Requires human ratification; SYNTH must not choose a vocabulary silently."
+    },
+    {
+      "id": "R2",
+      "type": "authored-artifact-defect",
+      "claim": "knowledge/Docs/DS-05.md line 1 begins with a stray character ('i# TASKPRO-DS-005'), corrupting the artifact header.",
+      "evidence_sources": ["TASKPRO-DS-005"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "status": "open",
+      "blocks": [],
+      "resolution_rule": "Fix requires approval-gated edit of an authored knowledge artifact; not an initialization action."
+    },
+    {
+      "id": "R3",
+      "type": "superseded-text",
+      "claim": "TASKPRO-DEV-001 retains its React Navigation recommendation, superseded by TASKPRO-TECH-001 (Expo Router canonical).",
+      "evidence_sources": ["TASKPRO-DEV-001", "TASKPRO-TECH-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "status": "resolved-by-registry",
+      "blocks": [],
+      "resolution_rule": "Supersession edge recorded in Evidence primitive; DEV-001 document intentionally left unmodified."
+    },
+    {
+      "id": "R4",
+      "type": "naming-mismatch",
+      "claim": "DS files are named DS-01.md..DS-05.md while carrying canonical IDs TASKPRO-DS-001..005.",
+      "evidence_sources": ["TASKPRO-DS-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "status": "resolved-by-registry",
+      "blocks": [],
+      "resolution_rule": "Resolved by header-anchored registration. Optional file rename is approval-gated and not part of initialization."
+    },
+    {
+      "id": "R5",
+      "type": "authored-artifact-inconsistency",
+      "claim": "knowledge/Docs/API-002.md.txt carries the internal header 'TASKPRO-API-001', which collides with the family ID of API-001.md.txt. During initialization the registry applied filename-derived disambiguation (registered as TASKPRO-API-002) and ID normalization (registered API-001.md.txt as TASKPRO-API-001 despite its header lacking the prefix).",
+      "evidence_sources": ["TASKPRO-API-001", "TASKPRO-API-002"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "status": "resolved-by-registry",
+      "blocks": [],
+      "resolution_rule": "Documented in Evidence primitive as registry normalization/disambiguation rules; authored artifact left unmodified. Future extraction must follow the same deterministic rules."
+    }
+  ],
+  "invariants": [
+    "knowledge/ is authored and immutable to SYNTH; changes require explicit approval.",
+    "Every governance assertion carries primitive, claim, evidence_sources, derivation_type, confidence.",
+    "An assertion with derivation_type UNRESOLVED carries no claim content beyond the open question itself.",
+    "Implementation capabilities exist only inside expeditions, never in initialization or governance.",
+    "Shell commands in this workspace are RTK-optimized per user skill configuration."
+  ]
+}

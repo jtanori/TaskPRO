@@ -1,0 +1,976 @@
+Proceeding with the next artifact.
+
+# TASKPRO-API-001 — TaskPRO API & Integration Specification v0.1
+
+## Purpose
+
+The API & Integration Specification defines the communication layer between the TaskPRO application and backend services.
+
+This artifact translates the domain model into:
+
+* API boundaries
+* service contracts
+* request/response patterns
+* authentication flows
+* realtime behavior
+* integration requirements
+* error handling standards
+
+It connects:
+
+```text id="2q6p7k"
+TASKPRO-DATA-001
+Domain Model
+
+        ↓
+
+TASKPRO-API-001
+API Contracts
+
+        ↓
+
+TASKPRO-ARCH-001
+Application Architecture
+
+        ↓
+
+Backend Implementation
+```
+
+---
+
+# 1. API Architecture Overview
+
+## 1.1 API Principles
+
+TaskPRO APIs follow these principles:
+
+### Contract First
+
+Frontend and backend communicate through explicit contracts.
+
+Every API operation defines:
+
+* input schema
+* output schema
+* validation rules
+* error states
+
+---
+
+### Domain-Oriented APIs
+
+APIs are organized around business capabilities.
+
+Prefer:
+
+```text id="0e8c4j"
+Bookings API
+
+Services API
+
+Messaging API
+```
+
+over:
+
+```text id="jd8p9x"
+Generic Data API
+```
+
+---
+
+### Predictable Responses
+
+All responses follow consistent structures.
+
+---
+
+### Mobile Optimized
+
+APIs should minimize:
+
+* unnecessary requests
+* excessive payloads
+* duplicate fetching
+
+---
+
+# 2. API Layer Architecture
+
+High-level:
+
+```text id="0jv4wi"
+Mobile Application
+
+        ↓
+
+API Client
+
+        ↓
+
+API Gateway
+
+        ↓
+
+Domain Services
+
+        ↓
+
+Database / External Services
+```
+
+---
+
+# 3. API Modules
+
+TaskPRO API modules:
+
+```text id="7a1h6c"
+Authentication
+
+Users
+
+Profiles
+
+Services
+
+Marketplace
+
+Search
+
+Bookings
+
+Tasks
+
+Messaging
+
+Notifications
+
+Reviews
+
+Payments
+
+Files
+```
+
+---
+
+# 4. Authentication API
+
+## Purpose
+
+Manage identity and sessions.
+
+---
+
+# AUTH-001 — Register User
+
+## Request
+
+```json
+{
+"email":"user@example.com",
+"password":"password",
+"role":"customer"
+}
+```
+
+---
+
+## Response
+
+```json
+{
+"userId":"usr_123",
+"status":"verification_required"
+}
+```
+
+---
+
+## States
+
+```text id="7i4fxo"
+Created
+
+↓
+
+Verification Pending
+
+↓
+
+Active
+```
+
+---
+
+# AUTH-002 — Login
+
+## Request
+
+```json
+{
+"email":"user@example.com",
+"password":"password"
+}
+```
+
+---
+
+## Response
+
+```json
+{
+"accessToken":"token",
+"refreshToken":"token",
+"user":{}
+}
+```
+
+---
+
+# AUTH-003 — Refresh Session
+
+Purpose:
+
+Maintain authenticated sessions.
+
+---
+
+# AUTH-004 — Logout
+
+Invalidates session.
+
+---
+
+# 5. User API
+
+---
+
+# USER-001 — Get Current User
+
+Returns:
+
+```json
+{
+"id":"usr_123",
+"profile":{}
+}
+```
+
+---
+
+# USER-002 — Update Profile
+
+Updates:
+
+* identity
+* preferences
+* profile image
+
+---
+
+# USER-003 — Get User
+
+Used for:
+
+* providers
+* communication
+* reviews
+
+---
+
+# 6. Service API
+
+---
+
+# SERVICE-001 — List Services
+
+Purpose:
+
+Discovery.
+
+---
+
+Request:
+
+```json
+{
+"category":"cleaning",
+"location":"area",
+"page":1
+}
+```
+
+---
+
+Response:
+
+```json
+{
+"items":[
+{
+"id":"srv_1",
+"title":"Cleaning",
+"price":50
+}
+]
+}
+```
+
+---
+
+# SERVICE-002 — Get Service Detail
+
+Returns:
+
+```text id="v5a1yc"
+Service
+
+Provider
+
+Availability
+
+Reviews
+
+Pricing
+```
+
+---
+
+# SERVICE-003 — Create Service
+
+Provider capability.
+
+---
+
+# SERVICE-004 — Update Service
+
+---
+
+# SERVICE-005 — Archive Service
+
+---
+
+# 7. Search API
+
+## Purpose
+
+Fast discovery.
+
+---
+
+# SEARCH-001 — Search
+
+Request:
+
+```json
+{
+"query":"cleaning",
+"filters":{
+"category":"home"
+}
+}
+```
+
+---
+
+Response:
+
+```json
+{
+"results":[]
+}
+```
+
+---
+
+Supported:
+
+* keyword search
+* filters
+* sorting
+* pagination
+
+---
+
+# 8. Booking API
+
+Critical workflow API.
+
+---
+
+# BOOKING-001 — Create Booking
+
+## Request
+
+```json
+{
+"serviceId":"srv_123",
+"date":"2026-07-20",
+"time":"10:00"
+}
+```
+
+---
+
+Response:
+
+```json
+{
+"id":"book_123",
+"status":"submitted"
+}
+```
+
+---
+
+# BOOKING-002 — Get Booking
+
+Returns:
+
+```text id="xq7jui"
+Service
+
+Customer
+
+Provider
+
+Schedule
+
+Status
+
+Timeline
+```
+
+---
+
+# BOOKING-003 — Update Booking Status
+
+Allowed transitions:
+
+```text id="q9w8tp"
+Submitted
+
+→ Accepted
+
+→ Scheduled
+
+→ In Progress
+
+→ Completed
+```
+
+---
+
+Invalid:
+
+```text
+Completed → Submitted
+```
+
+---
+
+# BOOKING-004 — Cancel Booking
+
+Requires:
+
+* authorization
+* cancellation reason
+
+---
+
+# 9. Task API
+
+---
+
+# TASK-001 — Get Task
+
+Returns:
+
+* status
+* timeline
+* actions
+
+---
+
+# TASK-002 — Update Task
+
+Examples:
+
+* start task
+* complete task
+* add notes
+
+---
+
+# TASK-003 — Get Task History
+
+Returns:
+
+```json
+[
+{
+"event":"TASK_STARTED",
+"time":"..."
+}
+]
+```
+
+---
+
+# 10. Messaging API
+
+---
+
+# MESSAGE-001 — Get Conversations
+
+---
+
+# MESSAGE-002 — Get Messages
+
+Supports:
+
+* pagination
+* realtime updates
+
+---
+
+# MESSAGE-003 — Send Message
+
+Request:
+
+```json
+{
+"conversationId":"conv_1",
+"text":"Hello"
+}
+```
+
+---
+
+Response:
+
+```json
+{
+"id":"msg_1",
+"status":"sent"
+}
+```
+
+---
+
+# MESSAGE-004 — Upload Attachment
+
+Supports:
+
+* images
+* documents
+
+---
+
+# 11. Notification API
+
+---
+
+# NOTIFICATION-001 — Get Notifications
+
+---
+
+# NOTIFICATION-002 — Mark Read
+
+---
+
+# NOTIFICATION-003 — Notification Preferences
+
+---
+
+# 12. Review API
+
+---
+
+# REVIEW-001 — Create Review
+
+Available after:
+
+```text
+Booking.status = completed
+```
+
+---
+
+Request:
+
+```json
+{
+"rating":5,
+"comment":"Excellent service"
+}
+```
+
+---
+
+# REVIEW-002 — Get Reviews
+
+---
+
+# 13. Payment API
+
+---
+
+# PAYMENT-001 — Create Payment Intent
+
+---
+
+# PAYMENT-002 — Confirm Payment
+
+---
+
+# PAYMENT-003 — Refund Payment
+
+---
+
+Payment states:
+
+```text id="md0p6a"
+Pending
+
+↓
+
+Authorized
+
+↓
+
+Captured
+
+↓
+
+Refunded
+```
+
+---
+
+# 14. File API
+
+---
+
+## Purpose
+
+Manage uploads.
+
+Used for:
+
+* profile images
+* service images
+* attachments
+* verification documents
+
+---
+
+# FILE-001 — Upload File
+
+Flow:
+
+```text id="9r7bkp"
+Request Upload
+
+↓
+
+Receive Upload URL
+
+↓
+
+Upload
+
+↓
+
+Confirm
+```
+
+---
+
+# 15. Realtime Architecture
+
+TaskPRO requires realtime for:
+
+* messages
+* booking updates
+* notifications
+
+---
+
+Architecture:
+
+```text id="5d5xvf"
+Backend Event
+
+↓
+
+Realtime Channel
+
+↓
+
+Mobile Listener
+
+↓
+
+State Update
+```
+
+---
+
+# Realtime Events
+
+Examples:
+
+```text id="7p3r8q"
+MESSAGE_RECEIVED
+
+BOOKING_UPDATED
+
+TASK_STATUS_CHANGED
+
+NOTIFICATION_CREATED
+```
+
+---
+
+# 16. Error Contract
+
+All APIs use standard errors.
+
+Example:
+
+```json
+{
+"error":{
+"code":"BOOKING_TIME_UNAVAILABLE",
+"message":"Selected time is unavailable",
+"action":"SELECT_NEW_TIME"
+}
+}
+```
+
+---
+
+# Error Categories
+
+## Validation
+
+User input problem.
+
+---
+
+## Authentication
+
+Session problem.
+
+---
+
+## Authorization
+
+Permission problem.
+
+---
+
+## Business Rule
+
+Workflow restriction.
+
+---
+
+## System
+
+Infrastructure failure.
+
+---
+
+# 17. Pagination Standard
+
+Collections use:
+
+```json
+{
+"items":[],
+"pagination":{
+"page":1,
+"limit":20,
+"total":200
+}
+}
+```
+
+---
+
+# 18. API Versioning
+
+Recommended:
+
+```text
+/api/v1/
+```
+
+Future:
+
+```text
+/api/v2/
+```
+
+---
+
+# 19. Integration Requirements
+
+External integrations may include:
+
+## Authentication Provider
+
+Responsibilities:
+
+* identity
+* sessions
+* verification
+
+---
+
+## Payment Provider
+
+Responsibilities:
+
+* payment processing
+* refunds
+* transaction state
+
+---
+
+## Maps / Location Provider
+
+Responsibilities:
+
+* addresses
+* distance
+* service area
+
+---
+
+## Notification Provider
+
+Responsibilities:
+
+* push notifications
+* email
+* SMS
+
+---
+
+# 20. API Security
+
+Requirements:
+
+## Authentication
+
+* token validation
+* expiration handling
+
+---
+
+## Authorization
+
+Every action validates:
+
+* user identity
+* ownership
+* role permissions
+
+---
+
+## Input Validation
+
+All payloads validated server-side.
+
+---
+
+## Rate Limiting
+
+Required for:
+
+* login
+* search
+* messaging
+* uploads
+
+---
+
+# 21. API Governance
+
+New API endpoints require:
+
+## Contract
+
+* purpose
+* request
+* response
+* errors
+
+---
+
+## Domain Alignment
+
+Must map to:
+
+* entity
+* workflow
+* component usage
+
+---
+
+## Lifecycle
+
+Changes require:
+
+* compatibility review
+* migration strategy
+
+---
+
+# TASKPRO API Foundation Complete
+
+Current specification stack:
+
+```text
+TASKPRO-DS-001
+Design Foundation
+
+TASKPRO-COMP-001
+Component Catalog
+
+TASKPRO-SCREEN-001
+Screen Catalog
+
+TASKPRO-FLOW-001
+Workflow Specification
+
+TASKPRO-ARCH-001
+Application Architecture
+
+TASKPRO-DATA-001
+Domain Model
+
+TASKPRO-API-001
+API & Integration Specification
+```
+
+Next recommended artifact:
+
+# TASKPRO-STATE-001 — TaskPRO Application State & Workflow State Machine Specification v0.1
+
+This will define:
+
+* client state model
+* server synchronization rules
+* workflow state transitions
+* event handling
+* caching strategy
+* offline behavior
+
+It will complete the runtime behavior layer before implementation.

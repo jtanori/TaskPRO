@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task Pro MX-Ca - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#136a5f",
+                        "inverse-on-surface": "#f1f1f1",
+                        "inverse-primary": "#88d4c7",
+                        "primary-fixed-dim": "#88d4c7",
+                        "on-secondary-fixed-variant": "#3d4948",
+                        "primary-fixed": "#a4f1e3",
+                        "on-surface-variant": "#3f4946",
+                        "text-primary": "#000000",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-container": "#7ff88a",
+                        "background": "#f9f9f9",
+                        "primary": "#00554b",
+                        "tertiary-fixed-dim": "#66df75",
+                        "on-primary-fixed": "#00201c",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#00571b",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#bec9c5",
+                        "on-tertiary-fixed": "#002106",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#00531a",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "tertiary-container": "#007227",
+                        "tertiary-fixed": "#83fc8e",
+                        "secondary-container": "#d8e5e3",
+                        "inverse-surface": "#2f3131",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f3f3",
+                        "on-secondary-container": "#5b6765",
+                        "on-primary-container": "#a1eddf",
+                        "text-secondary": "#666666",
+                        "on-primary-fixed-variant": "#005047",
+                        "secondary": "#55615f",
+                        "surface-container-high": "#e8e8e8",
+                        "on-background": "#1a1c1c",
+                        "status-danger": "#DC3545",
+                        "on-surface": "#1a1c1c",
+                        "primary-container": "#1a6e63",
+                        "surface-container": "#eeeeee",
+                        "secondary-fixed": "#d8e5e3",
+                        "status-warning": "#FFC107",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f9f9f9",
+                        "secondary-fixed-dim": "#bcc9c7",
+                        "surface": "#f9f9f9",
+                        "border-subtle": "#E0E0E0",
+                        "outline": "#6f7976",
+                        "on-secondary-fixed": "#121e1d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F5F5F5;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-14 fixed top-0 z-50 bg-surface dark:bg-on-background shadow-sm">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full">menu</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Task Pro MX-Ca</h1>
+</div>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full">notifications</button>
+</header>
+<main class="pt-20 pb-24 px-4 max-w-2xl mx-auto min-h-screen">
+<!-- Welcome Hero -->
+<section class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg-mobile text-text-primary mb-md">¿Qué servicio necesitas?</h2>
+<!-- Search Bar -->
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-lowest border border-border-subtle rounded-xl font-body-md text-text-primary focus:ring-2 focus:ring-primary focus:border-primary transition-all shadow-sm outline-none" placeholder="Busca un servicio (ej. Electricista)" type="text"/>
+</div>
+</section>
+<!-- Service Categories Grid (Bento Style) -->
+<section class="mb-xl">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-md">
+<!-- Category Item: Limpieza -->
+<button class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all border border-border-subtle group">
+<div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-sm group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">cleaning_services</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary">Limpieza</span>
+</button>
+<!-- Category Item: Electricidad -->
+<button class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all border border-border-subtle group">
+<div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-sm group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary">Electricidad</span>
+</button>
+<!-- Category Item: Aire Acondicionado -->
+<button class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all border border-border-subtle group">
+<div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-sm group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">ac_unit</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary text-center">Aire Acondicionado</span>
+</button>
+<!-- Category Item: Fontanería -->
+<button class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all border border-border-subtle group">
+<div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-sm group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">plumbing</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary">Fontanería</span>
+</button>
+<!-- Category Item: Pintura -->
+<button class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all border border-border-subtle group">
+<div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-sm group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">format_paint</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary">Pintura</span>
+</button>
+<!-- Category Item: Carpintería -->
+<button class="flex flex-col items-center justify-center p-lg bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all border border-border-subtle group">
+<div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center mb-sm group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">carpenter</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary">Carpintería</span>
+</button>
+</div>
+</section>
+<!-- Populares cerca de ti -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-text-primary">Populares cerca de ti</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">Ver todos</button>
+</div>
+<!-- Technician Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-border-subtle shadow-sm hover:shadow-md transition-all">
+<div class="flex gap-md">
+<div class="relative w-24 h-24 shrink-0">
+<img class="w-full h-full object-cover rounded-xl" data-alt="A professional technician portrait of a middle-aged man in a clean teal uniform, smiling confidently towards the camera. He is standing in a bright, modern workshop environment with organized tools in the soft-focus background. The lighting is warm and natural, suggesting a reliable and friendly service professional. Corporate modernism aesthetic with high-quality photographic finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACWNt_rdWquZnFSELjTj1jaKXu0rrT2BQ21QvU5oKxxz3cWCd9lPqF6jdL-89ySaO83a90ppPUivrTSU3ftqghqbI9lPxPfo9MTolqbwJzUWMMFkcA-bXAbCZYX3prVtAWkRr-NXn_pTVVkl-oez1lVLYA0td0t13CMKMSI-yolPOiANpwZeJVgttyzbb7Saf3pgN1Vvhv_YbHxJLzQJCqiqlbiYuzmpZ7KyABt_T5mquG2iIhq6PVWEGZo6DQA54AjxEVRUtK69s"/>
+<div class="absolute -bottom-2 -right-2 bg-primary text-on-primary px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[12px] font-bold">4.9</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-headline-md text-text-primary leading-tight">Carlos Martínez</h4>
+<span class="font-headline-md text-headline-md text-primary">$450 <span class="text-xs text-text-secondary">MXN/hr</span></span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-xs">Especialista en Electricidad</p>
+<div class="flex items-center gap-1 mt-sm">
+<span class="material-symbols-outlined text-text-secondary text-[16px]">location_on</span>
+<span class="text-caption text-text-secondary">A 1.2 km de tu ubicación</span>
+</div>
+</div>
+<div class="mt-md flex gap-sm">
+<button class="flex-1 h-10 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-95">Reservar</button>
+<button class="w-10 h-10 border border-primary text-primary rounded-lg flex items-center justify-center hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Second Technician Card for variety -->
+<div class="mt-md bg-surface-container-lowest rounded-xl p-md border border-border-subtle shadow-sm hover:shadow-md transition-all">
+<div class="flex gap-md">
+<div class="relative w-24 h-24 shrink-0">
+<img class="w-full h-full object-cover rounded-xl" data-alt="A skilled female plumber wearing a professional dark teal work shirt, holding a wrench and looking at the camera with a helpful expression. The setting is a clean, well-lit modern kitchen with stainless steel appliances. The image is captured with shallow depth of field, emphasizing the professional while maintaining a clean, trustworthy atmosphere. Modern, high-resolution aesthetic for a premium service app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYEhj3GfM4t68Xjc-VKSJ5lrv0bA1p6YLWIDoP7ttoeaz-9uUoabYr-XfFhJpFBGCs80qGlq-6x9H8quyQnt3NoAQH9e8tus5YwME4Pssjf_9YeB79FbsIDGVRoP3jh1qZ0mU-zZHsShvgD616WNMmig4tMcxe65E_ut-MhF5A_VUYlGK1llKmHhMmkf4T_GEfv6-ixeTsfHMTbKCihjdJYelwh389d9bryAZyC7nyc-L2E6a8Em31KRlzJBtSpENoaQZFoZP19EI"/>
+<div class="absolute -bottom-2 -right-2 bg-primary text-on-primary px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[12px] font-bold">4.8</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-headline-md text-text-primary leading-tight">Ana García</h4>
+<span class="font-headline-md text-headline-md text-primary">$380 <span class="text-xs text-text-secondary">MXN/hr</span></span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-xs">Experta en Fontanería</p>
+<div class="flex items-center gap-1 mt-sm">
+<span class="material-symbols-outlined text-text-secondary text-[16px]">location_on</span>
+<span class="text-caption text-text-secondary">A 0.8 km de tu ubicación</span>
+</div>
+</div>
+<div class="mt-md flex gap-sm">
+<button class="flex-1 h-10 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-95">Reservar</button>
+<button class="w-10 h-10 border border-primary text-primary rounded-lg flex items-center justify-center hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-16 z-50 flex justify-around items-center px-4 pb-safe bg-surface-container-lowest dark:bg-on-background shadow-lg rounded-t-xl border-t border-border-subtle">
+<button class="flex flex-col items-center justify-center text-primary dark:text-on-primary-container bg-secondary-container/30 dark:bg-primary-container/20 rounded-xl px-3 py-1 scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm mt-0.5">Explorar</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors">
+<span class="material-symbols-outlined">handyman</span>
+<span class="font-label-sm text-label-sm mt-0.5">Servicios</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-0.5">Mensajes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-secondary-fixed-dim hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-0.5">Perfil</span>
+</button>
+</nav>
+<!-- Micro-interactions Script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('opacity-80', 'scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('opacity-80', 'scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('opacity-80', 'scale-95');
+            });
+        });
+    </script>
+</body></html>

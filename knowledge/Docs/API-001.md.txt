@@ -1,0 +1,752 @@
+# API-001 — Domain API & Service Contracts v0.1
+
+## Purpose
+
+TaskPRO should **not** expose a CRUD API.
+
+It should expose **business capabilities**.
+
+The API exists to execute use cases, not manipulate tables.
+
+Instead of:
+
+```
+POST /bookings
+PATCH /bookings/123
+DELETE /messages/456
+```
+
+the API should express business intent:
+
+```
+Request Booking
+
+Accept Booking
+
+Arrive At Location
+
+Upload Evidence
+
+Complete Work
+
+Generate Invoice
+
+Submit Review
+```
+
+This makes the API significantly easier to understand, version, audit, and evolve.
+
+---
+
+# API Philosophy
+
+The architecture consists of five layers.
+
+```
+React Native
+
+↓
+
+Application Services
+
+↓
+
+Domain Services
+
+↓
+
+Repositories
+
+↓
+
+Supabase
+```
+
+The mobile application never communicates directly with SQL tables.
+
+---
+
+# API Categories
+
+```text
+Identity
+
+Marketplace
+
+Booking
+
+Execution
+
+Messaging
+
+Payments
+
+Reviews
+
+Notifications
+
+Documents
+
+Media
+
+Administration
+
+System
+```
+
+Each category becomes its own module.
+
+---
+
+# Identity Service
+
+Responsible for authentication and identity.
+
+## Commands
+
+```
+SignIn
+
+SignOut
+
+Register
+
+RefreshSession
+
+UpdateProfile
+
+UpdatePreferences
+
+DeleteAccount
+```
+
+## Queries
+
+```
+CurrentUser
+
+UserProfile
+
+UserPreferences
+
+Addresses
+```
+
+---
+
+# Marketplace Service
+
+Responsible for discovery.
+
+## Queries
+
+```
+BrowseCategories
+
+SearchServices
+
+NearbyProfessionals
+
+ProfessionalProfile
+
+ProfessionalPortfolio
+
+ProfessionalAvailability
+
+ProfessionalReviews
+```
+
+## Commands
+
+```
+FavoriteProfessional
+
+UnfavoriteProfessional
+```
+
+---
+
+# Booking Service
+
+This is the heart of TaskPRO.
+
+## Commands
+
+```
+RequestBooking
+
+UpdateBooking
+
+CancelBooking
+
+AssignProfessional
+
+AcceptBooking
+
+DeclineBooking
+
+StartTravel
+
+Arrive
+
+StartWork
+
+PauseWork
+
+ResumeWork
+
+CompleteWork
+
+CloseBooking
+```
+
+Every command validates business rules before producing one or more domain events.
+
+---
+
+## Queries
+
+```
+Booking
+
+BookingHistory
+
+UpcomingBookings
+
+PastBookings
+
+BookingTimeline
+
+BookingEvidence
+```
+
+---
+
+# Execution Service
+
+Responsible for work performed in the field.
+
+## Commands
+
+```
+CreateChecklist
+
+CompleteChecklistItem
+
+UploadEvidence
+
+RecordTime
+
+AddMaterial
+
+AddWorkNote
+
+CaptureSignature
+```
+
+## Queries
+
+```
+WorkLog
+
+Evidence
+
+Checklist
+```
+
+---
+
+# Messaging Service
+
+Commands
+
+```
+CreateConversation
+
+SendMessage
+
+SendAttachment
+
+MarkRead
+```
+
+Queries
+
+```
+Conversation
+
+Messages
+
+UnreadCount
+```
+
+---
+
+# Payment Service
+
+Commands
+
+```
+CreatePaymentIntent
+
+ConfirmPayment
+
+CancelPayment
+
+IssueRefund
+
+CreatePayout
+```
+
+Queries
+
+```
+PaymentStatus
+
+PaymentHistory
+
+Invoices
+```
+
+The domain never depends on Stripe (or any provider). It depends on a `PaymentProvider` interface.
+
+---
+
+# Review Service
+
+Commands
+
+```
+SubmitReview
+
+UpdateReview
+```
+
+Queries
+
+```
+ProfessionalReviews
+
+BookingReview
+```
+
+---
+
+# Notification Service
+
+Commands
+
+```
+RegisterDevice
+
+UpdateNotificationPreferences
+
+MarkNotificationRead
+```
+
+Queries
+
+```
+Notifications
+
+UnreadNotifications
+```
+
+---
+
+# Media Service
+
+Commands
+
+```
+UploadMedia
+
+DeleteMedia
+
+GenerateThumbnail
+```
+
+Queries
+
+```
+MediaMetadata
+```
+
+---
+
+# Document Service
+
+Commands
+
+```
+UploadVerificationDocument
+
+ReplaceDocument
+
+VerifyDocument
+```
+
+Queries
+
+```
+ProfessionalDocuments
+
+VerificationStatus
+```
+
+---
+
+# Administration Service
+
+Commands
+
+```
+SuspendUser
+
+ActivateUser
+
+VerifyProfessional
+
+RejectProfessional
+```
+
+Queries
+
+```
+AuditHistory
+
+SystemMetrics
+
+PendingVerifications
+```
+
+---
+
+# API Design Pattern
+
+Every endpoint follows the same lifecycle.
+
+```
+Request
+
+↓
+
+Validation
+
+↓
+
+Authorization
+
+↓
+
+Domain Service
+
+↓
+
+Repository
+
+↓
+
+Domain Events
+
+↓
+
+Response
+```
+
+Nothing bypasses this pipeline.
+
+---
+
+# Command Structure
+
+Every command follows a standard envelope.
+
+```typescript
+{
+    requestId,
+    actorId,
+    timestamp,
+    payload
+}
+```
+
+Benefits:
+
+* Auditability
+* Replayability
+* Idempotency
+* Distributed tracing
+
+---
+
+# Query Structure
+
+Queries should be side-effect free.
+
+Example:
+
+```
+GetBookingTimeline
+
+↓
+
+Booking Projection
+
+↓
+
+DTO
+```
+
+Queries never expose database tables directly.
+
+---
+
+# DTO Layer
+
+The mobile application never receives domain entities.
+
+Instead:
+
+```
+Domain
+
+↓
+
+Mapper
+
+↓
+
+DTO
+
+↓
+
+JSON
+```
+
+Example
+
+```
+Booking
+
+↓
+
+BookingSummaryDTO
+
+↓
+
+Mobile
+```
+
+This isolates the UI from future domain changes.
+
+---
+
+# Versioning
+
+Never version individual endpoints.
+
+Version the capability.
+
+Example
+
+```
+Booking Service v1
+
+Booking Service v2
+```
+
+The mobile application depends on service contracts rather than implementation details.
+
+---
+
+# Error Model
+
+Every response follows the same contract.
+
+```typescript
+{
+    success: boolean,
+    data?: {},
+    error?: {
+        code,
+        message,
+        details
+    }
+}
+```
+
+Error codes should be domain-specific, for example:
+
+```
+BOOKING_NOT_FOUND
+
+BOOKING_ALREADY_COMPLETED
+
+PROFESSIONAL_UNAVAILABLE
+
+PAYMENT_DECLINED
+
+INVALID_SERVICE_AREA
+```
+
+This allows the UI to present meaningful feedback without parsing provider-specific messages.
+
+---
+
+# Realtime Events
+
+Instead of polling, clients subscribe to domain events.
+
+```
+BookingUpdated
+
+ProfessionalLocationUpdated
+
+MessageReceived
+
+NotificationCreated
+
+PaymentCompleted
+
+ReviewSubmitted
+```
+
+Supabase Realtime provides the transport; the domain defines the event semantics.
+
+---
+
+# External Providers
+
+External integrations are adapters, not dependencies.
+
+```
+PaymentProvider
+    ├── Stripe
+    ├── Mercado Pago
+    └── Future Providers
+
+NotificationProvider
+    ├── Expo Push
+    ├── Firebase
+    └── APNs
+
+StorageProvider
+    ├── Supabase Storage
+    └── Future Providers
+
+MapsProvider
+    ├── Google Maps
+    ├── Apple Maps
+    └── Mapbox
+```
+
+The application layer depends only on the interfaces.
+
+---
+
+# Internal Module Communication
+
+Modules should not call each other directly.
+
+Instead:
+
+```
+BookingCompleted
+
+↓
+
+Event Bus
+
+↓
+
+Invoice Module
+
+↓
+
+Generate Invoice
+
+↓
+
+Notification Module
+
+↓
+
+Notify Customer
+
+↓
+
+Review Module
+
+↓
+
+Enable Review
+```
+
+This reduces coupling and allows independent evolution of features.
+
+---
+
+# API Folder Structure
+
+```text
+src/
+  api/
+    identity/
+    marketplace/
+    booking/
+    execution/
+    messaging/
+    payments/
+    reviews/
+    notifications/
+    media/
+    documents/
+    admin/
+```
+
+Each module contains:
+
+```text
+commands/
+queries/
+dto/
+contracts/
+mappers/
+validators/
+```
+
+This mirrors the domain structure and keeps responsibilities localized.
+
+---
+
+# OpenAPI Generation
+
+Although the API is domain-driven, every public contract should be generated into an OpenAPI specification. This provides:
+
+* Client SDK generation
+* Interactive documentation
+* Contract testing
+* Backward compatibility checks
+* Automated mock servers
+
+The OpenAPI document becomes a projection of the service contracts rather than the source of truth.
+
+---
+
+# Architectural Observation
+
+One improvement I recommend is to **adopt CQRS from the beginning**, even if both command and query handlers execute within the same backend.
+
+This does **not** require separate databases or microservices. It simply means:
+
+* **Commands** enforce business rules and emit domain events.
+* **Queries** read optimized projections tailored to the UI.
+
+This aligns perfectly with the screen-heavy nature of TaskPRO. Most mobile screens are read-oriented (lists, dashboards, history, profiles), while user actions are comparatively few. Designing around CQRS now avoids forcing UI concerns into the transactional domain model later.
+
+---
+
+**Current document:** `API-001 — Domain API & Service Contracts v0.1`
+
+**Next document:** `AUTH-001 — Authentication, Authorization & Security Architecture`

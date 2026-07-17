@@ -1,0 +1,1243 @@
+Proceeding with the next artifact.
+
+# TASKPRO-DATA-001 — TaskPRO Domain Model & Data Specification v0.1
+
+## Purpose
+
+The Domain Model & Data Specification defines the business entities, relationships, lifecycle states, and data contracts that support TaskPRO workflows.
+
+This artifact connects:
+
+```text
+TASKPRO-FLOW-001
+User Workflows
+
+        ↓
+
+TASKPRO-DATA-001
+Domain Model
+
+        ↓
+
+TASKPRO-ARCH-001
+Application Architecture
+
+        ↓
+
+Backend / API Implementation
+```
+
+The objective is to establish a stable domain language before implementation.
+
+---
+
+# 1. Domain Model Overview
+
+## 1.1 Domain Principles
+
+TaskPRO is modeled around three primary concepts:
+
+```text
+Users
+
+Services
+
+Workflows
+```
+
+Everything else supports those concepts.
+
+---
+
+## 1.2 Core Domain Areas
+
+The TaskPRO domain consists of:
+
+```text
+1. Identity
+2. Service Marketplace
+3. Requests & Bookings
+4. Task Execution
+5. Communication
+6. Trust & Verification
+7. Notifications
+8. Preferences
+```
+
+---
+
+# 2. Entity Overview
+
+Primary entities:
+
+```text
+User
+
+Profile
+
+Organization
+
+Service
+
+Category
+
+Provider
+
+Availability
+
+Booking
+
+Task
+
+Payment
+
+Review
+
+Conversation
+
+Message
+
+Notification
+
+Attachment
+```
+
+---
+
+# 3. Identity Domain
+
+---
+
+# 3.1 User
+
+## Purpose
+
+Represents an authenticated account.
+
+---
+
+## Attributes
+
+```text
+id
+
+email
+
+phone
+
+role
+
+status
+
+createdAt
+
+updatedAt
+```
+
+---
+
+## User Roles
+
+```text
+Customer
+
+Provider
+
+Organization Admin
+
+Administrator
+```
+
+---
+
+## User Lifecycle
+
+```text
+Created
+
+↓
+
+Verified
+
+↓
+
+Active
+
+↓
+
+Suspended
+
+↓
+
+Deleted
+```
+
+---
+
+# 3.2 Profile
+
+## Purpose
+
+Stores user-facing identity information.
+
+---
+
+## Attributes
+
+```text
+userId
+
+firstName
+
+lastName
+
+avatar
+
+bio
+
+location
+
+preferences
+```
+
+---
+
+## Relationship
+
+```text
+User
+
+1 : 1
+
+Profile
+```
+
+---
+
+# 3.3 Organization
+
+## Purpose
+
+Represents businesses or service organizations.
+
+---
+
+## Attributes
+
+```text
+id
+
+name
+
+description
+
+logo
+
+verificationStatus
+```
+
+---
+
+## Relationship
+
+```text
+Organization
+
+1 : many
+
+Users
+```
+
+---
+
+# 4. Service Marketplace Domain
+
+---
+
+# 4.1 Service
+
+## Purpose
+
+Represents an offering available to users.
+
+---
+
+## Attributes
+
+```text
+id
+
+providerId
+
+categoryId
+
+title
+
+description
+
+images
+
+pricing
+
+status
+```
+
+---
+
+## Service Lifecycle
+
+```text
+Draft
+
+↓
+
+Published
+
+↓
+
+Unavailable
+
+↓
+
+Archived
+```
+
+---
+
+# 4.2 Category
+
+## Purpose
+
+Organizes services.
+
+---
+
+## Attributes
+
+```text
+id
+
+name
+
+description
+
+icon
+
+parentCategory
+```
+
+---
+
+## Relationship
+
+```text
+Category
+
+1 : many
+
+Services
+```
+
+---
+
+# 4.3 Provider
+
+## Purpose
+
+Represents the entity delivering services.
+
+---
+
+## Attributes
+
+```text
+id
+
+userId
+
+organizationId
+
+verificationStatus
+
+rating
+
+experience
+```
+
+---
+
+## Provider States
+
+```text
+Pending Verification
+
+Verified
+
+Active
+
+Inactive
+```
+
+---
+
+# 4.4 Availability
+
+## Purpose
+
+Defines when a service can be scheduled.
+
+---
+
+## Attributes
+
+```text
+providerId
+
+serviceId
+
+date
+
+timeSlots
+
+availabilityStatus
+```
+
+---
+
+## Availability States
+
+```text
+Available
+
+Reserved
+
+Blocked
+
+Unavailable
+```
+
+---
+
+# 5. Request & Booking Domain
+
+---
+
+# 5.1 Booking
+
+## Purpose
+
+Represents a user request for a service.
+
+---
+
+## Attributes
+
+```text
+id
+
+customerId
+
+serviceId
+
+providerId
+
+scheduledDate
+
+location
+
+price
+
+status
+```
+
+---
+
+## Booking Lifecycle
+
+```text
+Draft
+
+↓
+
+Submitted
+
+↓
+
+Accepted
+
+↓
+
+Scheduled
+
+↓
+
+In Progress
+
+↓
+
+Completed
+
+↓
+
+Cancelled
+```
+
+---
+
+## Booking State Rules
+
+### Draft
+
+User has started but not submitted.
+
+---
+
+### Submitted
+
+Request created.
+
+Waiting for provider response.
+
+---
+
+### Accepted
+
+Provider agrees to perform service.
+
+---
+
+### Scheduled
+
+Date/time confirmed.
+
+---
+
+### In Progress
+
+Execution started.
+
+---
+
+### Completed
+
+Service delivered.
+
+---
+
+### Cancelled
+
+Workflow terminated.
+
+---
+
+# 5.2 Booking Item
+
+## Purpose
+
+Supports complex bookings.
+
+---
+
+Attributes:
+
+```text
+bookingId
+
+serviceId
+
+quantity
+
+price
+```
+
+---
+
+# 6. Task Domain
+
+---
+
+# 6.1 Task
+
+## Purpose
+
+Represents active work after booking.
+
+---
+
+## Attributes
+
+```text
+id
+
+bookingId
+
+title
+
+description
+
+assignedUser
+
+status
+
+timeline
+```
+
+---
+
+## Task Lifecycle
+
+```text
+Created
+
+↓
+
+Assigned
+
+↓
+
+Active
+
+↓
+
+Blocked
+
+↓
+
+Completed
+```
+
+---
+
+# 6.2 Task Event
+
+## Purpose
+
+Records workflow history.
+
+---
+
+Attributes:
+
+```text
+id
+
+taskId
+
+eventType
+
+timestamp
+
+actor
+
+metadata
+```
+
+---
+
+Example:
+
+```json
+{
+ "eventType": "TASK_COMPLETED",
+ "actor": "provider"
+}
+```
+
+---
+
+# 7. Communication Domain
+
+---
+
+# 7.1 Conversation
+
+## Purpose
+
+Represents communication channel.
+
+---
+
+Attributes:
+
+```text
+id
+
+participants
+
+relatedBooking
+
+createdAt
+```
+
+---
+
+Relationships:
+
+```text
+Booking
+
+1 : 1
+
+Conversation
+```
+
+---
+
+# 7.2 Message
+
+## Purpose
+
+Represents communication event.
+
+---
+
+Attributes:
+
+```text
+id
+
+conversationId
+
+senderId
+
+content
+
+attachments
+
+status
+
+timestamp
+```
+
+---
+
+## Message Lifecycle
+
+```text
+Draft
+
+↓
+
+Sending
+
+↓
+
+Sent
+
+↓
+
+Delivered
+
+↓
+
+Read
+
+```
+
+---
+
+# 7.3 Attachment
+
+## Purpose
+
+Represents uploaded content.
+
+---
+
+Attributes:
+
+```text
+id
+
+type
+
+url
+
+size
+
+ownerId
+```
+
+---
+
+# 8. Trust Domain
+
+---
+
+# 8.1 Verification
+
+## Purpose
+
+Tracks identity or provider validation.
+
+---
+
+Attributes:
+
+```text
+id
+
+entityId
+
+verificationType
+
+status
+
+documents
+
+reviewDate
+```
+
+---
+
+## States
+
+```text
+Pending
+
+Approved
+
+Rejected
+
+Expired
+```
+
+---
+
+# 8.2 Review
+
+## Purpose
+
+Captures user feedback.
+
+---
+
+Attributes:
+
+```text
+id
+
+bookingId
+
+authorId
+
+rating
+
+comment
+
+createdAt
+```
+
+---
+
+# 9. Payment Domain
+
+---
+
+# 9.1 Payment
+
+## Purpose
+
+Tracks financial transactions.
+
+---
+
+Attributes:
+
+```text
+id
+
+bookingId
+
+amount
+
+currency
+
+method
+
+status
+```
+
+---
+
+## Payment Lifecycle
+
+```text
+Pending
+
+↓
+
+Authorized
+
+↓
+
+Captured
+
+↓
+
+Completed
+
+↓
+
+Refunded
+```
+
+---
+
+# 10. Notification Domain
+
+---
+
+# 10.1 Notification
+
+## Purpose
+
+Communicates important events.
+
+---
+
+Attributes:
+
+```text
+id
+
+userId
+
+type
+
+title
+
+message
+
+readStatus
+
+createdAt
+```
+
+---
+
+## Notification States
+
+```text
+Unread
+
+Read
+
+Archived
+```
+
+---
+
+# 11. Preferences Domain
+
+---
+
+# 11.1 User Preferences
+
+## Purpose
+
+Stores personalization.
+
+---
+
+Attributes:
+
+```text
+userId
+
+language
+
+notifications
+
+privacy
+
+displaySettings
+```
+
+---
+
+# 12. Domain Relationships
+
+High-level model:
+
+```text
+User
+
+ ├── Profile
+
+ ├── Preferences
+
+ ├── Messages
+
+ ├── Notifications
+
+ └── Bookings
+
+
+Provider
+
+ ├── Services
+
+ ├── Availability
+
+ └── Reviews
+
+
+Service
+
+ ├── Category
+
+ ├── Provider
+
+ └── Bookings
+
+
+Booking
+
+ ├── Task
+
+ ├── Payment
+
+ ├── Conversation
+
+ └── Review
+```
+
+---
+
+# 13. API Data Contracts
+
+## 13.1 Service Summary
+
+Used by service cards.
+
+```json
+{
+"id": "service_123",
+"title": "Home Cleaning",
+"provider": {
+"name": "Provider Name"
+},
+"price": {
+"value": 50
+},
+"rating": 4.8
+}
+```
+
+---
+
+# 13.2 Booking Summary
+
+Used by workflow screens.
+
+```json
+{
+"id":"booking_123",
+"service":"Cleaning",
+"date":"2026-07-15",
+"status":"scheduled"
+}
+```
+
+---
+
+# 13.3 Task Status
+
+Used by tracking screens.
+
+```json
+{
+"id":"task_123",
+"status":"in_progress",
+"nextAction":"Confirm completion"
+}
+```
+
+---
+
+# 14. Data Validation Rules
+
+## Identity
+
+Required:
+
+* valid contact method
+* verified account
+
+---
+
+## Service
+
+Required:
+
+* title
+* category
+* provider
+* pricing
+
+---
+
+## Booking
+
+Required:
+
+* service
+* customer
+* schedule
+
+---
+
+## Review
+
+Required:
+
+* completed booking
+* rating
+
+---
+
+# 15. Data Ownership Rules
+
+Each domain owns its data.
+
+Example:
+
+Booking owns:
+
+```text
+Booking State
+
+Schedule
+
+Participants
+
+Price
+```
+
+Service owns:
+
+```text
+Description
+
+Category
+
+Availability Rules
+```
+
+Avoid duplicated ownership.
+
+---
+
+# 16. Synchronization Rules
+
+Mobile applications should support:
+
+## Fresh Data
+
+For:
+
+* booking state
+* messages
+* notifications
+
+---
+
+## Cached Data
+
+For:
+
+* profiles
+* categories
+* previous searches
+
+---
+
+# 17. Domain Events
+
+Core events:
+
+```text
+USER_REGISTERED
+
+PROFILE_UPDATED
+
+SERVICE_CREATED
+
+SERVICE_SELECTED
+
+BOOKING_CREATED
+
+BOOKING_ACCEPTED
+
+BOOKING_COMPLETED
+
+MESSAGE_SENT
+
+REVIEW_CREATED
+```
+
+---
+
+# 18. Domain Governance
+
+New entities require:
+
+## Definition
+
+* purpose
+* ownership
+* lifecycle
+
+---
+
+## Relationships
+
+* parent entities
+* dependencies
+* constraints
+
+---
+
+## Workflow Impact
+
+* affected screens
+* affected states
+* affected events
+
+---
+
+# TASKPRO Data Foundation Complete
+
+Current artifact stack:
+
+```text
+TASKPRO-DS-001 → Design Foundation
+
+TASKPRO-COMP-001 → Components
+
+TASKPRO-SCREEN-001 → Screens
+
+TASKPRO-FLOW-001 → Workflows
+
+TASKPRO-ARCH-001 → Application Architecture
+
+TASKPRO-DATA-001 → Domain Model
+```
+
+Next recommended artifact:
+
+# TASKPRO-API-001 — TaskPRO API & Integration Specification v0.1
+
+This will define:
+
+* API boundaries
+* endpoint structure
+* request/response contracts
+* authentication flow
+* backend integrations
+* realtime communication
+* file handling
+* error standards
+
+That will complete the product-to-engineering bridge.

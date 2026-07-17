@@ -1,0 +1,810 @@
+# UI-005 — Navigation Graph, User Journeys & Interaction Architecture v0.1
+
+## Purpose
+
+This document defines **how users move through TaskPRO**.
+
+Unlike UI-001 (Application Shell), this document defines:
+
+* Navigation Graph
+* User Journeys
+* Capability transitions
+* Interaction rules
+* Deep linking
+* Flow orchestration
+
+It is the behavioral blueprint of the application.
+
+---
+
+# Design Philosophy
+
+Navigation should never feel like moving between pages.
+
+Instead, users move between **contexts** while maintaining continuity.
+
+The navigation model should optimize for:
+
+* Task completion
+* Context preservation
+* AI assistance
+* Progressive disclosure
+* Minimal cognitive load
+
+---
+
+# Navigation Hierarchy
+
+```text
+Platform
+
+    ↓
+
+Capability
+
+    ↓
+
+Flow
+
+    ↓
+
+Screen
+
+    ↓
+
+Interaction
+```
+
+Navigation is therefore a projection of business capabilities—not a folder structure.
+
+---
+
+# Root Navigation Graph
+
+```text
+Launch
+   │
+   ▼
+Splash
+   │
+   ▼
+Authentication
+   │
+   ▼
+Onboarding
+   │
+   ▼
+Application Shell
+   │
+   ├──────────────┐
+   ▼              ▼
+Customer      Professional
+        │
+        ▼
+Shared Capabilities
+```
+
+The shell determines available capabilities based on the active persona.
+
+---
+
+# Primary Navigation
+
+The application exposes five persistent destinations.
+
+```text
+Home
+
+Bookings
+
+Messages
+
+Notifications
+
+Profile
+```
+
+These are not merely tabs—they are **top-level contexts**.
+
+Each owns its own navigation history.
+
+---
+
+# Context Navigation
+
+Each context behaves like a miniature application.
+
+Example:
+
+```text
+Bookings
+
+↓
+
+Upcoming
+
+↓
+
+Booking Details
+
+↓
+
+Evidence
+
+↓
+
+Invoice
+
+↓
+
+Review
+```
+
+Leaving Bookings and returning should restore the previous position.
+
+---
+
+# Navigation State
+
+The shell maintains independent stacks.
+
+```text
+Home Stack
+
+Booking Stack
+
+Messaging Stack
+
+Notification Stack
+
+Profile Stack
+```
+
+Switching tabs does not destroy navigation state.
+
+---
+
+# Canonical User Journeys
+
+## Journey 1 — New Customer
+
+```text
+Launch
+
+↓
+
+Register
+
+↓
+
+Verify
+
+↓
+
+Complete Profile
+
+↓
+
+Home
+
+↓
+
+Browse Services
+
+↓
+
+Book Service
+
+↓
+
+Confirmation
+```
+
+---
+
+## Journey 2 — Returning Customer
+
+```text
+Launch
+
+↓
+
+Restore Session
+
+↓
+
+Home
+
+↓
+
+Upcoming Booking
+```
+
+---
+
+## Journey 3 — Book a Service
+
+```text
+Home
+
+↓
+
+Search
+
+↓
+
+Service
+
+↓
+
+Professional
+
+↓
+
+Booking Wizard
+
+↓
+
+Payment
+
+↓
+
+Confirmation
+```
+
+This is one uninterrupted flow.
+
+---
+
+## Journey 4 — Professional Work
+
+```text
+Dashboard
+
+↓
+
+Today's Jobs
+
+↓
+
+Booking
+
+↓
+
+Navigate
+
+↓
+
+Arrive
+
+↓
+
+Work
+
+↓
+
+Evidence
+
+↓
+
+Complete
+
+↓
+
+Invoice
+```
+
+The professional never leaves the Booking capability during execution.
+
+---
+
+## Journey 5 — Messaging
+
+```text
+Notification
+
+↓
+
+Conversation
+
+↓
+
+Booking Shortcut
+
+↓
+
+Booking Details
+```
+
+Messages always maintain contextual awareness.
+
+---
+
+# Capability Transitions
+
+Rather than arbitrary navigation:
+
+```text
+Booking
+
+↓
+
+Payment
+
+↓
+
+Invoice
+
+↓
+
+Review
+```
+
+Each transition is triggered by a business event.
+
+---
+
+# Navigation Rules
+
+## Rule 1
+
+Never navigate after a successful operation unless the workflow changes.
+
+Example:
+
+After updating profile:
+
+❌ Navigate away
+
+✅ Stay in context and show confirmation.
+
+---
+
+## Rule 2
+
+Business events drive navigation.
+
+Example:
+
+```text
+BookingCompleted
+
+↓
+
+Invoice Screen
+```
+
+Not:
+
+```text
+Button Press
+
+↓
+
+Invoice
+```
+
+---
+
+## Rule 3
+
+Users should never lose work.
+
+Forms persist automatically.
+
+---
+
+## Rule 4
+
+Every long-running operation is resumable.
+
+Examples:
+
+Booking
+
+Registration
+
+Evidence Upload
+
+Payment
+
+---
+
+# Modal Navigation
+
+Use overlays only for transient interactions.
+
+Allowed:
+
+```text
+Confirmation
+
+Date Picker
+
+Filters
+
+Photo Viewer
+
+Scanner
+
+Share
+```
+
+Not allowed:
+
+```text
+Entire Booking Flow
+
+Entire Profile
+
+Checkout
+```
+
+Complex workflows deserve their own navigation context.
+
+---
+
+# Deep Linking
+
+Every capability exposes canonical routes.
+
+Examples:
+
+```text
+taskpro://booking/{id}
+
+taskpro://professional/{id}
+
+taskpro://conversation/{id}
+
+taskpro://invoice/{id}
+
+taskpro://review/{id}
+```
+
+Deep links always restore the correct context.
+
+---
+
+# Universal Search Navigation
+
+Search is capability-agnostic.
+
+Example:
+
+```text
+Search
+
+↓
+
+Booking
+
+↓
+
+Booking Context
+```
+
+or
+
+```text
+Search
+
+↓
+
+Professional
+
+↓
+
+Professional Context
+```
+
+Search never becomes a dead end.
+
+---
+
+# AI Navigation
+
+The AI assistant can initiate navigation.
+
+Examples:
+
+```text
+"Show today's bookings"
+
+↓
+
+Bookings Context
+```
+
+```text
+"Open invoice 1024"
+
+↓
+
+Invoice Context
+```
+
+```text
+"Continue my unfinished booking"
+
+↓
+
+Booking Wizard
+```
+
+This reinforces the AI-first interaction model.
+
+---
+
+# Notification Navigation
+
+Every notification resolves to a capability.
+
+Example:
+
+```text
+Booking Accepted
+
+↓
+
+Booking Details
+```
+
+```text
+Payment Completed
+
+↓
+
+Invoice
+```
+
+```text
+New Message
+
+↓
+
+Conversation
+```
+
+Notifications never open standalone screens.
+
+---
+
+# Back Navigation
+
+Back should restore:
+
+* Scroll position
+* Filters
+* Selected items
+* Search state
+* Open sections
+* Drafts
+
+Users should never "start over."
+
+---
+
+# Flow Metadata
+
+Every workflow declares metadata.
+
+Example:
+
+```yaml
+flow:
+  booking
+
+steps:
+  - service
+  - professional
+  - schedule
+  - payment
+  - confirmation
+
+resumable: true
+
+supportsOffline: true
+
+requiresAuthentication: true
+```
+
+---
+
+# Navigation Events
+
+Emit standardized telemetry.
+
+```text
+ContextEntered
+
+ContextExited
+
+FlowStarted
+
+FlowCompleted
+
+FlowCancelled
+
+DeepLinkOpened
+
+SearchNavigation
+
+AINavigation
+
+BackNavigation
+```
+
+These events support analytics and UX optimization.
+
+---
+
+# Interaction Architecture
+
+Every user interaction belongs to one of five categories.
+
+```text
+Navigate
+
+Command
+
+Selection
+
+Manipulation
+
+Conversation
+```
+
+Examples:
+
+| Interaction         | Category     |
+| ------------------- | ------------ |
+| Open Booking        | Navigate     |
+| Cancel Booking      | Command      |
+| Select Professional | Selection    |
+| Upload Photo        | Manipulation |
+| Ask AI              | Conversation |
+
+This classification simplifies gesture design and accessibility.
+
+---
+
+# Gesture Model
+
+Supported gestures should be standardized.
+
+```text
+Tap
+
+Double Tap
+
+Long Press
+
+Swipe
+
+Pull
+
+Pinch
+
+Drag
+
+Voice
+```
+
+Gesture behavior should come from **Behavior Tokens** (defined in UI-002), ensuring consistency across the application.
+
+---
+
+# Flow Recovery
+
+If the app is interrupted:
+
+```text
+App Closed
+
+↓
+
+Restore Session
+
+↓
+
+Restore Context
+
+↓
+
+Restore Flow
+
+↓
+
+Restore Drafts
+```
+
+A user returning after several hours should continue exactly where they left off whenever possible.
+
+---
+
+# Navigation Registry
+
+Maintain a declarative registry for routes.
+
+Example:
+
+```yaml
+booking.details:
+  capability: booking
+  type: detail
+  permissions:
+    - booking:view
+  deepLink: taskpro://booking/{id}
+  supportsAI: true
+  resumable: true
+```
+
+This registry becomes the source for:
+
+* Expo Router configuration
+* Deep link configuration
+* Permission guards
+* Analytics
+* Documentation
+
+---
+
+# Navigation Readiness Levels
+
+Every flow progresses through:
+
+```text
+Defined
+
+↓
+
+Mapped
+
+↓
+
+Navigable
+
+↓
+
+Interactive
+
+↓
+
+Offline Ready
+
+↓
+
+AI Enabled
+
+↓
+
+Production Ready
+```
+
+This gives measurable implementation progress beyond simply "screen finished."
+
+---
+
+# Architectural Observation
+
+At this point, the application architecture is no longer screen-centric—it is **flow-centric**.
+
+The final document in this UI architecture series should capitalize on that by producing a **screen implementation roadmap** derived from the capability map, navigation graph, and your existing designs.
+
+Rather than a flat backlog of screens, it should define:
+
+* implementation order,
+* dependencies,
+* reusable archetypes,
+* shared components,
+* estimated effort,
+* and parallel development opportunities.
+
+This transforms the UI from a collection of mockups into an executable engineering plan.
+
+---
+
+**Current document:** `UI-005 — Navigation Graph, User Journeys & Interaction Architecture`
+
+**Next document:** `UI-006 — Screen Implementation Roadmap & Development Plan`

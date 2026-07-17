@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Task Pro MX-Ca - Mis Direcciones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dadada",
+                    "on-primary-fixed": "#00201c",
+                    "primary-fixed-dim": "#88d4c7",
+                    "status-warning": "#FFC107",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface": "#f9f9f9",
+                    "on-secondary-container": "#5b6765",
+                    "border-subtle": "#E0E0E0",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#bec9c5",
+                    "inverse-surface": "#2f3131",
+                    "status-danger": "#DC3545",
+                    "surface-tint": "#136a5f",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#1a6e63",
+                    "surface-container-highest": "#e2e2e2",
+                    "primary-fixed": "#a4f1e3",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#005047",
+                    "secondary": "#55615f",
+                    "on-tertiary-container": "#7ff88a",
+                    "text-primary": "#000000",
+                    "on-background": "#1a1c1c",
+                    "surface-bright": "#f9f9f9",
+                    "inverse-on-surface": "#f1f1f1",
+                    "text-secondary": "#666666",
+                    "on-surface-variant": "#3f4946",
+                    "tertiary-fixed-dim": "#66df75",
+                    "secondary-fixed": "#d8e5e3",
+                    "tertiary-container": "#007227",
+                    "on-secondary-fixed-variant": "#3d4948",
+                    "outline": "#6f7976",
+                    "secondary-fixed-dim": "#bcc9c7",
+                    "surface-container-low": "#f3f3f3",
+                    "on-tertiary-fixed-variant": "#00531a",
+                    "secondary-container": "#d8e5e3",
+                    "on-tertiary-fixed": "#002106",
+                    "tertiary-fixed": "#83fc8e",
+                    "tertiary": "#00571b",
+                    "on-error": "#ffffff",
+                    "primary": "#00554b",
+                    "on-secondary": "#ffffff",
+                    "background": "#f9f9f9",
+                    "surface-container": "#eeeeee",
+                    "on-secondary-fixed": "#121e1d",
+                    "on-primary-container": "#a1eddf",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e2e2e2",
+                    "surface-container-high": "#e8e8e8",
+                    "on-surface": "#1a1c1c",
+                    "inverse-primary": "#88d4c7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "margin-desktop": "32px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .tonal-elevation-1 { box-shadow: 0px 2px 8px rgba(0,0,0,0.05); }
+        .tonal-elevation-2 { box-shadow: 0px 10px 24px rgba(0,0,0,0.1); }
+        
+        /* Smooth interactions */
+        .active-press { transform: scale(0.96); opacity: 0.8; transition: all 0.15s ease; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-14 fixed top-0 z-50 bg-surface dark:bg-on-background shadow-sm">
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-low transition-colors rounded-full text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Mis Direcciones</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-low transition-colors rounded-full text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-margin-mobile max-w-2xl mx-auto">
+<!-- Header Text Section -->
+<div class="mb-lg">
+<p class="font-body-md text-text-secondary">Gestiona tus ubicaciones frecuentes para agilizar tus solicitudes de servicio en Tijuana y el sur de California.</p>
+</div>
+<!-- Address List (Bento-ish asymmetric layout) -->
+<div class="grid grid-cols-1 gap-md">
+<!-- Address Card 1: Casa -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-border-subtle tonal-elevation-1 flex items-start gap-md group hover:border-primary transition-all">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-xs">
+<h3 class="font-headline-md text-headline-md text-text-primary">Casa</h3>
+<span class="px-2 py-1 bg-tertiary/10 text-tertiary rounded-full font-label-sm text-label-sm">Principal</span>
+</div>
+<p class="font-body-md text-text-secondary mb-1">Calle Paseo de los Héroes 10289</p>
+<p class="font-caption text-caption text-outline">Zona Urbana Rio Tijuana, 22010 Tijuana, B.C.</p>
+</div>
+<button class="text-outline hover:text-primary p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Address Card 2: Oficina -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-border-subtle tonal-elevation-1 flex items-start gap-md group hover:border-primary transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-xs">
+<h3 class="font-headline-md text-headline-md text-text-primary">Oficina</h3>
+</div>
+<p class="font-body-md text-text-secondary mb-1">Avenida Revolucion 1450, Suite 402</p>
+<p class="font-caption text-caption text-outline">Centro, 22000 Tijuana, B.C.</p>
+</div>
+<button class="text-outline hover:text-primary p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Address Card 3: Gym (SD Option) -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-border-subtle tonal-elevation-1 flex items-start gap-md group hover:border-primary transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-xs">
+<h3 class="font-headline-md text-headline-md text-text-primary">Gimnasio</h3>
+</div>
+<p class="font-body-md text-text-secondary mb-1">450 B Street</p>
+<p class="font-caption text-caption text-outline">San Diego, CA 92101, EE. UU.</p>
+</div>
+<button class="text-outline hover:text-primary p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Add New Address Button (Prominent) -->
+<div class="mt-xl">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-label-md text-label-md flex items-center justify-center gap-sm shadow-md hover:opacity-90 transition-all" onclick="this.classList.add('active-press'); setTimeout(()=&gt;this.classList.remove('active-press'), 150);">
+<span class="material-symbols-outlined">add</span>
+                Agregar nueva dirección
+            </button>
+</div>
+<!-- Map Quick-View (Visual Decoration/Utility) -->
+<section class="mt-xl">
+<h4 class="font-label-md text-label-md text-text-primary mb-md">Ubicación Actual</h4>
+<div class="relative w-full h-48 rounded-2xl overflow-hidden tonal-elevation-1 border border-border-subtle">
+<div class="absolute inset-0 bg-surface-dim" data-alt="A clean, minimalist vector map of Tijuana's Zona Rio district featuring stylized streets, a few green spaces, and a modern teal location pin in the center. The aesthetic is professional and corporate modernist with a neutral light mode color palette and subtle shadows to indicate depth." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCSORgXlKcKxISAug4ZkXd9vNO3ROPJoH_HcqqPr9jUP0QBlWNAb3v9Pd86ss_zPuXazDr7E1pxPdF3Smk9vJ0ya9Z8jsfHKdxGWToY07kjCTM7J4LChRIjks_1xCp9EVNtiOWFCnRKj52MbMcTtaO1m0uAKjYH2iELOgKGV8tjUrZzmZRziPHqUCawW0Yk3N2K7XFtthoPGISRb0tYMuiMHob7Dik9fe-YclfJQxlS0kqP8T_6-zDVR_diYDLKXF2Q3zFfnXvH-x4')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 bg-surface/90 backdrop-blur-md px-3 py-2 rounded-lg border border-white/20">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label-sm text-label-sm text-text-primary">Tijuana, MX</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Navigation Shell (BottomNavBar for Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 z-50 flex justify-around items-center px-4 pb-safe bg-surface-container-lowest border-t border-border-subtle shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-secondary-container" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explorar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container" href="#">
+<span class="material-symbols-outlined">handyman</span>
+<span class="font-label-sm text-label-sm">Servicios</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Mensajes</span>
+</a>
+<!-- Perfil Active -->
+<a class="flex flex-col items-center justify-center text-primary bg-secondary-container/30 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Perfil</span>
+</a>
+</nav>
+<!-- FAB Suppression Logic: FAB hidden on this Details-oriented page per instructions -->
+<script>
+        // Micro-interactions for list items
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('touchstart', () => card.classList.add('active-press'));
+            card.addEventListener('touchend', () => card.classList.remove('active-press'));
+        });
+    </script>
+</body></html>

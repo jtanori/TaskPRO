@@ -1,0 +1,70 @@
+{
+  "primitive": "Evidence",
+  "version": "1.0",
+  "registration_rule": "Registrations are pointers and claims about authored artifacts, never copies. Artifacts remain authored and immutable to SYNTH. Anchors are artifact headers (TASKPRO-XXX-NNN), not filenames; composite files register one entry per embedded artifact.",
+  "collision_resolution_rules": {
+    "primary_anchor": "artifact header ID",
+    "on_header_collision": "disambiguate by filename-derived suffix and record an authored-inconsistency reconciliation",
+    "on_canonical_id_normalization": "document the normalization explicitly in the evidence entry; never modify the authored artifact",
+    "example": "API-002.md.txt header reads 'TASKPRO-API-001', colliding with API-001.md.txt's family ID; registered as TASKPRO-API-002. API-001.md.txt header reads 'API-001'; normalized to TASKPRO-API-001 for family consistency. Both documented in entries; collision tracked as R5."
+  },
+  "roles": ["canonical", "supporting", "superseded"],
+  "evidence": [
+    { "id": "TASKPRO-DS-001", "path": "knowledge/Docs/DS-01.md", "role": "canonical", "authority_domain": "design-tokens", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "v1.0, Approved Architecture. Filename differs from canonical ID; registered by header." },
+    { "id": "TASKPRO-DS-002", "path": "knowledge/Docs/DS-02.md", "role": "canonical", "authority_domain": "component-specifications", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "v1.0, Approved Architecture." },
+    { "id": "TASKPRO-DS-003", "path": "knowledge/Docs/DS-03.md", "role": "canonical", "authority_domain": "interaction-guidelines", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "v1.0, Approved Architecture." },
+    { "id": "TASKPRO-DS-004", "path": "knowledge/Docs/DS-04.md", "role": "canonical", "authority_domain": "motion-guidelines", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "v1.0, Approved Architecture." },
+    { "id": "TASKPRO-DS-005", "path": "knowledge/Docs/DS-05.md", "role": "canonical", "authority_domain": "theme-system", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "v1.0, Approved Architecture. Header line 1 carries a stray character ('i# TASKPRO-DS-005'); tracked as reconciliation R2. Artifact left unmodified." },
+    { "id": "TASKPRO-DOM-001", "path": "knowledge/Docs/DOM-001.md.txt", "role": "canonical", "authority_domain": "domain-model", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-DATA-001", "path": "knowledge/Docs/DATA-001.md.txt", "role": "canonical", "authority_domain": "domain-data-specification", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-DB-001", "path": "knowledge/Docs/DB-001.md.txt", "role": "canonical", "authority_domain": "database-schema", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-API-001", "path": "knowledge/Docs/API-001.md.txt", "role": "canonical", "authority_domain": "api-contracts", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "Header reads '# API-001 — Domain API & Service Contracts v0.1'. Canonical ID normalized to TASKPRO-API-001 for family consistency; normalization documented here. Artifact left unmodified." },
+    { "id": "TASKPRO-API-002", "path": "knowledge/Docs/API-002.md.txt", "role": "canonical", "authority_domain": "api-integration", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "Header reads '# TASKPRO-API-001 — TaskPRO API & Integration Specification v0.1', colliding with API-001.md.txt's family ID. Registry applied filename-derived disambiguation; registered as TASKPRO-API-002. Collision and normalization rule tracked as reconciliation R5. Artifact left unmodified." },
+    { "id": "TASKPRO-STATE-001", "path": "knowledge/Docs/STATE-001.md.txt", "role": "canonical", "authority_domain": "client-state-offline-sync", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-STATE-002", "path": "knowledge/Docs/STATE-002.md.txt", "role": "canonical", "authority_domain": "workflow-state-machines", "derivation_type": "DIRECT", "confidence": "MEDIUM", "notes": "Jointly canonical with TASKPRO-FLOW-001 pending reconciliation R1." },
+    { "id": "TASKPRO-AUTH-001", "path": "knowledge/Docs/AUTH-001.md.txt", "role": "canonical", "authority_domain": "security-authentication-authorization", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-MOD-001", "path": "knowledge/Docs/MOD-001.md.txt", "role": "canonical", "authority_domain": "module-structure-monorepo", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-CAP-001", "path": "knowledge/Docs/CAP-001.md.txt", "role": "canonical", "authority_domain": "capability-map", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-ARCH-001", "path": "knowledge/Docs/ARCH-001.md.txt", "role": "canonical", "authority_domain": "application-architecture", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-DEV-001", "path": "knowledge/Docs/DEV-001.md.txt", "role": "canonical", "authority_domain": "development-conventions", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "Navigation section (React Navigation recommendation) superseded by TASKPRO-TECH-001. Remainder canonical." },
+    { "id": "TASKPRO-TEST-001", "path": "knowledge/Docs/TEST-001.md.txt", "role": "canonical", "authority_domain": "quality-validation", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-BUILD-001", "path": "knowledge/Docs/BUILD-001.md.txt", "role": "canonical", "authority_domain": "delivery-order-roadmap", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-COMP-001", "path": "knowledge/Docs/COMP-001.md.txt", "role": "canonical", "authority_domain": "component-catalog", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-NAV-001", "path": "knowledge/Docs/COMP-001.md.txt#section:TASKPRO-NAV-001", "role": "canonical", "authority_domain": "navigation-routing", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "Embedded artifact inside COMP-001.md.txt (begins line 567). Registered at section anchor." },
+    { "id": "TASKPRO-UI-001", "path": "knowledge/Docs/TASKPRO-UI-001.md.txt", "role": "canonical", "authority_domain": "screen-inventory", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-SCREEN-001", "path": "knowledge/Docs/SCREENS-001.md.txt", "role": "canonical", "authority_domain": "screen-specifications", "derivation_type": "DIRECT", "confidence": "HIGH" },
+    { "id": "TASKPRO-FLOW-001", "path": "knowledge/Docs/GAPS-001.md#section:TASKPRO-FLOW-001", "role": "canonical", "authority_domain": "business-workflows", "derivation_type": "DIRECT", "confidence": "MEDIUM", "notes": "Embedded in GAPS-001.md. Jointly canonical with TASKPRO-STATE-002 pending reconciliation R1." },
+    { "id": "TASKPRO-I18N-001", "path": "knowledge/Docs/GAPS-001.md#section:TASKPRO-I18N-001", "role": "canonical", "authority_domain": "localization", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "Embedded in GAPS-001.md." },
+    { "id": "TASKPRO-OPS-001", "path": "knowledge/Docs/GAPS-001.md#section:TASKPRO-OPS-001", "role": "canonical", "authority_domain": "operations-release", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "Embedded in GAPS-001.md." },
+    { "id": "TASKPRO-TECH-001", "path": "knowledge/Docs/GAPS-001.md#section:TASKPRO-TECH-001", "role": "canonical", "authority_domain": "technology-decisions", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "Embedded in GAPS-001.md. Supersedes TASKPRO-DEV-001 navigation recommendation." },
+    { "id": "TASKPRO-UI-ASSETS", "path": "knowledge/UI/", "role": "canonical", "authority_domain": "ui-ground-truth", "derivation_type": "DIRECT", "confidence": "HIGH", "notes": "90 design assets (HTML implementations paired with PNG screens) across auth/ (16), user/ (34), technician/ (36), global/ (4). Per-screen ground truth for synthesis." },
+    { "id": "TASKPRO-UI-001-PLAN", "path": "knowledge/Docs/UI-001.md.txt", "role": "supporting", "authority_domain": "shell-navigation-planning", "derivation_type": "DIRECT", "confidence": "MEDIUM", "notes": "Planning character; never overrides canonical NAV-001/UI-001." },
+    { "id": "TASKPRO-UI-002-PLAN", "path": "knowledge/Docs/UI-002.md.txt", "role": "supporting", "authority_domain": "ui-planning", "derivation_type": "DIRECT", "confidence": "MEDIUM" },
+    { "id": "TASKPRO-UI-003-PLAN", "path": "knowledge/Docs/UI-003.md.txt", "role": "supporting", "authority_domain": "ui-planning", "derivation_type": "DIRECT", "confidence": "MEDIUM" },
+    { "id": "TASKPRO-UI-004-PLAN", "path": "knowledge/Docs/UI-004.md.txt", "role": "supporting", "authority_domain": "ui-planning", "derivation_type": "DIRECT", "confidence": "MEDIUM" },
+    { "id": "TASKPRO-UI-005-PLAN", "path": "knowledge/Docs/UI-005.md.txt", "role": "supporting", "authority_domain": "ui-planning", "derivation_type": "DIRECT", "confidence": "MEDIUM" },
+    { "id": "TASKPRO-UI-006-PLAN", "path": "knowledge/Docs/UI-006.md.txt", "role": "supporting", "authority_domain": "screen-implementation-roadmap", "derivation_type": "DIRECT", "confidence": "MEDIUM" },
+    { "id": "TASKPRO-GAPS-001-CONTAINER", "path": "knowledge/Docs/GAPS-001.md", "role": "supporting", "authority_domain": "meta-commentary", "derivation_type": "DIRECT", "confidence": "MEDIUM", "notes": "Conversational framing around the four embedded artifacts (FLOW-001, I18N-001, OPS-001, TECH-001), which are registered individually as canonical." }
+  ],
+  "supersession_edges": [
+    {
+      "superseding": "TASKPRO-TECH-001",
+      "superseded": "TASKPRO-DEV-001",
+      "scope": "navigation-architecture-only",
+      "claim": "Expo Router is the canonical navigation architecture; React Navigation survives only as Expo Router's underlying engine.",
+      "evidence_sources": ["TASKPRO-TECH-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "note": "DEV-001 document left unmodified; supersession recorded here (reconciliation R3)."
+    },
+    {
+      "superseding": ["TASKPRO-DS-001", "TASKPRO-DS-002", "TASKPRO-DS-003", "TASKPRO-DS-004", "TASKPRO-DS-005"],
+      "superseded": "inline-design-hints-in-legacy-md-txt-artifacts",
+      "scope": "design-system",
+      "claim": "The DS v1.0 set is the canonical design contract, derived from approved designs; scattered design references in older artifacts yield to it.",
+      "evidence_sources": ["TASKPRO-DS-001", "TASKPRO-GAPS-001-CONTAINER"],
+      "derivation_type": "INFERRED",
+      "confidence": "HIGH"
+    }
+  ]
+}

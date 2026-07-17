@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>TaskPro Splash Screen</title>
+<!-- Inter font for TaskPro Global Service style -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#1A6E63', // Primary emerald green
+              light: '#f9f9f9',
+              dim: '#dadada',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'custom': '8px', // Based on ROUND_EIGHT preset
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="background-geometry">
+    /* Subtle geometric pattern similar to the onboarding screen in the reference */
+    .bg-geometry {
+      background-color: #f9f9f9;
+      background-image: 
+        linear-gradient(135deg, rgba(26, 110, 99, 0.05) 25%, transparent 25%), 
+        linear-gradient(225deg, rgba(26, 110, 99, 0.05) 25%, transparent 25%), 
+        linear-gradient(45deg, rgba(26, 110, 99, 0.05) 25%, transparent 25%), 
+        linear-gradient(315deg, rgba(26, 110, 99, 0.05) 25%, transparent 25%);
+      background-position: 40px 0, 40px 0, 0 0, 0 0;
+      background-size: 80px 80px;
+      background-repeat: repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Soft gradient overlay for depth */
+    .bg-geometry::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, #f9f9f9 80%);
+      pointer-events: none;
+    }
+
+    /* Large abstract shapes seen in the background of the reference splash */
+    .abstract-shape {
+      position: absolute;
+      background: #dadada;
+      opacity: 0.2;
+      transform: rotate(45deg);
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased bg-brand-light text-gray-900 overflow-hidden opacity-100">
+<!-- BEGIN: SplashContainer -->
+<main class="relative h-screen w-full flex flex-col items-center justify-between p-8 bg-geometry" data-purpose="splash-screen">
+<!-- Background elements for visual fidelity -->
+<div class="abstract-shape w-64 h-64 -top-20 -left-20"></div>
+<div class="abstract-shape w-48 h-48 bottom-40 -right-20 opacity-10"></div>
+<!-- BEGIN: LogoSection -->
+<section class="flex-1 flex flex-col items-center justify-center z-10 py-12" data-purpose="branding">
+<div class="mb-6 flex flex-col items-center">
+<!-- Logo Icon Container -->
+<div class="w-32 h-32 flex items-center justify-center bg-white rounded-custom shadow-sm mb-4 border border-gray-100" data-purpose="logo-icon">
+<span class="text-brand text-7xl font-extrabold tracking-tighter" style="color: rgb(26, 110, 99);">TP</span>
+</div>
+<!-- App Title -->
+<h1 class="text-3xl font-bold tracking-tight text-gray-800" style="letter-spacing: -0.02em;">
+          Task Pro <span class="text-brand">MX-Ca</span>
+</h1>
+</div>
+</section>
+<!-- END: LogoSection -->
+<!-- BEGIN: FooterSection -->
+<footer class="w-full text-center space-y-4 pb-12 z-10" data-purpose="splash-footer">
+<!-- Tagline -->
+<div class="space-y-1">
+<p class="text-sm font-semibold text-gray-500 uppercase tracking-widest">
+          Tijuana-SoCal Trusted Network
+        </p>
+</div>
+<!-- Version & Security -->
+<div class="flex flex-col items-center">
+<div class="h-[1px] w-12 bg-gray-300 mb-4"></div>
+<p class="text-xs text-gray-400 font-medium">
+          Version 2.4.0 • Secured Fulfillment
+        </p>
+</div>
+</footer>
+<!-- END: FooterSection -->
+</main>
+<!-- END: SplashContainer -->
+<script data-purpose="splash-transition">
+    // Optional: simulate transition or animation entry
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('opacity-100');
+    });
+  </script>
+
+
+
+
+</body></html>

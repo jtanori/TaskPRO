@@ -1,0 +1,695 @@
+# CAP-001 — Capability Map & Screen-to-Module Matrix v0.1
+
+## Purpose
+
+This document becomes the **master blueprint** of the application.
+
+It connects every architectural layer we've defined so far:
+
+* Domain
+* Database
+* APIs
+* Modules
+* Navigation
+* Screens
+* Permissions
+* Events
+* Development roadmap
+
+Nothing should be implemented unless it belongs to a capability.
+
+Think of this as the "table of contents" for the entire product.
+
+---
+
+# Capability Hierarchy
+
+TaskPRO should be organized into four levels.
+
+```text
+Platform
+
+    ↓
+
+Capability
+
+    ↓
+
+Feature
+
+    ↓
+
+Screen
+```
+
+Example
+
+```text
+Booking
+
+    ↓
+
+Booking Lifecycle
+
+    ↓
+
+Accept Booking
+
+    ↓
+
+Booking Details Screen
+```
+
+This prevents "screen-driven development."
+
+---
+
+# Capability Catalog
+
+## CAP-001 — Authentication
+
+**Purpose**
+
+Manage identity and access.
+
+### Features
+
+```text
+Login
+
+Registration
+
+Forgot Password
+
+OTP Verification
+
+Social Login
+
+Profile Completion
+
+Session Management
+```
+
+### Screens
+
+```text
+Welcome
+
+Sign In
+
+Register
+
+Forgot Password
+
+Verify Code
+
+Complete Profile
+```
+
+### Depends On
+
+```text
+Identity
+```
+
+---
+
+# CAP-002 — User Profile
+
+Features
+
+```text
+View Profile
+
+Edit Profile
+
+Addresses
+
+Payment Methods
+
+Preferences
+```
+
+Screens
+
+```text
+Profile
+
+Edit Profile
+
+Saved Addresses
+
+Payment Methods
+
+Preferences
+```
+
+---
+
+# CAP-003 — Marketplace
+
+Features
+
+```text
+Browse Services
+
+Categories
+
+Search
+
+Recommendations
+
+Favorites
+```
+
+Screens
+
+```text
+Home
+
+Categories
+
+Search
+
+Service Details
+
+Favorites
+```
+
+---
+
+# CAP-004 — Professional Discovery
+
+Features
+
+```text
+Nearby Professionals
+
+Availability
+
+Portfolio
+
+Reviews
+
+Pricing
+```
+
+Screens
+
+```text
+Professional List
+
+Professional Profile
+
+Portfolio
+
+Availability
+
+Reviews
+```
+
+---
+
+# CAP-005 — Booking
+
+This is the primary business capability.
+
+## Features
+
+```text
+Request Booking
+
+Schedule Booking
+
+Booking Timeline
+
+Booking History
+
+Cancel Booking
+
+Reschedule Booking
+```
+
+## Screens
+
+```text
+Booking Wizard
+
+Booking Confirmation
+
+Booking Details
+
+Booking Timeline
+
+Booking History
+```
+
+## Domain
+
+```text
+Booking
+
+Schedule
+
+Assignment
+```
+
+## APIs
+
+```text
+RequestBooking
+
+CancelBooking
+
+UpdateBooking
+
+GetBooking
+```
+
+## Events
+
+```text
+BookingRequested
+
+BookingAccepted
+
+BookingCancelled
+
+BookingCompleted
+```
+
+---
+
+# CAP-006 — Work Execution
+
+Features
+
+```text
+Checklist
+
+Evidence
+
+Work Logs
+
+Completion
+
+Signatures
+```
+
+Screens
+
+```text
+Today's Job
+
+Checklist
+
+Evidence
+
+Complete Job
+```
+
+---
+
+# CAP-007 — Messaging
+
+Features
+
+```text
+Conversations
+
+Attachments
+
+Read Receipts
+```
+
+Screens
+
+```text
+Conversation List
+
+Chat
+```
+
+---
+
+# CAP-008 — Payments
+
+Features
+
+```text
+Checkout
+
+Invoices
+
+Receipts
+
+Refunds
+```
+
+Screens
+
+```text
+Checkout
+
+Payment Status
+
+Invoices
+```
+
+---
+
+# CAP-009 — Reviews
+
+Features
+
+```text
+Leave Review
+
+View Reviews
+
+Ratings
+```
+
+Screens
+
+```text
+Review Form
+
+Review Details
+```
+
+---
+
+# CAP-010 — Notifications
+
+Features
+
+```text
+Push Notifications
+
+Notification Center
+
+Preferences
+```
+
+Screens
+
+```text
+Notification Center
+
+Notification Settings
+```
+
+---
+
+# CAP-011 — Settings
+
+Features
+
+```text
+Theme
+
+Language
+
+Security
+
+Help
+
+Legal
+```
+
+Screens
+
+```text
+Settings
+
+Security
+
+About
+
+Support
+```
+
+---
+
+# CAP-012 — Administration (Future)
+
+Features
+
+```text
+Verification
+
+Moderation
+
+Analytics
+
+Support Dashboard
+```
+
+---
+
+# Capability Dependencies
+
+Rather than allowing arbitrary dependencies, define them explicitly.
+
+```text
+Authentication
+        │
+        ▼
+User Profile
+        │
+        ▼
+Marketplace
+        │
+        ▼
+Professional Discovery
+        │
+        ▼
+Booking
+        │
+        ├──────────────┐
+        ▼              ▼
+Messaging        Payments
+        │              │
+        └──────┬───────┘
+               ▼
+           Reviews
+```
+
+Notice:
+
+* Messaging does **not** depend on Payments.
+* Reviews depend on completed bookings.
+* Booking is the central capability.
+
+---
+
+# Capability Ownership Matrix
+
+| Capability     | Domain Aggregate | Database Schema | Primary Module |
+| -------------- | ---------------- | --------------- | -------------- |
+| Authentication | User             | identity        | auth           |
+| Marketplace    | Service          | marketplace     | marketplace    |
+| Professional   | Professional     | marketplace     | professionals  |
+| Booking        | Booking          | booking         | booking        |
+| Execution      | WorkLog          | execution       | execution      |
+| Messaging      | Conversation     | communication   | messaging      |
+| Payments       | Payment          | payments        | payments       |
+| Reviews        | Review           | reviews         | reviews        |
+| Notifications  | Notification     | notifications   | notifications  |
+
+This table provides traceability from business capability to implementation.
+
+---
+
+# Capability → Permission Matrix
+
+Examples:
+
+| Capability  | Customer | Professional | Admin    |
+| ----------- | -------- | ------------ | -------- |
+| Marketplace | ✅        | ✅            | ✅        |
+| Booking     | Create   | Accept       | Manage   |
+| Execution   | ❌        | Execute      | Manage   |
+| Messaging   | Own      | Assigned     | Moderate |
+| Payments    | Pay      | Receive      | Refund   |
+| Reviews     | Submit   | Respond      | Moderate |
+
+This matrix will later drive authorization policies.
+
+---
+
+# Capability → Event Matrix
+
+| Capability    | Emits               | Consumes          |
+| ------------- | ------------------- | ----------------- |
+| Booking       | BookingRequested    | PaymentCompleted  |
+| Payments      | PaymentCaptured     | BookingCompleted  |
+| Messaging     | MessageSent         | BookingAssigned   |
+| Notifications | NotificationCreated | All Domain Events |
+| Reviews       | ReviewSubmitted     | BookingCompleted  |
+
+This becomes the foundation of the event bus.
+
+---
+
+# Capability → Screen Matrix
+
+Instead of implementing screens one by one, every screen belongs to a capability.
+
+Example:
+
+```text
+Booking
+
+    Booking Wizard
+
+    Booking Confirmation
+
+    Booking Details
+
+    Booking Timeline
+
+    Booking History
+```
+
+This allows complete feature delivery rather than isolated UI pages.
+
+---
+
+# Capability Lifecycle
+
+Every capability progresses through the same engineering stages.
+
+```text
+Defined
+
+↓
+
+Architected
+
+↓
+
+Domain Complete
+
+↓
+
+Database Complete
+
+↓
+
+API Complete
+
+↓
+
+Repositories
+
+↓
+
+Offline Support
+
+↓
+
+UI Components
+
+↓
+
+Screens
+
+↓
+
+Integration
+
+↓
+
+Testing
+
+↓
+
+Production Ready
+```
+
+This lifecycle replaces subjective progress like "50% of the screens are done."
+
+---
+
+# Capability Health Dashboard
+
+For project governance, every capability should be measurable.
+
+Suggested metrics:
+
+| Metric            | Description                         |
+| ----------------- | ----------------------------------- |
+| Domain Coverage   | Domain model complete               |
+| API Coverage      | Commands/queries implemented        |
+| Database Coverage | Schema and migrations complete      |
+| UI Coverage       | Screens implemented                 |
+| Test Coverage     | Unit + integration tests            |
+| Accessibility     | WCAG compliance                     |
+| Offline Support   | Commands and sync verified          |
+| Performance       | Startup/render benchmarks           |
+| Documentation     | Developer and product docs complete |
+
+This gives objective readiness indicators for every capability.
+
+---
+
+# Capability Registry
+
+I recommend maintaining a single machine-readable registry (YAML or JSON) describing every capability.
+
+Example:
+
+```yaml
+booking:
+  module: booking
+  aggregate: Booking
+  routes:
+    - booking/list
+    - booking/details
+    - booking/history
+  permissions:
+    - booking:create
+    - booking:update
+  events:
+    - BookingRequested
+    - BookingCompleted
+```
+
+From this registry we can automatically generate:
+
+* Expo Router configuration
+* Navigation menus
+* Permission mappings
+* API documentation
+* Test scaffolds
+* Dependency graphs
+* Implementation checklists
+
+This turns the capability map into an executable architectural artifact rather than a static document.
+
+---
+
+# Architectural Observation
+
+At this point, we've effectively defined the **Product Architecture**. The next major step should not be writing React Native code—it should be defining the **Design System Architecture** that will sit between these capabilities and the UI.
+
+Specifically, I recommend creating a dedicated **UI Architecture series** that maps your existing designs into reusable implementation primitives instead of individual screens.
+
+That series would include:
+
+* **UI-001** — Application Shell & Navigation Architecture
+* **UI-002** — Design Token Specification
+* **UI-003** — Component Library Architecture
+* **UI-004** — Screen Composition Patterns
+* **UI-005** — Navigation Graph & User Flows
+* **UI-006** — Screen Development Roadmap (derived directly from the designs)
+
+This is where your existing design work and the architecture we've defined finally converge into an implementation-ready system.
+
+---
+
+**Current document:** `CAP-001 — Capability Map & Screen-to-Module Matrix v0.1`
+
+**Next document:** `UI-001 — Application Shell & Navigation Architecture`

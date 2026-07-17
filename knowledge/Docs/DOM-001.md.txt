@@ -1,0 +1,699 @@
+Excellent. I think this is the point where we stop thinking like app developers and start thinking like product architects.
+
+Our objective is **not** to recreate the screens. Our objective is to define the product so precisely that building the screens becomes almost mechanical.
+
+---
+
+# DOM-001 — Complete Domain Model v0.1
+
+## Purpose
+
+The Domain Model defines the business concepts that exist independently of:
+
+* React Native
+* Expo
+* Supabase
+* UI
+* APIs
+* Database
+
+The UI is simply one projection of these concepts.
+
+---
+
+# Core Bounded Contexts
+
+From the UI, I would organize TaskPRO into these bounded contexts.
+
+```
+Authentication
+
+Identity
+
+Customer
+
+Professional
+
+Marketplace
+
+Catalog
+
+Booking
+
+Scheduling
+
+Work Execution
+
+Messaging
+
+Payments
+
+Reviews
+
+Notifications
+
+Documents
+
+Media
+
+Location
+
+Administration
+```
+
+These become the top-level modules of the application.
+
+---
+
+# Aggregate Roots
+
+These are the primary business objects that own consistency boundaries.
+
+```
+User
+
+Professional
+
+Booking
+
+Service
+
+Conversation
+
+Payment
+
+Invoice
+
+Review
+
+Notification
+
+Organization
+```
+
+Everything else belongs to one of these aggregates.
+
+---
+
+# User Aggregate
+
+Represents any authenticated person in the system.
+
+### Entities
+
+```
+User
+
+Profile
+
+Preferences
+
+Device
+
+Address
+
+EmergencyContact
+```
+
+### Value Objects
+
+```
+Email
+
+Phone
+
+FullName
+
+Avatar
+
+Language
+
+Timezone
+
+Currency
+```
+
+### State
+
+```
+Pending
+
+Active
+
+Suspended
+
+Deleted
+```
+
+---
+
+# Professional Aggregate
+
+Represents a service provider.
+
+### Entities
+
+```
+Professional
+
+Availability
+
+WorkingHours
+
+Verification
+
+Skill
+
+Certification
+
+Portfolio
+
+CoverageArea
+
+PricingRule
+```
+
+### Value Objects
+
+```
+Rating
+
+Experience
+
+Distance
+
+TravelRadius
+
+ResponseTime
+```
+
+### State Machine
+
+```
+Pending Verification
+
+Verified
+
+Available
+
+Busy
+
+Offline
+
+Suspended
+```
+
+---
+
+# Service Aggregate
+
+Defines what can be purchased.
+
+### Entities
+
+```
+Service
+
+Category
+
+Subcategory
+
+Option
+
+Package
+
+Requirement
+```
+
+### Value Objects
+
+```
+Duration
+
+Price
+
+Tax
+
+EstimatedArrival
+```
+
+---
+
+# Booking Aggregate
+
+This is probably the heart of TaskPRO.
+
+### Entities
+
+```
+Booking
+
+BookingTimeline
+
+Assignment
+
+Schedule
+
+Cancellation
+
+Evidence
+
+Completion
+```
+
+### Value Objects
+
+```
+BookingNumber
+
+AppointmentWindow
+
+Location
+
+Instructions
+
+Priority
+```
+
+### Booking Lifecycle
+
+```
+Draft
+
+Requested
+
+Searching Professional
+
+Assigned
+
+Accepted
+
+Professional En Route
+
+Professional Arrived
+
+In Progress
+
+Paused
+
+Completed
+
+Awaiting Payment
+
+Paid
+
+Reviewed
+
+Cancelled
+
+Expired
+```
+
+This lifecycle should be modeled as a deterministic state machine with validated transitions rather than free-form status updates.
+
+---
+
+# Work Execution Aggregate
+
+Responsible for what happens during the service visit.
+
+### Entities
+
+```
+Task
+
+Checklist
+
+Evidence
+
+Photo
+
+Signature
+
+Material
+
+TimeEntry
+
+WorkLog
+```
+
+### Evidence Types
+
+```
+Photo
+
+Video
+
+Document
+
+Audio
+
+Signature
+
+GPS
+
+Timestamp
+```
+
+---
+
+# Messaging Aggregate
+
+```
+Conversation
+
+Participant
+
+Message
+
+Attachment
+
+ReadReceipt
+```
+
+Supported message types:
+
+```
+Text
+
+Photo
+
+Video
+
+Location
+
+File
+
+System Event
+```
+
+---
+
+# Payment Aggregate
+
+```
+Payment
+
+PaymentIntent
+
+Transaction
+
+Refund
+
+Payout
+
+PaymentMethod
+```
+
+Supported providers should be abstracted behind a payment service so additional gateways can be introduced without affecting the domain.
+
+---
+
+# Invoice Aggregate
+
+```
+Invoice
+
+InvoiceItem
+
+Tax
+
+Receipt
+
+CreditNote
+```
+
+---
+
+# Review Aggregate
+
+```
+Review
+
+Rating
+
+Comment
+
+Attachment
+```
+
+Dimensions
+
+```
+Quality
+
+Professionalism
+
+Communication
+
+Punctuality
+
+Overall
+```
+
+---
+
+# Notification Aggregate
+
+```
+Notification
+
+Template
+
+Preference
+
+DeviceToken
+```
+
+Channels
+
+```
+Push
+
+Email
+
+SMS
+
+In-App
+```
+
+---
+
+# Document Aggregate
+
+```
+Document
+
+VerificationDocument
+
+License
+
+Insurance
+
+Certification
+```
+
+---
+
+# Media Aggregate
+
+```
+MediaAsset
+
+Image
+
+Video
+
+Thumbnail
+```
+
+Ownership
+
+```
+Booking
+
+Professional
+
+Review
+
+Profile
+
+Conversation
+```
+
+---
+
+# Location Aggregate
+
+```
+Address
+
+SavedLocation
+
+CoverageArea
+
+Route
+
+GPSPoint
+```
+
+---
+
+# Organization Aggregate
+
+If the platform later supports companies or franchises, this aggregate already provides the foundation.
+
+```
+Organization
+
+Branch
+
+Member
+
+Role
+
+Invitation
+```
+
+---
+
+# Shared Value Objects
+
+These should be reused across every module rather than duplicated.
+
+```
+Money
+
+Duration
+
+Distance
+
+Coordinate
+
+Address
+
+DateRange
+
+Phone
+
+Email
+
+Url
+
+Percentage
+
+Rating
+
+Color
+
+Locale
+
+Language
+
+Currency
+
+Timezone
+```
+
+---
+
+# Cross-Aggregate Relationships
+
+```
+User
+ ├── owns Bookings
+ ├── writes Reviews
+ ├── participates in Conversations
+
+Professional
+ ├── offers Services
+ ├── accepts Bookings
+ ├── uploads Evidence
+ ├── receives Reviews
+
+Booking
+ ├── belongs to User
+ ├── assigned to Professional
+ ├── contains Payments
+ ├── contains Evidence
+ ├── generates Invoice
+ ├── generates Notifications
+```
+
+---
+
+# Domain Events
+
+Instead of tightly coupling modules, the platform should communicate through domain events. These events also provide an audit trail and simplify future integrations.
+
+```
+UserRegistered
+
+ProfessionalVerified
+
+BookingRequested
+
+BookingAssigned
+
+BookingAccepted
+
+ProfessionalDeparted
+
+ProfessionalArrived
+
+WorkStarted
+
+EvidenceUploaded
+
+WorkCompleted
+
+PaymentAuthorized
+
+PaymentCaptured
+
+InvoiceGenerated
+
+ReviewSubmitted
+
+MessageSent
+
+NotificationDelivered
+```
+
+---
+
+# Architectural Principle
+
+One of the most important decisions we can make now is to treat **every user action as an intent that produces a domain event**, rather than a direct database mutation.
+
+The flow becomes:
+
+```
+User Intent
+        │
+        ▼
+Application Use Case
+        │
+        ▼
+Domain Validation
+        │
+        ▼
+Domain Event
+        │
+        ▼
+Persistence
+        │
+        ▼
+Realtime Update
+        │
+        ▼
+UI Projection
+```
+
+This aligns naturally with the event-driven philosophy we've been using in SYNTH and gives us a clean separation between business logic, persistence, and presentation.
+
+---
+
+**Current document:** `DOM-001 — Complete Domain Model v0.1`
+
+**Next document:** `DB-001 — Canonical Database Schema`

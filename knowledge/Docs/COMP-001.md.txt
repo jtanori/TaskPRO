@@ -1,0 +1,4606 @@
+# TASKPRO-COMP-001 — TaskPRO Component Catalog v0.1
+
+## Artifact Classification
+
+**SYNTH Artifact Family:** Product Implementation Knowledge Artifact
+
+**Purpose:** Capture the reusable UI component system required to implement TaskPRO from the existing designs and React Native codebase.
+
+**Sources:**
+
+* React Native components
+* Existing screen implementations
+* Design assets
+* Repeated UI patterns
+
+---
+
+# 1. Component Architecture Overview
+
+TaskPRO components are organized into:
+
+```text
+TaskPRO Component System
+
+├── Foundation Components
+│
+├── Navigation Components
+│
+├── Form Components
+│
+├── Service Components
+│
+├── Marketplace Components
+│
+├── Workflow Components
+│
+├── Communication Components
+│
+├── Payment Components
+│
+├── Professional Components
+│
+└── AI Interaction Components
+```
+
+---
+
+# 2. Foundation Components
+
+## COMPONENT-FOUND-001 — App Container
+
+**Purpose**
+
+Global application layout wrapper.
+
+**Responsibilities**
+
+* Safe areas
+* Screen padding
+* Global background
+* Theme application
+
+**Used By**
+
+All screens.
+
+---
+
+## COMPONENT-FOUND-002 — Button System
+
+**Variants**
+
+* Primary button
+* Secondary button
+* Ghost button
+* Destructive button
+* Loading button
+
+**States**
+
+* Default
+* Pressed
+* Disabled
+* Loading
+
+---
+
+## COMPONENT-FOUND-003 — Card
+
+**Purpose**
+
+Reusable information container.
+
+**Used For**
+
+* Service cards
+* Profile cards
+* Payment cards
+* Summary sections
+
+---
+
+## COMPONENT-FOUND-004 — Avatar
+
+**Purpose**
+
+User/provider identity display.
+
+**Variants**
+
+* Customer
+* Technician
+* Organization
+
+---
+
+## COMPONENT-FOUND-005 — Badge / Status Indicator
+
+**Purpose**
+
+Represent state visually.
+
+Examples:
+
+* Pending
+* Confirmed
+* Active
+* Completed
+* Cancelled
+
+---
+
+## COMPONENT-FOUND-006 — Typography System
+
+Includes:
+
+* Titles
+* Headers
+* Body text
+* Labels
+* Captions
+
+---
+
+## COMPONENT-FOUND-007 — Icon System
+
+Purpose:
+
+Centralized icon usage.
+
+Used across:
+
+* navigation
+* actions
+* states
+
+---
+
+# 3. Navigation Components
+
+## COMPONENT-NAV-001 — Bottom Tab Navigation
+
+Used for:
+
+Customer and technician primary navigation.
+
+---
+
+## COMPONENT-NAV-002 — Header
+
+Contains:
+
+* title
+* back action
+* contextual actions
+
+---
+
+## COMPONENT-NAV-003 — Modal Container
+
+Used for:
+
+* confirmations
+* forms
+* AI interactions
+
+---
+
+## COMPONENT-NAV-004 — Drawer / Menu
+
+Used for:
+
+* settings
+* account navigation
+
+---
+
+# 4. Form Components
+
+## COMPONENT-FORM-001 — Text Input
+
+Used for:
+
+* authentication
+* profiles
+* requests
+
+---
+
+## COMPONENT-FORM-002 — Password Input
+
+Includes:
+
+* visibility toggle
+* validation
+
+---
+
+## COMPONENT-FORM-003 — Select Field
+
+Used for:
+
+* categories
+* options
+* preferences
+
+---
+
+## COMPONENT-FORM-004 — Date / Time Selector
+
+Used for:
+
+* scheduling
+* availability
+
+---
+
+## COMPONENT-FORM-005 — Address Selector
+
+Used for:
+
+* service location
+* saved addresses
+
+---
+
+## COMPONENT-FORM-006 — File Upload
+
+Used for:
+
+* evidence
+* documents
+
+---
+
+# 5. Service Components
+
+## COMPONENT-SERVICE-001 — Service Card
+
+Represents:
+
+* category
+* request
+* active service
+
+---
+
+## COMPONENT-SERVICE-002 — Service Status Timeline
+
+Displays lifecycle:
+
+```text
+Requested
+Scheduled
+In Progress
+Completed
+```
+
+---
+
+## COMPONENT-SERVICE-003 — Service Summary
+
+Contains:
+
+* service information
+* customer/provider information
+* schedule
+
+---
+
+## COMPONENT-SERVICE-004 — Service Checklist
+
+Used during execution.
+
+---
+
+# 6. Marketplace Components
+
+## COMPONENT-MARKET-001 — Category Card
+
+Displays service categories.
+
+---
+
+## COMPONENT-MARKET-002 — Professional Card
+
+Displays:
+
+* technician image
+* rating
+* experience
+* availability
+
+---
+
+## COMPONENT-MARKET-003 — Search Bar
+
+Used for:
+
+* service search
+* technician discovery
+
+---
+
+## COMPONENT-MARKET-004 — Filter Controls
+
+Includes:
+
+* category
+* rating
+* availability
+* location
+
+---
+
+## COMPONENT-MARKET-005 — Rating Display
+
+Used for:
+
+* technician reputation
+* reviews
+
+---
+
+# 7. Workflow Components
+
+## COMPONENT-WORKFLOW-001 — Progress Tracker
+
+Purpose:
+
+Show service lifecycle progress.
+
+---
+
+## COMPONENT-WORKFLOW-002 — Confirmation Dialog
+
+Used before:
+
+* payments
+* starting service
+* completion
+
+---
+
+## COMPONENT-WORKFLOW-003 — Empty State
+
+Used for:
+
+* no services
+* no results
+* no history
+
+---
+
+## COMPONENT-WORKFLOW-004 — Error State
+
+Used for:
+
+* failed actions
+* unavailable services
+
+---
+
+# 8. Communication Components
+
+## COMPONENT-COMM-001 — Chat Bubble
+
+Represents:
+
+* user message
+* technician message
+* system message
+
+---
+
+## COMPONENT-COMM-002 — Message Composer
+
+Includes:
+
+* text input
+* attachments
+* send action
+
+---
+
+## COMPONENT-COMM-003 — Conversation Header
+
+Shows:
+
+* participant
+* service context
+* status
+
+---
+
+# 9. Payment Components
+
+## COMPONENT-PAY-001 — Payment Method Card
+
+Displays:
+
+* card information
+* selected state
+
+---
+
+## COMPONENT-PAY-002 — Payment Summary
+
+Displays:
+
+* service cost
+* fees
+* total
+
+---
+
+## COMPONENT-PAY-003 — Invoice Card
+
+Displays:
+
+* billing status
+* invoice information
+
+---
+
+# 10. Professional Components
+
+## COMPONENT-PRO-001 — Technician Profile Card
+
+Displays:
+
+* identity
+* skills
+* ratings
+
+---
+
+## COMPONENT-PRO-002 — Job Card
+
+Professional service assignment.
+
+---
+
+## COMPONENT-PRO-003 — Earnings Summary
+
+Displays:
+
+* earnings
+* payouts
+* history
+
+---
+
+## COMPONENT-PRO-004 — Availability Calendar
+
+Used for scheduling.
+
+---
+
+# 11. AI Interaction Components
+
+## COMPONENT-AI-001 — AI Assistant Entry
+
+Entry point for AI support.
+
+---
+
+## COMPONENT-AI-002 — AI Chat Panel
+
+Provides:
+
+* assistance
+* recommendations
+* explanations
+
+---
+
+## COMPONENT-AI-003 — AI Suggestion Card
+
+Displays:
+
+* recommendation
+* reasoning
+* action
+
+---
+
+# Component Catalog Summary
+
+```text
+Foundation
+    7 components
+
+Navigation
+    4 components
+
+Forms
+    6 components
+
+Service
+    4 components
+
+Marketplace
+    5 components
+
+Workflow
+    4 components
+
+Communication
+    3 components
+
+Payment
+    3 components
+
+Professional
+    4 components
+
+AI
+    3 components
+```
+
+---
+
+# TASKPRO-COMP-001 Status
+
+Completed:
+
+✅ Component taxonomy
+✅ Reusable component definitions
+✅ Screen/component relationship foundation
+✅ SYNTH-ready implementation vocabulary
+
+Next artifact:
+
+# TASKPRO-NAV-001 — TaskPRO Expo Navigation Specification v0.1
+
+Focus:
+
+* Expo Router structure
+* route groups
+* stacks
+* tabs
+* modal flows
+* authentication boundaries
+* customer vs technician navigation model
+
+# TASKPRO-NAV-001 — TaskPRO Expo Navigation Specification v0.1
+
+## Artifact Classification
+
+**SYNTH Artifact Family:** Product Implementation Knowledge Artifact
+
+**Purpose:** Define the application navigation model using Expo Router concepts and align screen organization with user roles, workflows, and application boundaries.
+
+**Target Platform:**
+
+* Expo
+* React Native
+* TypeScript
+* Expo Router navigation model
+
+---
+
+# 1. Navigation Architecture Overview
+
+TaskPRO navigation is organized around:
+
+```text
+TaskPRO App
+
+├── Authentication Flow
+│
+├── Customer Application
+│
+├── Technician Application
+│
+└── Shared Application Areas
+```
+
+Navigation responsibilities:
+
+```text
+Authentication
+
+↓
+
+Determine User Role
+
+↓
+
+Load Role-Specific Experience
+
+↓
+
+Navigate Through Workflows
+```
+
+---
+
+# 2. Recommended Expo Router Structure
+
+```text
+app/
+
+├── _layout.tsx
+│
+├── index.tsx
+│
+├── (auth)/
+│   ├── login.tsx
+│   ├── register-customer.tsx
+│   ├── register-technician.tsx
+│   ├── verify-account.tsx
+│   ├── forgot-password.tsx
+│   └── terms.tsx
+│
+├── (customer)/
+│   ├── _layout.tsx
+│   │
+│   ├── (tabs)/
+│   │   ├── home.tsx
+│   │   ├── services.tsx
+│   │   ├── messages.tsx
+│   │   └── profile.tsx
+│   │
+│   ├── service/
+│   │   ├── [id].tsx
+│   │   ├── request.tsx
+│   │   ├── booking.tsx
+│   │   ├── payment.tsx
+│   │   └── tracking.tsx
+│   │
+│   └── review/
+│       └── [id].tsx
+│
+├── (technician)/
+│   ├── _layout.tsx
+│   │
+│   ├── (tabs)/
+│   │   ├── home.tsx
+│   │   ├── jobs.tsx
+│   │   ├── earnings.tsx
+│   │   └── profile.tsx
+│   │
+│   ├── service/
+│   │   ├── [id].tsx
+│   │   ├── start.tsx
+│   │   ├── execute.tsx
+│   │   ├── evidence.tsx
+│   │   └── complete.tsx
+│   │
+│   └── billing/
+│       ├── invoices.tsx
+│       └── tax-info.tsx
+│
+└── (shared)/
+    ├── notifications.tsx
+    ├── help.tsx
+    └── privacy.tsx
+```
+
+---
+
+# 3. Root Navigation
+
+## ROOT-001 — Application Layout
+
+Responsible for:
+
+* Theme provider
+* Authentication state
+* Global providers
+* Session restoration
+* Initial routing
+
+Flow:
+
+```text
+App Start
+
+↓
+
+Check Session
+
+↓
+
+Authenticated?
+
+├── No
+│
+└── (auth)
+
+↓
+
+Yes
+
+↓
+
+Check Role
+
+├── Customer
+│
+└── Technician
+```
+
+---
+
+# 4. Authentication Navigation
+
+## Auth Stack
+
+```text
+(auth)
+
+login
+
+↓
+
+register
+
+↓
+
+verify account
+
+↓
+
+application
+```
+
+Screens:
+
+| Route                  | Purpose               |
+| ---------------------- | --------------------- |
+| `/login`               | Existing user access  |
+| `/register-customer`   | Customer onboarding   |
+| `/register-technician` | Technician onboarding |
+| `/verify-account`      | Account validation    |
+| `/forgot-password`     | Recovery              |
+| `/terms`               | Legal agreement       |
+
+---
+
+# 5. Customer Navigation
+
+## Customer Root
+
+```text
+(customer)
+```
+
+Primary navigation:
+
+```text
+Customer Tabs
+
+├── Home
+├── Services
+├── Messages
+└── Profile
+```
+
+---
+
+# Customer Home Flow
+
+```text
+Home
+
+↓
+
+Service Discovery
+
+↓
+
+Search Results
+
+↓
+
+Technician Detail
+
+↓
+
+Booking
+
+↓
+
+Payment
+
+↓
+
+Active Service
+```
+
+---
+
+# Customer Service Stack
+
+```text
+service/
+
+[id]
+
+↓
+
+request
+
+↓
+
+booking
+
+↓
+
+payment
+
+↓
+
+tracking
+
+↓
+
+review
+```
+
+---
+
+# 6. Technician Navigation
+
+## Technician Root
+
+```text
+(technician)
+```
+
+Primary navigation:
+
+```text
+Technician Tabs
+
+├── Dashboard
+├── Jobs
+├── Earnings
+└── Profile
+```
+
+---
+
+# Technician Service Flow
+
+```text
+Dashboard
+
+↓
+
+Job Detail
+
+↓
+
+Start Service
+
+↓
+
+Execute Service
+
+↓
+
+Capture Evidence
+
+↓
+
+Complete Service
+
+↓
+
+Payment
+```
+
+---
+
+# 7. Shared Navigation
+
+Shared screens are accessible independently from role flows.
+
+```text
+(shared)
+
+notifications
+
+help
+
+privacy
+```
+
+---
+
+# 8. Modal Navigation
+
+Screens that should behave as modal presentations:
+
+```text
+Confirmation dialogs
+
+Payment confirmation
+
+Evidence preview
+
+AI assistant
+
+Filters
+
+Image capture
+
+```
+
+Expo presentation:
+
+```typescript
+presentation: "modal"
+```
+
+---
+
+# 9. Deep Link Considerations
+
+TaskPRO should support links such as:
+
+```text
+taskpro://service/123
+
+taskpro://technician/456
+
+taskpro://message/789
+```
+
+Required for:
+
+* notifications
+* email links
+* external sharing
+* future web integration
+
+---
+
+# 10. Navigation State Requirements
+
+Navigation should preserve:
+
+## Authentication State
+
+* logged user
+* role
+* session
+
+---
+
+## Workflow State
+
+Examples:
+
+```text
+Service Request
+
+↓
+
+Booking
+
+↓
+
+Payment
+
+↓
+
+Execution
+
+↓
+
+Completion
+```
+
+Users should be able to return without losing context.
+
+---
+
+# 11. Navigation Guards
+
+Required guards:
+
+## Auth Guard
+
+Prevents unauthorized access.
+
+---
+
+## Role Guard
+
+Customer cannot access technician workspace.
+
+Technician cannot access customer operational screens.
+
+---
+
+## Workflow Guard
+
+Example:
+
+Cannot access:
+
+```text
+Completion Review
+```
+
+before:
+
+```text
+Service Execution Completed
+```
+
+---
+
+# 12. Navigation Dependencies
+
+| Capability     | Navigation Impact    |
+| -------------- | -------------------- |
+| Authentication | Root routing         |
+| User Roles     | Route groups         |
+| Services       | Nested stacks        |
+| Messaging      | Shared routes        |
+| Payments       | Protected workflow   |
+| Evidence       | Technician flow      |
+| AI             | Global modal/context |
+
+---
+
+# TASKPRO-NAV-001 Status
+
+Completed:
+
+✅ Expo Router structure
+✅ Authentication flow
+✅ Customer navigation
+✅ Technician navigation
+✅ Shared navigation
+✅ Workflow routing model
+✅ Guard requirements
+
+---
+
+Next artifact:
+
+# TASKPRO-DS-001 — TaskPRO Design System Specification v0.1
+
+Focus:
+
+```text
+1. Design principles
+2. Visual language
+3. Color system
+4. Typography
+5. Spacing
+6. Tokens
+7. Component styling rules
+8. Interaction states
+9. Accessibility rules
+10. Mobile patterns
+```
+
+This will consolidate the designs and code styling into a reusable system.
+Understood. The next artifact should be the **design foundation layer** for TaskPRO, not a component catalog. It should extract the visual grammar that governs all screens, components, and future features.
+
+We should keep it aligned with the existing designs and React Native implementation, avoiding invented terminology. The output should become the reference document that later artifacts (Component Catalog, Screen Specs, Feature Specs) consume.
+
+Proposed artifact:
+
+# TASKPRO-DS-001 — TaskPRO Design System Specification v0.1
+
+## Purpose
+
+Define the reusable visual and interaction system governing TaskPRO interfaces.
+
+This specification consolidates:
+
+* existing UI designs
+* React Native styling patterns
+* recurring visual decisions
+* interaction conventions
+* accessibility requirements
+
+The goal is to establish a consistent product language that enables:
+
+* faster feature development
+* predictable user experiences
+* reusable components
+* visual consistency across mobile workflows
+
+---
+
+# 1. Design Principles
+
+## 1.1 Task-Oriented Design
+
+TaskPRO interfaces prioritize completing work over browsing.
+
+Design decisions should optimize for:
+
+* clear next actions
+* minimal cognitive load
+* fast task completion
+* visible status and progress
+* contextual information
+
+Primary question:
+
+> "What does the user need to accomplish next?"
+
+---
+
+## 1.2 Information Density With Clarity
+
+TaskPRO is a productivity/service platform.
+
+Interfaces should balance:
+
+* enough information for decisions
+* visual hierarchy
+* avoiding unnecessary decoration
+
+Dense information is acceptable when structured through:
+
+* grouping
+* spacing
+* typography hierarchy
+* progressive disclosure
+
+---
+
+## 1.3 Trust Through Transparency
+
+Users interact with services, workflows, and marketplace entities.
+
+The UI should communicate:
+
+* who is involved
+* what is happening
+* current state
+* required actions
+* completion confidence
+
+Important states must never be ambiguous.
+
+---
+
+## 1.4 Mobile-First Interaction
+
+The system is designed around mobile usage.
+
+Priorities:
+
+* thumb-friendly controls
+* short interaction paths
+* bottom navigation patterns
+* large touch targets
+* contextual actions
+
+---
+
+## 1.5 Consistent Patterns Over Novelty
+
+New screens should reuse existing patterns.
+
+Before creating a new UI pattern:
+
+1. check existing components
+2. extend existing behavior
+3. introduce new patterns only when required
+
+---
+
+# 2. Visual Language
+
+## 2.1 Overall Character
+
+TaskPRO visual language:
+
+**Modern productivity platform + service marketplace**
+
+Characteristics:
+
+* clean
+* professional
+* approachable
+* structured
+* trustworthy
+* action-oriented
+
+Avoid:
+
+* excessive decoration
+* gaming-style interfaces
+* overly corporate enterprise styling
+* visual noise
+
+---
+
+## 2.2 Layout Philosophy
+
+Screens are organized around:
+
+```
+Context
+↓
+Information
+↓
+Action
+```
+
+Example:
+
+Service detail:
+
+```
+Provider information
+        ↓
+Service description
+        ↓
+Pricing / availability
+        ↓
+Primary action
+```
+
+---
+
+## 2.3 Visual Hierarchy
+
+Priority order:
+
+1. Primary action
+2. Current task state
+3. Important information
+4. Supporting details
+5. Secondary actions
+
+---
+
+# 3. Color System
+
+## 3.1 Color Roles
+
+Colors are defined by semantic purpose rather than individual usage.
+
+## Primary
+
+Used for:
+
+* primary buttons
+* active navigation
+* important actions
+* brand identity
+
+```
+Primary
+Primary Container
+Primary Text
+```
+
+---
+
+## Secondary
+
+Used for:
+
+* supporting actions
+* categories
+* highlights
+
+```
+Secondary
+Secondary Container
+Secondary Text
+```
+
+---
+
+## Neutral System
+
+Used for:
+
+* backgrounds
+* surfaces
+* borders
+* text hierarchy
+
+Example scale:
+
+```
+Neutral 0   White
+Neutral 50  Background
+Neutral 100 Surface
+Neutral 200 Border
+Neutral 500 Secondary Text
+Neutral 900 Primary Text
+```
+
+---
+
+## Semantic Colors
+
+### Success
+
+Used for:
+
+* completed states
+* verification
+* confirmations
+
+### Warning
+
+Used for:
+
+* attention required
+* pending actions
+
+### Error
+
+Used for:
+
+* failures
+* destructive actions
+
+### Information
+
+Used for:
+
+* informational messages
+
+---
+
+# 4. Typography
+
+## 4.1 Typography Goals
+
+Typography communicates:
+
+* hierarchy
+* importance
+* state
+* readability
+
+---
+
+## 4.2 Type Scale
+
+Recommended hierarchy:
+
+```
+Display
+Large headings
+
+Heading 1
+Screen titles
+
+Heading 2
+Section titles
+
+Heading 3
+Cards / groups
+
+Body Large
+Important descriptions
+
+Body
+Default content
+
+Body Small
+Metadata
+
+Caption
+Supporting information
+```
+
+---
+
+## 4.3 Font Rules
+
+Typography should prioritize:
+
+* readability
+* platform consistency
+* accessibility
+
+Rules:
+
+* avoid excessive font weights
+* avoid long uppercase text
+* maintain strong contrast
+
+---
+
+# 5. Spacing System
+
+TaskPRO uses a consistent spacing scale.
+
+Base unit:
+
+```
+4px
+```
+
+Scale:
+
+```
+4
+8
+12
+16
+20
+24
+32
+40
+48
+64
+```
+
+---
+
+## Usage
+
+### Tight spacing
+
+Used for:
+
+* icon + label
+* metadata
+* compact lists
+
+---
+
+### Medium spacing
+
+Used for:
+
+* cards
+* sections
+* forms
+
+---
+
+### Large spacing
+
+Used for:
+
+* screen separation
+* major sections
+* empty states
+
+---
+
+# 6. Design Tokens
+
+Tokens define the system primitives.
+
+---
+
+## 6.1 Color Tokens
+
+Example:
+
+```
+color.primary
+color.secondary
+
+color.background
+color.surface
+color.surfaceElevated
+
+color.text.primary
+color.text.secondary
+color.text.disabled
+
+color.border
+
+color.success
+color.warning
+color.error
+```
+
+---
+
+## 6.2 Spacing Tokens
+
+```
+spacing.xs
+spacing.sm
+spacing.md
+spacing.lg
+spacing.xl
+spacing.2xl
+```
+
+---
+
+## 6.3 Radius Tokens
+
+Standard shapes:
+
+```
+radius.sm
+
+radius.md
+
+radius.lg
+
+radius.full
+```
+
+Usage:
+
+```
+sm
+chips
+small controls
+
+md
+cards
+inputs
+
+lg
+large surfaces
+
+full
+avatars
+pills
+```
+
+---
+
+## 6.4 Elevation Tokens
+
+```
+elevation.none
+
+elevation.sm
+
+elevation.md
+
+elevation.lg
+```
+
+Used sparingly.
+
+---
+
+# 7. Component Styling Rules
+
+## 7.1 Cards
+
+Cards represent grouped information.
+
+Rules:
+
+* clear hierarchy
+* consistent padding
+* visible boundaries or elevation
+* avoid unnecessary decoration
+
+Structure:
+
+```
+Card
+
+Header
+
+Content
+
+Actions
+```
+
+---
+
+## 7.2 Buttons
+
+Buttons communicate action priority.
+
+Types:
+
+### Primary
+
+Main task completion action.
+
+Examples:
+
+* Book service
+* Confirm
+* Continue
+
+### Secondary
+
+Supporting actions.
+
+### Text
+
+Low emphasis actions.
+
+### Destructive
+
+Irreversible actions.
+
+---
+
+Button rules:
+
+* minimum touch target: 44px
+* clear labels
+* visible pressed state
+
+---
+
+## 7.3 Inputs
+
+Inputs should:
+
+* clearly show labels
+* provide validation feedback
+* preserve entered data
+* avoid unnecessary fields
+
+States:
+
+```
+Default
+Focused
+Filled
+Error
+Disabled
+```
+
+---
+
+## 7.4 Lists
+
+Lists optimize scanning.
+
+Rules:
+
+* consistent row height
+* predictable alignment
+* meaningful grouping
+
+---
+
+## 7.5 Navigation
+
+Navigation should provide:
+
+* current location
+* quick access to primary areas
+* minimal cognitive switching
+
+Patterns:
+
+* bottom navigation
+* headers
+* contextual back navigation
+
+---
+
+# 8. Interaction States
+
+All interactive elements require defined states.
+
+---
+
+## Default
+
+Normal resting state.
+
+---
+
+## Hover
+
+Where applicable.
+
+---
+
+## Pressed
+
+Immediate feedback after touch.
+
+---
+
+## Focused
+
+Keyboard/accessibility focus.
+
+---
+
+## Disabled
+
+Unavailable action.
+
+Rules:
+
+* reduced emphasis
+* maintain readability
+
+---
+
+## Loading
+
+Communicate asynchronous operations.
+
+Examples:
+
+* skeletons
+* progress indicators
+* button loading states
+
+---
+
+## Success
+
+Confirm completion.
+
+---
+
+## Error
+
+Explain:
+
+* what happened
+* why
+* next action
+
+---
+
+# 9. Accessibility Rules
+
+## 9.1 Touch Targets
+
+Minimum:
+
+```
+44 x 44 px
+```
+
+Preferred:
+
+```
+48 x 48 px
+```
+
+---
+
+## 9.2 Contrast
+
+Maintain sufficient contrast for:
+
+* text
+* icons
+* controls
+* status indicators
+
+---
+
+## 9.3 Screen Readers
+
+All interactive elements require:
+
+* accessible labels
+* meaningful descriptions
+* state announcements
+
+---
+
+## 9.4 Color Independence
+
+Never communicate state using color alone.
+
+Example:
+
+Incorrect:
+
+> Green means completed
+
+Correct:
+
+> Green + check icon + "Completed"
+
+---
+
+## 9.5 Text Scaling
+
+Layouts should support system font scaling.
+
+Avoid:
+
+* fixed-height containers around text
+* clipped labels
+
+---
+
+# 10. Mobile Patterns
+
+## 10.1 Bottom Navigation
+
+Used for primary destinations.
+
+Rules:
+
+* 3–5 destinations
+* active state visible
+* persistent navigation
+
+---
+
+## 10.2 Bottom Sheets
+
+Used for:
+
+* filters
+* selections
+* confirmations
+* contextual actions
+
+---
+
+## 10.3 Floating Actions
+
+Used for:
+
+* primary creation actions
+
+Examples:
+
+* create request
+* add service
+
+---
+
+## 10.4 Forms
+
+Mobile forms should:
+
+* minimize typing
+* use selectors where possible
+* group related fields
+* validate progressively
+
+---
+
+## 10.5 Empty States
+
+Every empty state should include:
+
+```
+Explanation
+
+Helpful illustration/icon
+
+Primary action
+```
+
+---
+
+## 10.6 Loading Patterns
+
+Prefer:
+
+* skeleton loading
+* progressive content rendering
+
+Avoid:
+
+* full-screen blocking spinners where possible
+
+---
+
+# Version Notes
+
+## TASKPRO-DS-001 v0.1
+
+Initial design system consolidation.
+
+Sources:
+
+* TaskPRO visual designs
+* React Native implementation patterns
+* recurring UI structures
+
+Future extensions:
+
+* DS-002 Component Specifications
+* DS-003 Interaction Guidelines
+* DS-004 Motion Guidelines
+* DS-005 Theme System
+
+---
+
+This artifact should become the parent reference for:
+
+* TASKPRO-COMP-001 Component Catalog
+* TASKPRO-SCREEN-001 Screen Specifications
+* TASKPRO-FLOW-001 User Workflow Specifications
+
+Next logical artifact after this is **TASKPRO-COMP-001 — TaskPRO Component Catalog v0.1**, where we map actual reusable primitives and feature components from the code/designs into this system.
+Good. These four artifacts are tightly coupled, so consolidating them into one response makes sense. They should extend **TASKPRO-DS-001** without duplicating it:
+
+* **DS-002** → what components are built and their visual rules
+* **DS-003** → how users interact with those components
+* **DS-004** → how the interface moves and transitions
+* **DS-005** → how themes, branding, and appearance variations are managed
+
+---
+
+# TASKPRO-DS-002 — TaskPRO Component Specifications v0.1
+
+## Purpose
+
+Define the reusable UI component rules that implement the TaskPRO Design System.
+
+Components must:
+
+* follow DS-001 principles
+* remain platform-consistent
+* support reusable workflows
+* expose predictable states
+* minimize feature-specific styling
+
+---
+
+# 1. Component Architecture
+
+TaskPRO components are organized into layers:
+
+```
+Foundation
+    ↓
+Navigation
+    ↓
+Input
+    ↓
+Content
+    ↓
+Service
+    ↓
+Workflow
+    ↓
+Feature Components
+```
+
+---
+
+# 2. Foundation Components
+
+## 2.1 Box / Container
+
+Purpose:
+
+Provide consistent layout boundaries.
+
+Rules:
+
+* use spacing tokens
+* avoid arbitrary padding values
+* support responsive layouts
+
+Common usage:
+
+* sections
+* cards
+* grouped content
+
+---
+
+## 2.2 Divider
+
+Purpose:
+
+Separate content regions.
+
+Rules:
+
+* subtle visual separation
+* never replace spacing hierarchy
+* used sparingly
+
+---
+
+## 2.3 Icon
+
+Rules:
+
+* consistent icon family
+* semantic meaning
+* never decorative when communicating state
+
+Sizes:
+
+```
+Small
+16px
+
+Medium
+24px
+
+Large
+32px
+```
+
+---
+
+## 2.4 Avatar
+
+Used for:
+
+* users
+* providers
+* organizations
+
+States:
+
+```
+Default
+Image
+Initials
+Loading
+Unavailable
+```
+
+---
+
+# 3. Navigation Components
+
+## 3.1 Bottom Navigation
+
+Primary mobile navigation.
+
+Structure:
+
+```
+Icon
+
+Label
+
+Active indicator
+```
+
+Rules:
+
+* maximum 5 destinations
+* persistent
+* active location always visible
+
+---
+
+## 3.2 Header
+
+Contains:
+
+```
+Back action
+
+Title
+
+Optional actions
+```
+
+Rules:
+
+* title reflects current context
+* avoid multiple competing actions
+
+---
+
+## 3.3 Tabs
+
+Used for:
+
+* related content categories
+* workflow sections
+
+Rules:
+
+* limited number of tabs
+* current selection obvious
+
+---
+
+# 4. Form Components
+
+## 4.1 Text Input
+
+States:
+
+```
+Default
+Focused
+Filled
+Error
+Disabled
+Loading
+```
+
+Rules:
+
+* label always visible
+* errors explain resolution
+* preserve entered values
+
+---
+
+## 4.2 Selector
+
+Used instead of free text when possible.
+
+Examples:
+
+* categories
+* locations
+* service options
+
+Patterns:
+
+* dropdown
+* bottom sheet
+* searchable selector
+
+---
+
+## 4.3 Date / Time Picker
+
+Rules:
+
+* minimize manual entry
+* show selected values clearly
+* support locale formats
+
+---
+
+## 4.4 Search Field
+
+Primary discovery component.
+
+Features:
+
+* instant feedback
+* clear action
+* recent searches
+* filters integration
+
+---
+
+# 5. Content Components
+
+## 5.1 Card
+
+Primary information container.
+
+Structure:
+
+```
+Card
+
+Header
+
+Main content
+
+Metadata
+
+Actions
+```
+
+Variants:
+
+```
+Information Card
+
+Service Card
+
+Profile Card
+
+Status Card
+```
+
+---
+
+## 5.2 List Item
+
+Used for:
+
+* search results
+* messages
+* tasks
+* history
+
+Structure:
+
+```
+Leading element
+
+Primary information
+
+Supporting metadata
+
+Action
+```
+
+---
+
+## 5.3 Badge
+
+Used for:
+
+* categories
+* status
+* labels
+
+Rules:
+
+* short text only
+* never contain primary actions
+
+---
+
+## 5.4 Status Indicator
+
+Communicates state.
+
+Examples:
+
+```
+Pending
+
+Confirmed
+
+Completed
+
+Cancelled
+```
+
+Must include:
+
+* text
+* optional icon
+* semantic color
+
+---
+
+# 6. Service Components
+
+## 6.1 Service Card
+
+Represents marketplace/service offering.
+
+Contains:
+
+```
+Image
+
+Title
+
+Provider
+
+Rating
+
+Price
+
+Availability
+
+Primary action
+```
+
+---
+
+## 6.2 Provider Profile
+
+Contains:
+
+```
+Avatar
+
+Identity
+
+Verification
+
+Experience
+
+Reviews
+
+Actions
+```
+
+---
+
+## 6.3 Booking Summary
+
+Used before confirmation.
+
+Contains:
+
+```
+Service
+
+Provider
+
+Date
+
+Location
+
+Price
+
+Confirmation action
+```
+
+---
+
+# 7. Workflow Components
+
+## 7.1 Step Indicator
+
+Used for multi-step processes.
+
+Example:
+
+```
+1 ─── 2 ─── 3
+```
+
+States:
+
+* completed
+* current
+* upcoming
+
+---
+
+## 7.2 Timeline
+
+Used for:
+
+* activity history
+* service progress
+
+Structure:
+
+```
+Event
+
+Timestamp
+
+Status
+```
+
+---
+
+## 7.3 Confirmation Panel
+
+Used before irreversible actions.
+
+Contains:
+
+* summary
+* consequences
+* confirm/cancel actions
+
+---
+
+# 8. Component State Rules
+
+Every interactive component supports:
+
+```
+Default
+
+Focused
+
+Pressed
+
+Loading
+
+Disabled
+
+Error
+
+Success
+```
+
+No component should invent its own state model.
+
+---
+
+---
+
+# TASKPRO-DS-003 — TaskPRO Interaction Guidelines v0.1
+
+## Purpose
+
+Define behavioral rules for user interaction.
+
+---
+
+# 1. Interaction Principles
+
+## 1.1 Immediate Feedback
+
+Every action should provide confirmation.
+
+Examples:
+
+Button press:
+
+```
+Pressed state
+↓
+Loading
+↓
+Success/error
+```
+
+---
+
+## 1.2 Predictability
+
+Similar actions behave similarly.
+
+Examples:
+
+* delete actions
+* confirmations
+* navigation
+* forms
+
+---
+
+## 1.3 Progressive Disclosure
+
+Show complexity only when needed.
+
+Example:
+
+Service booking:
+
+Initial:
+
+```
+Service
+Price
+Book
+```
+
+Expanded:
+
+```
+Availability
+Policies
+Details
+```
+
+---
+
+# 2. Touch Interaction
+
+## Touch Targets
+
+Minimum:
+
+```
+44x44 px
+```
+
+Preferred:
+
+```
+48x48 px
+```
+
+---
+
+## Gestures
+
+Supported gestures:
+
+### Tap
+
+Primary interaction.
+
+### Long Press
+
+Only when discoverability is maintained.
+
+### Swipe
+
+Used for:
+
+* dismiss
+* navigation
+* quick actions
+
+Avoid hidden critical actions.
+
+---
+
+# 3. Forms
+
+Rules:
+
+* validate near the point of entry
+* avoid unnecessary interruptions
+* preserve user progress
+
+Errors:
+
+Bad:
+
+> Invalid input
+
+Good:
+
+> Phone number must contain 10 digits
+
+---
+
+# 4. Navigation Behavior
+
+Rules:
+
+* preserve context
+* avoid unexpected resets
+* maintain scroll position when appropriate
+
+---
+
+# 5. Feedback Patterns
+
+## Success
+
+Use:
+
+* confirmation message
+* state update
+* visual acknowledgment
+
+---
+
+## Error
+
+Must answer:
+
+1. What happened?
+2. Why?
+3. What can the user do?
+
+---
+
+## Empty State
+
+Must answer:
+
+1. Why is it empty?
+2. What should happen next?
+
+---
+
+---
+
+# TASKPRO-DS-004 — TaskPRO Motion Guidelines v0.1
+
+## Purpose
+
+Define animation and transition behavior.
+
+Motion should communicate:
+
+* hierarchy
+* cause/effect
+* system status
+
+Motion should never distract.
+
+---
+
+# 1. Motion Principles
+
+## Functional First
+
+Animation exists to explain change.
+
+Examples:
+
+Good:
+
+* expanding card
+* loading transition
+* navigation transition
+
+Bad:
+
+* decorative looping animation
+
+---
+
+# 2. Timing
+
+Standard durations:
+
+```
+Instant
+
+100ms
+
+Fast
+
+150ms
+
+Standard
+
+250ms
+
+Slow
+
+400ms
+```
+
+---
+
+# 3. Easing
+
+Default:
+
+```
+Ease-out
+```
+
+Used for:
+
+* entering elements
+* completing actions
+
+---
+
+## Ease-in-out
+
+Used for:
+
+* movement between states
+
+---
+
+# 4. Common Animations
+
+## Screen Transition
+
+Purpose:
+
+Maintain spatial understanding.
+
+Behavior:
+
+```
+Current screen exits
+New screen enters
+```
+
+---
+
+## Modal / Bottom Sheet
+
+Behavior:
+
+```
+Surface rises from bottom
+
+Background dims
+
+Content gains focus
+```
+
+---
+
+## Loading
+
+Preferred:
+
+* skeleton
+* progressive reveal
+
+Avoid:
+
+* endless blocking spinner
+
+---
+
+## Success Feedback
+
+Examples:
+
+* check animation
+* state transition
+* subtle confirmation
+
+---
+
+# 5. Reduced Motion
+
+Respect device accessibility settings.
+
+When enabled:
+
+Replace:
+
+```
+movement
+```
+
+with:
+
+```
+fade
+state change
+instant transition
+```
+
+---
+
+---
+
+# TASKPRO-DS-005 — TaskPRO Theme System Specification v0.1
+
+## Purpose
+
+Define how TaskPRO appearance is managed across environments.
+
+---
+
+# 1. Theme Architecture
+
+Theme consists of:
+
+```
+Brand Tokens
+
+Color Tokens
+
+Typography Tokens
+
+Component Tokens
+
+State Tokens
+```
+
+---
+
+# 2. Semantic Token Model
+
+Components should consume:
+
+```
+color.primary
+
+color.surface
+
+color.text.primary
+
+spacing.md
+
+radius.lg
+```
+
+Never:
+
+```
+#FF5500
+
+16px
+
+12px radius
+```
+
+directly.
+
+---
+
+# 3. Theme Modes
+
+## Light Theme
+
+Default mode.
+
+Characteristics:
+
+* high readability
+* clear surfaces
+* strong hierarchy
+
+---
+
+## Dark Theme
+
+Future support.
+
+Rules:
+
+* preserve semantic meaning
+* do not simply invert colors
+* maintain contrast
+
+---
+
+# 4. Brand Customization
+
+TaskPRO supports future white-label scenarios.
+
+Theme overrides:
+
+```
+Brand Color
+
+Logo
+
+Typography
+
+Illustration Style
+
+Component Accent
+```
+
+Core behavior remains unchanged.
+
+---
+
+# 5. Component Theme Rules
+
+Components receive tokens:
+
+Example:
+
+Button:
+
+```
+background:
+color.primary
+
+text:
+color.onPrimary
+
+radius:
+radius.md
+
+padding:
+spacing.md
+```
+
+---
+
+# 6. Theme Governance
+
+New tokens require:
+
+1. documented purpose
+2. semantic naming
+3. component usage
+4. accessibility validation
+
+Avoid:
+
+* one-off colors
+* component-specific exceptions
+* duplicated values
+
+---
+
+# TASKPRO Design System Foundation Complete
+
+The design system stack is now:
+
+```
+TASKPRO-DS-001
+Design System Specification
+        |
+        |
+        +-- DS-002 Component Specifications
+        |
+        +-- DS-003 Interaction Guidelines
+        |
+        +-- DS-004 Motion Guidelines
+        |
+        +-- DS-005 Theme System
+        |
+        ↓
+TASKPRO-COMP-001
+Component Catalog
+        |
+        ↓
+TASKPRO-SCREEN-001
+Screen Specifications
+```
+
+Next artifact should be **TASKPRO-COMP-001 — Component Catalog v0.1**, where we map the actual React Native components and existing designs into this system (including names, variants, props, usage rules, and implementation references).
+Understood. I’ll make the next artifacts more complete and consolidated so we can establish the foundation in fewer iterations.
+
+For **TASKPRO-COMP-001 — TaskPRO Component Catalog v0.1**, I’ll provide a fuller catalog rather than a lightweight outline. The goal will be to create something usable as a reference for:
+
+* React Native implementation
+* AI-assisted generation
+* design review
+* future screen specifications
+* component reuse decisions
+
+I’ll include:
+
+* complete component taxonomy
+* component responsibilities
+* variants
+* states
+* composition rules
+* usage examples
+* implementation guidance
+* relationships between components
+
+I’ll avoid over-specifying things that belong in code documentation (exact props, file paths, etc.) unless they are necessary, but I’ll make the artifact substantial enough that the next phases can proceed without repeatedly revisiting the design foundation.
+
+The catalog will follow this structure:
+
+# TASKPRO-COMP-001 — TaskPRO Component Catalog v0.1
+
+## 1. Component System Overview
+
+* component philosophy
+* hierarchy
+* composition model
+* reusable vs feature-specific components
+
+---
+
+# 2. Foundation Components
+
+## 2.1 Surface
+
+* containers
+* cards
+* elevated surfaces
+* backgrounds
+
+## 2.2 Stack / Layout Primitives
+
+* vertical stacks
+* horizontal stacks
+* grids
+* spacing rules
+
+## 2.3 Typography Components
+
+* headings
+* body text
+* metadata
+* labels
+
+## 2.4 Icons
+
+* icon sizing
+* semantic usage
+* states
+
+## 2.5 Avatar
+
+* user representation
+* provider representation
+* fallback behavior
+
+## 2.6 Badge / Chip
+
+* category labels
+* status indicators
+* filters
+
+---
+
+# 3. Navigation Components
+
+## 3.1 App Header
+
+## 3.2 Bottom Navigation
+
+## 3.3 Tabs
+
+## 3.4 Breadcrumb / Context Navigation
+
+## 3.5 Navigation Actions
+
+---
+
+# 4. Form Components
+
+## 4.1 Text Input
+
+## 4.2 Search Input
+
+## 4.3 Selectors
+
+## 4.4 Date and Time Controls
+
+## 4.5 Toggle Controls
+
+## 4.6 Checkbox / Selection Controls
+
+## 4.7 File / Image Upload
+
+## 4.8 Form Sections
+
+---
+
+# 5. Action Components
+
+## 5.1 Buttons
+
+* primary
+* secondary
+* destructive
+* loading
+* icon buttons
+
+## 5.2 Action Groups
+
+## 5.3 Floating Actions
+
+## 5.4 Confirmation Actions
+
+---
+
+# 6. Service Components
+
+## 6.1 Service Card
+
+## 6.2 Service Detail Header
+
+## 6.3 Provider Summary
+
+## 6.4 Availability Display
+
+## 6.5 Pricing Display
+
+## 6.6 Booking Summary
+
+## 6.7 Service Status
+
+---
+
+# 7. Marketplace Components
+
+## 7.1 Listing Card
+
+## 7.2 Search Result Item
+
+## 7.3 Filter Panel
+
+## 7.4 Category Selector
+
+## 7.5 Rating Display
+
+## 7.6 Review Summary
+
+## 7.7 Trust / Verification Indicator
+
+---
+
+# 8. Workflow Components
+
+## 8.1 Step Progress
+
+## 8.2 Timeline
+
+## 8.3 Task Card
+
+## 8.4 Activity Feed
+
+## 8.5 Status Tracker
+
+## 8.6 Completion Panel
+
+---
+
+# 9. Communication Components
+
+## 9.1 Conversation Preview
+
+## 9.2 Message Bubble
+
+## 9.3 Attachment Preview
+
+## 9.4 Notification Item
+
+---
+
+# 10. Feedback Components
+
+## 10.1 Loading States
+
+## 10.2 Skeletons
+
+## 10.3 Empty States
+
+## 10.4 Error States
+
+## 10.5 Success Confirmation
+
+## 10.6 Toast Messages
+
+---
+
+# 11. Layout Patterns
+
+## 11.1 Screen Container
+
+## 11.2 Section Header
+
+## 11.3 Content Group
+
+## 11.4 Bottom Action Area
+
+## 11.5 Modal Layout
+
+## 11.6 Bottom Sheet Layout
+
+---
+
+# 12. Component Composition Rules
+
+* preferred composition patterns
+* avoiding duplication
+* when to create a new component
+* when to extend an existing component
+
+---
+
+# 13. Component Governance
+
+* naming conventions
+* versioning
+* deprecation
+* design/code synchronization
+* AI generation rules
+
+---
+
+The resulting artifact will be intentionally substantial and will serve as the bridge between:
+
+```text
+TASKPRO-DS-001
+Design System Foundation
+
+        ↓
+
+TASKPRO-COMP-001
+Component Catalog
+
+        ↓
+
+TASKPRO-SCREEN-001
+Screen Specifications
+
+        ↓
+
+TASKPRO-FLOW-001
+User Workflows
+```
+
+I’ll proceed with the full catalog next.
+# TASKPRO-COMP-001 — TaskPRO Component Catalog v0.1
+
+## Purpose
+
+The TaskPRO Component Catalog defines the reusable UI building blocks used across the TaskPRO application.
+
+This catalog translates the design system foundation into implementable component categories.
+
+It establishes:
+
+* what components exist
+* why they exist
+* how they should be composed
+* what variants they support
+* how they behave across screens
+* what patterns should be reused instead of recreated
+
+This artifact is the bridge between:
+
+```text
+TASKPRO-DS-001
+Design System Specification
+
+        ↓
+
+TASKPRO-COMP-001
+Component Catalog
+
+        ↓
+
+TASKPRO-SCREEN-001
+Screen Specifications
+
+        ↓
+
+TASKPRO-FLOW-001
+Workflow Specifications
+```
+
+---
+
+# 1. Component System Overview
+
+## 1.1 Component Philosophy
+
+TaskPRO components follow five principles:
+
+### 1. Reuse Before Recreation
+
+A new UI pattern should not be created if an existing component can represent the required behavior.
+
+Example:
+
+Instead of:
+
+```
+Custom status badge on screen A
+Custom status badge on screen B
+```
+
+Use:
+
+```
+StatusBadge
+    ├── Pending
+    ├── Active
+    ├── Completed
+    └── Cancelled
+```
+
+---
+
+### 2. Composition Over Duplication
+
+Complex screens are assembled from smaller components.
+
+Example:
+
+A service booking screen:
+
+```
+BookingScreen
+
+├── ScreenHeader
+├── ServiceSummaryCard
+├── ProviderCard
+├── DateSelector
+├── PriceSummary
+└── PrimaryActionButton
+```
+
+---
+
+### 3. Components Own Behavior
+
+Components should encapsulate:
+
+* visual styling
+* interaction states
+* accessibility behavior
+* loading behavior
+
+Consumers should provide:
+
+* content
+* configuration
+* callbacks
+
+---
+
+### 4. Semantic Components
+
+Components represent business meaning.
+
+Prefer:
+
+```
+ProviderCard
+```
+
+over:
+
+```
+GenericCardWithImageAndText
+```
+
+because semantic components:
+
+* communicate intent
+* improve consistency
+* simplify AI generation
+
+---
+
+### 5. Platform Consistency
+
+Components should feel native to mobile.
+
+They should respect:
+
+* touch behavior
+* navigation patterns
+* accessibility conventions
+* mobile ergonomics
+
+---
+
+# 2. Component Hierarchy
+
+TaskPRO components are organized into layers:
+
+```
+Foundation
+    ↓
+Layout
+    ↓
+Navigation
+    ↓
+Inputs
+    ↓
+Actions
+    ↓
+Content
+    ↓
+Domain Components
+    ↓
+Feature Components
+```
+
+---
+
+# 3. Foundation Components
+
+Foundation components are the smallest reusable primitives.
+
+---
+
+# 3.1 Surface
+
+## Purpose
+
+Provides visual containers for grouped content.
+
+Examples:
+
+* cards
+* panels
+* dialogs
+* sections
+
+---
+
+## Variants
+
+```
+Surface
+
+├── Default
+├── Elevated
+├── Outlined
+└── Flat
+```
+
+---
+
+## Rules
+
+Surface controls:
+
+* background
+* border
+* elevation
+* radius
+
+Surface does not control:
+
+* content layout
+* business logic
+
+---
+
+## Usage
+
+Example:
+
+```
+Surface
+    Service information
+```
+
+---
+
+# 3.2 Container
+
+## Purpose
+
+Controls horizontal screen boundaries.
+
+Used for:
+
+* screen margins
+* page padding
+* content width
+
+---
+
+## Rules
+
+All screens should use consistent container spacing.
+
+Avoid:
+
+```
+paddingLeft: 17
+paddingRight: 23
+```
+
+Prefer:
+
+```
+spacing.page
+```
+
+---
+
+# 3.3 Stack
+
+## Purpose
+
+Primary layout primitive.
+
+---
+
+## Variants
+
+```
+VerticalStack
+
+HorizontalStack
+
+InlineStack
+```
+
+---
+
+## Controls
+
+* spacing
+* alignment
+* distribution
+
+---
+
+## Example
+
+```
+VerticalStack
+
+Title
+
+Description
+
+Action
+```
+
+---
+
+# 3.4 Divider
+
+## Purpose
+
+Separates content groups.
+
+---
+
+## Rules
+
+Use spacing first.
+
+Divider should support hierarchy, not replace layout.
+
+---
+
+# 3.5 Typography
+
+## Purpose
+
+Standardized text rendering.
+
+---
+
+## Variants
+
+```
+Display
+
+Heading
+
+SectionTitle
+
+Body
+
+BodySecondary
+
+Label
+
+Caption
+```
+
+---
+
+## Rules
+
+Typography controls:
+
+* font family
+* size
+* weight
+* color
+* line height
+
+---
+
+# 3.6 Icon
+
+## Purpose
+
+Represents actions, navigation, and states.
+
+---
+
+## Sizes
+
+```
+Small
+16px
+
+Medium
+24px
+
+Large
+32px
+```
+
+---
+
+## Rules
+
+Icons must:
+
+* have semantic meaning
+* support accessibility labels
+* maintain consistent stroke/style
+
+---
+
+# 3.7 Avatar
+
+## Purpose
+
+Represents people or organizations.
+
+---
+
+## Variants
+
+```
+Image
+
+Initials
+
+Placeholder
+
+Verified
+```
+
+---
+
+## States
+
+```
+Loading
+
+Available
+
+Unavailable
+```
+
+---
+
+# 3.8 Badge
+
+## Purpose
+
+Compact metadata indicator.
+
+---
+
+## Examples
+
+```
+Verified
+
+New
+
+Premium
+
+Available
+```
+
+---
+
+## Rules
+
+Badge:
+
+* communicates information
+* does not perform actions
+
+---
+
+# 4. Layout Components
+
+Layout components define screen structure.
+
+---
+
+# 4.1 Screen Container
+
+## Purpose
+
+Standard screen wrapper.
+
+Provides:
+
+* safe area handling
+* background
+* scrolling behavior
+* page padding
+
+---
+
+# 4.2 Section
+
+## Purpose
+
+Groups related information.
+
+Structure:
+
+```
+Section
+
+Header
+
+Content
+```
+
+---
+
+# 4.3 Section Header
+
+Contains:
+
+```
+Title
+
+Optional description
+
+Optional action
+```
+
+---
+
+# 4.4 Bottom Action Area
+
+Used for:
+
+* primary actions
+* confirmations
+* workflow progression
+
+---
+
+Rules:
+
+* fixed when appropriate
+* avoids hiding content
+* respects safe areas
+
+---
+
+# 4.5 Modal Layout
+
+Used for focused decisions.
+
+Examples:
+
+* confirmations
+* selections
+* filters
+
+---
+
+# 4.6 Bottom Sheet Layout
+
+Primary mobile contextual interaction pattern.
+
+Used for:
+
+* filters
+* selections
+* details
+* actions
+
+---
+
+# 5. Navigation Components
+
+---
+
+# 5.1 App Header
+
+## Purpose
+
+Provides screen identity.
+
+Structure:
+
+```
+Back Button
+
+Title
+
+Actions
+```
+
+---
+
+## Variants
+
+```
+Simple Header
+
+Large Header
+
+Context Header
+```
+
+---
+
+# 5.2 Bottom Navigation
+
+## Purpose
+
+Primary application navigation.
+
+---
+
+Structure:
+
+```
+Icon
+
+Label
+
+Active Indicator
+```
+
+---
+
+Rules:
+
+* 3-5 destinations
+* persistent
+* current destination visible
+
+---
+
+# 5.3 Tabs
+
+## Purpose
+
+Switch between related views.
+
+---
+
+Rules:
+
+* avoid excessive tabs
+* preserve context
+* selected state obvious
+
+---
+
+# 5.4 Navigation Action
+
+Reusable navigation control.
+
+Examples:
+
+* back
+* close
+* menu
+* share
+
+---
+
+# 6. Action Components
+
+---
+
+# 6.1 Button
+
+Primary interaction component.
+
+---
+
+## Variants
+
+```
+Primary
+
+Secondary
+
+Tertiary
+
+Destructive
+
+Icon Button
+```
+
+---
+
+## States
+
+```
+Default
+
+Pressed
+
+Loading
+
+Disabled
+
+Success
+```
+
+---
+
+## Rules
+
+Buttons require:
+
+* clear action labels
+* touch target compliance
+* loading behavior
+
+---
+
+# 6.2 Action Group
+
+Groups related actions.
+
+Example:
+
+```
+Cancel
+
+Confirm
+```
+
+---
+
+Rules:
+
+Primary action must visually dominate.
+
+---
+
+# 6.3 Floating Action Button
+
+Used for creation actions.
+
+Examples:
+
+* create request
+* add service
+
+---
+
+Rules:
+
+Do not use for every primary action.
+
+---
+
+# 6.4 Confirmation Action
+
+Used for important decisions.
+
+Structure:
+
+```
+Context
+
+Impact
+
+Cancel
+
+Confirm
+```
+
+---
+
+# 7. Form Components
+
+---
+
+# 7.1 Text Input
+
+Purpose:
+
+Collect user information.
+
+---
+
+States:
+
+```
+Default
+
+Focused
+
+Filled
+
+Error
+
+Disabled
+
+Loading
+```
+
+---
+
+Rules:
+
+* persistent labels
+* inline validation
+* clear errors
+
+---
+
+# 7.2 Search Input
+
+Purpose:
+
+Discovery and filtering.
+
+---
+
+Features:
+
+* query input
+* clear action
+* suggestions
+* recent searches
+
+---
+
+# 7.3 Selector
+
+Used instead of typing.
+
+Examples:
+
+* category
+* location
+* service type
+
+---
+
+Variants:
+
+```
+Dropdown
+
+Picker
+
+Bottom Sheet Selector
+
+Search Selector
+```
+
+---
+
+# 7.4 Date Selector
+
+Used for:
+
+* scheduling
+* availability
+
+---
+
+Supports:
+
+* date
+* time
+* range
+
+---
+
+# 7.5 Toggle
+
+Used for:
+
+* preferences
+* settings
+
+---
+
+# 7.6 Checkbox
+
+Used for:
+
+* agreements
+* multi-selection
+
+---
+
+# 7.7 Upload Component
+
+Used for:
+
+* images
+* documents
+* attachments
+
+---
+
+States:
+
+```
+Empty
+
+Uploading
+
+Complete
+
+Error
+```
+
+---
+
+# 8. Content Components
+
+---
+
+# 8.1 Card
+
+Generic content container.
+
+---
+
+Variants:
+
+```
+InformationCard
+
+ProfileCard
+
+ServiceCard
+
+StatusCard
+
+ActionCard
+```
+
+---
+
+# 8.2 List Item
+
+Used for repeated content.
+
+Structure:
+
+```
+Leading
+
+Primary Content
+
+Secondary Content
+
+Action
+```
+
+---
+
+# 8.3 Empty State
+
+Required whenever content does not exist.
+
+Structure:
+
+```
+Illustration/Icon
+
+Explanation
+
+Primary Action
+```
+
+---
+
+# 8.4 Loading State
+
+Includes:
+
+* skeleton
+* placeholder
+* progress indicator
+
+---
+
+# 8.5 Error State
+
+Structure:
+
+```
+Problem
+
+Explanation
+
+Recovery Action
+```
+
+---
+
+# 9. Service Components
+
+Domain components representing TaskPRO service workflows.
+
+---
+
+# 9.1 Service Card
+
+Purpose:
+
+Display available service.
+
+Contains:
+
+```
+Image
+
+Title
+
+Provider
+
+Rating
+
+Price
+
+Availability
+
+Action
+```
+
+---
+
+Variants:
+
+```
+Compact
+
+Standard
+
+Featured
+```
+
+---
+
+# 9.2 Provider Card
+
+Represents service provider.
+
+Contains:
+
+```
+Avatar
+
+Name
+
+Verification
+
+Rating
+
+Experience
+```
+
+---
+
+# 9.3 Service Detail Header
+
+Primary identity component.
+
+Contains:
+
+```
+Service Image
+
+Title
+
+Category
+
+Provider
+```
+
+---
+
+# 9.4 Availability Display
+
+Shows scheduling information.
+
+Examples:
+
+```
+Available Today
+
+Next Slot
+
+Calendar View
+```
+
+---
+
+# 9.5 Pricing Summary
+
+Contains:
+
+```
+Base Price
+
+Additional Fees
+
+Total
+```
+
+---
+
+# 9.6 Booking Summary
+
+Final review component.
+
+Contains:
+
+```
+Service
+
+Provider
+
+Schedule
+
+Location
+
+Price
+
+Confirmation
+```
+
+---
+
+# 10. Marketplace Components
+
+---
+
+# 10.1 Listing Card
+
+Represents marketplace item.
+
+---
+
+Contains:
+
+```
+Image
+
+Title
+
+Seller
+
+Price
+
+Condition
+
+Action
+```
+
+---
+
+# 10.2 Filter Panel
+
+Used for discovery.
+
+Supports:
+
+* categories
+* ranges
+* availability
+* sorting
+
+---
+
+# 10.3 Category Selector
+
+Supports:
+
+* browsing
+* filtering
+* classification
+
+---
+
+# 10.4 Rating Display
+
+Contains:
+
+```
+Score
+
+Stars
+
+Review Count
+```
+
+---
+
+# 10.5 Verification Indicator
+
+Communicates trust.
+
+Examples:
+
+```
+Verified Provider
+
+Verified Business
+
+Trusted Seller
+```
+
+---
+
+# 11. Workflow Components
+
+---
+
+# 11.1 Step Progress
+
+Used for multi-step flows.
+
+Example:
+
+```
+Request
+
+Schedule
+
+Confirm
+
+Complete
+```
+
+---
+
+# 11.2 Timeline
+
+Used for history.
+
+Contains:
+
+```
+Event
+
+Timestamp
+
+Status
+```
+
+---
+
+# 11.3 Task Card
+
+Represents work requiring attention.
+
+Contains:
+
+```
+Title
+
+Status
+
+Due Date
+
+Action
+```
+
+---
+
+# 11.4 Activity Feed
+
+Shows chronological updates.
+
+---
+
+# 11.5 Status Tracker
+
+Shows lifecycle progression.
+
+Example:
+
+```
+Requested
+   ↓
+Accepted
+   ↓
+Scheduled
+   ↓
+Completed
+```
+
+---
+
+# 12. Communication Components
+
+---
+
+# 12.1 Conversation Preview
+
+Contains:
+
+```
+Avatar
+
+Name
+
+Last Message
+
+Timestamp
+```
+
+---
+
+# 12.2 Message Bubble
+
+Variants:
+
+```
+Sent
+
+Received
+
+System
+```
+
+---
+
+# 12.3 Attachment Preview
+
+Supports:
+
+* images
+* files
+* documents
+
+---
+
+# 12.4 Notification Item
+
+Contains:
+
+```
+Icon
+
+Message
+
+Timestamp
+
+Action
+```
+
+---
+
+# 13. Component Governance
+
+## 13.1 Naming
+
+Use semantic names.
+
+Preferred:
+
+```
+ServiceCard
+BookingSummary
+ProviderBadge
+```
+
+Avoid:
+
+```
+BlueCard
+LargeBox
+CustomView2
+```
+
+---
+
+## 13.2 Component Creation Rules
+
+Create a new component when:
+
+* pattern repeats
+* behavior is shared
+* visual rules are complex
+
+Do not create components for:
+
+* one-off layouts
+* simple text groups
+* isolated screen content
+
+---
+
+# 13.3 Component Evolution
+
+Changes require:
+
+1. design review
+2. impact analysis
+3. migration plan if breaking
+4. documentation update
+
+---
+
+# 13.4 AI Generation Rules
+
+AI-generated screens should:
+
+* use catalog components first
+* avoid introducing new patterns
+* follow token usage
+* preserve interaction states
+
+---
+
+# TASKPRO Component System Status
+
+Completed:
+
+✅ DS-001 Design System Specification
+✅ DS-002 Component Specifications
+✅ DS-003 Interaction Guidelines
+✅ DS-004 Motion Guidelines
+✅ DS-005 Theme System
+✅ COMP-001 Component Catalog
+
+Next recommended artifact:
+
+# TASKPRO-SCREEN-001 — TaskPRO Screen Specification Catalog v0.1
+
+This will map the actual application screens against:
+
+* components used
+* layouts
+* navigation relationships
+* user intent
+* states
+* workflows
+
+That should allow us to move from design foundation → complete product specification.

@@ -1,0 +1,1176 @@
+Perfect. I reviewed the archive structure and this confirms the correction: we already have the real screen set. We do not need to invent or over-specify.
+
+I will produce the documents in a compressed SYNTH intake style:
+
+* enough semantic information for SYNTH
+* enough mapping for implementation
+* no duplication of code/design details
+
+The first artifact will be:
+
+# TASKPRO-UI-001 — TaskPRO Screen Inventory & Specification v0.1
+
+Based on the extracted screen groups:
+
+```text
+auth/
+global/
+user/
+technician/
+```
+
+The inventory currently identified:
+
+## Authentication Screens
+
+* Splash
+* Iniciar sesión
+* Crear cuenta cliente
+* Crear cuenta técnico
+* Confirmar cuenta
+* Recuperar contraseña
+* Soporte y ayuda
+* Términos y condiciones
+
+---
+
+## Customer Screens
+
+* Seleccionar servicio
+* Resultados de búsqueda
+* Detalle de técnico
+* Perfil del técnico
+* Configuración de reserva
+* Confirmación de reserva
+* Confirmar y pagar
+* Chat con técnico
+* Técnico en domicilio
+* Seguimiento en mapa
+* Servicio en progreso cliente
+* Confirmar y evaluar servicio
+* Servicio finalizado cliente
+* Servicio no completado cliente
+* Direcciones guardadas
+* Perfil y métodos de pago
+* Agregar nuevo método de pago
+
+---
+
+## Technician Screens
+
+* Inicio técnico
+* Servicios restantes hoy
+* Historial de servicios
+* Iniciar servicio
+* Confirmar iniciar servicio
+* Servicio en progreso
+* Captura de evidencias
+* Confirmar finalizar servicio
+* Servicio completado con éxito
+* Servicio no completado
+* Cancelar servicio
+* Perfil y cuenta técnico
+* Facturación y recibos
+* Detalle de factura
+* Datos de facturación
+* Datos de facturación SAT MX
+
+---
+
+## Global Screens
+
+* Notificaciones
+* Política de privacidad
+
+---
+
+I will now convert this into the actual artifact.
+
+The structure will be:
+
+```
+TASKPRO-UI-001
+
+1. Screen Catalog
+2. Authentication Flow Screens
+3. Customer Application Screens
+4. Technician Application Screens
+5. Shared Screens
+6. Screen Relationships
+7. Screen Dependencies
+```
+
+Each screen entry will be approximately:
+
+```
+SCREEN-ID
+Name
+Route (Expo proposal)
+Role
+Purpose
+Main UI
+Primary Actions
+Dependencies
+```
+
+Proceeding with:
+
+# TASKPRO-UI-001 — TaskPRO Screen Inventory & Specification v0.1
+
+I will keep each screen definition compact and implementation-oriented. The goal is to provide SYNTH with enough system knowledge to reconstruct the application, while relying on the existing code/design assets for detailed implementation.
+
+---
+
+# 1. Application Structure
+
+TaskPRO is divided into four primary application areas:
+
+```text
+TaskPRO App
+
+├── Authentication
+│
+├── Customer Experience
+│
+├── Technician Experience
+│
+└── Shared Platform Experience
+```
+
+Primary user roles:
+
+```text
+Customer
+
+Technician
+
+Platform/User Shared
+```
+
+---
+
+# 2. Authentication Screens
+
+---
+
+# SCREEN-AUTH-001 — Splash Screen
+
+**Role:** All users
+
+**Purpose:**
+Application initialization and routing entry point.
+
+**Main UI**
+
+* Brand identity
+* Loading state
+
+**Actions**
+
+* Validate session
+* Redirect user
+
+**Dependencies**
+
+* Authentication state
+* Local persistence
+
+---
+
+# SCREEN-AUTH-002 — Login
+
+**Role:** Customer / Technician
+
+**Purpose:**
+Authenticate existing users.
+
+**Main UI**
+
+* Email/phone input
+* Password input
+* Login CTA
+* Registration links
+
+**Actions**
+
+* Authenticate
+* Recover password
+* Create account
+
+**Dependencies**
+
+* Auth service
+
+---
+
+# SCREEN-AUTH-003 — Customer Registration
+
+**Role:** Customer
+
+**Purpose:**
+Create customer account.
+
+**Main UI**
+
+* User information form
+* Account validation
+
+**Actions**
+
+* Register
+* Continue onboarding
+
+**Dependencies**
+
+* Auth service
+* User profile service
+
+---
+
+# SCREEN-AUTH-004 — Technician Registration
+
+**Role:** Technician
+
+**Purpose:**
+Create professional account.
+
+**Main UI**
+
+* Personal information
+* Professional information
+
+**Actions**
+
+* Register
+* Complete profile
+
+**Dependencies**
+
+* Auth service
+* Technician profile service
+
+---
+
+# SCREEN-AUTH-005 — Account Confirmation
+
+**Role:** All users
+
+**Purpose:**
+Validate account ownership.
+
+**Main UI**
+
+* Verification input
+* Status feedback
+
+**Dependencies**
+
+* Verification service
+
+---
+
+# SCREEN-AUTH-006 — Password Recovery
+
+**Role:** All users
+
+**Purpose:**
+Recover account access.
+
+**Actions**
+
+* Request recovery
+* Confirm identity
+* Reset password
+
+---
+
+# SCREEN-AUTH-007 — Help & Support
+
+**Role:** All users
+
+**Purpose:**
+Provide assistance during authentication.
+
+**Components**
+
+* FAQ
+* Contact options
+
+---
+
+# SCREEN-AUTH-008 — Terms & Conditions
+
+**Role:** All users
+
+**Purpose:**
+Display legal agreement.
+
+---
+
+# 3. Customer Experience Screens
+
+---
+
+# SCREEN-CUSTOMER-001 — Customer Home
+
+**Route**
+`/(customer)/(tabs)/home`
+
+**Purpose**
+Customer operational dashboard.
+
+**Main UI**
+
+* Active services
+* Recommended actions
+* Quick service access
+
+**Actions**
+
+* Request service
+* View active service
+* Access profile
+
+**Dependencies**
+
+* User profile
+* Service lifecycle
+
+---
+
+# SCREEN-CUSTOMER-002 — Service Selection
+
+**Purpose**
+Browse available services.
+
+**Main UI**
+
+* Service categories
+* Search
+* Recommendations
+
+**Actions**
+
+* Select service
+* Start request
+
+**Dependencies**
+
+* Service catalog
+
+---
+
+# SCREEN-CUSTOMER-003 — Search Results
+
+**Purpose**
+Display matching professionals/services.
+
+**Main UI**
+
+* Professional cards
+* Filters
+* Ratings
+
+**Actions**
+
+* Filter
+* Open professional
+
+**Dependencies**
+
+* Search/matching service
+
+---
+
+# SCREEN-CUSTOMER-004 — Technician Detail
+
+**Purpose**
+Review professional before booking.
+
+**Main UI**
+
+* Profile
+* Experience
+* Reviews
+* Availability
+
+**Actions**
+
+* Request service
+* Contact technician
+
+---
+
+# SCREEN-CUSTOMER-005 — Booking Configuration
+
+**Purpose**
+Define service requirements.
+
+**Main UI**
+
+* Date/time
+* Location
+* Service details
+
+**Actions**
+
+* Continue booking
+
+**Dependencies**
+
+* Scheduling
+* Address service
+
+---
+
+# SCREEN-CUSTOMER-006 — Booking Confirmation
+
+**Purpose**
+Review request before submission.
+
+**Main UI**
+
+* Service summary
+* Technician summary
+* Schedule
+
+**Actions**
+
+* Confirm booking
+
+---
+
+# SCREEN-CUSTOMER-007 — Payment Confirmation
+
+**Purpose**
+Complete payment step.
+
+**Main UI**
+
+* Payment method
+* Amount
+* Confirmation
+
+**Dependencies**
+
+* Payment service
+
+---
+
+# SCREEN-CUSTOMER-008 — Customer/Technician Chat
+
+**Purpose**
+Contextual communication.
+
+**Main UI**
+
+* Conversation
+* Attachments
+* Service context
+
+**Dependencies**
+
+* Messaging service
+
+---
+
+# SCREEN-CUSTOMER-009 — Technician Arrival
+
+**Purpose**
+Track technician approaching customer location.
+
+**Main UI**
+
+* Map
+* Status
+* ETA
+
+**Dependencies**
+
+* Location service
+
+---
+
+# SCREEN-CUSTOMER-010 — Service Tracking
+
+**Purpose**
+Monitor active service.
+
+**Main UI**
+
+* Service timeline
+* Current status
+* Evidence
+
+**Dependencies**
+
+* Service workflow
+
+---
+
+# SCREEN-CUSTOMER-011 — Service Completion Review
+
+**Purpose**
+Confirm service result.
+
+**Main UI**
+
+* Completion summary
+* Rating
+* Feedback
+
+**Actions**
+
+* Approve
+* Review
+
+---
+
+# SCREEN-CUSTOMER-012 — Service Completed
+
+**Purpose**
+Display completed service.
+
+**Main UI**
+
+* Receipt
+* History
+* Feedback
+
+---
+
+# SCREEN-CUSTOMER-013 — Service Failed / Not Completed
+
+**Purpose**
+Handle unsuccessful completion.
+
+**Main UI**
+
+* Reason
+* Resolution options
+
+---
+
+# SCREEN-CUSTOMER-014 — Saved Addresses
+
+**Purpose**
+Manage service locations.
+
+**Actions**
+
+* Add
+* Edit
+* Delete
+
+---
+
+# SCREEN-CUSTOMER-015 — Customer Profile
+
+**Purpose**
+Manage customer account.
+
+**Sections**
+
+* Personal data
+* Preferences
+* Payments
+
+---
+
+# SCREEN-CUSTOMER-016 — Payment Methods
+
+**Purpose**
+Manage payment instruments.
+
+---
+
+# SCREEN-CUSTOMER-017 — Add Payment Method
+
+**Purpose**
+Register payment option.
+
+---
+
+# TASKPRO-UI-001 — TaskPRO Screen Inventory & Specification v0.1 (continued)
+
+# 4. Technician Experience Screens
+
+---
+
+# SCREEN-TECH-001 — Technician Home Dashboard
+
+**Route**
+`/(technician)/(tabs)/home`
+
+**Purpose**
+Primary operational workspace for technicians.
+
+**Main UI**
+
+* Today's activity
+* Pending services
+* Earnings summary
+* Quick actions
+
+**Actions**
+
+* View service
+* Accept work
+* Start workflow
+
+**Dependencies**
+
+* Technician profile
+* Service assignments
+* Schedule
+
+---
+
+# SCREEN-TECH-002 — Today's Services
+
+**Purpose**
+Display scheduled services.
+
+**Main UI**
+
+* Service cards
+* Customer information
+* Time/status indicators
+
+**Actions**
+
+* Open service
+* Navigate
+* Contact customer
+
+**Dependencies**
+
+* Scheduling
+* Service workflow
+
+---
+
+# SCREEN-TECH-003 — Service History
+
+**Purpose**
+Display completed and past services.
+
+**Main UI**
+
+* Completed jobs
+* Earnings
+* Ratings
+* History filters
+
+**Actions**
+
+* Open service detail
+
+**Dependencies**
+
+* Service history
+* Payments
+* Reviews
+
+---
+
+# SCREEN-TECH-004 — Technician Service Detail
+
+**Purpose**
+Operational view of an assigned service.
+
+**Main UI**
+
+* Customer information
+* Service requirements
+* Location
+* Schedule
+* Status
+
+**Actions**
+
+* Start service
+* Contact customer
+* Cancel service
+
+**Dependencies**
+
+* Service lifecycle
+
+---
+
+# SCREEN-TECH-005 — Start Service
+
+**Purpose**
+Begin execution workflow.
+
+**Main UI**
+
+* Service summary
+* Start confirmation
+
+**Actions**
+
+* Confirm start
+
+**Dependencies**
+
+* Service state transition
+
+---
+
+# SCREEN-TECH-006 — Start Service Confirmation
+
+**Purpose**
+Prevent accidental workflow transition.
+
+**Main UI**
+
+* Confirmation dialog
+* Service details
+
+**Actions**
+
+* Confirm
+* Cancel
+
+---
+
+# SCREEN-TECH-007 — Active Service Execution
+
+**Purpose**
+Main execution workspace.
+
+**Main UI**
+
+* Current task
+* Checklist
+* Progress
+* Customer context
+
+**Actions**
+
+* Update progress
+* Add evidence
+* Complete service
+
+**Dependencies**
+
+* Workflow engine
+* Evidence service
+
+---
+
+# SCREEN-TECH-008 — Evidence Capture
+
+**Purpose**
+Collect proof of execution.
+
+**Main UI**
+
+* Camera/upload
+* Notes
+* Attachments
+* Checklist items
+
+**Actions**
+
+* Capture evidence
+* Upload
+* Submit
+
+**Dependencies**
+
+* Storage
+* Evidence management
+
+---
+
+# SCREEN-TECH-009 — Complete Service Confirmation
+
+**Purpose**
+Validate service completion.
+
+**Main UI**
+
+* Completion summary
+* Evidence review
+
+**Actions**
+
+* Finish service
+* Return
+
+---
+
+# SCREEN-TECH-010 — Service Completed Success
+
+**Purpose**
+Confirm successful completion.
+
+**Main UI**
+
+* Success state
+* Summary
+* Earnings/result information
+
+**Dependencies**
+
+* Service lifecycle
+* Payment workflow
+
+---
+
+# SCREEN-TECH-011 — Service Not Completed
+
+**Purpose**
+Handle unsuccessful execution.
+
+**Main UI**
+
+* Reason selection
+* Notes
+* Resolution options
+
+**Actions**
+
+* Report issue
+* Request support
+
+---
+
+# SCREEN-TECH-012 — Cancel Service
+
+**Purpose**
+Handle technician cancellation.
+
+**Main UI**
+
+* Cancellation reasons
+* Confirmation
+
+**Dependencies**
+
+* Service policy
+
+---
+
+# SCREEN-TECH-013 — Technician Profile
+
+**Purpose**
+Manage professional identity.
+
+**Main UI**
+
+* Personal information
+* Skills
+* Service categories
+* Reputation
+
+**Actions**
+
+* Edit profile
+
+**Dependencies**
+
+* Technician profile service
+
+---
+
+# SCREEN-TECH-014 — Technician Account Settings
+
+**Purpose**
+Manage account configuration.
+
+**Main UI**
+
+* Preferences
+* Availability
+* Security
+
+---
+
+# SCREEN-TECH-015 — Technician Earnings / Billing
+
+**Purpose**
+Manage financial information.
+
+**Main UI**
+
+* Earnings summary
+* Transactions
+* Payout status
+
+**Dependencies**
+
+* Payment service
+
+---
+
+# SCREEN-TECH-016 — Invoice Detail
+
+**Purpose**
+Display financial record.
+
+**Main UI**
+
+* Invoice information
+* Service details
+* Payment status
+
+---
+
+# SCREEN-TECH-017 — Billing Information
+
+**Purpose**
+Manage billing identity.
+
+**Main UI**
+
+* Personal/company data
+* Address
+* Tax information
+
+---
+
+# SCREEN-TECH-018 — SAT Mexico Billing Data
+
+**Purpose**
+Capture Mexican fiscal information.
+
+**Main UI**
+
+* RFC
+* Fiscal regime
+* Tax address
+* CFDI information
+
+**Dependencies**
+
+* Tax validation service
+
+---
+
+# 5. Shared Platform Screens
+
+---
+
+# SCREEN-SHARED-001 — Notifications
+
+**Route**
+`/notifications`
+
+**Roles**
+Customer / Technician
+
+**Purpose**
+Central notification center.
+
+**Main UI**
+
+* Notification list
+* Categories
+* Read state
+
+**Actions**
+
+* Open related workflow
+* Mark read
+
+**Dependencies**
+
+* Notification service
+
+---
+
+# SCREEN-SHARED-002 — Messaging Center
+
+**Route**
+`/messages`
+
+**Purpose**
+Access conversations.
+
+**Main UI**
+
+* Conversation list
+* Search
+* Status
+
+**Dependencies**
+
+* Messaging service
+
+---
+
+# SCREEN-SHARED-003 — Privacy Policy
+
+**Purpose**
+Legal information.
+
+---
+
+# SCREEN-SHARED-004 — Help Center
+
+**Purpose**
+Support and assistance.
+
+**Main UI**
+
+* FAQ
+* Contact support
+* Issue reporting
+
+---
+
+# 6. Screen Relationship Map
+
+The primary customer journey:
+
+```text
+Login
+
+↓
+
+Customer Home
+
+↓
+
+Service Selection
+
+↓
+
+Search Results
+
+↓
+
+Technician Detail
+
+↓
+
+Booking Configuration
+
+↓
+
+Booking Confirmation
+
+↓
+
+Payment
+
+↓
+
+Chat / Tracking
+
+↓
+
+Service Execution
+
+↓
+
+Completion Review
+
+↓
+
+History
+```
+
+---
+
+The technician journey:
+
+```text
+Login
+
+↓
+
+Technician Home
+
+↓
+
+Today's Services
+
+↓
+
+Service Detail
+
+↓
+
+Start Service
+
+↓
+
+Execute Service
+
+↓
+
+Capture Evidence
+
+↓
+
+Complete Service
+
+↓
+
+Payment / History
+```
+
+---
+
+# 7. Screen Dependency Summary
+
+| Capability        | Screens                   |
+| ----------------- | ------------------------- |
+| Authentication    | AUTH screens              |
+| User Profiles     | Profile screens           |
+| Service Discovery | Selection, Search, Detail |
+| Scheduling        | Booking screens           |
+| Payments          | Payment/Billing screens   |
+| Messaging         | Chat screens              |
+| Location          | Tracking screens          |
+| Service Workflow  | Active Service screens    |
+| Evidence          | Capture screens           |
+| Trust             | Reviews, History          |
+| Operations        | Technician workspace      |
+
+---
+
+# TASKPRO-UI-001 Status
+
+Completed:
+
+✅ Screen inventory
+✅ Screen purpose mapping
+✅ Role mapping
+✅ Workflow relationships
+✅ Capability dependencies
+
+Next artifact:
+
+# TASKPRO-COMP-001 — TaskPRO Component Catalog v0.1
+
+This will extract the reusable UI primitives and feature components from:
+
+* existing React Native code
+* designs
+* repeated screen patterns
+
+Structure:
+
+```text
+1. Foundation Components
+2. Navigation Components
+3. Form Components
+4. Service Components
+5. Marketplace Components
+6. Workflow Components
+7. Communication Components
+8. Payment Components
+9. Professional Components
+10. AI Interaction Components
+```
+
+Then:
+
+`TASKPRO-NAV-001 — Expo Navigation Specification`
+`TASKPRO-DS-001 — Design System Specification`

@@ -1,0 +1,132 @@
+{
+  "primitive": "Expedition",
+  "version": "1.0",
+  "registration_rule": "Every expedition exists because a canonical artifact demands a transformation. Expeditions are registered, not started. Implementation capabilities (codegen, scaffold, install, migrate, compile) exist only inside expeditions, never in initialization.",
+  "ordering_authority": "TASKPRO-BUILD-001 feature dependency graph (Foundation -> Auth -> Profile/Discovery -> Services -> Booking -> Tasks -> Messaging/Reviews -> Notifications)",
+  "expeditions": [
+    {
+      "id": "E1",
+      "name": "Foundation & toolchain",
+      "status": "completed",
+      "depends_on": [],
+      "gates": [],
+      "transformation": "TurboRepo monorepo skeleton: apps/ and packages/ layout, strict TypeScript config, ESLint/Prettier/Husky, CI scaffold.",
+      "evidence_sources": ["TASKPRO-MOD-001", "TASKPRO-TECH-001", "TASKPRO-OPS-001", "TASKPRO-BUILD-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "expedition_local_decisions": [
+        "Tool version selection for Vitest, React Native Testing Library, Detox, and Storybook is an implementation concern inside this expedition. It is no longer represented as governance decision D3 and does not block E1."
+      ],
+      "completion_evidence": "BUILD-001 Phase 0 completion criteria subset: project builds, lints, typechecks, tests run.",
+      "completed_at": "2026-07-16T21:57:45Z",
+      "supporting_replay": "bootstrap-e1-0003"
+    },
+    {
+      "id": "E2",
+      "name": "Design tokens & theme (packages/design-tokens)",
+      "status": "completed",
+      "depends_on": ["E1"],
+      "gates": [],
+      "transformation": "Token hierarchy (global/alias/semantic/component) and theme system (light/dark/high-contrast, semantic remapping) as a compilable package.",
+      "evidence_sources": ["TASKPRO-DS-001", "TASKPRO-DS-005"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "completed_at": "2026-07-16T22:42:23Z",
+      "supporting_replay": "bootstrap-e2-0005"
+    },
+    {
+      "id": "E3",
+      "name": "UI component library (packages/ui) + Storybook",
+      "status": "completed",
+      "depends_on": ["E2"],
+      "gates": [],
+      "transformation": "Foundation/navigation/form/service/marketplace/workflow/communication/payment/professional/AI components with variants, states, interaction and motion rules; Storybook visual harness.",
+      "evidence_sources": ["TASKPRO-DS-002", "TASKPRO-DS-003", "TASKPRO-DS-004", "TASKPRO-COMP-001", "TASKPRO-UI-ASSETS", "TASKPRO-TEST-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "completed_at": "2026-07-17T01:03:38Z",
+      "supporting_replay": "bootstrap-e3-0007"
+    },
+    {
+      "id": "E4",
+      "name": "Domain, types & contracts (packages/domain, packages/types, supabase/)",
+      "status": "registered",
+      "depends_on": ["E1"],
+      "gates": [],
+      "transformation": "Backend-independent domain layer (aggregates, value objects, domain events), shared contracts, canonical database schema with RLS. Domain package contains no Supabase dependency (MOD-001 purity rule).",
+      "evidence_sources": ["TASKPRO-DOM-001", "TASKPRO-DATA-001", "TASKPRO-DB-001", "TASKPRO-API-001", "TASKPRO-API-002", "TASKPRO-MOD-001", "TASKPRO-AUTH-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "E5",
+      "name": "Application shell (apps/mobile route groups, providers, auth session)",
+      "status": "registered",
+      "depends_on": ["E2", "E3", "E4"],
+      "gates": [],
+      "transformation": "Expo Router structure with (auth)/(customer)/(technician)/(shared) route groups, root providers, session restoration, role-based routing, deep links.",
+      "evidence_sources": ["TASKPRO-NAV-001", "TASKPRO-ARCH-001", "TASKPRO-AUTH-001", "TASKPRO-TECH-001", "TASKPRO-UI-001-PLAN"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "completion_evidence": "BUILD-001 Phase 0 completion: app launches, navigates, renders themed components, executes tests."
+    },
+    {
+      "id": "E6",
+      "name": "Identity & discovery vertical slice (BUILD-001 Phase 1)",
+      "status": "registered",
+      "depends_on": ["E5"],
+      "gates": [],
+      "transformation": "Registration, login, session handling, profile setup, home dashboard, service search/categories/listings/detail — first usable capability: register -> login -> browse services.",
+      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-AUTH-001", "TASKPRO-UI-001", "TASKPRO-SCREEN-001", "TASKPRO-CAP-001", "TASKPRO-UI-ASSETS", "TASKPRO-I18N-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "open_decision_dependencies": ["D1 (i18n library) must be resolved before screen text is synthesized"]
+    },
+    {
+      "id": "E7",
+      "name": "Booking & task lifecycle (BUILD-001 Phase 2)",
+      "status": "registered",
+      "depends_on": ["E6"],
+      "gates": ["R1"],
+      "transformation": "Booking request, scheduling, confirmation, task timeline, status updates, completion flow, payment capture — a complete service transaction.",
+      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-FLOW-001", "TASKPRO-STATE-002", "TASKPRO-DOM-001", "TASKPRO-API-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "MEDIUM",
+      "gate_reason": "Booking state-machine vocabulary conflict (FLOW-001 vs DOM-001) must be reconciled into one canonical machine before workflow code is synthesized."
+    },
+    {
+      "id": "E8",
+      "name": "Communication layer (BUILD-001 Phase 3)",
+      "status": "registered",
+      "depends_on": ["E6"],
+      "gates": [],
+      "transformation": "Conversations, messages, attachments, push notifications, unread indicators.",
+      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-DOM-001", "TASKPRO-API-001", "TASKPRO-TECH-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "E9",
+      "name": "Marketplace expansion (BUILD-001 Phase 4)",
+      "status": "registered",
+      "depends_on": ["E7"],
+      "gates": [],
+      "transformation": "Listings, seller profiles, transactions, payment integration hardening.",
+      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-DOM-001", "TASKPRO-API-002"],
+      "derivation_type": "DIRECT",
+      "confidence": "MEDIUM",
+      "open_decision_dependencies": ["D2 (payment gateway sequencing)"]
+    },
+    {
+      "id": "E10",
+      "name": "Trust & platform maturity (BUILD-001 Phase 5)",
+      "status": "registered",
+      "depends_on": ["E7", "E8"],
+      "gates": [],
+      "transformation": "Provider verification, reputation, analytics, monitoring, production readiness.",
+      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-OPS-001", "TASKPRO-TEST-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "MEDIUM"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "@taskpro/config/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "jsx": "react-native",
+    "lib": ["ES2022", "DOM"],
+    "allowJs": true,
+    "esModuleInterop": true,
+    "noEmit": true
+  },
+  "include": ["src/**/*", ".storybook/**/*", "vite.config.ts"]
+}

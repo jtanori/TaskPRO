@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+storybook-static
+*.log
+.DS_Store
+.env
+.env.local
+.env.*.local
+.expo
+
+# Governance and authored knowledge are intentionally excluded from formatting.
+.synth/
+knowledge/
+
+# Lockfile is machine-generated and managed by pnpm.
+pnpm-lock.yaml

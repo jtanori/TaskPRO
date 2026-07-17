@@ -1,0 +1,817 @@
+# MOD-001 — Module Architecture & Monorepo Structure v0.1
+
+## Purpose
+
+TaskPRO should not be organized by **screens**, **pages**, or even **MVC**.
+
+It should be organized around **business capabilities**.
+
+The module is the primary architectural unit of the application.
+
+Every module should own:
+
+* UI
+* Domain
+* API
+* State
+* Components
+* Tests
+* Documentation
+
+This minimizes coupling and maximizes scalability.
+
+---
+
+# Architectural Principles
+
+The module architecture follows these principles:
+
+* Feature-first
+* Domain-driven
+* Dependency inversion
+* High cohesion
+* Low coupling
+* Explicit boundaries
+* Independent evolution
+* Shared design language
+
+A developer should be able to understand an entire business capability by opening a single module.
+
+---
+
+# Monorepo Structure
+
+I recommend a TurboRepo-based monorepo from day one.
+
+```text
+taskpro/
+
+apps/
+    mobile/
+    api/
+    admin/              (future)
+    docs/               (future)
+
+packages/
+    ui/
+    design-tokens/
+    domain/
+    sdk/
+    config/
+    eslint/
+    types/
+    testing/
+
+supabase/
+
+scripts/
+
+docs/
+```
+
+This allows every package to evolve independently while sharing types and contracts.
+
+---
+
+# Applications
+
+## Mobile
+
+```text
+apps/mobile
+```
+
+Expo React Native application.
+
+Contains:
+
+* Screens
+* Navigation
+* Native integrations
+
+Nothing else.
+
+---
+
+## API
+
+```text
+apps/api
+```
+
+Edge Functions
+
+Background jobs
+
+Webhooks
+
+Provider adapters
+
+Domain orchestration
+
+---
+
+## Admin
+
+Future web application.
+
+---
+
+## Documentation
+
+Generated documentation.
+
+Architecture
+
+API
+
+Design System
+
+Developer Guides
+
+---
+
+# Shared Packages
+
+## packages/ui
+
+The Design System.
+
+Contains:
+
+```text
+Buttons
+
+Cards
+
+Inputs
+
+Lists
+
+Typography
+
+Icons
+
+Layout
+
+Animations
+
+Themes
+```
+
+No business logic.
+
+---
+
+## packages/design-tokens
+
+Single source of truth.
+
+```text
+Colors
+
+Spacing
+
+Typography
+
+Elevation
+
+Radius
+
+Motion
+
+Icons
+
+Breakpoints
+```
+
+Generated for:
+
+* React Native
+* Figma
+* CSS
+* Documentation
+
+---
+
+## packages/domain
+
+Pure TypeScript.
+
+Contains:
+
+```text
+Entities
+
+Value Objects
+
+Use Cases
+
+Events
+
+Policies
+
+Interfaces
+```
+
+No React.
+
+No Supabase.
+
+No UI.
+
+This package should compile in Node, Expo, and unit tests without modification.
+
+---
+
+## packages/sdk
+
+Client SDK.
+
+```text
+Repositories
+
+DTOs
+
+Commands
+
+Queries
+
+Contracts
+
+Realtime
+
+Authentication
+```
+
+Every application consumes the SDK rather than communicating with the backend directly.
+
+---
+
+## packages/types
+
+Shared types.
+
+```text
+DTOs
+
+Enums
+
+Contracts
+
+Identifiers
+
+Responses
+```
+
+Avoid duplicating interfaces across applications.
+
+---
+
+## packages/testing
+
+Shared testing utilities.
+
+```text
+Factories
+
+Builders
+
+Fixtures
+
+Mocks
+
+Integration Helpers
+```
+
+---
+
+# Mobile Application Structure
+
+Inside the Expo application:
+
+```text
+src/
+
+modules/
+
+navigation/
+
+providers/
+
+hooks/
+
+theme/
+
+assets/
+
+config/
+```
+
+Notice what is missing:
+
+```text
+screens/
+
+services/
+
+utils/
+```
+
+Those become module-owned concerns rather than global dumping grounds.
+
+---
+
+# Module Layout
+
+Every feature follows the same structure.
+
+Example:
+
+```text
+modules/
+
+booking/
+
+    api/
+
+    application/
+
+    components/
+
+    domain/
+
+    hooks/
+
+    navigation/
+
+    repositories/
+
+    screens/
+
+    services/
+
+    state/
+
+    types/
+
+    validators/
+
+    tests/
+```
+
+Every module is self-contained.
+
+---
+
+# Module Responsibilities
+
+## API
+
+Commands
+
+Queries
+
+DTOs
+
+Contracts
+
+---
+
+## Application
+
+Use cases.
+
+Example:
+
+```text
+AcceptBooking
+
+CancelBooking
+
+CompleteBooking
+
+AssignProfessional
+```
+
+Contains orchestration only.
+
+---
+
+## Domain
+
+Pure business rules.
+
+Contains:
+
+```text
+Entities
+
+Policies
+
+Value Objects
+
+Events
+
+Specifications
+```
+
+Framework-independent.
+
+---
+
+## Components
+
+Business-specific components.
+
+Example:
+
+```text
+BookingCard
+
+BookingTimeline
+
+ProfessionalBadge
+
+PriceSummary
+```
+
+These are not part of the design system.
+
+---
+
+## Hooks
+
+Feature-specific hooks.
+
+Example:
+
+```text
+useBooking()
+
+useBookings()
+
+useBookingTimeline()
+
+useCancelBooking()
+```
+
+---
+
+## Repositories
+
+Responsible for persistence.
+
+Never contain business rules.
+
+---
+
+## Screens
+
+Only compose components.
+
+A screen should be extremely small.
+
+Example:
+
+```tsx
+BookingDetailsScreen
+
+↓
+
+BookingHeader
+
+BookingTimeline
+
+EvidenceGallery
+
+PaymentSummary
+
+ActionButtons
+```
+
+---
+
+## State
+
+Feature-specific Zustand slices (rare)
+
+Synchronization helpers
+
+Selectors
+
+Command queues
+
+---
+
+## Validators
+
+Zod schemas
+
+Business validation
+
+Command validation
+
+---
+
+## Tests
+
+Unit
+
+Integration
+
+Component
+
+Module
+
+---
+
+# Dependency Rules
+
+Modules may depend only on:
+
+```text
+Shared Packages
+
+↓
+
+Own Module
+
+↓
+
+Public Contracts of Other Modules
+```
+
+Never:
+
+```text
+Booking
+
+↓
+
+imports
+
+↓
+
+Messaging Internal Repository
+```
+
+Instead:
+
+```text
+Messaging Contract
+
+↓
+
+SDK
+
+↓
+
+Repository
+```
+
+---
+
+# Cross-Module Communication
+
+Modules communicate through events.
+
+Example:
+
+```text
+Booking Module
+
+↓
+
+BookingCompleted
+
+↓
+
+Event Bus
+
+↓
+
+Payments Module
+
+↓
+
+Invoice Module
+
+↓
+
+Notifications Module
+
+↓
+
+Reviews Module
+```
+
+No direct coupling.
+
+---
+
+# Shared UI vs Feature UI
+
+Shared:
+
+```text
+Button
+
+Card
+
+TextField
+
+Avatar
+
+Badge
+
+BottomSheet
+```
+
+Feature:
+
+```text
+BookingTimeline
+
+ProfessionalCard
+
+InvoiceSummary
+
+BookingStepper
+
+AvailabilityCalendar
+```
+
+A useful rule is: if a component contains business vocabulary ("Booking", "Professional", "Invoice"), it belongs in a feature module, not in the shared UI package.
+
+---
+
+# Navigation Ownership
+
+Each module owns its routes.
+
+Example:
+
+```text
+Booking Module
+
+BookingList
+
+BookingDetails
+
+BookingTimeline
+
+BookingPayment
+```
+
+The application router simply assembles module routes.
+
+---
+
+# Dependency Graph
+
+```text
+Apps
+
+↓
+
+SDK
+
+↓
+
+Domain
+
+↓
+
+Design System
+
+↓
+
+Design Tokens
+```
+
+Infrastructure is injected upward through interfaces, not referenced directly.
+
+---
+
+# Code Generation
+
+Because every module follows the same structure, new modules can be scaffolded automatically.
+
+Example:
+
+```bash
+taskpro generate module booking
+```
+
+Produces:
+
+```text
+booking/
+
+api/
+
+application/
+
+components/
+
+domain/
+
+hooks/
+
+repositories/
+
+screens/
+
+state/
+
+tests/
+```
+
+This enforces architectural consistency across the project.
+
+---
+
+# Screen-to-Module Mapping
+
+One insight from the UI package you shared is that we should **not** implement screens sequentially. Instead, we should map every screen into its owning module before development begins.
+
+For example:
+
+| Module         | Screens                                          |
+| -------------- | ------------------------------------------------ |
+| Authentication | Login, Register, Forgot Password, OTP            |
+| Marketplace    | Home, Categories, Search, Service Details        |
+| Booking        | Booking Flow, Booking Details, Timeline, History |
+| Professional   | Professional Profile, Availability, Portfolio    |
+| Messaging      | Conversations, Chat                              |
+| Payments       | Checkout, Payment Status, Invoice                |
+| Reviews        | Review Form, Ratings                             |
+| Settings       | Profile, Preferences, Notifications              |
+
+This becomes the implementation backlog rather than an arbitrary list of screens.
+
+---
+
+# Module Maturity Levels
+
+Every module should progress through a defined lifecycle:
+
+```text
+M0 — Defined
+    Domain documented
+
+↓
+
+M1 — Modeled
+    Types, entities, contracts complete
+
+↓
+
+M2 — Functional
+    APIs, repositories, state implemented
+
+↓
+
+M3 — Interactive
+    Screens operational
+
+↓
+
+M4 — Production Ready
+    Tests, telemetry, offline, accessibility complete
+
+↓
+
+M5 — Certified
+    Performance, security, documentation approved
+```
+
+This gives the project measurable progress beyond "screens completed."
+
+---
+
+# Architectural Observation
+
+This is the point where I would introduce one more architectural artifact that I believe will become the backbone of the entire project:
+
+> **A Capability Map.**
+
+Rather than treating modules as folders, we define every module as a **business capability** with explicit dependencies, owned aggregates, routes, APIs, permissions, events, and screens.
+
+This document becomes the bridge between architecture and implementation, allowing us to generate:
+
+* development roadmaps,
+* module scaffolds,
+* navigation,
+* API documentation,
+* test plans,
+* and even AI-assisted implementation tasks.
+
+For a project the size of TaskPRO, I consider this document even more valuable than the directory structure itself.
+
+---
+
+**Current document:** `MOD-001 — Module Architecture & Monorepo Structure v0.1`
+
+**Next document:** `CAP-001 — Capability Map & Screen-to-Module Matrix`

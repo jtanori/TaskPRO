@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recuperar Contraseña | TaskPro</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#7ff88a",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#dadada",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#00554b",
+                    "on-secondary-fixed": "#121e1d",
+                    "surface-container-low": "#f3f3f3",
+                    "secondary-fixed": "#d8e5e3",
+                    "on-background": "#1a1c1c",
+                    "secondary-fixed-dim": "#bcc9c7",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#55615f",
+                    "on-tertiary-fixed": "#002106",
+                    "border-subtle": "#E0E0E0",
+                    "surface": "#f9f9f9",
+                    "inverse-surface": "#2f3131",
+                    "on-secondary-fixed-variant": "#3d4948",
+                    "surface-tint": "#136a5f",
+                    "primary-fixed-dim": "#88d4c7",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#88d4c7",
+                    "tertiary": "#00571b",
+                    "primary-fixed": "#a4f1e3",
+                    "inverse-on-surface": "#f1f1f1",
+                    "tertiary-fixed-dim": "#66df75",
+                    "on-tertiary-fixed-variant": "#00531a",
+                    "surface-bright": "#f9f9f9",
+                    "status-danger": "#DC3545",
+                    "on-surface": "#1a1c1c",
+                    "outline-variant": "#bec9c5",
+                    "error-container": "#ffdad6",
+                    "outline": "#6f7976",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#5b6765",
+                    "on-primary-container": "#a1eddf",
+                    "primary-container": "#1a6e63",
+                    "tertiary-container": "#007227",
+                    "surface-variant": "#e2e2e2",
+                    "on-primary-fixed": "#00201c",
+                    "on-surface-variant": "#3f4946",
+                    "background": "#f9f9f9",
+                    "surface-container-highest": "#e2e2e2",
+                    "text-secondary": "#666666",
+                    "secondary-container": "#d8e5e3",
+                    "text-primary": "#000000",
+                    "status-warning": "#FFC107",
+                    "surface-container": "#eeeeee",
+                    "tertiary-fixed": "#83fc8e",
+                    "surface-container-high": "#e8e8e8",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#005047",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .canvas-bg {
+            background: radial-gradient(circle at top right, #e8f5f3 0%, #f9f9f9 40%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center justify-between">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky bg-background flex items-center justify-between px-margin-mobile h-14 transition-opacity z-50">
+<button aria-label="Volver" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors active:scale-95" onclick="window.history.back()">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<div class="absolute left-1/2 transform -translate-x-1/2">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">TaskPro</span>
+</div>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-[480px] px-margin-mobile flex flex-col items-center justify-center canvas-bg">
+<!-- Brand Monogram -->
+<div class="mb-xl">
+<div class="w-16 h-16 bg-primary-container rounded-xl flex items-center justify-center shadow-md">
+<span class="text-white font-bold text-3xl tracking-tight">TP</span>
+</div>
+</div>
+<!-- Recovery Card -->
+<div class="w-full bg-white rounded-xl p-lg shadow-[0px_2px_8px_rgba(0,0,0,0.05)] border border-border-subtle">
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Recuperar contraseña</h1>
+<p class="font-body-md text-body-md text-text-secondary">
+                    Ingresa tu correo electrónico para recibir un enlace de restablecimiento.
+                </p>
+</div>
+<form class="space-y-lg" id="recoveryForm" onsubmit="event.preventDefault(); handleRecovery();">
+<!-- Input Group -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface" for="email">Correo electrónico</label>
+<div class="relative">
+<input class="w-full h-12 px-md bg-white border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md transition-all placeholder:text-outline-variant" id="email" placeholder="nombre@ejemplo.com" required="" type="email"/>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full h-12 bg-primary-container text-white font-label-md text-label-md rounded-lg flex items-center justify-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all shadow-sm" type="submit">
+                    Enviar enlace
+                </button>
+</form>
+<div class="mt-xl text-center">
+<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#">
+                    Volver a Iniciar Sesión
+                </a>
+</div>
+</div>
+<!-- Visual Context Image (Decorative) -->
+<div class="mt-xl w-full flex justify-center opacity-40">
+<div class="w-full h-32 rounded-xl bg-surface-container-high relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[48px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="absolute inset-0 bg-cover bg-center mix-blend-overlay" data-alt="A professional clean and bright digital workspace backdrop with a blurred focus on a sleek laptop and security shield icon. The lighting is soft and neutral, reflecting a trustworthy corporate environment in Tijuana and Southern California. Subtle emerald green accents highlight the professional aesthetic of TaskPro." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDETUJItx5PD0XyPmF9SuqcE75ws6c_Mgn1Vy5X7PAwQr5_uU7i0l-fZXwOzmT8aM9b7c2aSKVnbT-30LwpaD8o0MTTYMWMZ4_A1Rt86pFgiQ_wCl1x8oFQqybGhE_8_I11Il15wiL2lAvlamzZIEjf9_4o5W7Ywf3T7GCo6QXXGlNafZaWca9u4dhnWuJlIgeLUNGNfNiojTT7tcenzNmn8tfXXT-kuN4luk8MY9ZwqddarzJhXG-USEIhndZlQl-Aq_Z-PDJ-DT4')"></div>
+</div>
+</div>
+</main>
+<!-- Success Message Overlay (Hidden by default) -->
+<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[100] hidden items-center justify-center px-margin-mobile" id="successOverlay">
+<div class="bg-white rounded-xl p-xl max-w-sm w-full text-center shadow-xl transform scale-95 transition-transform">
+<div class="w-14 h-14 bg-on-tertiary-container rounded-full flex items-center justify-center mx-auto mb-lg">
+<span class="material-symbols-outlined text-white text-3xl">check_circle</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">¡Correo enviado!</h2>
+<p class="font-body-md text-body-md text-text-secondary mb-lg">
+                Revisa tu bandeja de entrada. Te hemos enviado las instrucciones para restablecer tu contraseña.
+            </p>
+<button class="w-full py-md font-label-md text-label-md text-primary border border-primary rounded-lg hover:bg-primary-fixed transition-colors" onclick="closeOverlay()">
+                Entendido
+            </button>
+</div>
+</div>
+<!-- Shared Footer -->
+<footer class="w-full mt-auto border-t border-border-subtle flex flex-col items-center gap-sm py-lg px-margin-mobile bg-background transition-colors">
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-primary underline cursor-pointer transition-colors" href="#">Ayuda</a>
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-primary underline cursor-pointer transition-colors" href="#">Términos</a>
+</div>
+<div class="font-label-md text-label-md text-primary font-medium">© 2024 TaskPro</div>
+</footer>
+<script>
+        function handleRecovery() {
+            const emailInput = document.getElementById('email').value;
+            if (emailInput) {
+                const overlay = document.getElementById('successOverlay');
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                setTimeout(() => {
+                    overlay.querySelector('div').classList.remove('scale-95');
+                    overlay.querySelector('div').classList.add('scale-100');
+                }, 10);
+            }
+        }
+
+        function closeOverlay() {
+            const overlay = document.getElementById('successOverlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+        }
+
+        // Simple touch interaction feedback
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('touchstart', () => el.classList.add('opacity-70'));
+            el.addEventListener('touchend', () => el.classList.remove('opacity-70'));
+        });
+    </script>
+</body></html>

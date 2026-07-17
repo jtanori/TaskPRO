@@ -1,0 +1,847 @@
+Proceeding with the next artifact.
+
+# TASKPRO-ARCH-001 — TaskPRO Application Architecture Specification v0.1
+
+## Purpose
+
+The Application Architecture Specification defines the technical structure required to implement TaskPRO.
+
+This artifact connects:
+
+* design system
+* components
+* screens
+* workflows
+
+with:
+
+* application modules
+* navigation
+* state management
+* data flows
+* services
+* integrations
+* engineering boundaries
+
+The goal is to create a stable architecture foundation before implementation begins.
+
+---
+
+# 1. Architecture Overview
+
+## 1.1 Architecture Goals
+
+TaskPRO architecture prioritizes:
+
+* maintainability
+* scalability
+* feature isolation
+* reusable patterns
+* predictable state management
+* AI-assisted development compatibility
+
+---
+
+## 1.2 Application Architecture Model
+
+TaskPRO follows a layered architecture:
+
+```text id="5w2h5x"
+Presentation Layer
+
+        ↓
+
+Application Layer
+
+        ↓
+
+Domain Layer
+
+        ↓
+
+Data Layer
+
+        ↓
+
+Infrastructure Layer
+```
+
+---
+
+# 2. High-Level Application Structure
+
+Recommended React Native structure:
+
+```text id="2o5zj7"
+src/
+
+├── app/
+│   ├── navigation
+│   ├── providers
+│   ├── initialization
+│
+├── screens/
+│
+├── components/
+│
+├── features/
+│
+├── domain/
+│
+├── services/
+│
+├── state/
+│
+├── hooks/
+│
+├── utils/
+│
+├── assets/
+│
+└── theme/
+```
+
+---
+
+# 3. Application Layer
+
+The application layer coordinates user actions.
+
+Responsibilities:
+
+* workflow execution
+* screen orchestration
+* state transitions
+* command handling
+
+Examples:
+
+```text id="l9j1tv"
+CreateBooking
+
+UpdateProfile
+
+SendMessage
+
+SearchServices
+```
+
+---
+
+# 4. Feature Architecture
+
+Features are organized by user capability.
+
+Recommended structure:
+
+```text id="g6m8a7"
+features/
+
+├── authentication
+
+├── dashboard
+
+├── search
+
+├── services
+
+├── marketplace
+
+├── booking
+
+├── tasks
+
+├── messaging
+
+├── profile
+
+└── settings
+```
+
+---
+
+Each feature owns:
+
+```text id="8a7yyt"
+Screens
+
+Components
+
+Hooks
+
+State
+
+Services
+
+Models
+```
+
+---
+
+# 5. Navigation Architecture
+
+## 5.1 Navigation Hierarchy
+
+TaskPRO navigation:
+
+```text id="1c1j4b"
+Root Navigator
+
+├── Authentication Flow
+
+└── Main Application Flow
+
+        ├── Home
+
+        ├── Search
+
+        ├── Tasks
+
+        ├── Messages
+
+        └── Profile
+```
+
+---
+
+# 5.2 Authentication Flow
+
+States:
+
+```text id="sm7vbp"
+Application Start
+
+↓
+
+Check Session
+
+↓
+
+Authenticated?
+
+YES
+ ↓
+Main Application
+
+NO
+ ↓
+Authentication
+```
+
+---
+
+# 5.3 Main Navigation
+
+Primary destinations:
+
+```text id="x77mna"
+Home
+
+Search
+
+Tasks
+
+Messages
+
+Profile
+```
+
+---
+
+# 6. Screen Architecture
+
+Screens are containers.
+
+They should:
+
+* compose components
+* connect workflows
+* handle navigation
+
+They should not contain:
+
+* reusable UI primitives
+* business rules
+* direct API logic
+
+---
+
+Example:
+
+```text id="v3ty8k"
+ServiceDetailScreen
+
+uses:
+
+ServiceHeader
+
+ProviderCard
+
+PricingSummary
+
+BookingAction
+```
+
+---
+
+# 7. Component Architecture
+
+Components are divided into:
+
+```text id="b0j6i5"
+UI Components
+
+        ↓
+
+Feature Components
+
+        ↓
+
+Domain Components
+```
+
+---
+
+## UI Components
+
+Generic.
+
+Examples:
+
+* Button
+* Card
+* Input
+
+---
+
+## Feature Components
+
+Feature-specific.
+
+Examples:
+
+* BookingCalendar
+* SearchFilter
+
+---
+
+## Domain Components
+
+Business meaning.
+
+Examples:
+
+* ServiceCard
+* ProviderCard
+* TaskStatus
+
+---
+
+# 8. State Management Architecture
+
+## 8.1 State Categories
+
+TaskPRO state is divided into:
+
+```text id="7ym20x"
+Server State
+
+Application State
+
+UI State
+
+Form State
+```
+
+---
+
+# 8.2 Server State
+
+Data from backend.
+
+Examples:
+
+* services
+* bookings
+* messages
+* profiles
+
+Managed through:
+
+* API layer
+* caching layer
+* synchronization
+
+---
+
+# 8.3 Application State
+
+Global application information.
+
+Examples:
+
+* authenticated user
+* preferences
+* permissions
+
+---
+
+# 8.4 UI State
+
+Temporary interface state.
+
+Examples:
+
+* modal open
+* selected tab
+* filters
+
+---
+
+# 8.5 Form State
+
+Input state.
+
+Examples:
+
+* registration form
+* booking form
+* profile editing
+
+---
+
+# 9. Data Architecture
+
+## 9.1 Domain Models
+
+Core entities:
+
+```text id="0l3t6g"
+User
+
+Profile
+
+Service
+
+Provider
+
+MarketplaceItem
+
+Booking
+
+Task
+
+Message
+
+Notification
+```
+
+---
+
+# 9.2 Entity Relationships
+
+Example:
+
+```text id="9s4q2v"
+User
+
+ ├── Profile
+
+ ├── Bookings
+
+ ├── Messages
+
+ └── Notifications
+
+
+Service
+
+ ├── Provider
+
+ ├── Availability
+
+ └── Reviews
+```
+
+---
+
+# 10. Service Layer Architecture
+
+Services abstract external communication.
+
+Structure:
+
+```text id="q8v2y9"
+services/
+
+├── auth.service
+
+├── user.service
+
+├── service.service
+
+├── booking.service
+
+├── marketplace.service
+
+├── messaging.service
+```
+
+---
+
+Responsibilities:
+
+* API communication
+* data transformation
+* error handling
+
+---
+
+# 11. API Architecture
+
+## 11.1 API Principles
+
+APIs should provide:
+
+* predictable contracts
+* typed responses
+* clear errors
+* versioning
+
+---
+
+# 11.2 Request Flow
+
+```text id="e7o1qj"
+Screen
+
+↓
+
+Feature Hook
+
+↓
+
+Service Layer
+
+↓
+
+API Client
+
+↓
+
+Backend
+
+```
+
+---
+
+# 11.3 Error Handling
+
+Standard error model:
+
+```json id="w8p7v5"
+{
+  "code": "BOOKING_UNAVAILABLE",
+  "message": "Selected time is no longer available",
+  "action": "SELECT_NEW_TIME"
+}
+```
+
+---
+
+# 12. Backend Integration Boundaries
+
+TaskPRO should isolate backend dependencies.
+
+Example:
+
+```text id="y6smxk"
+Application
+
+↓
+
+TaskPRO Domain
+
+↓
+
+Backend Adapter
+
+↓
+
+External System
+```
+
+---
+
+This allows future changes:
+
+* REST → GraphQL
+* backend migration
+* third-party replacement
+
+---
+
+# 13. Offline and Synchronization Strategy
+
+Mobile applications require resilience.
+
+Supported patterns:
+
+## Optimistic Updates
+
+Example:
+
+Message sending:
+
+```text id="u2z8xm"
+User sends message
+
+↓
+
+Display immediately
+
+↓
+
+Sync server
+
+↓
+
+Confirm
+```
+
+---
+
+## Cached Data
+
+Useful for:
+
+* previous searches
+* profiles
+* recent tasks
+
+---
+
+## Retry Queue
+
+For:
+
+* failed uploads
+* pending messages
+* incomplete actions
+
+---
+
+# 14. Observability Architecture
+
+TaskPRO should capture:
+
+## User Events
+
+Examples:
+
+```text id="r9n8u7"
+SERVICE_SEARCHED
+
+SERVICE_VIEWED
+
+BOOKING_STARTED
+
+BOOKING_COMPLETED
+```
+
+---
+
+## Technical Events
+
+Examples:
+
+```text id="t4e9x0"
+API_FAILURE
+
+SYNC_FAILURE
+
+NETWORK_ERROR
+```
+
+---
+
+# 15. Security Architecture
+
+## Authentication
+
+Requirements:
+
+* secure token handling
+* session expiration
+* refresh strategy
+
+---
+
+## Data Protection
+
+Rules:
+
+* avoid storing sensitive data locally unnecessarily
+* encrypt local storage
+* validate permissions
+
+---
+
+# 16. Accessibility Architecture
+
+Accessibility is built into components.
+
+Requirements:
+
+* semantic labels
+* screen reader support
+* keyboard support where applicable
+* scalable typography
+
+---
+
+# 17. Testing Architecture
+
+Testing layers:
+
+```text id="m5n1qf"
+Unit Tests
+
+        ↓
+
+Component Tests
+
+        ↓
+
+Feature Tests
+
+        ↓
+
+Workflow Tests
+
+        ↓
+
+End-to-End Tests
+```
+
+---
+
+# 18. AI-Assisted Development Compatibility
+
+TaskPRO architecture should support AI generation.
+
+Requirements:
+
+## Explicit Boundaries
+
+AI should know:
+
+* where components belong
+* where logic belongs
+* where data belongs
+
+---
+
+## Predictable Patterns
+
+AI generation should prefer:
+
+```text id="x5e8e1"
+Existing Component
+
+Existing Feature Pattern
+
+Existing Workflow
+```
+
+before creating new structures.
+
+---
+
+# 19. Architecture Governance
+
+Changes require validation against:
+
+## Design
+
+Does it use:
+
+* DS tokens?
+* existing components?
+
+---
+
+## Product
+
+Does it support:
+
+* existing workflows?
+* user goals?
+
+---
+
+## Engineering
+
+Does it preserve:
+
+* boundaries?
+* testability?
+* maintainability?
+
+---
+
+# TASKPRO Architecture Foundation Complete
+
+Current specification stack:
+
+```text
+TASKPRO-DS-001
+Design System
+
+TASKPRO-DS-002
+Component Specifications
+
+TASKPRO-DS-003
+Interaction Guidelines
+
+TASKPRO-DS-004
+Motion Guidelines
+
+TASKPRO-DS-005
+Theme System
+
+        ↓
+
+TASKPRO-COMP-001
+Component Catalog
+
+        ↓
+
+TASKPRO-SCREEN-001
+Screen Catalog
+
+        ↓
+
+TASKPRO-FLOW-001
+Workflow Specification
+
+        ↓
+
+TASKPRO-ARCH-001
+Application Architecture
+```
+
+Next recommended artifact:
+
+# TASKPRO-DATA-001 — TaskPRO Domain Model & Data Specification v0.1
+
+This will define:
+
+* entities
+* relationships
+* state machines
+* API contracts
+* persistence model
+* workflow data requirements
+
+That becomes the foundation for backend implementation and integration.

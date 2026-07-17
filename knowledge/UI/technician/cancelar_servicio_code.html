@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cancelar Servicio - TaskPro Tech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+        .option-card:has(input:checked) {
+            border-color: #00554b;
+            background-color: #f3f3f3;
+        }
+        .option-card:has(input:checked) .check-circle {
+            background-color: #00554b;
+            border-color: #00554b;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e2e2e2",
+                      "on-surface": "#1a1c1c",
+                      "tertiary-container": "#007227",
+                      "secondary-fixed-dim": "#bcc9c7",
+                      "on-tertiary-container": "#7ff88a",
+                      "border-subtle": "#E0E0E0",
+                      "tertiary-fixed": "#83fc8e",
+                      "status-danger": "#DC3545",
+                      "on-tertiary-fixed": "#002106",
+                      "surface-container-high": "#e8e8e8",
+                      "surface-container": "#eeeeee",
+                      "on-primary": "#ffffff",
+                      "on-background": "#1a1c1c",
+                      "secondary-fixed": "#d8e5e3",
+                      "on-primary-container": "#a1eddf",
+                      "inverse-primary": "#88d4c7",
+                      "on-secondary-container": "#5b6765",
+                      "primary": "#00554b",
+                      "on-tertiary-fixed-variant": "#00531a",
+                      "on-surface-variant": "#3f4946",
+                      "on-secondary-fixed": "#121e1d",
+                      "text-primary": "#000000",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#00201c",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#3d4948",
+                      "outline": "#6f7976",
+                      "tertiary": "#00571b",
+                      "tertiary-fixed-dim": "#66df75",
+                      "primary-fixed": "#a4f1e3",
+                      "primary-container": "#1a6e63",
+                      "background": "#f9f9f9",
+                      "status-warning": "#FFC107",
+                      "secondary": "#55615f",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed-variant": "#005047",
+                      "surface-variant": "#e2e2e2",
+                      "primary-fixed-dim": "#88d4c7",
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#bec9c5",
+                      "text-secondary": "#666666",
+                      "surface-dim": "#dadada",
+                      "surface": "#f9f9f9",
+                      "surface-tint": "#136a5f",
+                      "surface-bright": "#f9f9f9",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2f3131",
+                      "surface-container-low": "#f3f3f3",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#f1f1f1",
+                      "secondary-container": "#d8e5e3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "caption": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background border-b border-border-subtle dark:border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 z-50 sticky top-0">
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">Cancelar Servicio</h1>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a service technician with a friendly expression, set against a clean, blurred office background. The lighting is soft and professional, emphasizing a modern corporate aesthetic with a teal and neutral gray color palette. Alex is wearing a clean branded polo shirt." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaC2zbek9Hg02TFcuSq4aBa1OogMJQZ2ww3RqvdBQqG2gmUFPo02RAiJoW37ZewqAQhmEUN9C0Uot7Y7W-B6VXHwVe4u0SyDmVMYTJMOe3WZc8FwTImGCh7WlwzgJOgzH8qKRHYEV9OGXs4SQ80Ow5wbuWJm5Kg3yD1WhuWyvN8Ld0Esio3NjiUD3iMBx8y-QyK-q-TWTOtnIr6V4p7BRC-uXAEmivYj5RwgyCmngG_MKaGNaWsuYHMuyTWMnjtfE0UWmsTe3yNxI"/>
+</div>
+</div>
+</header>
+<main class="flex-1 px-margin-mobile py-lg max-w-2xl mx-auto w-full">
+<!-- Service Summary Card -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0px_2px_8px_rgba(0,0,0,0.05)] mb-lg border border-border-subtle">
+<h2 class="text-label-md font-label-md text-text-secondary uppercase tracking-wider mb-sm">Resumen del servicio</h2>
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A closeup shot of a residential outdoor lighting installation at twilight. High-end professional work showing clean wiring and elegant warm light fixtures against a modern stone wall. The atmosphere is professional and the quality is exceptional, featuring TaskPro's signature teal and white color scheme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIK_XAMxkacJ51UJJRjQ8fDEpX-ojsefnn3gCEqqped0WH_sYJIvtguN1qMumLE4zGE4EzOdHhSGtD54ez26rFCiaYRayNcvDloXXFng5yV7YHmEQ1UpYMCRyvj_rIW2MiFo2uExUxXg4Kc7UcIhVaQ2B-GRIkkJgdc07ay33TCKdsUOJpFc-Uk2mDDY3P1qz_n0rhZmFQXQWzIMwpsS2P1hrgCtmR6lHHpqM93hOKWLOmbBX91ba3Zli4lV4Hqp2df9twbYhLSSY"/>
+</div>
+<div class="flex-1">
+<p class="text-headline-md font-headline-md text-on-surface">Instalación Eléctrica Residencial</p>
+<div class="flex flex-col gap-xs mt-xs">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">person</span>
+<span class="text-body-md font-body-md">Carlos Mendoza</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md font-body-md">Hoy, 14:30 PM - Tijuana, BC</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Cancellation Reason Section -->
+<section class="space-y-md">
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-xs">¿Por qué deseas cancelar?</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Tu respuesta nos ayuda a mejorar y notificar al cliente adecuadamente.</p>
+</div>
+<!-- Radio Options -->
+<div class="grid grid-cols-1 gap-sm">
+<label class="option-card relative flex items-center justify-between p-md bg-surface-container-lowest border border-border-subtle rounded-xl cursor-pointer hover:border-primary transition-all group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">emergency</span>
+</div>
+<span class="text-body-lg font-body-lg text-on-surface">Emergencia personal</span>
+</div>
+<input class="hidden" name="reason" type="radio" value="emergency"/>
+<div class="check-circle w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-3 h-3 bg-white rounded-full"></div>
+</div>
+</label>
+<label class="option-card relative flex items-center justify-between p-md bg-surface-container-lowest border border-border-subtle rounded-xl cursor-pointer hover:border-primary transition-all group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">car_repair</span>
+</div>
+<span class="text-body-lg font-body-lg text-on-surface">Problema con el vehículo</span>
+</div>
+<input class="hidden" name="reason" type="radio" value="vehicle"/>
+<div class="check-circle w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-3 h-3 bg-white rounded-full"></div>
+</div>
+</label>
+<label class="option-card relative flex items-center justify-between p-md bg-surface-container-lowest border border-border-subtle rounded-xl cursor-pointer hover:border-primary transition-all group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">event_busy</span>
+</div>
+<span class="text-body-lg font-body-lg text-on-surface">Doble reserva</span>
+</div>
+<input class="hidden" name="reason" type="radio" value="double_booking"/>
+<div class="check-circle w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-3 h-3 bg-white rounded-full"></div>
+</div>
+</label>
+<label class="option-card relative flex items-center justify-between p-md bg-surface-container-lowest border border-border-subtle rounded-xl cursor-pointer hover:border-primary transition-all group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">more_horiz</span>
+</div>
+<span class="text-body-lg font-body-lg text-on-surface">Otro</span>
+</div>
+<input class="hidden" name="reason" type="radio" value="other"/>
+<div class="check-circle w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-3 h-3 bg-white rounded-full"></div>
+</div>
+</label>
+</div>
+<!-- Additional Comments -->
+<div class="mt-lg">
+<label class="text-label-md font-label-md text-on-surface-variant mb-xs block" for="comments">Comentarios adicionales (Opcional)</label>
+<textarea class="w-full bg-surface-container-lowest border border-border-subtle rounded-xl p-md text-body-md font-body-md focus:ring-1 focus:ring-primary focus:border-primary outline-none resize-none transition-all" id="comments" placeholder="Escribe aquí más detalles sobre el motivo de la cancelación..." rows="4"></textarea>
+</div>
+</section>
+<!-- Warning Alert -->
+<div class="mt-lg p-md bg-error-container/20 border border-error/20 rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<p class="text-label-sm font-label-sm text-on-error-container">
+                Al cancelar con menos de 2 horas de anticipación, tu tasa de cumplimiento podría verse afectada. Revisa nuestras políticas de cancelación.
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="mt-xl flex flex-col gap-md pb-xl">
+<button class="w-full h-12 bg-status-danger text-white font-bold rounded-xl shadow-lg hover:bg-red-700 active:scale-95 transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">cancel</span>
+                Confirmar Cancelación
+            </button>
+<button class="w-full h-12 bg-primaryLight text-primary font-semibold rounded-xl hover:bg-surface-container transition-all flex items-center justify-center border border-primary">
+                Mantener Servicio
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-on-background shadow-[0px_-2px_8px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined fill-icon">calendar_today</span>
+<span class="text-label-sm font-label-sm">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-label-sm font-label-sm">Earnings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-label-sm font-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple interaction for radio buttons
+        const optionCards = document.querySelectorAll('.option-card');
+        optionCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Logic already handled by CSS :has() selector in most modern browsers
+                // Adding focus state/manual selection logic for older environments
+                optionCards.forEach(c => c.querySelector('input').checked = false);
+                card.querySelector('input').checked = true;
+            });
+        });
+
+        // Add visual confirmation on button click
+        const confirmBtn = document.querySelector('.bg-status-danger');
+        confirmBtn.addEventListener('click', () => {
+            const selectedReason = document.querySelector('input[name="reason"]:checked');
+            if(!selectedReason) {
+                alert('Por favor selecciona una razón para cancelar.');
+                return;
+            }
+            confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Procesando...';
+            setTimeout(() => {
+                confirmBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Servicio Cancelado';
+                confirmBtn.classList.replace('bg-status-danger', 'bg-on-surface-variant');
+            }, 1500);
+        });
+    </script>
+</body></html>

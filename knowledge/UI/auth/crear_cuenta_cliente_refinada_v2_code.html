@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crea tu cuenta | TaskPro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#3d4948",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#00201c",
+                    "tertiary": "#00571b",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2f3131",
+                    "surface-tint": "#136a5f",
+                    "secondary-container": "#d8e5e3",
+                    "on-secondary-fixed": "#121e1d",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#a1eddf",
+                    "surface-bright": "#f9f9f9",
+                    "surface-container-low": "#f3f3f3",
+                    "primary": "#00554b",
+                    "status-danger": "#DC3545",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#bcc9c7",
+                    "secondary": "#55615f",
+                    "inverse-primary": "#88d4c7",
+                    "border-subtle": "#E0E0E0",
+                    "on-surface": "#1a1c1c",
+                    "surface-dim": "#dadada",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#1a6e63",
+                    "on-tertiary-fixed": "#002106",
+                    "on-surface-variant": "#3f4946",
+                    "outline": "#6f7976",
+                    "surface-variant": "#e2e2e2",
+                    "status-warning": "#FFC107",
+                    "on-error-container": "#93000a",
+                    "text-primary": "#000000",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e8e8e8",
+                    "surface-container": "#eeeeee",
+                    "on-tertiary-fixed-variant": "#00531a",
+                    "inverse-on-surface": "#f1f1f1",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary-container": "#007227",
+                    "on-tertiary-container": "#7ff88a",
+                    "on-primary-fixed-variant": "#005047",
+                    "primary-fixed-dim": "#88d4c7",
+                    "outline-variant": "#bec9c5",
+                    "text-secondary": "#666666",
+                    "tertiary-fixed-dim": "#66df75",
+                    "on-background": "#1a1c1c",
+                    "tertiary-fixed": "#83fc8e",
+                    "primary-fixed": "#a4f1e3",
+                    "surface": "#f9f9f9",
+                    "on-secondary-container": "#5b6765",
+                    "secondary-fixed": "#d8e5e3",
+                    "background": "#f9f9f9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "margin-desktop": "32px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+        }
+        .focused-shadow {
+            box-shadow: 0px 10px 24px rgba(0,0,0,0.1);
+        }
+        .border-teal-focus:focus-within {
+            border-color: #00554b !important;
+            box-shadow: 0 0 0 1px #00554b;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex flex-col items-center">
+<!-- Top AppBar (Simulated/Transactional) -->
+<header class="w-full top-0 sticky bg-background dark:bg-on-background z-50">
+<div class="flex items-center justify-between px-margin-mobile h-14 w-full">
+<button class="text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">TaskPro</h1>
+<div class="w-6"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center w-full max-w-md px-margin-mobile py-lg">
+<!-- Identity Branding -->
+<div class="flex flex-col items-center mb-xl">
+<div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center soft-shadow mb-md">
+<span class="text-on-primary font-extrabold text-2xl tracking-tighter">TP</span>
+</div>
+<p class="font-label-md text-label-md text-secondary tracking-widest uppercase mb-xs">Task Pro MX-Ca</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Crea tu cuenta</h2>
+</div>
+<!-- Registration Form -->
+<form class="w-full space-y-md">
+<!-- Full Name -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Nombre completo</label>
+<div class="relative flex items-center border border-border-subtle rounded-lg bg-surface-container-lowest border-teal-focus transition-all h-12 px-md">
+<span class="material-symbols-outlined text-outline mr-sm" data-icon="person">person</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-body-md text-on-surface placeholder:text-outline-variant" placeholder="Ej. Juan Pérez" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Correo electrónico</label>
+<div class="relative flex items-center border border-border-subtle rounded-lg bg-surface-container-lowest border-teal-focus transition-all h-12 px-md">
+<span class="material-symbols-outlined text-outline mr-sm" data-icon="mail">mail</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-body-md text-on-surface placeholder:text-outline-variant" placeholder="nombre@ejemplo.com" type="email"/>
+</div>
+</div>
+<!-- Phone +52 Mask -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Número de teléfono</label>
+<div class="relative flex items-center border border-border-subtle rounded-lg bg-surface-container-lowest border-teal-focus transition-all h-12 px-md">
+<span class="font-body-md text-on-surface-variant mr-sm border-r border-border-subtle pr-sm">+52</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-body-md text-on-surface placeholder:text-outline-variant" placeholder="000 000 0000" type="tel"/>
+<span class="material-symbols-outlined text-outline ml-sm" data-icon="phone_iphone">phone_iphone</span>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Contraseña</label>
+<div class="relative flex items-center border border-border-subtle rounded-lg bg-surface-container-lowest border-teal-focus transition-all h-12 px-md">
+<span class="material-symbols-outlined text-outline mr-sm" data-icon="lock">lock</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-body-md text-on-surface placeholder:text-outline-variant" placeholder="Mínimo 8 caracteres" type="password"/>
+<button class="material-symbols-outlined text-outline ml-sm hover:text-primary transition-colors" data-icon="visibility" type="button">visibility</button>
+</div>
+</div>
+<!-- Terms & Conditions -->
+<div class="flex items-start gap-sm pt-sm">
+<div class="flex items-center h-5">
+<input class="w-5 h-5 text-primary border-border-subtle rounded focus:ring-primary-container cursor-pointer" id="terms" type="checkbox"/>
+</div>
+<label class="font-body-md text-body-md text-on-surface-variant leading-tight" for="terms">
+                    Acepto los <a class="text-primary font-medium underline" href="#">Términos y Condiciones</a> y la Política de Privacidad de TaskPro.
+                </label>
+</div>
+<!-- Primary Action -->
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md rounded-lg soft-shadow active:scale-[0.98] transition-transform flex items-center justify-center gap-sm mt-md" type="submit">
+                Registrarse
+            </button>
+</form>
+<!-- Divider -->
+<div class="w-full flex items-center gap-md py-lg">
+<div class="flex-grow h-px bg-border-subtle"></div>
+<span class="font-label-sm text-label-sm text-outline-variant uppercase">o regístrate con</span>
+<div class="flex-grow h-px bg-border-subtle"></div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-md w-full">
+<button class="flex items-center justify-center gap-sm h-12 border border-border-subtle rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors active:scale-95 transition-transform">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB14virjQK0ql0esI1NA3cJnhzJcZLD1ngM4JXZoHjZoo-2mKcpUW9PadbsOVwYsNdWYubv2G9ZkhPsj-JDUoFZxe6kATUq2IaFkOjjWvTkrL4IanzvfX5nEufujgSZvYbQjG08pjOhOEqJyT-det8iPf9o1qMlJ4KLUodbUqnabUKJzMluIURouYSI38e6huCgHd44rboLezCyfS7YW2iBd4QftTNGRFYDO8rlE8f8UruXce2hwDXm3PkG8ZmNbywxHh198kXgZY8"/>
+<span class="font-label-md text-label-md text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-sm h-12 border border-border-subtle rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors active:scale-95 transition-transform">
+<img alt="Facebook" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDasccIRuif0jESKwzRt5YDikwgzSDup0dwEwoAyDOP6PGbNqwmdClHTlhn9ZOyn_ssLEGlARbK7NZ4hqtEwNE-EmnttUJAchzK53FsLAqcAew3-i0EqN2iReQQ4QmxFgi9fwt68lOhf2Ap1i_Zhe53RswvZqa0_meW8mPZX0mOEXm7ZnspCqY58OWkS8XJQn9NuXzEI1SN6EjTAnA7c7iFT6tNZYFlOu9g-YJTxgKMQpPVm2scA3BGnlIV1aA9zzml9kLfgf30huI"/>
+<span class="font-label-md text-label-md text-on-surface">Facebook</span>
+</button>
+</div>
+<!-- Footer Link -->
+<div class="mt-xl text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                ¿Ya tienes una cuenta? 
+                <a class="text-primary font-semibold hover:underline ml-1" href="#">Inicia sesión</a>
+</p>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full mt-auto border-t border-border-subtle dark:border-outline bg-background dark:bg-on-background">
+<div class="flex flex-col items-center gap-sm py-lg px-margin-mobile w-full">
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline transition-colors cursor-pointer" href="#">Ayuda</a>
+<a class="font-label-sm text-label-sm text-text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed underline transition-colors cursor-pointer" href="#">Términos</a>
+</div>
+<p class="font-label-sm text-label-sm text-text-secondary dark:text-secondary-fixed-dim opacity-70">© 2024 TaskPro</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for password visibility
+        document.querySelector('[data-icon="visibility"]').addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            if (input.type === 'password') {
+                input.type = 'text';
+                this.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                this.textContent = 'visibility';
+            }
+        });
+
+        // Simple form validation visual feedback
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+                alert('¡Registro simulado con éxito!');
+            }, 1500);
+        });
+    </script>
+</body></html>

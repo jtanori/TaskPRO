@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Servicio No Completado - TaskPro Tech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(224, 224, 224, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "text-secondary": "#666666",
+                      "surface-container-highest": "#e2e2e2",
+                      "surface": "#f9f9f9",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#007227",
+                      "surface-dim": "#dadada",
+                      "surface-container": "#eeeeee",
+                      "tertiary-fixed-dim": "#66df75",
+                      "secondary-fixed": "#d8e5e3",
+                      "on-background": "#1a1c1c",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#2f3131",
+                      "primary-container": "#1a6e63",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#002106",
+                      "secondary-container": "#d8e5e3",
+                      "text-primary": "#000000",
+                      "surface-container-high": "#e8e8e8",
+                      "surface-variant": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#3d4948",
+                      "tertiary": "#00571b",
+                      "outline-variant": "#bec9c5",
+                      "error-container": "#ffdad6",
+                      "outline": "#6f7976",
+                      "on-secondary": "#ffffff",
+                      "border-subtle": "#E0E0E0",
+                      "tertiary-fixed": "#83fc8e",
+                      "on-surface-variant": "#3f4946",
+                      "primary": "#00554b",
+                      "on-primary-container": "#a1eddf",
+                      "primary-fixed-dim": "#88d4c7",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#bcc9c7",
+                      "primary-fixed": "#a4f1e3",
+                      "on-surface": "#1a1c1c",
+                      "on-secondary-fixed": "#121e1d",
+                      "secondary": "#55615f",
+                      "inverse-on-surface": "#f1f1f1",
+                      "on-tertiary-fixed-variant": "#00531a",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#00201c",
+                      "surface-container-low": "#f3f3f3",
+                      "on-primary-fixed-variant": "#005047",
+                      "status-danger": "#DC3545",
+                      "status-warning": "#FFC107",
+                      "on-tertiary-container": "#7ff88a",
+                      "background": "#f9f9f9",
+                      "inverse-primary": "#88d4c7",
+                      "on-secondary-container": "#5b6765",
+                      "surface-bright": "#f9f9f9",
+                      "surface-tint": "#136a5f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "margin-desktop": "32px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "lg": "24px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "caption": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background border-b border-border-subtle dark:border-outline-variant flex justify-between items-center w-full px-margin-mobile h-14 z-50 sticky top-0">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed p-1 hover:bg-surface-container-high transition-colors rounded-full" onclick="window.history.back()">arrow_back</button>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">TaskPro Tech</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional technician portrait of a middle-aged Hispanic man wearing a neat polo shirt with a company logo. He is smiling warmly against a bright, clean, minimalist office background with soft corporate lighting. The overall aesthetic is professional, reliable, and modern, using a palette of soft teals and neutral grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc-ba0hw8j2flX-LuTMYknaOvH6meRaH2qPRwwCKalFBB_ZsqPfhHXtVe3D14aBNP-zhhazfZ3H1i03Xs5hum5PRYuC89Wim9NaW-ybbmLo7beejMLmkLQ7T0E3aWSirvQijnZrmCuSd0Pj_Y895z_zLAYiDMe9lWwzWoKSnDkPYtSIY5ImDD3KB1c09tz-Ksv1TgBTc3mhuudtT6VZR3s2YPGikPrzmEbB0OwIoCXO6W4m34fkixS4TF-78_nyFkTxzGVTpbV4Gk"/>
+</div>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile py-lg max-w-2xl mx-auto w-full">
+<!-- Status Header Card -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0px_2px_8px_rgba(0,0,0,0.05)] mb-lg border-l-4 border-status-danger">
+<div class="flex items-start gap-md">
+<div class="p-sm bg-error-container rounded-full">
+<span class="material-symbols-outlined text-status-danger" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Servicio No Completado</h1>
+<p class="text-body-md font-body-md text-text-secondary mt-xs">ID de Servicio: #TX-99281 • Reparación Eléctrica</p>
+</div>
+</div>
+</section>
+<!-- Reporting Section -->
+<section class="space-y-lg">
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0px_2px_8px_rgba(0,0,0,0.05)]">
+<h2 class="text-headline-md font-headline-md mb-md">¿Por qué no se finalizó el trabajo?</h2>
+<div class="space-y-sm">
+<!-- Reason Options -->
+<label class="flex items-center p-md border border-border-subtle rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="reason" type="radio"/>
+<span class="ml-md text-body-lg font-body-lg flex-grow">Faltan materiales o repuestos</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">handyman</span>
+</label>
+<label class="flex items-center p-md border border-border-subtle rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="reason" type="radio"/>
+<span class="ml-md text-body-lg font-body-lg flex-grow">Cliente no se encuentra en casa</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">person_off</span>
+</label>
+<label class="flex items-center p-md border border-border-subtle rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="reason" type="radio"/>
+<span class="ml-md text-body-lg font-body-lg flex-grow">Problema de acceso al lugar</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">no_encryption</span>
+</label>
+<label class="flex items-center p-md border border-border-subtle rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" id="other_reason_radio" name="reason" type="radio"/>
+<span class="ml-md text-body-lg font-body-lg flex-grow">Otro motivo</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">more_horiz</span>
+</label>
+</div>
+<!-- Detailed Description -->
+<div class="mt-lg">
+<label class="block text-label-md font-label-md text-on-surface-variant mb-sm">Detalles adicionales (opcional)</label>
+<textarea class="w-full bg-surface-container-lowest border border-border-subtle rounded-lg p-md text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-outline-variant" placeholder="Escribe aquí los detalles del inconveniente..." rows="4"></textarea>
+</div>
+</div>
+<!-- Evidence Section (Asymmetric Layout Hint) -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-md">
+<div class="md:col-span-3 bg-surface-container-lowest rounded-xl p-md shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex flex-col justify-center items-center border-2 border-dashed border-border-subtle hover:border-primary transition-colors cursor-pointer min-h-[160px]">
+<span class="material-symbols-outlined text-primary text-4xl mb-sm">add_a_photo</span>
+<span class="text-label-md font-label-md text-primary">Subir evidencia fotográfica</span>
+<p class="text-caption font-caption text-text-secondary mt-xs">Sube fotos que documenten el estado</p>
+</div>
+<div class="md:col-span-2 bg-primary-container text-on-primary-container rounded-xl p-md shadow-[0px_2px_8px_rgba(0,0,0,0.05)] flex flex-col justify-between">
+<span class="material-symbols-outlined text-on-primary-container text-3xl">info</span>
+<div>
+<h4 class="text-label-md font-label-md font-bold mb-xs">Importante</h4>
+<p class="text-caption font-caption opacity-90">Reportar el estado ayuda a reprogramar el servicio sin penalizaciones.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<section class="mt-xl flex flex-col gap-md">
+<button class="w-full h-12 bg-primary text-on-primary font-label-md rounded-lg shadow-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">send</span>
+                Enviar Reporte de Estado
+            </button>
+<button class="w-full h-12 bg-surface-container-lowest border border-status-danger text-status-danger font-label-md rounded-lg hover:bg-error-container transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">support_agent</span>
+                Reportar a Soporte
+            </button>
+</section>
+</main>
+<!-- Bottom Padding for safe area / potential navbar -->
+<div class="h-16"></div>
+<script>
+        // Simple micro-interaction for radio selection
+        document.querySelectorAll('input[name="reason"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Reset all labels
+                document.querySelectorAll('input[name="reason"]').forEach(r => {
+                    r.closest('label').classList.remove('bg-primary-container', 'bg-opacity-10', 'border-primary');
+                    r.closest('label').classList.add('border-border-subtle');
+                });
+                
+                // Highlight selected
+                if (e.target.checked) {
+                    const label = e.target.closest('label');
+                    label.classList.remove('border-border-subtle');
+                    label.classList.add('bg-primary-container', 'bg-opacity-10', 'border-primary');
+                }
+            });
+        });
+    </script>
+</body></html>

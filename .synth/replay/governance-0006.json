@@ -1,0 +1,30 @@
+{
+  "primitive": "Replay",
+  "record_type": "GovernanceUpdate",
+  "record_id": "governance-0006",
+  "preceding_record": "bootstrap-e2-0005",
+  "timestamp": "2026-07-16T22:44:09Z",
+  "approved_by": "bootstrap execution result — E2 validation passed",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "2c38853aa42e11ed935918d2c57f356a4595f00ba0774de915c911c9524ef8a2",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "changes": [
+    {
+      "target": ".synth/expeditions.json",
+      "change": "E2 status transitioned from 'registered' to 'completed'; added completed_at and supporting_replay: 'bootstrap-e2-0005'.",
+      "justification": "E2 bootstrap was executed and validated successfully; expedition lifecycle state is projected in the Expedition primitive."
+    }
+  ],
+  "invariants_verified": [
+    "knowledge/ untouched: input snapshot hash identical to genesis-0001.",
+    "No implementation capabilities invoked during this governance update.",
+    "Status transition supported by replay record bootstrap-e2-0005.",
+    "No change to governance kernel semantics."
+  ],
+  "result": "governed-updated"
+}

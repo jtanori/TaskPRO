@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Perfil del Técnico - Task Pro MX-Ca</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(224, 224, 224, 0.5);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#d8e5e3",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-fixed": "#121e1d",
+                        "secondary-fixed-dim": "#bcc9c7",
+                        "secondary": "#55615f",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005047",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "inverse-primary": "#88d4c7",
+                        "primary-fixed": "#a4f1e3",
+                        "on-tertiary-container": "#7ff88a",
+                        "surface-tint": "#136a5f",
+                        "background": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#00531a",
+                        "text-secondary": "#666666",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-lowest": "#ffffff",
+                        "status-warning": "#FFC107",
+                        "primary-fixed-dim": "#88d4c7",
+                        "on-tertiary-fixed": "#002106",
+                        "primary-container": "#1a6e63",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-secondary-container": "#5b6765",
+                        "outline": "#6f7976",
+                        "tertiary-fixed-dim": "#66df75",
+                        "primary": "#00554b",
+                        "tertiary-fixed": "#83fc8e",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-fixed": "#d8e5e3",
+                        "status-danger": "#DC3545",
+                        "text-primary": "#000000",
+                        "tertiary-container": "#007227",
+                        "surface-bright": "#f9f9f9",
+                        "on-primary-container": "#a1eddf",
+                        "tertiary": "#00571b",
+                        "surface-dim": "#dadada",
+                        "surface-container-high": "#e8e8e8",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#bec9c5",
+                        "on-primary-fixed": "#00201c",
+                        "on-secondary-fixed-variant": "#3d4948",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "border-subtle": "#E0E0E0",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#3f4946"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface mb-20">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-4 h-14 fixed top-0 z-50 bg-surface shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full" onclick="window.history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Perfil del Técnico</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined text-primary">share</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined text-primary">favorite</span>
+</button>
+</div>
+</header>
+<main class="pt-14 px-4 md:px-margin-desktop max-w-4xl mx-auto">
+<!-- Profile Hero Section -->
+<section class="mt-lg flex flex-col md:flex-row gap-lg items-center md:items-start">
+<div class="relative">
+<div class="w-32 h-32 md:w-48 md:h-48 rounded-xl overflow-hidden shadow-lg border-4 border-white">
+<img class="w-full h-full object-cover" data-alt="A high-quality professional portrait of a Hispanic female technician named María López in her late 30s, smiling warmly at the camera. She wears a clean, navy blue polo shirt with a subtle logo. The background is a brightly lit, modern workshop with tools neatly organized on a pegboard, following a clean corporate modernist aesthetic with teal accents and soft ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB8CmFKnYEu_9PXJj9VuWXwF5hxqkkVsGmw32e_NUc7IqwMCHfr0dgYD18ZAKU5r9YMAUaxARzFuVaHsALSbOZCcMmPSvb4E0CFjQnisVAFRCcNifVHlryi57smKNkRBlW3hj96zpih1tXSybGyImniggLvg-t0C14ImQXjlaU39yDkT6KEqfo8TVG6xtj1oV-cH9a9-dky50g907Xw6QMVYI9eE1vO9ll1PjCDX7HZGYr5bEgE9Jre5HPufUr9xMgw6QRWQ0IQKE"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary text-on-primary p-2 rounded-full shadow-md flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">María López</h2>
+<div class="flex items-center justify-center md:justify-start gap-2 mb-sm">
+<div class="flex items-center gap-1 bg-secondary-container px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-primary">4.9</span>
+</div>
+<span class="text-on-surface-variant text-body-md font-body-md">•</span>
+<span class="text-on-surface-variant text-body-md font-body-md">124 servicios completados</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-md max-w-lg">
+                    Especialista en mantenimiento residencial y reparaciones eléctricas menores con más de 8 años de experiencia sirviendo a la comunidad de Tijuana y San Diego. Comprometida con la puntualidad y la calidad.
+                </p>
+<div class="flex flex-wrap justify-center md:justify-start gap-2">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm">Electricidad</span>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm">Plomería Básica</span>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm">Bilingüe (ES/EN)</span>
+</div>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="mt-xl grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-border-subtle flex flex-col items-center">
+<span class="material-symbols-outlined text-primary mb-2">speed</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Respuesta</span>
+<span class="font-headline-md text-headline-md text-on-surface">&lt; 30 min</span>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-border-subtle flex flex-col items-center">
+<span class="material-symbols-outlined text-primary mb-2">schedule</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Experiencia</span>
+<span class="font-headline-md text-headline-md text-on-surface">8 Años</span>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-border-subtle flex flex-col items-center">
+<span class="material-symbols-outlined text-primary mb-2">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Garantía</span>
+<span class="font-headline-md text-headline-md text-on-surface">30 Días</span>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-border-subtle flex flex-col items-center">
+<span class="material-symbols-outlined text-primary mb-2">payments</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Precio Base</span>
+<span class="font-headline-md text-headline-md text-on-surface">$25/hr</span>
+</div>
+</section>
+<!-- Work Gallery -->
+<section class="mt-xl">
+<div class="flex justify-between items-end mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Galería de Trabajos</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">Ver todo</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-sm h-64 md:h-96">
+<div class="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A wide-angle photo showing a professionally installed modern kitchen lighting system. Under-cabinet LED strips illuminate a clean white marble countertop. The lighting is crisp and even, demonstrating high-quality electrical work in a high-end Tijuana residence. Minimalist corporate aesthetic with cool tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv9js09tE_oSDZ03_9qQqhfMypY3Br9nPyeTMXDAaUc3d9ebIotXe7XTII4wiOaD6gDOXVbL0JmD-l-UkHP-JVAlSuf_FZ5Eh_SNwIxlgS_C3Pdv-vE5Z-Vv5QOyufqKyonA_LDtdG7wuu1-i7r60HmNe_Hz-Xw3XBPowBE35x1vCK23UE62d9lqyspEPZomzL-L3mDQLO78S2WmJFvPPbuGgw2Szh_Hsaab7LlYjvRIDaVhZDhZiDyuXYACvcx7oix_IyInKyzxg"/>
+</div>
+<div class="rounded-xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a perfectly installed smart thermostat on a light gray wall. The wiring behind the panel is visible but extremely neat and organized, showing technical precision. Soft daylight from a nearby window creates a bright and reliable atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCevXevEIJ2u-Jk4NCKYARExyERMWcY3AJCXv51rowYnL_1L9UbQRGosPCGrvXMx-0EoZNY6p9D-8uSZZbPH5b7UpBdGB0A4ILY1MUT_b2XdmM-bda15-lQMb_ORPH5xxpZvzoT6icBsOdekfwDk_F0_vtDHSTU7zqk-Jq6GiVYDpYvyxlbrnD6bMVH-KLn4j8koXa_mRkLhCPQHuCw2Cw33tFzm3fXsaHvE5eY1Ftw2MHI6lxeXWfwAELBcGt_k54AQ1ejoS4XXF8"/>
+</div>
+<div class="rounded-xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A clean installation of a modern outdoor security camera on a textured stucco wall. The cables are discreetly hidden in a professional conduit. The setting is a sunny afternoon in a suburban neighborhood, emphasizing safety and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0IV4aspFSnpGcA11zkvLjHDzIPPwauHKmRYqbC-WHVdvnfE6AZgui6ByR9SlDl2MiSnx5k44LxJDIaA_cMenHDbNAq3KP2M3pPddrjnitiW9Dq8pzALWMIwjC5Jq3eaunLr5D2rgMsVOENx9jiOBzaVWtyVICFl27kDnRK5mKfN-QqvzIvX6A3s2ARQj-mASwToKiz-VlDCZSJsXeWBIQY8WwMHiaAtJrwdSG5nc5p08jzldPC4ZIsNgKnQ60Q9fVJv6xUyKURuQ"/>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="mt-xl mb-12">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Reseñas de Usuarios</h3>
+<div class="space-y-md">
+<!-- Review Card 1 -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-border-subtle">
+<div class="flex justify-between mb-sm">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-primary">RC</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Ricardo Chávez</p>
+<p class="text-on-surface-variant font-caption text-caption">Hace 2 días • Tijuana, BC</p>
+</div>
+</div>
+<div class="flex text-status-warning">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        María es excelente. Llegó justo a tiempo para arreglar un cortocircuito en mi cocina. Muy profesional y dejó todo limpio. Altamente recomendada.
+                    </p>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-border-subtle">
+<div class="flex justify-between mb-sm">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-secondary">EL</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Elena Loomis</p>
+<p class="text-on-surface-variant font-caption text-caption">Hace 1 semana • Chula Vista, CA</p>
+</div>
+</div>
+<div class="flex text-status-warning">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Great service and very helpful explaining the issue. She spoke perfect English which made communication easy. Will hire again for future repairs.
+                    </p>
+</div>
+</div>
+<button class="w-full mt-md py-3 text-primary font-label-md text-label-md border border-primary rounded-xl hover:bg-primary-container/10 transition-colors">
+                Ver las 84 reseñas restantes
+            </button>
+</section>
+</main>
+<!-- Bottom Action Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest shadow-[0_-4px_12px_rgba(0,0,0,0.05)] p-4 flex items-center justify-between z-50 border-t border-border-subtle">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Desde</span>
+<span class="text-on-surface font-headline-md text-headline-md">$25.00 <span class="font-body-md text-body-md text-on-surface-variant">/ hr</span></span>
+</div>
+<div class="flex gap-2">
+<button class="p-3 bg-secondary-container text-primary rounded-xl hover:bg-secondary-container/80 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-primary-container transition-all active:scale-95">
+                Reservar Ahora
+            </button>
+</div>
+</div>
+<!-- Navigation Drawer (Hidden by default) -->
+<div class="fixed inset-0 bg-black/40 z-[60] hidden opacity-0 transition-opacity duration-300" id="drawer" onclick="toggleDrawer()">
+<div class="fixed inset-y-0 left-0 w-80 bg-surface flex flex-col h-full shadow-2xl transition-transform duration-300 -translate-x-full" onclick="event.stopPropagation()">
+<div class="p-lg flex flex-col items-start gap-md">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-sm border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="Close-up profile avatar of a young professional user smiling, clean studio lighting, neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7EyJIfuiH-KrnQ66mhy3B2uLZeKEutLWaaD2hsqyHkroFrFwc6z19KdAEG2eN-N0qS6mZCxEGpX89kyNiqm8QcZru7ensqSIkF0Acrr6cjE2Fvu7wuckRMvwfCtqnRD6rSc-1mewrNB--3vNjaZ8eo_wEYtjV9HRg8AA2JKnlCdd9mBTsX2RIOQqZKnzT6jcOC2E6_4oiqvmohKOZW3vrHfYmn-3X_EBXILem3yKFVE6GYrB8GzDpjnWf1sYCkLZDj113AIuMFt4"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Ana Garcia</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Miembro desde 2024</p>
+<p class="text-on-surface-variant font-caption text-caption">Tijuana, MX</p>
+</div>
+</div>
+<nav class="flex-1 mt-md">
+<a class="flex items-center gap-md px-lg py-4 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Mi Perfil</span>
+</a>
+<a class="flex items-center gap-md px-lg py-4 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">Historial</span>
+</a>
+<a class="flex items-center gap-md px-lg py-4 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md text-body-md">Métodos de Pago</span>
+</a>
+<a class="flex items-center gap-md px-lg py-4 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-body-md text-body-md">Soporte</span>
+</a>
+<div class="border-t border-border-subtle my-2 mx-lg"></div>
+<a class="flex items-center gap-md px-lg py-4 text-error hover:bg-error-container/10 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Cerrar Sesión</span>
+</a>
+</nav>
+</div>
+</div>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            const drawerContent = drawer.querySelector('div');
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                setTimeout(() => {
+                    drawer.classList.remove('opacity-0');
+                    drawerContent.classList.remove('-translate-x-full');
+                }, 10);
+            } else {
+                drawer.classList.add('opacity-0');
+                drawerContent.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Connect the top bar menu icon to the drawer
+        document.querySelector('header .material-symbols-outlined:first-child').parentElement.onclick = (e) => {
+            // Note: In the detailed view, the leading icon was a back button, but we can override for demo
+            if (document.querySelector('header .material-symbols-outlined').textContent === 'menu') {
+                toggleDrawer();
+            } else {
+                // It's the back button, handled by inline onclick
+            }
+        };
+    </script>
+</body></html>

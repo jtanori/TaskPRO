@@ -1,0 +1,1002 @@
+Proceeding with the next artifact.
+
+# TASKPRO-STATE-001 — TaskPRO Application State & Workflow State Machine Specification v0.1
+
+## Purpose
+
+The State Specification defines how TaskPRO represents, transitions, synchronizes, and persists application state.
+
+This artifact connects:
+
+```text id="m2u7pk"
+TASKPRO-FLOW-001
+Workflow Specification
+
+        ↓
+
+TASKPRO-DATA-001
+Domain Model
+
+        ↓
+
+TASKPRO-STATE-001
+State Architecture
+
+        ↓
+
+TASKPRO-ARCH-001
+Application Runtime
+```
+
+The objective is to prevent inconsistent UI behavior by defining:
+
+* state ownership
+* state transitions
+* lifecycle rules
+* synchronization behavior
+* offline handling
+* event propagation
+
+---
+
+# 1. State Architecture Overview
+
+## 1.1 State Principles
+
+TaskPRO state follows five principles:
+
+---
+
+## Explicit State
+
+Every meaningful workflow state is represented.
+
+Avoid:
+
+```text id="9m7r83"
+boolean flags everywhere
+```
+
+Prefer:
+
+```text id="b9t7qk"
+BookingStatus = Scheduled
+```
+
+---
+
+## Single Ownership
+
+Each state has a clear owner.
+
+Example:
+
+```text id="7c0i6p"
+Booking status
+
+Owned by:
+Booking domain
+
+Consumed by:
+Screens
+Notifications
+Tasks
+```
+
+---
+
+## Predictable Transitions
+
+States move through defined paths.
+
+Invalid transitions are rejected.
+
+---
+
+## Observable State
+
+Important state changes generate events.
+
+Example:
+
+```text id="z3wq6e"
+Booking Accepted
+
+↓
+
+BOOKING_ACCEPTED event
+
+↓
+
+Notification
+
+↓
+
+UI update
+```
+
+---
+
+## Recoverable State
+
+Users should recover from:
+
+* app restart
+* network loss
+* interrupted workflows
+
+---
+
+# 2. State Categories
+
+TaskPRO uses four state categories:
+
+```text id="y5i8h2"
+1. Server State
+
+2. Application State
+
+3. UI State
+
+4. Workflow State
+```
+
+---
+
+# 3. Server State
+
+## Purpose
+
+Represents authoritative backend data.
+
+Examples:
+
+```text id="7r0n9f"
+User Profile
+
+Services
+
+Bookings
+
+Tasks
+
+Messages
+```
+
+---
+
+## Ownership
+
+Backend is the source of truth.
+
+Mobile stores:
+
+* cached copy
+* synchronization metadata
+
+---
+
+## Examples
+
+```json id="8l9kde"
+{
+"id":"booking_123",
+"status":"scheduled",
+"updatedAt":"2026-07-15"
+}
+```
+
+---
+
+# 4. Application State
+
+## Purpose
+
+Global app-level information.
+
+---
+
+Examples:
+
+```text id="a5x9pp"
+Current User
+
+Authentication Session
+
+Theme
+
+Preferences
+
+Permissions
+```
+
+---
+
+# 4.1 Authentication State
+
+Lifecycle:
+
+```text id="4xk8by"
+Unknown
+
+↓
+
+Checking Session
+
+↓
+
+Authenticated
+
+↓
+
+Unauthenticated
+```
+
+---
+
+States:
+
+## Unknown
+
+Application starting.
+
+---
+
+## Checking Session
+
+Validating stored credentials.
+
+---
+
+## Authenticated
+
+User can access application.
+
+---
+
+## Unauthenticated
+
+User must login.
+
+---
+
+# 4.2 User Preference State
+
+Contains:
+
+```text id="7z0p5j"
+Language
+
+Theme
+
+Notifications
+
+Privacy Settings
+```
+
+---
+
+# 5. UI State
+
+## Purpose
+
+Temporary interface state.
+
+Examples:
+
+```text id="m7q3sa"
+Modal Open
+
+Selected Tab
+
+Expanded Card
+
+Search Query
+
+Filter Visibility
+```
+
+---
+
+Characteristics:
+
+* short-lived
+* screen-specific
+* not persisted unless needed
+
+---
+
+# 6. Workflow State
+
+## Purpose
+
+Represents business process progress.
+
+Workflow state is the most important state category.
+
+---
+
+# 6.1 Booking State Machine
+
+## Entity
+
+Booking
+
+---
+
+## States
+
+```text id="0f7w5n"
+DRAFT
+
+↓
+
+SUBMITTED
+
+↓
+
+ACCEPTED
+
+↓
+
+SCHEDULED
+
+↓
+
+IN_PROGRESS
+
+↓
+
+COMPLETED
+```
+
+Alternative termination:
+
+```text id="w7r3nb"
+CANCELLED
+
+REJECTED
+
+EXPIRED
+```
+
+---
+
+# Transition Rules
+
+## Draft → Submitted
+
+Requirement:
+
+* service selected
+* required information complete
+
+Event:
+
+```text id="r8h3p9"
+BOOKING_CREATED
+```
+
+---
+
+## Submitted → Accepted
+
+Actor:
+
+Provider
+
+Event:
+
+```text id="h8k4ws"
+BOOKING_ACCEPTED
+```
+
+---
+
+## Accepted → Scheduled
+
+Requirement:
+
+* date/time confirmed
+
+Event:
+
+```text id="x0j3ns"
+BOOKING_SCHEDULED
+```
+
+---
+
+## Scheduled → In Progress
+
+Actor:
+
+Provider
+
+Event:
+
+```text id="r3n7jd"
+TASK_STARTED
+```
+
+---
+
+## In Progress → Completed
+
+Requirement:
+
+* work finished
+
+Event:
+
+```text id="5j8q0a"
+BOOKING_COMPLETED
+```
+
+---
+
+# 6.2 Task State Machine
+
+## States
+
+```text id="m4v6r8"
+CREATED
+
+↓
+
+ASSIGNED
+
+↓
+
+ACTIVE
+
+↓
+
+BLOCKED
+
+↓
+
+COMPLETED
+```
+
+---
+
+## Transitions
+
+Created:
+
+Task exists.
+
+---
+
+Assigned:
+
+Owner assigned.
+
+---
+
+Active:
+
+Execution started.
+
+---
+
+Blocked:
+
+Requires intervention.
+
+---
+
+Completed:
+
+Finished.
+
+---
+
+# 6.3 Message State Machine
+
+## States
+
+```text id="v9m3e1"
+DRAFT
+
+↓
+
+SENDING
+
+↓
+
+SENT
+
+↓
+
+DELIVERED
+
+↓
+
+READ
+```
+
+Failure:
+
+```text id="0r4t5w"
+FAILED
+
+↓
+
+RETRY
+```
+
+---
+
+# 6.4 Payment State Machine
+
+```text id="5v2s8k"
+PENDING
+
+↓
+
+AUTHORIZED
+
+↓
+
+CAPTURED
+
+↓
+
+COMPLETED
+```
+
+Failures:
+
+```text id="c1s8mz"
+FAILED
+
+REFUNDED
+```
+
+---
+
+# 7. State Synchronization
+
+## 7.1 Synchronization Model
+
+Flow:
+
+```text id="d5n9u3"
+Backend
+
+↓
+
+API
+
+↓
+
+Cache
+
+↓
+
+Application State
+
+↓
+
+UI Rendering
+```
+
+---
+
+# 7.2 Freshness Rules
+
+## Real-time Required
+
+Examples:
+
+* messages
+* booking status
+* notifications
+
+---
+
+## Refresh Required
+
+Examples:
+
+* services
+* availability
+* marketplace listings
+
+---
+
+## Cached
+
+Examples:
+
+* categories
+* preferences
+* profile basics
+
+---
+
+# 8. Offline State
+
+## Purpose
+
+Maintain usability during connectivity issues.
+
+---
+
+# Offline Modes
+
+## Online
+
+Normal operation.
+
+---
+
+## Offline
+
+Limited functionality.
+
+---
+
+## Sync Pending
+
+Local changes waiting.
+
+---
+
+Example:
+
+Message sending:
+
+```text id="q7c3md"
+User sends message
+
+↓
+
+Local message created
+
+↓
+
+Pending Sync
+
+↓
+
+Server confirmation
+
+↓
+
+Delivered
+```
+
+---
+
+# 9. Event System
+
+State changes produce events.
+
+---
+
+## Event Structure
+
+```json id="w0f4n9"
+{
+"type":"BOOKING_UPDATED",
+"entityId":"booking_123",
+"timestamp":"2026-07-15",
+"payload":{}
+}
+```
+
+---
+
+# Core Events
+
+## Identity
+
+```text id="4r6k2p"
+USER_REGISTERED
+
+USER_VERIFIED
+
+PROFILE_UPDATED
+```
+
+---
+
+## Services
+
+```text id="p8j2rm"
+SERVICE_CREATED
+
+SERVICE_UPDATED
+
+SERVICE_SELECTED
+```
+
+---
+
+## Booking
+
+```text id="x4n7mz"
+BOOKING_CREATED
+
+BOOKING_ACCEPTED
+
+BOOKING_COMPLETED
+
+BOOKING_CANCELLED
+```
+
+---
+
+## Communication
+
+```text id="m0j6qf"
+MESSAGE_SENT
+
+MESSAGE_RECEIVED
+```
+
+---
+
+# 10. State Persistence Rules
+
+## Persist
+
+Long-lived state:
+
+* authentication
+* preferences
+* pending workflows
+* cached entities
+
+---
+
+## Do Not Persist
+
+Temporary state:
+
+* modal visibility
+* animations
+* temporary selections
+
+---
+
+# 11. State Access Patterns
+
+Preferred:
+
+```text id="p4n8ws"
+Screen
+
+↓
+
+Feature Hook
+
+↓
+
+State Selector
+
+↓
+
+Domain State
+```
+
+---
+
+Avoid:
+
+```text id="a7m0df"
+Screen
+
+↓
+
+Direct API Call
+
+↓
+
+Direct Mutation
+```
+
+---
+
+# 12. Loading States
+
+Every asynchronous operation defines:
+
+```text id="g8k3mz"
+Idle
+
+↓
+
+Loading
+
+↓
+
+Success
+
+↓
+
+Error
+```
+
+---
+
+Example:
+
+Service search:
+
+```text id="z9w3kp"
+Idle
+
+↓
+
+Searching
+
+↓
+
+Results
+
+↓
+
+No Results/Error
+```
+
+---
+
+# 13. Error State Architecture
+
+Errors are categorized:
+
+---
+
+## Recoverable
+
+Example:
+
+Network interruption.
+
+Action:
+
+Retry.
+
+---
+
+## User Correctable
+
+Example:
+
+Invalid form.
+
+Action:
+
+Update input.
+
+---
+
+## Blocking
+
+Example:
+
+Authentication expired.
+
+Action:
+
+Re-authenticate.
+
+---
+
+# 14. State Testing Requirements
+
+Every state machine requires:
+
+## Transition Tests
+
+Valid paths.
+
+---
+
+## Invalid Transition Tests
+
+Blocked paths.
+
+---
+
+## Recovery Tests
+
+Failure handling.
+
+---
+
+Example:
+
+```text id="t7m3z0"
+Submitted
+
+→
+
+Completed
+
+Should fail
+```
+
+---
+
+# 15. State Governance
+
+New state requires:
+
+## Definition
+
+* purpose
+* owner
+* lifecycle
+
+---
+
+## Transition Rules
+
+Document:
+
+* allowed transitions
+* actors
+* events
+
+---
+
+## UI Impact
+
+Document:
+
+* affected screens
+* components
+* notifications
+
+---
+
+# TASKPRO Runtime Behavior Foundation Complete
+
+Current artifact stack:
+
+```text id="1k7m9s"
+TASKPRO-DS-001
+Design Foundation
+
+TASKPRO-COMP-001
+Component Catalog
+
+TASKPRO-SCREEN-001
+Screen Catalog
+
+TASKPRO-FLOW-001
+Workflow Specification
+
+TASKPRO-ARCH-001
+Application Architecture
+
+TASKPRO-DATA-001
+Domain Model
+
+TASKPRO-API-001
+API Specification
+
+TASKPRO-STATE-001
+State Machine Specification
+```
+
+The next logical artifact is:
+
+# TASKPRO-TEST-001 — TaskPRO Quality & Validation Specification v0.1
+
+This will define:
+
+* testing strategy
+* component validation
+* workflow validation
+* API testing
+* accessibility validation
+* visual regression
+* release criteria
+
+This completes the engineering readiness layer before implementation.

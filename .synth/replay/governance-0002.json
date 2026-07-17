@@ -1,0 +1,51 @@
+{
+  "primitive": "Replay",
+  "record_type": "GovernanceUpdate",
+  "record_id": "governance-0002",
+  "preceding_record": "genesis-0001",
+  "timestamp": "2026-07-16T21:28:59Z",
+  "approved_by": "human governance decision following SYNTH review",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "2c38853aa42e11ed935918d2c57f356a4595f00ba0774de915c911c9524ef8a2",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "changes": [
+    {
+      "target": ".synth/state.json",
+      "change": "Removed open decision D3 and its confidence-map entry; test-tool-version selection is no longer a governance gate.",
+      "justification": "D3 concerned implementation tool versions, not repository understanding. A governance-level block on E1 was inconsistent with the expedition's nature as foundation/toolchain. Approved explicitly."
+    },
+    {
+      "target": ".synth/expeditions.json",
+      "change": "E1 gained expedition_local_decisions note carrying the former D3 concern as local implementation guidance.",
+      "justification": "Preserves the concern (tool versions must be chosen during E1) without elevating it to governance state."
+    },
+    {
+      "target": ".synth/state.json",
+      "change": "Added reconciliation R5 documenting the authored artifact-ID collision in API-002.md.txt and the registry normalization/disambiguation rule applied during initialization.",
+      "justification": "Surface a hidden authored inconsistency as tracked governance rather than an implementation detail; no modification of the knowledge artifact."
+    },
+    {
+      "target": ".synth/evidence.json",
+      "change": "Added collision_resolution_rules object; updated TASKPRO-API-001 and TASKPRO-API-002 entries with explicit normalization/disambiguation notes and R5 reference.",
+      "justification": "Make future extraction deterministic: the registry now documents why API-001 was normalized and API-002 was disambiguated by filename."
+    },
+    {
+      "target": "AGENTS.md",
+      "change": "Regenerated derived view: removed D3 from open governance items, added R5, updated cross-references.",
+      "justification": "Derived projection must stay consistent with .synth/ state; .synth/ remains authoritative."
+    }
+  ],
+  "invariants_verified": [
+    "knowledge/ untouched: input snapshot hash identical to genesis-0001.",
+    "No implementation capabilities invoked (no codegen, scaffold, install, migrate, compile).",
+    "Every change attributable to an explicit approved governance decision.",
+    "All assertions retain provenance (evidence_sources, derivation_type, confidence).",
+    "Authored artifacts under knowledge/ were not modified."
+  ],
+  "result": "governed-updated"
+}

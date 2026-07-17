@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Perfil del Técnico - Task Pro MX-Ca</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-warning": "#FFC107",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#00201c",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "secondary-container": "#d8e5e3",
+                        "surface-dim": "#dadada",
+                        "primary-fixed-dim": "#88d4c7",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-high": "#e8e8e8",
+                        "text-primary": "#000000",
+                        "on-tertiary-fixed-variant": "#00531a",
+                        "outline-variant": "#bec9c5",
+                        "on-secondary-fixed": "#121e1d",
+                        "background": "#f9f9f9",
+                        "border-subtle": "#E0E0E0",
+                        "tertiary-fixed-dim": "#66df75",
+                        "secondary-fixed-dim": "#bcc9c7",
+                        "surface": "#f9f9f9",
+                        "tertiary": "#00571b",
+                        "on-primary-container": "#a1eddf",
+                        "tertiary-fixed": "#83fc8e",
+                        "primary": "#00554b",
+                        "primary-container": "#1a6e63",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002106",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#3d4948",
+                        "tertiary-container": "#007227",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005047",
+                        "inverse-primary": "#88d4c7",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#136a5f",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-fixed": "#d8e5e3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "outline": "#6f7976",
+                        "on-error": "#ffffff",
+                        "text-secondary": "#666666",
+                        "surface-container-low": "#f3f3f3",
+                        "on-surface-variant": "#3f4946",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "secondary": "#55615f",
+                        "on-secondary-container": "#5b6765",
+                        "primary-fixed": "#a4f1e3",
+                        "status-danger": "#DC3545",
+                        "on-tertiary-container": "#7ff88a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .custom-shadow {
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-4 h-14 fixed top-0 z-50 bg-surface shadow-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary font-bold">Perfil del Técnico</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">share</span>
+</button>
+</header>
+<main class="pt-20 px-4 max-w-2xl mx-auto space-y-6">
+<!-- Hero Profile Card -->
+<div class="relative bg-surface-container-lowest rounded-xl p-6 custom-shadow overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-3 py-1 rounded-full">Verificado</span>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="relative">
+<img class="w-24 h-24 rounded-full object-cover border-4 border-primary/10" data-alt="A professional headshot of a friendly Latino male technician named Carlos Martinez, wearing a clean navy blue polo shirt with a subtle company logo. He has a warm smile, short dark hair, and is standing against a soft-focus workshop background. The lighting is bright and professional, following a clean Corporate Modernism style with a focus on reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx4T1SvnoUpzXMV8-YUZVSXsQ-tWEzEnQcwZKygfwcaaHd62wgQHUTndaJSZKTEmvrWpgua9Vk9gn69BoK1LUVu8yzVUFNq3coJYL2BzDIlGy0-BaH4yhqmxqgdoMY_0gzavJ66H_pREGMuUDh7_nim8VZsnGRDP1J3UzrROlAFYNm4f0ATQkfzrKLTN5ypjY63YASpcwboJtygRU-5b0usq2O8wcbPOxMaUS8DcoIhFZnl95KcQvu9FRizYK_-mkA7fJYR7fSu7Q"/>
+<div class="absolute -bottom-1 -right-1 bg-status-warning text-white p-1 rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-[16px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">Carlos Martinez</h2>
+<p class="text-primary font-label-md text-label-md">Electricista Certificado</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-status-warning font-bold">4.8</span>
+<div class="flex">
+<span class="material-symbols-outlined text-status-warning text-sm fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-sm fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-sm fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-sm fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-outline-variant text-sm fill-icon" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<span class="text-text-secondary text-caption font-caption">(124 reseñas)</span>
+</div>
+</div>
+</div>
+<!-- Stats Bento -->
+<div class="bento-grid">
+<div class="bg-surface-container-low p-4 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary mb-1">history</span>
+<span class="font-bold text-on-surface text-label-md">8+ años</span>
+<span class="text-text-secondary text-label-sm">Experiencia</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary mb-1">task_alt</span>
+<span class="font-bold text-on-surface text-label-md">1,240</span>
+<span class="text-text-secondary text-label-sm">Servicios</span>
+</div>
+</div>
+</div>
+<!-- Services Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Servicios ofrecidos</h3>
+<span class="text-primary text-label-sm font-label-sm">Ver todos</span>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-lowest p-4 rounded-xl custom-shadow flex justify-between items-center border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Instalación eléctrica</p>
+<p class="text-text-secondary text-label-sm">Básica residencial</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">$450 MXN</p>
+<p class="text-text-secondary text-caption">desde</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl custom-shadow flex justify-between items-center border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">settings_input_component</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Reparación de Tableros</p>
+<p class="text-text-secondary text-label-sm">Diagnóstico y cambio</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">$600 MXN</p>
+<p class="text-text-secondary text-caption">desde</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl custom-shadow flex justify-between items-center border border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Iluminación LED</p>
+<p class="text-text-secondary text-label-sm">Instalación completa</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-primary">$350 MXN</p>
+<p class="text-text-secondary text-caption">desde</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Section -->
+<section class="space-y-4">
+<h3 class="font-headline-md text-headline-md text-on-surface px-1">Trabajos recientes</h3>
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<div class="min-w-[140px] h-[140px] rounded-xl overflow-hidden custom-shadow">
+<img class="w-full h-full object-cover" data-alt="A clean installation of an electrical panel in a modern home, with perfectly organized wires and labeled breakers. The lighting is bright and professional, emphasizing neatness and technical skill. High-end Corporate Modernism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_OxaWFC9u093orc7gF5NS_0qZ1pbj7Jge3rqjw2vGLE9h2P11gVmnf-r5MHOEAv8uOrcJfnGrvnErGG7RtGl9DA-lIhjFKI5vsb0ZOyX5PJDcy61vejyQ-s7zZ_S3uFO9NMmerpuBaLttaXPZnsTK9RsbnHfxE9erXKuKdFF8BayqCVZJvVcatDRcDgD3q27styTfJW5rZyE6Kcpk7Ey4BZ5F7fi9IWP5nSQ7THM7RcCHR6vPPubXRkLs3289l3bWCGCfDVM_-No"/>
+</div>
+<div class="min-w-[140px] h-[140px] rounded-xl overflow-hidden custom-shadow">
+<img class="w-full h-full object-cover" data-alt="Professional installation of modern recessed ceiling LED lights in a sleek minimalist living room. The shot shows the technician's hands wearing clean safety gloves finishing the installation. Bright, airy, and high-quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHP9vmyiMDq5Z-dhDxjRH0EYykB9E0utCiRQoIizBxRpkxERZuJsi7Kd5kIkk_oUnbxSnkytf0jSQZGhhSP-kvCijbtCmKgGCHWrZpEKEqNHfary9cX1AOdyurMC56frdfENozhu7zYrLnDucZ32QFfDrPxROyRhbCMwVwmaVi0c87hk4GoAZHokUUaUxcVbYiVX0pURxO0DXkg4Fs5XG1inoY9gXsdOdX_Yk9B6n9FcBvEJhVUbPf1thRRqmKBbTRA93aFqgqFjo"/>
+</div>
+<div class="min-w-[140px] h-[140px] rounded-xl overflow-hidden custom-shadow">
+<img class="w-full h-full object-cover" data-alt="Close-up of a new smart home thermostat installation on a pristine white wall. The device is perfectly aligned, showing attention to detail. Soft shadows and clean lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGPwYGiki_UOWt2h-2JgkWVf77_pIK-ge2fPnNPz8wrdLEPoHKH3C6vnn0dKqW2S0Hi_90nqdCVKe3m6qT7RnQnMeJPCiaxKbVUrErJ-zxWSsVdS9tOFQfTTRcstD4H-gVa9zOQU4OjiAtiZbicO2wm3V0OMxWSYl_DKmxnfjLfsqlAq3toFT6qncJx_Pxz38q8JIAbLz6_lnNfJKPoWfrpU13MsSxZ-t1HuvYTLfqopYUuChjdq7vnXhF_9uA1eTNil20ikAQL7c"/>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Reseñas de clientes</h3>
+<span class="text-primary text-label-sm font-label-sm">Ver todas</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl custom-shadow space-y-3">
+<div class="flex justify-between">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Profile photo of a woman in her 30s, looking professional and satisfied, light-mode background, clean studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNa0CuscSe2QreZU2kpeXO0tE8stZmHh4c0CCYV5S5aea0cv8y7wpkVWrE34dTerxxAnjmue7j4t0nuUexCIPwRnPnoffyCEaL8r1pH2FmNFN84dwF4_YysL9KaHxmLuip2uPxZKOfiYwmoBjdvuKMayQUXn8maJMJAaPTjt7WbG9bJWnDWrdCPFSFRZob0KHyUzrWuA22xG1Cx_d-q_hlFqZaZL-GVGkb40r1oQMI28VOtonyiU4moshVxS_cMG9K5WmhgyN9HOc"/>
+<span class="font-bold text-on-surface text-label-md">Maria Lopez</span>
+</div>
+<div class="flex">
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-text-secondary text-body-md leading-relaxed">
+                        "Carlos es extremadamente profesional. Llegó puntual, explicó todo el problema con mi tablero y lo arregló rápidamente. Muy recomendado para cualquier trabajo eléctrico."
+                    </p>
+<p class="text-outline text-caption">Hace 2 días • Instalación eléctrica</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl custom-shadow space-y-3">
+<div class="flex justify-between">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Profile photo of a man in his 40s, minimalist high-key lighting, modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqAlhN7_lChyMO69ApyM29bWNjh5SnAF1LSFK21g78-2wf9V8n_at6CkReHfqihKvUa4XxULatyoEbDrl3WYYAOfoVeJc_v2oEH2c72oGA0OJKgEPaz1csDSEDWMCXlK3wkODhIwKI5Caedh2icrhF-WgdH07odjWhttMe5Oq1wp5oQzeHAoPmA-wCiF81w7JzcnEkjFlbP0ib5VTBgrgIFNKhizHXxzn2bTwhIbvmF5IhtvCw0EffdawFT6NEqwA3FWtE8ud7D9Y"/>
+<span class="font-bold text-on-surface text-label-md">Jorge Ruiz</span>
+</div>
+<div class="flex">
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-status-warning text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-outline-variant text-[14px] fill-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-text-secondary text-body-md leading-relaxed">
+                        "Buen servicio, aunque tardó un poco más de lo esperado en conseguir una pieza. El resultado final fue impecable."
+                    </p>
+<p class="text-outline text-caption">Hace 1 semana • Reparación de Tableros</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Bottom Action -->
+<div class="fixed bottom-0 left-0 w-full p-4 glass-effect border-t border-border-subtle flex gap-4 z-50">
+<button class="flex-1 bg-surface-container-low text-primary font-bold h-12 rounded-xl flex items-center justify-center gap-2 hover:bg-secondary-container transition-all active:scale-95">
+<span class="material-symbols-outlined">chat_bubble</span>
+            Chat
+        </button>
+<button class="flex-[2] bg-primary text-on-primary font-bold h-12 rounded-xl flex items-center justify-center hover:opacity-90 transition-all shadow-lg active:scale-95">
+            Reservar ahora
+        </button>
+</div>
+<!-- Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full h-16 z-40 flex justify-around items-center px-4 pb-safe bg-surface-container-lowest hidden">
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explorar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">handyman</span>
+<span class="font-label-sm text-label-sm">Servicios</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Mensajes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary bg-secondary-container/30 rounded-xl px-3 py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Perfil</span>
+</div>
+</nav>
+<script>
+        // Simple logic to hide the floating action bar if scrolling deep but the design requires it sticky for quick booking
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

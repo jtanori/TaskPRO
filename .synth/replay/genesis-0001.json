@@ -1,0 +1,49 @@
+{
+  "primitive": "Replay",
+  "record_type": "InitializationProof",
+  "record_id": "genesis-0001",
+  "timestamp": "2026-07-16T06:01:57Z",
+  "contract_version": "synth-init-semantics v1.1 (approved)",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "2c38853aa42e11ed935918d2c57f356a4595f00ba0774de915c911c9524ef8a2",
+    "file_count": 119
+  },
+  "extraction": {
+    "anchors": "artifact headers (TASKPRO-XXX-NNN), not filenames",
+    "document_artifacts_registered": 34,
+    "composite_files_expanded": [
+      { "path": "knowledge/Docs/GAPS-001.md", "yields": ["TASKPRO-FLOW-001", "TASKPRO-I18N-001", "TASKPRO-OPS-001", "TASKPRO-TECH-001"] },
+      { "path": "knowledge/Docs/COMP-001.md.txt", "yields": ["TASKPRO-COMP-001", "TASKPRO-NAV-001"] }
+    ],
+    "ui_asset_set": { "path": "knowledge/UI/", "assets": 90, "groups": { "auth": 16, "user": 34, "technician": 36, "global": 4 } },
+    "observations_not_resolved": [
+      "File knowledge/Docs/API-002.md.txt carries internal header 'TASKPRO-API-001', colliding with API-001.md.txt's family ID; registered by filename-derived ID.",
+      "Conversational preambles in .md.txt files treated as non-canonical noise; extraction anchored on artifact headers only."
+    ]
+  },
+  "assertions": {
+    "Mission": ".synth/mission.json (1 assertion + scope boundaries)",
+    "Evidence": ".synth/evidence.json (34 registrations, 2 supersession edges)",
+    "Expedition": ".synth/expeditions.json (10 registered expeditions, 0 started, 1 gated on R1)",
+    "State": ".synth/state.json (phase, confidence map, 3 open decisions, 4 reconciliations, invariants)"
+  },
+  "rejected_actions": [
+    { "action": "Fix stray character at knowledge/Docs/DS-05.md line 1", "reason": "Mutation of authored knowledge; tracked as R2, requires approval-gated edit." },
+    { "action": "Rename DS-01..05.md to canonical IDs", "reason": "Unnecessary (header-anchored registration resolves addressing); rename is approval-gated, R4." },
+    { "action": "Edit DEV-001 to remove superseded React Navigation recommendation", "reason": "Authored knowledge mutation; supersession edge recorded instead, R3." },
+    { "action": "Ratify one booking state-machine vocabulary", "reason": "Knowledge creation; conflict tracked as R1, gates E7, requires human ratification." },
+    { "action": "Select i18n library / payment gateway sequencing / test tool versions", "reason": "Insufficient evidence; recorded as open decisions D1-D3 with derivation_type UNRESOLVED." },
+    { "action": "Generate package.json, CI workflows, Expo config, or any scaffold", "reason": "Implementation output; belongs to expeditions (E1+), forbidden to initialization (constraint 3)." },
+    { "action": "Copy or normalize knowledge artifacts into .synth/", "reason": "Evidence registrations are pointers and claims, never copies; two authorities must not exist." },
+    { "action": "Git commits or branch operations", "reason": "Not approved; git mutations require explicit per-action approval." }
+  ],
+  "invariants_verified": [
+    "Atomicity: all assertions committed together; on any failure .synth/ and AGENTS.md are removed entirely.",
+    "Provenance totality: every assertion carries evidence_sources; empty evidence only with derivation_type UNRESOLVED.",
+    "Capability isolation: no codegen, scaffold, install, migrate, or compile invoked during initialization.",
+    "Determinism: replaying extraction over the same input_snapshot hash reproduces identical governance state."
+  ],
+  "result": "governed"
+}

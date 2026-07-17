@@ -1,0 +1,683 @@
+# DB-001 — Canonical Database Schema v0.1
+
+## Purpose
+
+The database is **not** an implementation detail—it is the canonical persistence model for the TaskPRO domain.
+
+The schema should be:
+
+* Domain-first
+* Event-aware
+* Audit-friendly
+* Multi-tenant ready
+* Offline synchronization capable
+* AI-ready
+* Realtime by design
+
+The database should never mirror the UI. Instead, the UI projects data from the domain.
+
+---
+
+# Technology
+
+**Database**
+
+* PostgreSQL 17 (Supabase)
+* UUIDv7 primary keys
+* Row Level Security (RLS)
+* Realtime enabled
+* JSONB for extensibility
+* Generated TypeScript types
+* pgvector for AI features
+* PostGIS (optional, if Supabase project supports it) for geospatial queries
+
+---
+
+# High-Level Database Organization
+
+```
+Identity
+Marketplace
+Booking
+Execution
+Communication
+Payments
+Reviews
+Media
+Documents
+Notifications
+Administration
+System
+```
+
+Rather than placing everything in `public`, I recommend using PostgreSQL schemas to create clear ownership boundaries:
+
+```
+identity
+marketplace
+booking
+execution
+communication
+payments
+reviews
+media
+documents
+notifications
+admin
+system
+analytics
+```
+
+This improves maintainability, permissions, and future scalability.
+
+---
+
+# Identity Schema
+
+## users
+
+```
+id
+email
+phone
+status
+created_at
+updated_at
+last_login_at
+```
+
+Authentication is delegated to Supabase Auth. This table extends the authenticated identity with domain-specific metadata.
+
+---
+
+## profiles
+
+```
+id
+user_id
+first_name
+last_name
+display_name
+avatar_url
+date_of_birth
+language
+timezone
+currency
+created_at
+updated_at
+```
+
+---
+
+## addresses
+
+```
+id
+user_id
+label
+street
+city
+state
+postal_code
+country
+latitude
+longitude
+is_default
+```
+
+---
+
+## devices
+
+```
+id
+user_id
+platform
+push_token
+last_seen
+```
+
+---
+
+# Marketplace Schema
+
+## service_categories
+
+```
+id
+parent_id
+name
+icon
+color
+sort_order
+```
+
+Hierarchical categories support nested service taxonomies.
+
+---
+
+## services
+
+```
+id
+category_id
+name
+description
+estimated_duration
+base_price
+active
+```
+
+---
+
+## professionals
+
+```
+id
+user_id
+verification_status
+rating
+review_count
+travel_radius
+years_experience
+bio
+```
+
+---
+
+## professional_skills
+
+```
+professional_id
+service_id
+level
+```
+
+---
+
+## availability
+
+```
+id
+professional_id
+weekday
+start_time
+end_time
+```
+
+---
+
+## portfolio_items
+
+```
+id
+professional_id
+title
+description
+cover_image
+```
+
+---
+
+# Booking Schema
+
+## bookings
+
+This is the central aggregate.
+
+```
+id
+booking_number
+customer_id
+professional_id
+service_id
+
+status
+
+scheduled_start
+scheduled_end
+
+address_id
+
+notes
+
+subtotal
+
+tax
+
+total
+
+created_at
+updated_at
+```
+
+---
+
+## booking_status_history
+
+```
+id
+booking_id
+status
+changed_by
+reason
+created_at
+```
+
+This table enables deterministic replay of booking lifecycle changes and supports auditing.
+
+---
+
+## assignments
+
+```
+id
+booking_id
+professional_id
+accepted_at
+declined_at
+```
+
+---
+
+## booking_events
+
+Rather than only storing the latest status, every significant action should be captured as a domain event.
+
+```
+id
+booking_id
+event_type
+payload JSONB
+created_at
+actor_id
+```
+
+This supports replay, analytics, debugging, and AI summarization.
+
+---
+
+# Execution Schema
+
+## tasks
+
+```
+id
+booking_id
+title
+completed
+completed_at
+```
+
+---
+
+## evidence
+
+```
+id
+booking_id
+type
+media_id
+notes
+gps
+created_by
+created_at
+```
+
+---
+
+## work_logs
+
+```
+id
+booking_id
+professional_id
+started_at
+ended_at
+notes
+```
+
+---
+
+# Communication Schema
+
+## conversations
+
+```
+id
+booking_id
+created_at
+```
+
+---
+
+## participants
+
+```
+conversation_id
+user_id
+```
+
+---
+
+## messages
+
+```
+id
+conversation_id
+sender_id
+type
+body
+attachment_id
+created_at
+```
+
+Rather than implementing chat as a generic feature, it should be contextual. Most conversations naturally belong to a booking, allowing the booking to become the primary collaboration context.
+
+---
+
+# Payments Schema
+
+## payment_methods
+
+```
+id
+user_id
+provider
+provider_reference
+last4
+brand
+```
+
+---
+
+## payment_intents
+
+```
+id
+booking_id
+provider_reference
+amount
+status
+```
+
+---
+
+## transactions
+
+```
+id
+payment_intent_id
+status
+provider_response
+created_at
+```
+
+---
+
+## payouts
+
+```
+id
+professional_id
+amount
+status
+```
+
+---
+
+# Reviews Schema
+
+## reviews
+
+```
+id
+booking_id
+customer_id
+professional_id
+
+overall
+
+quality
+
+communication
+
+punctuality
+
+comment
+
+created_at
+```
+
+---
+
+# Media Schema
+
+## media
+
+```
+id
+owner_type
+owner_id
+
+storage_path
+
+mime_type
+
+width
+
+height
+
+size
+
+checksum
+
+created_at
+```
+
+Media ownership is polymorphic, allowing the same storage system to serve profiles, bookings, evidence, reviews, and conversations.
+
+---
+
+# Documents Schema
+
+## documents
+
+```
+id
+professional_id
+type
+media_id
+verification_status
+expires_at
+```
+
+---
+
+# Notification Schema
+
+## notifications
+
+```
+id
+user_id
+channel
+type
+title
+body
+read_at
+created_at
+```
+
+---
+
+## notification_preferences
+
+```
+user_id
+push_enabled
+email_enabled
+sms_enabled
+```
+
+---
+
+# Administration Schema
+
+## audit_log
+
+Every write operation should produce an immutable audit record.
+
+```
+id
+actor_id
+entity
+entity_id
+action
+old_value JSONB
+new_value JSONB
+created_at
+```
+
+This is distinct from domain events: audit logs answer "what changed," while domain events answer "what happened."
+
+---
+
+# System Schema
+
+## event_store
+
+This is one of the most valuable additions for future-proofing the platform.
+
+```
+id
+aggregate
+aggregate_id
+event_type
+version
+payload JSONB
+metadata JSONB
+created_at
+```
+
+Unlike `booking_events`, which are booking-specific, `event_store` captures events across the entire system and enables replay, temporal debugging, and analytics.
+
+---
+
+## jobs
+
+```
+id
+type
+payload
+status
+scheduled_at
+processed_at
+```
+
+For asynchronous work:
+
+* Push notifications
+* Emails
+* AI processing
+* Webhooks
+* Invoice generation
+
+---
+
+# AI Schema
+
+## embeddings
+
+```
+id
+entity
+entity_id
+embedding VECTOR
+created_at
+```
+
+Potential uses include:
+
+* Semantic search
+* Similar bookings
+* AI recommendations
+* Support knowledge retrieval
+* Duplicate detection
+
+---
+
+# Soft Deletes
+
+Instead of physical deletes, all major tables should implement:
+
+```
+deleted_at
+deleted_by
+```
+
+This preserves referential integrity and supports compliance and recovery.
+
+---
+
+# Common Columns
+
+Every business table should include:
+
+```
+id
+created_at
+updated_at
+created_by
+updated_by
+deleted_at
+deleted_by
+version
+```
+
+The `version` column enables optimistic concurrency control, preventing conflicting updates in collaborative or offline scenarios.
+
+---
+
+# Referential Principles
+
+* Foreign keys enforce consistency between aggregates.
+* Lookup tables (e.g., statuses, categories) should be immutable where possible.
+* Junction tables model many-to-many relationships explicitly.
+* Business identifiers (e.g., `booking_number`) are separate from UUID primary keys.
+
+---
+
+# Migration Strategy
+
+```
+001_identity.sql
+002_marketplace.sql
+003_booking.sql
+004_execution.sql
+005_communication.sql
+006_payments.sql
+007_reviews.sql
+008_media.sql
+009_documents.sql
+010_notifications.sql
+011_admin.sql
+012_system.sql
+013_ai.sql
+```
+
+This ordering ensures foundational dependencies are established before feature-specific schemas.
+
+---
+
+# Architectural Observation
+
+One enhancement I recommend beyond the initial proposal is introducing **schema-level ownership**. Each bounded context owns its own PostgreSQL schema, migrations, repositories, and domain services. This mirrors the module organization in the Expo application and makes it straightforward to evolve the platform toward independently deployable services if that ever becomes desirable, while remaining a single Postgres database today.
+
+This approach also aligns well with the event-driven architecture defined in `DOM-001`, giving each bounded context clear ownership of its persistence model without sacrificing transactional consistency.
+
+---
+
+**Current document:** `DB-001 — Canonical Database Schema v0.1`
+
+**Next document:** `API-001 — Domain API & Service Contracts`

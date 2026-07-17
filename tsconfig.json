@@ -1,0 +1,17 @@
+{
+  "extends": "@taskpro/config/tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@taskpro/config": ["packages/config"],
+      "@taskpro/eslint": ["packages/eslint"],
+      "@taskpro/types": ["packages/types"],
+      "@taskpro/domain": ["packages/domain"],
+      "@taskpro/sdk": ["packages/sdk"],
+      "@taskpro/ui": ["packages/ui"],
+      "@taskpro/design-tokens": ["packages/design-tokens"],
+      "@taskpro/testing": ["packages/testing"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "build", ".expo"]
+}

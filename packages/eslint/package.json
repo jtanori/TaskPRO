@@ -1,0 +1,19 @@
+{
+  "name": "@taskpro/eslint",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared ESLint v9 flat config for TaskPRO",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "lint": "echo 'No self-lint in @taskpro/eslint'",
+    "typecheck": "echo 'No TypeScript source in @taskpro/eslint'",
+    "test": "echo 'No tests in @taskpro/eslint'"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.17.0",
+    "typescript-eslint": "^8.18.0"
+  }
+}

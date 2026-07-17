@@ -1,0 +1,805 @@
+# STATE-001 — Client State Management & Offline Synchronization Architecture v0.1
+
+## Purpose
+
+The client architecture should treat the mobile application as a **local-first application** rather than a thin API client.
+
+The user should never feel like they are interacting with a remote database.
+
+Instead, the application behaves like this:
+
+```text
+User
+
+↓
+
+Local State
+
+↓
+
+Optimistic Update
+
+↓
+
+Background Synchronization
+
+↓
+
+Backend Confirmation
+
+↓
+
+Realtime Updates
+```
+
+The UI should respond immediately while the synchronization layer reconciles changes.
+
+---
+
+# Design Principles
+
+The state architecture should satisfy these goals:
+
+* Local-first
+* Offline capable
+* Optimistic by default
+* Event driven
+* Predictable
+* Recoverable
+* Replayable
+* Testable
+
+The UI never owns business state.
+
+---
+
+# Layered State Architecture
+
+```text
+UI Components
+
+↓
+
+Presentation State
+
+↓
+
+Application State
+
+↓
+
+Domain Cache
+
+↓
+
+Synchronization Engine
+
+↓
+
+Supabase
+```
+
+Each layer has a single responsibility.
+
+---
+
+# State Categories
+
+Instead of a single global store, TaskPRO should separate state into five categories.
+
+```text
+UI State
+
+Session State
+
+Domain State
+
+Cache State
+
+Synchronization State
+```
+
+Each has a different lifecycle.
+
+---
+
+# 1. UI State
+
+Ephemeral state that exists only while a screen is active.
+
+Examples:
+
+```text
+Modal Open
+
+Current Tab
+
+Selected Card
+
+Expanded Panel
+
+Search Text
+
+Bottom Sheet Position
+
+Animation State
+```
+
+Technology:
+
+* React State
+* React Context (when shared within a feature)
+
+Never persist UI state.
+
+---
+
+# 2. Session State
+
+Lives while the user is authenticated.
+
+Contains:
+
+```text
+Current User
+
+Permissions
+
+Feature Flags
+
+Current Organization
+
+Current Professional Context
+
+Theme
+
+Locale
+```
+
+Technology:
+
+* Zustand
+
+Persisted:
+
+* Yes
+
+Storage:
+
+* MMKV + SecureStore (for sensitive values)
+
+---
+
+# 3. Domain State
+
+Represents business entities.
+
+Examples:
+
+```text
+Bookings
+
+Professionals
+
+Messages
+
+Reviews
+
+Payments
+
+Notifications
+
+Services
+```
+
+Technology:
+
+* TanStack Query
+* Normalized entity cache
+* Repository pattern
+
+Never manually duplicate server state in multiple stores.
+
+---
+
+# 4. Cache State
+
+Stores projections optimized for reading.
+
+Examples:
+
+```text
+Recent Searches
+
+Nearby Professionals
+
+Service Categories
+
+Home Dashboard
+
+Recommendations
+```
+
+Technology:
+
+* TanStack Query
+* Persistent cache
+* Background refresh
+
+---
+
+# 5. Synchronization State
+
+Responsible for:
+
+```text
+Pending Commands
+
+Retry Queue
+
+Conflict Queue
+
+Upload Queue
+
+Download Queue
+
+Sync Status
+```
+
+This layer should be completely invisible to the UI.
+
+---
+
+# Recommended Technologies
+
+## Server State
+
+```text
+TanStack Query
+```
+
+Responsibilities:
+
+* caching
+* background refresh
+* retries
+* optimistic updates
+* invalidation
+
+---
+
+## Client State
+
+```text
+Zustand
+```
+
+Responsibilities:
+
+```text
+Authentication
+
+Preferences
+
+Navigation Context
+
+Current User
+
+Feature Flags
+```
+
+---
+
+## Persistent Storage
+
+```text
+MMKV
+```
+
+Stores:
+
+```text
+Cached Queries
+
+Preferences
+
+Session
+
+Feature Flags
+```
+
+---
+
+## Secure Storage
+
+```text
+Expo SecureStore
+```
+
+Stores:
+
+```text
+Refresh Token
+
+Device Secret
+
+Encryption Keys
+```
+
+---
+
+# Repository Pattern
+
+The UI never calls Supabase.
+
+Instead:
+
+```text
+Screen
+
+↓
+
+Hook
+
+↓
+
+Repository
+
+↓
+
+Synchronization
+
+↓
+
+Supabase
+```
+
+Example:
+
+```text
+BookingScreen
+
+↓
+
+useBooking()
+
+↓
+
+BookingRepository
+
+↓
+
+Supabase
+```
+
+---
+
+# Repository Responsibilities
+
+Repositories are responsible for:
+
+```text
+Caching
+
+Synchronization
+
+Retry Logic
+
+DTO Mapping
+
+Offline Queue
+
+Error Translation
+```
+
+Business rules remain in the application layer.
+
+---
+
+# Query Flow
+
+Reading data:
+
+```text
+Screen
+
+↓
+
+Hook
+
+↓
+
+Query
+
+↓
+
+Repository
+
+↓
+
+Cache
+
+↓
+
+Server
+```
+
+The cache is always checked first.
+
+---
+
+# Command Flow
+
+Writing data:
+
+```text
+User Action
+
+↓
+
+Command
+
+↓
+
+Optimistic Update
+
+↓
+
+Queue
+
+↓
+
+Repository
+
+↓
+
+API
+
+↓
+
+Confirmation
+
+↓
+
+Cache Reconciliation
+```
+
+The UI updates immediately without waiting for the network.
+
+---
+
+# Offline Queue
+
+Every write operation becomes a command.
+
+Example:
+
+```text
+CreateBookingCommand
+
+UploadEvidenceCommand
+
+SendMessageCommand
+
+CompleteBookingCommand
+```
+
+Commands are stored locally until synchronization succeeds.
+
+---
+
+# Command Lifecycle
+
+```text
+Pending
+
+↓
+
+Sending
+
+↓
+
+Confirmed
+
+↓
+
+Applied
+
+↓
+
+Archived
+```
+
+Failed commands enter the retry queue.
+
+---
+
+# Conflict Resolution
+
+Conflicts are inevitable.
+
+The architecture should support:
+
+```text
+Automatic Merge
+
+↓
+
+Manual Resolution
+
+↓
+
+Discard
+
+↓
+
+Retry
+```
+
+Not every conflict needs user interaction.
+
+---
+
+# Optimistic Updates
+
+Example:
+
+Customer presses:
+
+```text
+Book Service
+```
+
+Immediately:
+
+```text
+Booking appears
+
+Status = Requesting...
+```
+
+Background:
+
+```text
+API
+
+↓
+
+Booking Confirmed
+
+↓
+
+Replace Temporary ID
+
+↓
+
+Update Timeline
+```
+
+The interface remains responsive.
+
+---
+
+# Temporary IDs
+
+Offline-created entities receive local identifiers.
+
+Example:
+
+```text
+local_9F2A8B...
+
+↓
+
+Server UUID
+
+↓
+
+Mapped Automatically
+```
+
+The synchronization engine manages this mapping transparently.
+
+---
+
+# Synchronization Engine
+
+Responsibilities:
+
+```text
+Upload Commands
+
+Download Updates
+
+Realtime Events
+
+Retry
+
+Conflict Detection
+
+Queue Management
+
+Recovery
+```
+
+This should be implemented as its own subsystem, not scattered across repositories.
+
+---
+
+# Realtime Updates
+
+Supabase Realtime events are translated into domain events.
+
+Example:
+
+```text
+BookingUpdated
+
+↓
+
+Repository
+
+↓
+
+Cache Update
+
+↓
+
+UI Refresh
+```
+
+Components never subscribe directly to WebSockets.
+
+---
+
+# Background Synchronization
+
+Synchronization triggers:
+
+```text
+App Launch
+
+Network Reconnected
+
+App Foreground
+
+Manual Refresh
+
+Realtime Event
+
+Periodic Sync
+```
+
+The UI remains unaware of these mechanisms.
+
+---
+
+# Error Handling
+
+Errors should be classified:
+
+```text
+Validation
+
+Authorization
+
+Connectivity
+
+Timeout
+
+Conflict
+
+Server
+
+Unknown
+```
+
+Each category maps to a consistent user experience.
+
+---
+
+# Loading States
+
+Avoid global loading indicators.
+
+Every query has its own state:
+
+```text
+Loading
+
+Refreshing
+
+Empty
+
+Offline
+
+Error
+
+Success
+```
+
+This allows different parts of the interface to update independently.
+
+---
+
+# Feature Stores
+
+Recommended Zustand stores:
+
+```text
+sessionStore
+
+settingsStore
+
+navigationStore
+
+notificationStore
+
+syncStore
+```
+
+Avoid creating stores for every business entity; business data belongs in the query cache.
+
+---
+
+# Folder Structure
+
+```text
+state/
+
+stores/
+
+repositories/
+
+sync/
+
+cache/
+
+queries/
+
+commands/
+
+adapters/
+```
+
+The synchronization engine lives alongside repositories, not inside components.
+
+---
+
+# Synchronization Metrics
+
+Track operational health with:
+
+```text
+Pending Commands
+
+Failed Commands
+
+Average Sync Time
+
+Retry Count
+
+Conflict Count
+
+Last Successful Sync
+
+Offline Duration
+```
+
+These metrics are invaluable for diagnostics and future observability.
+
+---
+
+# Architectural Observation
+
+Rather than implementing offline support as an afterthought, I recommend making **commands** the fundamental unit of client-side state changes.
+
+Every user action—booking a service, uploading evidence, sending a message, updating availability—should first become a **Command** stored locally. The synchronization engine is then responsible for delivering those commands to the backend and reconciling the results.
+
+This mirrors the event-driven architecture established in `DOM-001` and `API-001`, provides robust offline behavior, and significantly simplifies debugging because every state transition originates from a recorded user intent.
+
+---
+
+**Current document:** `STATE-001 — Client State Management & Offline Synchronization Architecture v0.1`
+
+**Next document:** `MOD-001 — Module Architecture & Monorepo Structure`

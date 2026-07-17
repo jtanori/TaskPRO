@@ -1,0 +1,125 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e2-0005",
+  "preceding_record": "governance-0004",
+  "governing_replay": "governance-0004",
+  "expedition": "E2",
+  "timestamp": "2026-07-16T22:42:23Z",
+  "approved_by": "human governance decision approving E2 bootstrap execution",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "2c38853aa42e11ed935918d2c57f356a4595f00ba0774de915c911c9524ef8a2",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": ">=20.0.0",
+    "primary_tool_versions": {
+      "turbo": "^2.3.3",
+      "typescript": "^5.7.2",
+      "eslint": "^9.17.0",
+      "prettier": "^3.4.2",
+      "husky": "^9.1.7",
+      "lint-staged": "^15.3.0",
+      "vitest": "^2.1.8",
+      "typescript-eslint": "^8.18.0",
+      "@eslint/js": "^9.17.0"
+    },
+    "note": "Tool versions are an execution snapshot, not normative governance. Installed versions may differ slightly from requested ranges (e.g., eslint 9.39.5)."
+  },
+  "mutations": {
+    "created_files": [
+      "packages/design-tokens/src/types.ts",
+      "packages/design-tokens/src/tokens/colors.ts",
+      "packages/design-tokens/src/tokens/typography.ts",
+      "packages/design-tokens/src/tokens/spacing.ts",
+      "packages/design-tokens/src/tokens/radius.ts",
+      "packages/design-tokens/src/tokens/borderWidth.ts",
+      "packages/design-tokens/src/tokens/shadow.ts",
+      "packages/design-tokens/src/tokens/elevation.ts",
+      "packages/design-tokens/src/tokens/opacity.ts",
+      "packages/design-tokens/src/tokens/size.ts",
+      "packages/design-tokens/src/tokens/layout.ts",
+      "packages/design-tokens/src/tokens/breakpoints.ts",
+      "packages/design-tokens/src/tokens/zIndex.ts",
+      "packages/design-tokens/src/tokens/animation.ts",
+      "packages/design-tokens/src/tokens/index.ts",
+      "packages/design-tokens/src/themes/light.ts",
+      "packages/design-tokens/src/themes/dark.ts",
+      "packages/design-tokens/src/themes/highContrast.ts",
+      "packages/design-tokens/src/themes/index.ts",
+      "packages/design-tokens/src/index.ts",
+      "packages/design-tokens/src/__tests__/tokens.spec.ts",
+      "packages/design-tokens/src/__tests__/themes.spec.ts"
+    ],
+    "modified_files": [
+      "packages/config/tsconfig.base.json — changed module/moduleResolution from NodeNext to ESNext/Bundler for compatibility with extensionless workspace imports.",
+      "packages/eslint/index.js — removed non-existent @typescript-eslint/no-implicit-any rule; no-implicit-any enforced via tsconfig.",
+      "packages/eslint/package.json — added @eslint/js and typescript-eslint dependencies required by the shared flat config.",
+      ".prettierignore — added .synth/, knowledge/, and pnpm-lock.yaml exclusions."
+    ],
+    "generated_lockfile": "pnpm-lock.yaml",
+    "note": "node_modules/ directories are install artifacts and are not listed as authored mutations."
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "Spacing named aliases",
+      "choice": "xs=4, sm=8, md=16, lg=24, xl=32, xxl=48, xxxl=64",
+      "reason": "DS-001 defines the numeric scale but not names."
+    },
+    {
+      "decision": "Shadow unit interpretation",
+      "choice": "Interpret DS-001 'x y blur / opacity' as pixel-based CSS shadow strings.",
+      "reason": "DS-001 does not state units; pixels are the implied mobile unit."
+    },
+    {
+      "decision": "Status color primitives",
+      "choice": "Map status success/warning/error/info to the defined accent primitives.",
+      "reason": "DS-001 references undefined aliases (Green100/300/700, Yellow, Red, Blue) for status colors."
+    },
+    {
+      "decision": "Dark theme primaryAccent Blue400",
+      "choice": "Use existing primary.blue (#2563EB) because Blue400 is not defined in DS-001.",
+      "reason": "DS-005 references Blue400 but the primitive is absent."
+    },
+    {
+      "decision": "High-contrast theme values",
+      "choice": "Derive from neutral palette (white surfaces, black text/borders) to maximize contrast.",
+      "reason": "DS-005 specifies requirements only, not values."
+    },
+    {
+      "decision": "tsconfig moduleResolution",
+      "choice": "Bundler instead of NodeNext.",
+      "reason": "Supports extensionless workspace imports used throughout the monorepo."
+    }
+  ],
+  "deviations_from_plan": [
+    {
+      "deviation": "Minor corrections to E1 foundation files (tsconfig, eslint config, prettierignore) were required during E2 validation.",
+      "justification": "These are implementation fixes discovered during use, not governance changes. They preserve the E1 intent and are recorded as modified_files in this replay record."
+    }
+  ],
+  "validation_results": {
+    "typecheck": "PASS — pnpm --filter @taskpro/design-tokens typecheck",
+    "lint": "PASS — pnpm --filter @taskpro/design-tokens lint",
+    "test": "PASS — 18 tests across 2 files",
+    "format": "PASS — pnpm format:check",
+    "knowledge_hash_unchanged": "PASS (2c38853a…)",
+    "note": "Validation is deterministic and platform-independent."
+  },
+  "exclusions": [
+    "No UI components generated.",
+    "No application styling generated.",
+    "No screens generated.",
+    "No business logic or domain models generated.",
+    "No Supabase config.toml or resources generated.",
+    "No changes to knowledge/ or .synth/ governance primitives.",
+    "No git commits, branches, or pushes performed."
+  ],
+  "result": "bootstrap-e2-accepted"
+}

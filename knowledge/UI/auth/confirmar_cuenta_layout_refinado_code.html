@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        try {
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "surface-tint": "#136a5f",
+                            "tertiary": "#00571b",
+                            "secondary": "#55615f",
+                            "surface-container-low": "#f3f3f3",
+                            "on-primary-container": "#a1eddf",
+                            "inverse-surface": "#2f3131",
+                            "tertiary-fixed": "#83fc8e",
+                            "primary": "#00554b",
+                            "on-error": "#ffffff",
+                            "surface-container": "#eeeeee",
+                            "surface": "#f9f9f9",
+                            "on-background": "#1a1c1c",
+                            "status-danger": "#DC3545",
+                            "outline": "#6f7976",
+                            "inverse-on-surface": "#f1f1f1",
+                            "on-tertiary": "#ffffff",
+                            "on-primary-fixed": "#00201c",
+                            "error-container": "#ffdad6",
+                            "border-subtle": "#E0E0E0",
+                            "on-surface": "#1a1c1c",
+                            "outline-variant": "#bec9c5",
+                            "primary-fixed": "#a4f1e3",
+                            "on-primary": "#ffffff",
+                            "surface-container-lowest": "#ffffff",
+                            "tertiary-container": "#007227",
+                            "primary-fixed-dim": "#88d4c7",
+                            "on-secondary-fixed": "#121e1d",
+                            "surface-bright": "#f9f9f9",
+                            "text-primary": "#000000",
+                            "surface-container-highest": "#e2e2e2",
+                            "secondary-fixed": "#d8e5e3",
+                            "on-error-container": "#93000a",
+                            "on-primary-fixed-variant": "#005047",
+                            "text-secondary": "#666666",
+                            "error": "#ba1a1a",
+                            "background": "#f9f9f9",
+                            "surface-dim": "#dadada",
+                            "status-warning": "#FFC107",
+                            "on-surface-variant": "#3f4946",
+                            "on-tertiary-fixed-variant": "#00531a",
+                            "surface-variant": "#e2e2e2",
+                            "primary-container": "#1a6e63",
+                            "on-secondary": "#ffffff",
+                            "on-tertiary-fixed": "#002106",
+                            "surface-container-high": "#e8e8e8",
+                            "on-tertiary-container": "#7ff88a",
+                            "tertiary-fixed-dim": "#66df75",
+                            "secondary-container": "#d8e5e3",
+                            "on-secondary-container": "#5b6765",
+                            "secondary-fixed-dim": "#bcc9c7",
+                            "on-secondary-fixed-variant": "#3d4948",
+                            "inverse-primary": "#88d4c7"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                        },
+                        "spacing": {
+                            "xs": "4px",
+                            "xl": "32px",
+                            "margin-mobile": "16px",
+                            "sm": "8px",
+                            "md": "16px",
+                            "margin-desktop": "32px",
+                            "gutter": "16px",
+                            "lg": "24px"
+                        },
+                        "fontFamily": {
+                            "headline-lg-mobile": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "caption": ["Inter"],
+                            "label-md": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "body-md": ["Inter"],
+                            "headline-md": ["Inter"]
+                        },
+                        "fontSize": {
+                            "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                            "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                            "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                            "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+                        }
+                    },
+                },
+            }
+        } catch (_e) {}
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center p-margin-mobile">
+<!-- Top Navigation (Back Only) -->
+<header class="fixed top-0 left-0 w-full h-12 flex items-center px-margin-mobile z-50">
+<button aria-label="Volver" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary" data-original-icon="arrow_back">arrow_back</span>
+</button>
+</header>
+<!-- Main Content Container -->
+<main class="w-full max-w-md flex flex-col items-center pt-xl">
+<!-- Center Logo & Branding -->
+<div class="mb-xl flex flex-col items-center justify-center mt-xl">
+<div class="w-16 h-16 bg-primary-container rounded-xl flex items-center justify-center elevation-1 mb-md">
+<span class="text-on-primary-container font-headline-lg text-headline-lg tracking-tight">TP</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Task Pro MX-Ca</h2>
+</div>
+<!-- Headline & Instructions -->
+<div class="text-center mb-xl">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-sm">Verifica tu cuenta</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                Ingresa el código de 6 dígitos enviado a tu correo
+            </p>
+</div>
+<!-- OTP Input Section -->
+<form class="w-full flex flex-col gap-lg px-xs" id="otp-form">
+<div class="flex justify-between gap-2">
+<!-- 6 Individual OTP Boxes -->
+<input autocomplete="one-time-code" class="otp-field w-12 h-14 bg-surface-container-lowest border border-border-subtle rounded-lg text-center font-headline-md text-headline-md focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 outline-none" inputmode="numeric" maxlength="1" pattern="\d*" type="text"/>
+<input class="otp-field w-12 h-14 bg-surface-container-lowest border border-border-subtle rounded-lg text-center font-headline-md text-headline-md focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 outline-none" inputmode="numeric" maxlength="1" pattern="\d*" type="text"/>
+<input class="otp-field w-12 h-14 bg-surface-container-lowest border border-border-subtle rounded-lg text-center font-headline-md text-headline-md focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 outline-none" inputmode="numeric" maxlength="1" pattern="\d*" type="text"/>
+<input class="otp-field w-12 h-14 bg-surface-container-lowest border border-border-subtle rounded-lg text-center font-headline-md text-headline-md focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 outline-none" inputmode="numeric" maxlength="1" pattern="\d*" type="text"/>
+<input class="otp-field w-12 h-14 bg-surface-container-lowest border border-border-subtle rounded-lg text-center font-headline-md text-headline-md focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 outline-none" inputmode="numeric" maxlength="1" pattern="\d*" type="text"/>
+<input class="otp-field w-12 h-14 bg-surface-container-lowest border border-border-subtle rounded-lg text-center font-headline-md text-headline-md focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200 outline-none" inputmode="numeric" maxlength="1" pattern="\d*" type="text"/>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md rounded-lg elevation-1 hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-sm mt-md" type="submit">
+                Verificar
+            </button>
+</form>
+<!-- Secondary Actions -->
+<div class="mt-xl flex flex-col items-center gap-md">
+<button class="font-label-md text-label-md text-primary font-semibold hover:underline decoration-2 underline-offset-4 transition-all">
+                Reenviar código
+            </button>
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md text-on-surface-variant">¿Tienes problemas?</span>
+<button class="font-label-md text-label-md text-primary font-semibold hover:underline transition-all">
+                    Contactar soporte
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-border-subtle shadow-sm flex justify-around items-center h-16 px-4 z-50">
+<div class="flex justify-around w-full max-w-md mx-auto">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1 text-[22px]">help</span>
+<span class="font-label-sm text-label-sm">Ayuda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1 text-[22px]">description</span>
+<span class="font-label-sm text-label-sm">Términos</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interaction: Automatic OTP Focus Handling
+        const inputs = document.querySelectorAll('.otp-field');
+        
+        inputs.forEach((input, index) => {
+            // Handle typing
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            // Handle backspace
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+
+            // Prevent non-numeric input
+            input.addEventListener('keypress', (e) => {
+                if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Form submission prevention for demo
+        document.getElementById('otp-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const code = Array.from(inputs).map(i => i.value).join('');
+            if(code.length === 6) {
+                console.log('Verifying code:', code);
+                // Trigger success/loading state
+            }
+        });
+    </script>
+</body></html>
