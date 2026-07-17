@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "TaskPRO",
+    "slug": "taskpro",
+    "version": "0.0.0",
+    "orientation": "portrait",
+    "scheme": "taskpro",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.taskpro.mobile"
+    },
+    "android": {
+      "package": "com.taskpro.mobile"
+    },
+    "plugins": ["expo-router"]
+  }
+}

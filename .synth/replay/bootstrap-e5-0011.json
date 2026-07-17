@@ -1,0 +1,127 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e5-0011",
+  "preceding_record": "governance-0010",
+  "governing_replay": "governance-0010",
+  "expedition": "E5",
+  "timestamp": "2026-07-17T03:22:51Z",
+  "approved_by": "human governance decision approving E5 bootstrap execution with scope adjustments 1–7",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": "v24.14.1",
+    "primary_tool_versions": {
+      "turbo": "^2.3.3",
+      "typescript": "^5.7.2",
+      "eslint": "^9.17.0",
+      "prettier": "^3.4.2",
+      "vitest": "^2.1.8",
+      "expo": "~52.0.0",
+      "expo-router": "~4.0.0"
+    },
+    "note": "Tool versions are an execution snapshot, not normative governance."
+  },
+  "mutations": {
+    "created_files": [
+      "apps/mobile/babel.config.js",
+      "apps/mobile/app.json",
+      "apps/mobile/app/_layout.tsx",
+      "apps/mobile/app/+not-found.tsx",
+      "apps/mobile/app/(auth)/_layout.tsx",
+      "apps/mobile/app/(auth)/login.tsx",
+      "apps/mobile/app/(auth)/register.tsx",
+      "apps/mobile/app/(customer)/_layout.tsx",
+      "apps/mobile/app/(customer)/index.tsx",
+      "apps/mobile/app/(technician)/_layout.tsx",
+      "apps/mobile/app/(technician)/index.tsx",
+      "apps/mobile/app/(shared)/_layout.tsx",
+      "apps/mobile/app/(shared)/settings.tsx",
+      "apps/mobile/src/types/auth.ts",
+      "apps/mobile/src/lib/session.ts",
+      "apps/mobile/src/providers/AuthProvider.tsx",
+      "apps/mobile/src/providers/RootProviders.tsx",
+      "apps/mobile/src/hooks/useAuth.tsx"
+    ],
+    "modified_files": [
+      "apps/mobile/package.json — added Expo Router dependencies, expo-secure-store, expo-linking, expo-constants, react-native-screens, react-native-safe-area-context, react-native-gesture-handler, and @types/react devDependency.",
+      "apps/mobile/tsconfig.json — expanded include to src, app, app.json, and babel.config.js; set rootDir to project root to cover app/ route files.",
+      "pnpm-lock.yaml — updated by pnpm install after dependency changes."
+    ],
+    "note": "node_modules/ directories are install artifacts and are not listed as authored mutations."
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "Navigation framework",
+      "choice": "Expo Router v4 with file-based routing; main field set to expo-router/entry.",
+      "reason": "TASKPRO-TECH-001 establishes Expo Router as canonical; TASKPRO-NAV-001 route structure maps to route groups."
+    },
+    {
+      "decision": "Route groups",
+      "choice": "(auth), (customer), (technician), (shared) route groups with Stack navigators.",
+      "reason": "Mirrors role-based app structure from TASKPRO-NAV-001 while keeping URLs clean."
+    },
+    {
+      "decision": "Session persistence",
+      "choice": "expo-secure-store for access token/session persistence with memory fallback.",
+      "reason": "E5 defines the persistence contract; encryption and fallback storage are deferred to later expeditions."
+    },
+    {
+      "decision": "Role-based routing",
+      "choice": "NavigationGuard in app/_layout.tsx redirects unauthenticated users to /login and authenticated users to their role home.",
+      "reason": "Shell-level routing invariant: auth state determines which group is reachable."
+    },
+    {
+      "decision": "Provider composition",
+      "choice": "SafeAreaProvider > ThemeProvider > AuthProvider, exposed through RootProviders.",
+      "reason": "Consumes E3 ThemeProvider and E2 tokens; keeps app/_layout.tsx focused on navigation."
+    },
+    {
+      "decision": "Deep-link scheme",
+      "choice": "taskpro:// registered in app.json.",
+      "reason": "TASKPRO-TECH-001 deep-link requirement; full deep-link route mapping belongs to later expeditions."
+    },
+    {
+      "decision": "Mock sign-in",
+      "choice": "Login screen offers Customer and Technician sign-in buttons that create a synthetic session.",
+      "reason": "E5 is shell-only; real authentication is E6. The mock lets NavigationGuard and role routing be validated."
+    },
+    {
+      "decision": "ESLint compatibility for config files",
+      "choice": "Added /* global module */ comment to babel.config.js because the shared flat config does not define Node globals.",
+      "reason": "Local implementation decision; no change to the shared @taskpro/eslint package."
+    }
+  ],
+  "deviations_from_plan": [
+    {
+      "deviation": "Added @types/react as an explicit devDependency rather than relying on transitive types.",
+      "justification": "Required for deterministic TypeScript resolution in the mobile workspace under pnpm strict peer rules."
+    }
+  ],
+  "validation_results": {
+    "format": "PASS — pnpm format:check",
+    "typecheck": "PASS — @taskpro/mobile",
+    "lint": "PASS — @taskpro/mobile",
+    "knowledge_hash_unchanged": "PASS (1529ed50…)",
+    "note": "Runtime launch/deep-link behavior was not validated against a simulator or device in this expedition."
+  },
+  "exclusions": [
+    "No real authentication integration (E6).",
+    "No real API calls or Supabase client usage.",
+    "No business workflows (booking, messaging, marketplace, payments).",
+    "No screen-level feature logic beyond navigation and sign-out placeholders.",
+    "No E2E or runtime tests; shell was validated via typecheck and lint only.",
+    "No changes to knowledge/ authored artifacts.",
+    "No changes to .synth/ governance primitives beyond this replay record and governance-0012.",
+    "No git commits, branches, or pushes performed."
+  ],
+  "result": "bootstrap-e5-accepted"
+}

@@ -2,8 +2,8 @@
   "extends": "@taskpro/config/tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "jsx": "react-native"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "app/**/*", "app.json", "babel.config.js"]
 }

@@ -63,14 +63,16 @@
     {
       "id": "E5",
       "name": "Application shell (apps/mobile route groups, providers, auth session)",
-      "status": "registered",
+      "status": "completed",
       "depends_on": ["E2", "E3", "E4"],
       "gates": [],
       "transformation": "Expo Router structure with (auth)/(customer)/(technician)/(shared) route groups, root providers, session restoration, role-based routing, deep links.",
       "evidence_sources": ["TASKPRO-NAV-001", "TASKPRO-ARCH-001", "TASKPRO-AUTH-001", "TASKPRO-TECH-001", "TASKPRO-UI-001-PLAN"],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
-      "completion_evidence": "BUILD-001 Phase 0 completion: app launches, navigates, renders themed components, executes tests."
+      "completion_evidence": "BUILD-001 Phase 0 completion: app launches, navigates, renders themed components, executes tests.",
+      "completed_at": "2026-07-17T03:22:51Z",
+      "supporting_replay": "bootstrap-e5-0011"
     },
     {
       "id": "E6",
