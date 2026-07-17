@@ -34,3 +34,8 @@ coverage/
 
 # Supabase
 supabase/.temp/
+
+# SYNTH CLI v2 runtime artifacts (external tool, not project governance)
+data/
+event-log.jsonl
+docs/generated/
