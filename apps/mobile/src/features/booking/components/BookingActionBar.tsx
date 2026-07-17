@@ -12,9 +12,16 @@ interface BookingActionBarProps {
   role: UserRole;
   actorId: ProfessionalId;
   onUpdated: (booking: BookingDto) => void;
+  onPay?: () => void;
 }
 
-export function BookingActionBar({ booking, role, actorId, onUpdated }: BookingActionBarProps) {
+export function BookingActionBar({
+  booking,
+  role,
+  actorId,
+  onUpdated,
+  onPay,
+}: BookingActionBarProps) {
   const { t } = useTranslation('booking');
   const {
     status,
@@ -55,9 +62,9 @@ export function BookingActionBar({ booking, role, actorId, onUpdated }: BookingA
 
       {isCustomer && booking.status === BookingStatus.PaymentPending ? (
         <Button
-          title={t('confirmPayment')}
+          title={t('payNow')}
           loading={status === 'loading'}
-          onPress={() => void handle(confirmPayment(booking.id))}
+          onPress={() => (onPay ? onPay() : void handle(confirmPayment(booking.id)))}
         />
       ) : null}
 

@@ -1,0 +1,11 @@
+{
+  "checkoutTitle": "Pagar",
+  "paymentMethod": "Método de pago",
+  "payButton": "Pagar ahora",
+  "paymentMethodsTitle": "Métodos de pago",
+  "paymentMethodsPlaceholder": "Aquí podrás administrar tus tarjetas guardadas.",
+  "earningsTitle": "Ganancias",
+  "noEarnings": "Aún no tienes pagos registrados.",
+  "payoutLabel": "Pago",
+  "payoutStatus": "Estado"
+}

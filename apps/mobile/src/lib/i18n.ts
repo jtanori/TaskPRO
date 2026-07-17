@@ -6,6 +6,7 @@ import booking from '../locales/es-MX/booking.json';
 import common from '../locales/es-MX/common.json';
 import communication from '../locales/es-MX/communication.json';
 import marketplace from '../locales/es-MX/marketplace.json';
+import payment from '../locales/es-MX/payment.json';
 import profile from '../locales/es-MX/profile.json';
 
 const resources = {
@@ -15,6 +16,7 @@ const resources = {
     common,
     communication,
     marketplace,
+    payment,
     profile,
   },
 };

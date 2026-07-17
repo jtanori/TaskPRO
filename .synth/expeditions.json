@@ -118,13 +118,16 @@
     {
       "id": "E9",
       "name": "Marketplace expansion (BUILD-001 Phase 4)",
-      "status": "registered",
+      "status": "completed",
       "depends_on": ["E7"],
       "gates": [],
       "transformation": "Listings, seller profiles, transactions, payment integration hardening.",
       "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-DOM-001", "TASKPRO-API-002"],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "completion_evidence": "Payment and payout aggregates, in-memory repositories, mobile marketplace and payment screens, routes, and UI components implemented and tested.",
+      "completed_at": "2026-07-17T22:29:47Z",
+      "supporting_replay": "bootstrap-e9-0021"
     },
     {
       "id": "E10",

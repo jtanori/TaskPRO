@@ -1,0 +1,150 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e9-0021",
+  "preceding_record": "governance-0020",
+  "governing_replay": "governance-0020",
+  "expedition": "E9",
+  "timestamp": "2026-07-17T22:29:47Z",
+  "approved_by": "human approval of E9 execution plan for Marketplace expansion",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": "v24.14.1",
+    "primary_tool_versions": {
+      "turbo": "^2.3.3",
+      "typescript": "^5.7.2",
+      "eslint": "^9.17.0",
+      "prettier": "^3.4.2",
+      "vitest": "^2.1.8",
+      "expo": "~52.0.0",
+      "expo-router": "~4.0.0",
+      "i18next": "^24.2.0",
+      "react-i18next": "^15.4.0",
+      "@supabase/supabase-js": "^2.47.10"
+    },
+    "note": "Tool versions are an execution snapshot, not normative governance."
+  },
+  "mutations": {
+    "created_files": [
+      "apps/mobile/app/(customer)/bookings/[id]/pay.tsx — checkout route for a booking payment.",
+      "apps/mobile/app/(customer)/payment-methods.tsx — customer payment methods management screen route.",
+      "apps/mobile/app/(shared)/professional/[id].tsx — public professional profile route.",
+      "apps/mobile/app/(technician)/earnings.tsx — technician earnings/payouts route.",
+      "apps/mobile/app/(technician)/services/add.tsx — add service route.",
+      "apps/mobile/app/(technician)/services/index.tsx — technician services list route.",
+      "apps/mobile/src/features/marketplace/screens/AddServiceScreen.tsx — screen for technicians to publish a service.",
+      "apps/mobile/src/features/marketplace/screens/ProfessionalProfileScreen.tsx — public professional profile screen.",
+      "apps/mobile/src/features/marketplace/screens/TechnicianServicesScreen.tsx — technician service management screen.",
+      "apps/mobile/src/features/payment/FakePaymentProvider.ts — in-memory payment provider implementing the PaymentProvider port.",
+      "apps/mobile/src/features/payment/FakePaymentService.ts — application service orchestrating fake authorization and capture.",
+      "apps/mobile/src/features/payment/index.ts — payment feature public exports.",
+      "apps/mobile/src/features/payment/PaymentService.ts — payment service contract.",
+      "apps/mobile/src/features/payment/screens/CheckoutScreen.tsx — customer checkout screen.",
+      "apps/mobile/src/features/payment/screens/EarningsScreen.tsx — technician earnings/payouts screen.",
+      "apps/mobile/src/features/payment/screens/PaymentMethodsScreen.tsx — saved payment methods screen.",
+      "apps/mobile/src/features/payment/toInvoiceDto.ts — invoice DTO mapper.",
+      "apps/mobile/src/features/payment/toPaymentDto.ts — payment DTO mapper.",
+      "apps/mobile/src/features/payment/toPayoutDto.ts — payout DTO mapper.",
+      "apps/mobile/src/features/payment/usePayment.ts — checkout and payment methods hook.",
+      "apps/mobile/src/locales/es-MX/payment.json — payment UI copy.",
+      "packages/domain/src/__tests__/use-cases/Payment.test.ts — payment and payout use-case tests.",
+      "packages/domain/src/aggregates/Payout.ts — technician payout aggregate.",
+      "packages/domain/src/repositories/InMemoryPaymentRepository.ts — in-memory payment repository.",
+      "packages/domain/src/repositories/InMemoryPayoutRepository.ts — in-memory payout repository.",
+      "packages/domain/src/repositories/PayoutRepository.ts — payout repository interface.",
+      "packages/domain/src/services/PaymentProvider.ts — payment provider port.",
+      "packages/domain/src/use-cases/AuthorizePayment.ts — authorize payment use case.",
+      "packages/domain/src/use-cases/CapturePayment.ts — capture authorized payment use case.",
+      "packages/domain/src/use-cases/CreatePayout.ts — create technician payout use case."
+    ],
+    "modified_files": [
+      "apps/mobile/app/(customer)/_layout.tsx — registered payment and booking-payment routes.",
+      "apps/mobile/app/(shared)/_layout.tsx — registered professional profile route.",
+      "apps/mobile/app/(technician)/_layout.tsx — registered earnings and services routes.",
+      "apps/mobile/src/features/booking/components/BookingActionBar.tsx — added optional onPay action.",
+      "apps/mobile/src/features/booking/screens/CustomerBookingDetailScreen.tsx — navigate to checkout when payment is pending.",
+      "apps/mobile/src/features/marketplace/FakeServiceCatalogService.ts — seeded professionals and technician-oriented service listings.",
+      "apps/mobile/src/features/marketplace/ServiceCatalogService.ts — added getProfessionalById and getServicesByProfessionalId.",
+      "apps/mobile/src/features/marketplace/screens/HomeScreen.tsx — added quick actions for professional profile and payment methods.",
+      "apps/mobile/src/features/marketplace/useServiceCatalog.ts — exposed new catalog queries.",
+      "apps/mobile/src/features/technician/screens/TechnicianHomeScreen.tsx — added services and earnings quick actions.",
+      "apps/mobile/src/lib/i18n.ts — registered payment namespace.",
+      "apps/mobile/src/locales/es-MX/booking.json — added pay action key.",
+      "apps/mobile/src/locales/es-MX/marketplace.json — added professional/services quick-action keys.",
+      "packages/domain/src/aggregates/Payment.ts — added getters and state helpers.",
+      "packages/domain/src/aggregates/index.ts — exported Payout aggregate.",
+      "packages/domain/src/repositories/index.ts — exported payment and payout repositories.",
+      "packages/domain/src/services/index.ts — exported PaymentProvider port.",
+      "packages/domain/src/use-cases/index.ts — exported AuthorizePayment, CapturePayment, CreatePayout.",
+      "packages/types/src/dto/index.ts — added PaymentMethodDto, PaymentDto, InvoiceDto, PayoutDto, TransactionDto.",
+      "packages/types/src/ids/index.ts — added PayoutId and TransactionId branded identifiers.",
+      "packages/ui/src/__tests__/components/scaffolded-components.test.tsx — updated marketplace/payment scaffolded component tests to use real props.",
+      "packages/ui/src/components/marketplace/ProfessionalCard.stories.tsx — stories for the real ProfessionalCard.",
+      "packages/ui/src/components/marketplace/ProfessionalCard.tsx — real professional card implementation.",
+      "packages/ui/src/components/payment/InvoiceCard.stories.tsx — stories for the real InvoiceCard.",
+      "packages/ui/src/components/payment/InvoiceCard.tsx — real invoice card implementation.",
+      "packages/ui/src/components/payment/PaymentMethodCard.stories.tsx — stories for the real PaymentMethodCard.",
+      "packages/ui/src/components/payment/PaymentMethodCard.tsx — real payment method card implementation.",
+      "packages/ui/src/components/payment/PaymentSummary.stories.tsx — stories for the real PaymentSummary.",
+      "packages/ui/src/components/payment/PaymentSummary.tsx — real payment summary implementation.",
+      "packages/ui/src/components/service/ServiceCard.stories.tsx — stories for the real ServiceCard.",
+      "packages/ui/src/components/service/ServiceCard.tsx — real service card implementation."
+    ],
+    "deleted_files": [],
+    "note": "node_modules/ and .turbo/ directories are install/build artifacts and are not listed as authored mutations."
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "Payment gateway sequencing",
+      "choice": "Stripe Connect Express is the first payment provider per resolved decision D2; E9 implements only a FakePaymentProvider satisfying the PaymentProvider port.",
+      "reason": "Avoids live Stripe API dependencies and network calls while establishing the exact domain and application contracts for later provider integration."
+    },
+    {
+      "decision": "Domain payment model",
+      "choice": "Payment aggregate supports authorized/captured status; Payout aggregate introduced for technician earnings; in-memory repositories only.",
+      "reason": "Keeps domain pure and backend-independent; database persistence belongs to a later Supabase integration expedition."
+    },
+    {
+      "decision": "Marketplace UI contracts",
+      "choice": "ProfessionalCard, ServiceCard, PaymentMethodCard, InvoiceCard, and PaymentSummary implemented as real components consuming @taskpro/design-tokens and @taskpro/types DTOs.",
+      "reason": "E9 turns the E3 scaffolded placeholders into the executable visual contract for marketplace and payment surfaces."
+    },
+    {
+      "decision": "Seller surface scope",
+      "choice": "Professional profile, technician service list, and add-service screen implemented over FakeServiceCatalogService.",
+      "reason": "Completes the marketplace vertical slice without requiring new Supabase migrations or backend resources."
+    },
+    {
+      "decision": "Organization and location aggregates",
+      "choice": "Deferred to a future expedition.",
+      "reason": "Current marketplace is customer-professional-booking; organizations add ownership ambiguity before it is required."
+    }
+  ],
+  "deviations_from_plan": [],
+  "validation_results": {
+    "format": "PASS — pnpm format:check",
+    "lint": "PASS — @taskpro/domain, @taskpro/types, @taskpro/ui, @taskpro/mobile",
+    "typecheck": "PASS — @taskpro/domain, @taskpro/types, @taskpro/ui, @taskpro/mobile",
+    "test": "PASS — @taskpro/domain 40 tests, @taskpro/types 3 tests, @taskpro/ui 22 tests",
+    "knowledge_hash_unchanged": "PASS (1529ed50…)"
+  },
+  "exclusions": [
+    "No live Stripe API calls or Stripe Connect onboarding.",
+    "No real payment capture, refund, or dispute workflows against a backend.",
+    "No new Supabase migrations or schema changes beyond E4.",
+    "No organization, location, team, or branch aggregates.",
+    "No changes to knowledge/ authored artifacts.",
+    "No changes to .synth/ governance primitives beyond this replay record, governance-0022, and the E9 expedition state projection.",
+    "No git commits, branches, tags, or pushes performed."
+  ],
+  "result": "bootstrap-e9-accepted"
+}

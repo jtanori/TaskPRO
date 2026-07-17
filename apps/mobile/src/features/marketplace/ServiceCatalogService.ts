@@ -5,6 +5,8 @@ export interface ServiceCatalogService {
   searchServices(query: string, categoryId?: string): Promise<ServiceDto[]>;
   getServiceById(id: string): Promise<ServiceDto | null>;
   getFeaturedServices(): Promise<ServiceDto[]>;
+  getProfessionalById(id: string): Promise<ProfessionalDto | null>;
+  getServicesByProfessionalId(id: string): Promise<ServiceDto[]>;
 }
 
 export interface ServiceCategory {

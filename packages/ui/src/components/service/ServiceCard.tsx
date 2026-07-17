@@ -1,33 +1,47 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import type { ServiceDto } from '@taskpro/types';
 import { tokens } from '@taskpro/design-tokens';
-import { useTheme } from '../../theme/ThemeProvider';
+import { Card } from '../foundation/Card';
+import { Typography } from '../foundation/Typography';
 
-export type ServiceCardProps = object;
+export interface ServiceCardProps {
+  service: ServiceDto;
+}
 
-export function ServiceCard(_props: ServiceCardProps) {
-  const theme = useTheme();
+function formatMinor(amountMinor: number, currency: string): string {
+  const major = (amountMinor / 100).toFixed(2);
+  return `$${major} ${currency}`;
+}
+
+export function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <View
-      style={[
-        styles.container,
-        { borderColor: theme.colors.border, backgroundColor: theme.colors.surface },
-      ]}
-      accessibilityRole="button"
-      accessibilityLabel="ServiceCard"
-    >
-      <Text style={[styles.label, { color: theme.colors.text }]}>ServiceCard</Text>
-    </View>
+    <Card style={styles.container}>
+      <Typography variant="headingS" numberOfLines={1}>
+        {service.name}
+      </Typography>
+      <Typography variant="bodyM" color="textSecondary" numberOfLines={2}>
+        {service.description}
+      </Typography>
+      <View style={styles.row}>
+        <Typography variant="bodyS" color="textSecondary">
+          {service.estimatedDurationMinutes} min
+        </Typography>
+        <Typography variant="bodyM">
+          {formatMinor(service.basePrice.amountMinor, service.basePrice.currency)}
+        </Typography>
+      </View>
+    </Card>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: tokens.radius.md,
-    borderWidth: tokens.borderWidth.hairline,
-    padding: tokens.spacing.md,
+    gap: tokens.spacing.xs,
   },
-  label: {
-    fontSize: tokens.typography.fontSize.bodyM,
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: tokens.spacing.xs,
   },
 });

@@ -15,6 +15,7 @@
   "requestSuccess": "Reserva creada",
   "cancelBooking": "Cancelar reserva",
   "confirmPayment": "Confirmar pago",
+  "payNow": "Pagar ahora",
   "paymentConfirmed": "Pago confirmado",
   "myJobs": "Mis trabajos",
   "jobDetail": "Detalle de trabajo",

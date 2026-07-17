@@ -3,6 +3,7 @@ export * from './Conversation';
 export * from './Invoice';
 export * from './Notification';
 export * from './Payment';
+export * from './Payout';
 export * from './Professional';
 export * from './Review';
 export * from './Service';

@@ -7,9 +7,9 @@
 
 ## Repository status
 
-- **Phase:** governed / pre-implementation. Knowledge complete; E1 completed; E2–E10 registered.
+- **Phase:** governed / implementation in progress. Knowledge complete; E1–E9 completed; E10 registered.
 - **Genesis:** `.synth/replay/genesis-0001.json` (input snapshot sha256 `2c38853a…`, 119 files).
-- **Latest update:** `.synth/replay/governance-0006.json` (E2 status transitioned to completed).
+- **Latest update:** `.synth/replay/governance-0022.json` (E9 completed; D2 payment-gateway-sequencing confidence promoted to HIGH).
 - **Mission:** Synthesize the TaskPRO platform from canonical knowledge into a TurboRepo
   monorepo — Expo/React Native mobile app (customer + technician) with Supabase backend —
   delivered in BUILD-001 phase order, each phase a usable vertical slice.
@@ -17,7 +17,7 @@
 ## Rules for agents working in this repository
 
 1. `knowledge/` is **authored and immutable**. Do not edit, rename, normalize, or
-   reformat anything under it without explicit human approval (see open items R2/R4/R5).
+   reformat anything under it without explicit human approval (see open item R2).
 2. `.synth/` is **governance state**. Assertions must carry provenance
    (`evidence_sources`, `derivation_type`, `confidence`). No anonymous state.
 3. **Do not invent knowledge.** If a decision is not derivable from `knowledge/`,
@@ -44,18 +44,21 @@
 Composite addressing: GAPS-001.md contains FLOW-001, I18N-001, OPS-001, TECH-001;
 COMP-001.md.txt embeds NAV-001. Full registry: `.synth/evidence.json`.
 
-## Expedition order (registered, none started)
+## Expedition order
 
-E1 Foundation & toolchain ✅ → E2 Design tokens & theme ✅ → E3 UI library (next) ∥ E4 Domain & contracts →
-E5 Application shell → E6 Identity & discovery slice →
-E7 Booking lifecycle (**gated on R1**) → E9 Marketplace; E8 Communication (after E6);
-E10 Trust & maturity (after E7/E8).
+E1 Foundation & toolchain ✅ → E2 Design tokens & theme ✅ → E3 UI library ✅ → E4 Domain & contracts ✅ →
+E5 Application shell ✅ → E6 Identity & discovery slice ✅ → E7 Booking lifecycle ✅ →
+E8 Communication ✅ → E9 Marketplace ✅ → E10 Trust & maturity (registered).
 
 ## Open governance items (resolve explicitly, never silently)
 
-- **R1** — Booking state-machine vocabulary conflict (FLOW-001 vs DOM-001). Gates E7. Needs human ratification.
 - **R2** — `knowledge/Docs/DS-05.md:1` stray character in header. Approval-gated authored-artifact fix.
-- **R3** — DEV-001 React Navigation text: superseded, resolved by registry (document untouched).
+
+## Resolved governance items
+
+- **R1** — Booking state-machine vocabulary conflict (FLOW-001 vs DOM-001). Resolved: E4 canonical state machine adopted.
+- **R3** — DEV-001 React Navigation text: superseded by registry (document untouched).
 - **R4** — DS filename ↔ canonical ID mismatch: resolved by registry (optional rename approval-gated).
-- **R5** — API-002.md.txt header reads `TASKPRO-API-001`, colliding with API-001.md.txt's family ID. Resolved by registry normalization/disambiguation; artifact untouched.
-- **D1** — i18n library (blocks E6). **D2** — Payment gateway sequencing (blocks E9).
+- **R5** — API-002.md.txt header collision: resolved by registry normalization/disambiguation (artifact untouched).
+- **D1** — i18n library: resolved; i18next adopted in E6.
+- **D2** — Payment gateway sequencing: resolved; Stripe Connect Express first, ratified in governance-0020.

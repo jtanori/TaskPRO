@@ -130,6 +130,15 @@ export class FakeServiceCatalogService implements ServiceCatalogService {
     if (!service) return null;
     return { service, professionals: PROFESSIONALS };
   }
+
+  async getProfessionalById(id: string): Promise<ProfessionalDto | null> {
+    return PROFESSIONALS.find((professional) => professional.id === id) ?? null;
+  }
+
+  async getServicesByProfessionalId(id: string): Promise<ServiceDto[]> {
+    // Demo mapping: all professionals offer all services for now.
+    return SERVICES.filter(() => PROFESSIONALS.some((professional) => professional.id === id));
+  }
 }
 
 export const serviceCatalog = new FakeServiceCatalogService();

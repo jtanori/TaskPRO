@@ -13,7 +13,7 @@
     { "domain": "domain-model", "confidence": "HIGH", "authority": "TASKPRO-DOM-001 + TASKPRO-DATA-001 + TASKPRO-DB-001", "derivation_type": "DIRECT" },
     { "domain": "delivery-order", "confidence": "HIGH", "authority": "TASKPRO-BUILD-001", "derivation_type": "DIRECT" },
     { "domain": "workflow-state-machines", "confidence": "HIGH", "authority": "TASKPRO-STATE-002 + E4 canonical booking state machine", "derivation_type": "DIRECT" },
-    { "domain": "payment-gateway-sequencing", "confidence": "DEFERRED", "authority": null, "derivation_type": "UNRESOLVED" },
+    { "domain": "payment-gateway-sequencing", "confidence": "HIGH", "authority": "TASKPRO-TECH-001", "derivation_type": "DIRECT" },
     { "domain": "i18n-library", "confidence": "HIGH", "authority": "TASKPRO-I18N-001", "derivation_type": "DIRECT" }
   ],
   "open_decisions": [],

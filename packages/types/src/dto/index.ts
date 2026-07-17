@@ -3,8 +3,10 @@ import type {
   BookingId,
   ConversationId,
   MessageId,
+  PayoutId,
   ProfessionalId,
   ServiceId,
+  TransactionId,
   UserId,
 } from '../ids';
 import type { BookingStatus, Currency, Locale, UserRole, UserStatus } from '../enums';
@@ -141,4 +143,53 @@ export interface NotificationDto {
   status: import('../enums').NotificationStatus;
   createdAt: string;
   sentAt?: string;
+}
+
+export interface PaymentMethodDto {
+  id: string;
+  brand: string;
+  last4: string;
+  expiryMonth: number;
+  expiryYear: number;
+}
+
+export interface PaymentDto {
+  id: import('../ids').PaymentId;
+  bookingId: BookingId;
+  amount: MoneyDto;
+  platformFee: MoneyDto;
+  provider: import('../enums').PaymentProvider;
+  providerPaymentId?: string;
+  status: import('../enums').PaymentStatus;
+  capturedAt?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface InvoiceDto {
+  id: import('../ids').InvoiceId;
+  bookingId: BookingId;
+  items: { description: string; quantity: number; unitPrice: MoneyDto; total: MoneyDto }[];
+  subtotal: MoneyDto;
+  tax: MoneyDto;
+  total: MoneyDto;
+  issuedAt: string;
+  paidAt?: string;
+}
+
+export interface PayoutDto {
+  id: PayoutId;
+  professionalId: ProfessionalId;
+  amount: MoneyDto;
+  status: 'pending' | 'in_transit' | 'paid' | 'failed';
+  createdAt: string;
+  paidAt?: string;
+}
+
+export interface TransactionDto {
+  id: TransactionId;
+  paymentId: import('../ids').PaymentId;
+  type: 'capture' | 'refund' | 'payout' | 'fee';
+  amount: MoneyDto;
+  createdAt: string;
 }

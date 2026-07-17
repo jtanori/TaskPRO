@@ -37,8 +37,32 @@ export class Payment {
     return this.props.id;
   }
 
+  get bookingId(): BookingId {
+    return this.props.bookingId;
+  }
+
   get amount(): Money {
     return this.props.amount;
+  }
+
+  get provider(): PaymentProvider {
+    return this.props.provider;
+  }
+
+  get providerPaymentId(): string | undefined {
+    return this.props.providerPaymentId;
+  }
+
+  get status(): PaymentStatus {
+    return this.props.status;
+  }
+
+  get capturedAt(): Date | undefined {
+    return this.props.capturedAt;
+  }
+
+  get createdAt(): Date {
+    return this.props.createdAt;
   }
 
   authorize(providerPaymentId: string): void {

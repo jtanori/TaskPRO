@@ -11,6 +11,8 @@ export type ConversationId = Brand<string, 'ConversationId'>;
 export type MessageId = Brand<string, 'MessageId'>;
 export type PaymentId = Brand<string, 'PaymentId'>;
 export type InvoiceId = Brand<string, 'InvoiceId'>;
+export type PayoutId = Brand<string, 'PayoutId'>;
+export type TransactionId = Brand<string, 'TransactionId'>;
 export type ReviewId = Brand<string, 'ReviewId'>;
 export type NotificationId = Brand<string, 'NotificationId'>;
 export type AttachmentId = Brand<string, 'AttachmentId'>;
@@ -59,6 +61,14 @@ export function createPaymentId(value: string): PaymentId {
 
 export function createInvoiceId(value: string): InvoiceId {
   return value as InvoiceId;
+}
+
+export function createPayoutId(value: string): PayoutId {
+  return value as PayoutId;
+}
+
+export function createTransactionId(value: string): TransactionId {
+  return value as TransactionId;
 }
 
 export function createReviewId(value: string): ReviewId {

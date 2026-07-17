@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { ServiceDto } from '@taskpro/types';
+import type { ProfessionalDto, ServiceDto } from '@taskpro/types';
 import { serviceCatalog } from './FakeServiceCatalogService';
 import type { ServiceCategory, ServiceDetail } from './ServiceCatalogService';
 
@@ -97,4 +97,61 @@ export function useServiceDetail(id: string | undefined): UseServiceDetailResult
   }, [id]);
 
   return { detail, isLoading, error };
+}
+
+interface UseProfessionalProfileResult {
+  professional: ProfessionalDto | null;
+  services: ServiceDto[];
+  isLoading: boolean;
+  error: Error | null;
+}
+
+export function useProfessionalProfile(id: string | undefined): UseProfessionalProfileResult {
+  const [professional, setProfessional] = useState<ProfessionalDto | null>(null);
+  const [services, setServices] = useState<ServiceDto[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    if (!id) return;
+    setIsLoading(true);
+    Promise.all([
+      serviceCatalog.getProfessionalById(id),
+      serviceCatalog.getServicesByProfessionalId(id),
+    ])
+      .then(([prof, svc]) => {
+        setProfessional(prof);
+        setServices(svc);
+      })
+      .catch((err) => setError(err instanceof Error ? err : new Error('Failed to load profile')))
+      .finally(() => setIsLoading(false));
+  }, [id]);
+
+  return { professional, services, isLoading, error };
+}
+
+interface UseTechnicianServicesResult {
+  services: ServiceDto[];
+  isLoading: boolean;
+  error: Error | null;
+}
+
+export function useTechnicianServices(
+  professionalId: string | undefined
+): UseTechnicianServicesResult {
+  const [services, setServices] = useState<ServiceDto[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    if (!professionalId) return;
+    setIsLoading(true);
+    serviceCatalog
+      .getServicesByProfessionalId(professionalId)
+      .then(setServices)
+      .catch((err) => setError(err instanceof Error ? err : new Error('Failed to load services')))
+      .finally(() => setIsLoading(false));
+  }, [professionalId]);
+
+  return { services, isLoading, error };
 }

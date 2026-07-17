@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { createMessageId, createUserId, MessageType } from '@taskpro/types';
+import { createMessageId, createUserId, Currency, MessageType } from '@taskpro/types';
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 import {
@@ -27,13 +27,39 @@ describe('Scaffolded component groups render within ThemeProvider', () => {
   });
 
   it('service', () => {
-    renderWithTheme(<ServiceCard />);
-    expect(screen.getByLabelText('ServiceCard')).toBeTruthy();
+    renderWithTheme(
+      <ServiceCard
+        service={{
+          id: 'svc-1' as import('@taskpro/types').ServiceDto['id'],
+          categoryId: 'cat-1',
+          name: 'Limpieza',
+          description: 'Limpieza general',
+          estimatedDurationMinutes: 120,
+          basePrice: { amountMinor: 10000, currency: Currency.MXN },
+          isActive: true,
+        }}
+      />
+    );
+    expect(screen.getByText('Limpieza')).toBeTruthy();
   });
 
   it('marketplace', () => {
-    renderWithTheme(<ProfessionalCard />);
-    expect(screen.getByLabelText('ProfessionalCard')).toBeTruthy();
+    renderWithTheme(
+      <ProfessionalCard
+        professional={{
+          id: 'pro-1' as import('@taskpro/types').ProfessionalDto['id'],
+          userId: 'user-1' as import('@taskpro/types').ProfessionalDto['userId'],
+          bio: 'Profesional de limpieza',
+          yearsExperience: 5,
+          rating: { value: 4.8, max: 5, precision: 0.5 },
+          reviewCount: 10,
+          travelRadiusMeters: 10000,
+          verificationStatus: 'verified',
+          isAvailable: true,
+        }}
+      />
+    );
+    expect(screen.getByText('Profesional de limpieza')).toBeTruthy();
   });
 
   it('workflow', () => {
@@ -58,8 +84,18 @@ describe('Scaffolded component groups render within ThemeProvider', () => {
   });
 
   it('payment', () => {
-    renderWithTheme(<PaymentMethodCard />);
-    expect(screen.getByLabelText('PaymentMethodCard')).toBeTruthy();
+    renderWithTheme(
+      <PaymentMethodCard
+        method={{
+          id: 'pm_1',
+          brand: 'Visa',
+          last4: '4242',
+          expiryMonth: 12,
+          expiryYear: 2028,
+        }}
+      />
+    );
+    expect(screen.getByText('Visa')).toBeTruthy();
   });
 
   it('professional', () => {

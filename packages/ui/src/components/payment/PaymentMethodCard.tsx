@@ -1,33 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import type { PaymentMethodDto } from '@taskpro/types';
 import { tokens } from '@taskpro/design-tokens';
-import { useTheme } from '../../theme/ThemeProvider';
+import { Card } from '../foundation/Card';
+import { Typography } from '../foundation/Typography';
 
-export type PaymentMethodCardProps = object;
+export interface PaymentMethodCardProps {
+  method: PaymentMethodDto;
+  selected?: boolean;
+}
 
-export function PaymentMethodCard(_props: PaymentMethodCardProps) {
-  const theme = useTheme();
+export function PaymentMethodCard({ method, selected = false }: PaymentMethodCardProps) {
   return (
-    <View
+    <Card
       style={[
         styles.container,
-        { borderColor: theme.colors.border, backgroundColor: theme.colors.surface },
+        selected && {
+          borderColor: tokens.color.semantic.border.focused,
+          borderWidth: tokens.borderWidth.medium,
+        },
       ]}
-      accessibilityRole="button"
-      accessibilityLabel="PaymentMethodCard"
     >
-      <Text style={[styles.label, { color: theme.colors.text }]}>PaymentMethodCard</Text>
-    </View>
+      <Typography variant="headingS">{method.brand}</Typography>
+      <Typography variant="bodyM" color="textSecondary">
+        **** {method.last4}
+      </Typography>
+      <Typography variant="caption" color="textSecondary">
+        Expira {method.expiryMonth.toString().padStart(2, '0')}/{method.expiryYear}
+      </Typography>
+    </Card>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: tokens.radius.md,
-    borderWidth: tokens.borderWidth.hairline,
-    padding: tokens.spacing.md,
-  },
-  label: {
-    fontSize: tokens.typography.fontSize.bodyM,
+    gap: tokens.spacing.xs,
   },
 });

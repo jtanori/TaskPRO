@@ -9,6 +9,9 @@ export default function TechnicianLayout() {
       <Stack.Screen name="jobs/[id]" options={{ title: 'Job Detail' }} />
       <Stack.Screen name="messages/index" options={{ title: 'Messages' }} />
       <Stack.Screen name="messages/[id]" options={{ title: 'Conversation' }} />
+      <Stack.Screen name="services/index" options={{ title: 'My Services' }} />
+      <Stack.Screen name="services/add" options={{ title: 'Add Service' }} />
+      <Stack.Screen name="earnings" options={{ title: 'Earnings' }} />
     </Stack>
   );
 }
