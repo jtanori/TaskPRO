@@ -12,7 +12,7 @@
     { "domain": "design-system", "confidence": "HIGH", "authority": "TASKPRO-DS-001..005", "derivation_type": "DIRECT" },
     { "domain": "domain-model", "confidence": "HIGH", "authority": "TASKPRO-DOM-001 + TASKPRO-DATA-001 + TASKPRO-DB-001", "derivation_type": "DIRECT" },
     { "domain": "delivery-order", "confidence": "HIGH", "authority": "TASKPRO-BUILD-001", "derivation_type": "DIRECT" },
-    { "domain": "workflow-state-machines", "confidence": "MEDIUM", "authority": "TASKPRO-FLOW-001 + TASKPRO-STATE-002 (jointly, pending R1)", "derivation_type": "INFERRED" },
+    { "domain": "workflow-state-machines", "confidence": "HIGH", "authority": "TASKPRO-STATE-002 + E4 canonical booking state machine", "derivation_type": "DIRECT" },
     { "domain": "payment-gateway-sequencing", "confidence": "DEFERRED", "authority": null, "derivation_type": "UNRESOLVED" },
     { "domain": "i18n-library", "confidence": "HIGH", "authority": "TASKPRO-I18N-001", "derivation_type": "DIRECT" }
   ],
@@ -34,9 +34,10 @@
       "evidence_sources": ["TASKPRO-FLOW-001", "TASKPRO-DOM-001", "TASKPRO-STATE-002"],
       "derivation_type": "INFERRED",
       "confidence": "HIGH",
-      "status": "open",
-      "blocks": ["E7"],
-      "resolution_rule": "Requires human ratification; SYNTH must not choose a vocabulary silently."
+      "status": "resolved",
+      "blocks": [],
+      "resolution_rule": "E4 canonical booking state machine (Draft -> Requested -> Accepted -> ProfessionalAssigned -> EnRoute -> Arrived -> InProgress -> Completed -> PaymentPending -> Paid -> Closed, plus terminal branches) adopted as canonical. TASKPRO-FLOW-001 vocabulary is superseded for implementation; screens and workflows must use the E4 vocabulary.",
+      "resolution_choice": "Option 1 — adopt the E4 domain machine already implemented in packages/domain/src/state-machines/BookingStateMachine.ts."
     },
     {
       "id": "R2",

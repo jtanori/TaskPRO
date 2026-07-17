@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Button, Card, Typography } from '@taskpro/ui';
 import { tokens } from '@taskpro/design-tokens';
 import { useServiceDetail } from '../useServiceCatalog';
@@ -13,6 +13,7 @@ function formatMinor(amountMinor: number, currency: string): string {
 
 export default function ServiceDetailScreen() {
   const { t } = useTranslation(['marketplace', 'common']);
+  const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { detail, isLoading, error } = useServiceDetail(id);
 
@@ -55,10 +56,21 @@ export default function ServiceDetailScreen() {
         </View>
       </Card>
 
-      <Button title={t('marketplace:requestService')} onPress={() => undefined} disabled />
-      <Typography variant="micro" color="textSecondary">
-        {t('marketplace:requestService')} — {t('common:continue')} en reservas
-      </Typography>
+      <Button
+        title={t('marketplace:requestService')}
+        onPress={() =>
+          router.push({
+            pathname: '/services/[id]/request',
+            params: {
+              id: service.id,
+              serviceId: service.id,
+              serviceName: service.name,
+              priceAmountMinor: String(service.basePrice.amountMinor),
+              currency: service.basePrice.currency,
+            },
+          })
+        }
+      />
     </ScrollView>
   );
 }

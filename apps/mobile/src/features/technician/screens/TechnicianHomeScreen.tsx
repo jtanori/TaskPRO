@@ -22,6 +22,11 @@ export default function TechnicianHomeScreen() {
 
       <View style={styles.actions}>
         <Button
+          title={t('marketplace:myJobs')}
+          variant="primary"
+          onPress={() => router.push('/jobs')}
+        />
+        <Button
           title={t('common:settings')}
           variant="secondary"
           onPress={() => router.push('/settings')}

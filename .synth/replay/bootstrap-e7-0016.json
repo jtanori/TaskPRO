@@ -1,0 +1,146 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e7-0016",
+  "preceding_record": "governance-0015",
+  "governing_replay": "governance-0015",
+  "expedition": "E7",
+  "timestamp": "2026-07-17T06:43:21Z",
+  "approved_by": "human ratification selecting option 1 for R1 and approving E7 bootstrap execution",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": "v24.14.1",
+    "primary_tool_versions": {
+      "turbo": "^2.3.3",
+      "typescript": "^5.7.2",
+      "eslint": "^9.17.0",
+      "prettier": "^3.4.2",
+      "vitest": "^2.1.8",
+      "expo": "~52.0.0",
+      "expo-router": "~4.0.0",
+      "i18next": "^24.2.0",
+      "react-i18next": "^15.4.0",
+      "@supabase/supabase-js": "^2.47.10"
+    },
+    "note": "Tool versions are an execution snapshot, not normative governance."
+  },
+  "mutations": {
+    "created_files": [
+      "apps/mobile/app/(customer)/bookings/[id].tsx",
+      "apps/mobile/app/(customer)/bookings/index.tsx",
+      "apps/mobile/app/(customer)/services/[id]/request.tsx",
+      "apps/mobile/app/(technician)/jobs/[id].tsx",
+      "apps/mobile/app/(technician)/jobs/index.tsx",
+      "apps/mobile/src/features/booking/BookingService.ts",
+      "apps/mobile/src/features/booking/FakeBookingService.ts",
+      "apps/mobile/src/features/booking/components/BookingActionBar.tsx",
+      "apps/mobile/src/features/booking/components/BookingStatusBadge.tsx",
+      "apps/mobile/src/features/booking/components/BookingTimeline.tsx",
+      "apps/mobile/src/features/booking/index.ts",
+      "apps/mobile/src/features/booking/screens/CustomerBookingDetailScreen.tsx",
+      "apps/mobile/src/features/booking/screens/CustomerBookingsScreen.tsx",
+      "apps/mobile/src/features/booking/screens/RequestBookingScreen.tsx",
+      "apps/mobile/src/features/booking/screens/TechnicianJobDetailScreen.tsx",
+      "apps/mobile/src/features/booking/screens/TechnicianJobsScreen.tsx",
+      "apps/mobile/src/features/booking/toBookingDto.ts",
+      "apps/mobile/src/features/booking/useBookingActions.ts",
+      "apps/mobile/src/features/booking/useBookings.ts",
+      "apps/mobile/src/locales/es-MX/booking.json",
+      "packages/domain/src/__tests__/use-cases/BookingLifecycle.test.ts",
+      "packages/domain/src/repositories/InMemoryBookingRepository.ts",
+      "packages/domain/src/use-cases/AcceptBooking.ts",
+      "packages/domain/src/use-cases/ArriveBooking.ts",
+      "packages/domain/src/use-cases/AssignProfessional.ts",
+      "packages/domain/src/use-cases/CloseBooking.ts",
+      "packages/domain/src/use-cases/CompleteWork.ts",
+      "packages/domain/src/use-cases/MarkBookingPaid.ts",
+      "packages/domain/src/use-cases/MarkPaymentPending.ts",
+      "packages/domain/src/use-cases/StartTravel.ts",
+      "packages/domain/src/use-cases/StartWork.ts"
+    ],
+    "modified_files": [
+      "apps/mobile/app/(customer)/_layout.tsx — registered bookings routes.",
+      "apps/mobile/app/(technician)/_layout.tsx — registered jobs routes.",
+      "apps/mobile/src/features/marketplace/screens/HomeScreen.tsx — added 'Mis reservas' quick-action button linking to /bookings.",
+      "apps/mobile/src/features/marketplace/screens/ServiceDetailScreen.tsx — enabled request button and navigation to request flow.",
+      "apps/mobile/src/features/technician/screens/TechnicianHomeScreen.tsx — added 'Mis trabajos' quick-action button linking to /jobs.",
+      "apps/mobile/src/lib/i18n.ts — registered booking namespace.",
+      "apps/mobile/src/locales/es-MX/marketplace.json — added myBookings and myJobs keys.",
+      "packages/domain/src/__tests__/use-cases/RequestBooking.test.ts — adjusted imports after repository relocation.",
+      "packages/domain/src/aggregates/Booking.ts — added public getters for price, scheduledAt, address, notes, and professionalId.",
+      "packages/domain/src/repositories/index.ts — exported InMemoryBookingRepository.",
+      "packages/domain/src/use-cases/index.ts — exported new booking lifecycle use cases."
+    ],
+    "deleted_files": [
+      "packages/domain/src/__tests__/repositories/InMemoryBookingRepository.ts — relocated to packages/domain/src/repositories/InMemoryBookingRepository.ts so the fake service can share it."
+    ],
+    "note": "node_modules/ and .turbo/ directories are install/build artifacts and are not listed as authored mutations."
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "Booking state-machine vocabulary (R1)",
+      "choice": "Adopted the E4 canonical booking state machine: Draft -> Requested -> Accepted -> ProfessionalAssigned -> EnRoute -> Arrived -> InProgress -> Completed -> PaymentPending -> Paid -> Closed, plus terminal branches.",
+      "reason": "Human ratification of option 1; replaces FLOW-001 vocabulary for implementation."
+    },
+    {
+      "decision": "Mock payment step",
+      "choice": "Customer confirms payment through BookingActionBar; no real payment provider integration.",
+      "reason": "D2 (payment gateway sequencing) remains deferred; E7 delivers the lifecycle without a live payments expedition."
+    },
+    {
+      "decision": "Booking service implementation",
+      "choice": "FakeBookingService backed by the domain InMemoryBookingRepository; toBookingDto maps aggregates to BookingDto.",
+      "reason": "E7 delivers the complete workflow without requiring live backend or new migrations."
+    },
+    {
+      "decision": "Route groups for booking workflows",
+      "choice": "(customer)/bookings/* for customer reservation flows and (technician)/jobs/* for technician execution flows.",
+      "reason": "Follows E5 route-group conventions and NAV-001 role-based navigation."
+    },
+    {
+      "decision": "Technician actor identification in UI",
+      "choice": "TechnicianJobDetailScreen casts session.user.id to ProfessionalId for the accept action.",
+      "reason": "Acceptable only for the fake service; real implementation must resolve the authenticated user's professional profile."
+    }
+  ],
+  "deviations_from_plan": [
+    {
+      "deviation": "Relocated InMemoryBookingRepository from packages/domain/src/__tests__/repositories to packages/domain/src/repositories.",
+      "justification": "The fake mobile service needs a shared in-memory repository; keeping it under __tests__ would leak test infrastructure into production imports."
+    },
+    {
+      "deviation": "Added public getters to Booking aggregate.",
+      "justification": "Use-case outputs and the DTO mapper need read access to internal state while preserving aggregate encapsulation."
+    },
+    {
+      "deviation": "CustomerBookingDetailScreen passes booking.professionalId (or a placeholder cast) as actorId to BookingActionBar.",
+      "justification": "actorId is only used for the technician accept action; the customer view does not trigger that action. The prop contract will be refined when real authentication/professional resolution exists."
+    }
+  ],
+  "validation_results": {
+    "format": "PASS — pnpm format:check",
+    "lint": "PASS — @taskpro/mobile, @taskpro/domain",
+    "typecheck": "PASS — @taskpro/mobile, @taskpro/domain",
+    "test": "PASS — @taskpro/mobile 11 tests, @taskpro/domain 30 tests",
+    "knowledge_hash_unchanged": "PASS (1529ed50…)"
+  },
+  "exclusions": [
+    "No real payment provider integration (D2 deferred).",
+    "No messaging/notifications (E8).",
+    "No real-time location tracking.",
+    "No supabase/config.toml or backend migrations beyond E4.",
+    "No changes to knowledge/ authored artifacts.",
+    "No changes to .synth/ governance primitives beyond this replay record and governance-0017.",
+    "No git commits, branches, or pushes performed."
+  ],
+  "result": "bootstrap-e7-accepted"
+}

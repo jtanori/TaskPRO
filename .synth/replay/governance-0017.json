@@ -1,0 +1,35 @@
+{
+  "primitive": "Replay",
+  "record_type": "GovernanceUpdate",
+  "record_id": "governance-0017",
+  "preceding_record": "bootstrap-e7-0016",
+  "timestamp": "2026-07-17T06:43:22Z",
+  "approved_by": "bootstrap execution result — E7 validation passed",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "changes": [
+    {
+      "target": ".synth/expeditions.json",
+      "change": "E7 status transitioned from 'registered' to 'completed'; added completed_at '2026-07-17T06:43:21Z' and supporting_replay: 'bootstrap-e7-0016'; removed gate_reason because R1 is resolved.",
+      "justification": "E7 bootstrap was executed and validated successfully; expedition lifecycle state is projected in the Expedition primitive."
+    },
+    {
+      "target": ".synth/state.json",
+      "change": "workflow-state-machines confidence changed from MEDIUM/pending R1 to HIGH; authority changed to TASKPRO-STATE-002 + E4 canonical booking state machine; derivation_type changed from INFERRED to DIRECT.",
+      "justification": "R1 resolution ratifies the E4 canonical machine, raising confidence and making the workflow-state derivation direct."
+    }
+  ],
+  "invariants_verified": [
+    "knowledge/ untouched: input snapshot hash identical to genesis-0001.",
+    "No implementation capabilities invoked during this governance update.",
+    "Status transition supported by replay record bootstrap-e7-0016.",
+    "No change to governance kernel semantics."
+  ],
+  "result": "governed-updated"
+}

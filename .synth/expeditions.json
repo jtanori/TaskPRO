@@ -90,14 +90,16 @@
     {
       "id": "E7",
       "name": "Booking & task lifecycle (BUILD-001 Phase 2)",
-      "status": "registered",
+      "status": "completed",
       "depends_on": ["E6"],
-      "gates": ["R1"],
+      "gates": [],
       "transformation": "Booking request, scheduling, confirmation, task timeline, status updates, completion flow, payment capture — a complete service transaction.",
       "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-FLOW-001", "TASKPRO-STATE-002", "TASKPRO-DOM-001", "TASKPRO-API-001"],
       "derivation_type": "DIRECT",
-      "confidence": "MEDIUM",
-      "gate_reason": "Booking state-machine vocabulary conflict (FLOW-001 vs DOM-001) must be reconciled into one canonical machine before workflow code is synthesized."
+      "confidence": "HIGH",
+      "completion_evidence": "Booking lifecycle use cases, in-memory repository, customer/technician screens, route groups, and domain tests pass.",
+      "completed_at": "2026-07-17T06:43:21Z",
+      "supporting_replay": "bootstrap-e7-0016"
     },
     {
       "id": "E8",

@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { Booking } from '../../aggregates/Booking';
 import { Address, Money } from '../../value-objects';
 import { RequestBooking } from '../../use-cases/RequestBooking';
-import { InMemoryBookingRepository } from '../repositories/InMemoryBookingRepository';
+import { InMemoryBookingRepository } from '../../repositories/InMemoryBookingRepository';
 
 describe('RequestBooking use case', () => {
   it('creates and persists a requested booking', async () => {

@@ -1,0 +1,35 @@
+{
+  "primitive": "Replay",
+  "record_type": "GovernanceUpdate",
+  "record_id": "governance-0015",
+  "preceding_record": "governance-0014",
+  "timestamp": "2026-07-17T05:22:30Z",
+  "approved_by": "human ratification selecting option 1 for R1",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "changes": [
+    {
+      "target": ".synth/state.json",
+      "change": "R1 status changed from 'open' to 'resolved'; blocks changed from ['E7'] to []; added resolution_rule and resolution_choice adopting the E4 canonical booking state machine.",
+      "justification": "Human ratification of option 1: E4 domain machine becomes the canonical vocabulary for booking workflow implementation."
+    },
+    {
+      "target": ".synth/expeditions.json",
+      "change": "E7 gates changed from ['R1'] to []; expedition remains registered and now unblocked.",
+      "justification": "R1 resolution removes the gate blocking E7 execution."
+    }
+  ],
+  "invariants_verified": [
+    "knowledge/ untouched: input snapshot hash identical to prior expeditions.",
+    "No implementation capabilities invoked during this governance update.",
+    "Resolution traces to evidence and human ratification.",
+    "No change to governance kernel semantics."
+  ],
+  "result": "governed-updated"
+}

@@ -75,6 +75,30 @@ export class Booking {
     return this.props.price;
   }
 
+  get serviceId(): ServiceId {
+    return this.props.serviceId;
+  }
+
+  get scheduledAt(): Date {
+    return this.props.scheduledAt;
+  }
+
+  get address(): Address {
+    return this.props.address;
+  }
+
+  get notes(): string | undefined {
+    return this.props.notes;
+  }
+
+  get createdAt(): Date {
+    return this.props.createdAt;
+  }
+
+  get updatedAt(): Date {
+    return this.props.updatedAt;
+  }
+
   request(): void {
     this.transitionTo(BookingStatus.Requested);
     this.record(new BookingRequested(this.props.id, this.props.customerId, this.props.serviceId));

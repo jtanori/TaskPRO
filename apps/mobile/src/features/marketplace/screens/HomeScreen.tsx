@@ -34,6 +34,15 @@ export default function HomeScreen() {
         <Button title={t('marketplace:browseServices')} onPress={() => void handleSearch()} />
       </Card>
 
+      <Card style={styles.quickActionsCard}>
+        <Typography variant="headingM">{t('marketplace:quickActions')}</Typography>
+        <Button
+          title={t('marketplace:myBookings')}
+          variant="secondary"
+          onPress={() => router.push('/bookings')}
+        />
+      </Card>
+
       <Typography variant="headingM">{t('marketplace:categoriesTitle')}</Typography>
       <View style={styles.chipRow}>
         {categoriesLoading ? (
@@ -78,6 +87,9 @@ const styles = StyleSheet.create({
     gap: tokens.spacing.lg,
   },
   searchCard: {
+    gap: tokens.spacing.md,
+  },
+  quickActionsCard: {
     gap: tokens.spacing.md,
   },
   chipRow: {

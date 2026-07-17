@@ -7,6 +7,9 @@ export default function CustomerLayout() {
       <Stack.Screen name="index" options={{ title: 'Home' }} />
       <Stack.Screen name="services/index" options={{ title: 'Services' }} />
       <Stack.Screen name="services/[id]" options={{ title: 'Service Detail' }} />
+      <Stack.Screen name="services/[id]/request" options={{ title: 'Request Service' }} />
+      <Stack.Screen name="bookings/index" options={{ title: 'My Bookings' }} />
+      <Stack.Screen name="bookings/[id]" options={{ title: 'Booking Detail' }} />
       <Stack.Screen name="profile" options={{ title: 'Profile' }} />
       <Stack.Screen name="profile/edit" options={{ title: 'Edit Profile' }} />
     </Stack>

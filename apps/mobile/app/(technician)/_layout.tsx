@@ -5,6 +5,8 @@ export default function TechnicianLayout() {
   return (
     <Stack screenOptions={{ headerShown: true, title: 'Technician' }}>
       <Stack.Screen name="index" options={{ title: 'Home' }} />
+      <Stack.Screen name="jobs/index" options={{ title: 'My Jobs' }} />
+      <Stack.Screen name="jobs/[id]" options={{ title: 'Job Detail' }} />
     </Stack>
   );
 }
