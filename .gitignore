@@ -35,7 +35,14 @@ coverage/
 # Supabase
 supabase/.temp/
 
-# SYNTH CLI v2 runtime artifacts (external tool, not project governance)
+# Temporary accommodation: SYNTH CLI v2 runtime artifacts.
+# These are tool-generated outputs that should eventually live outside the
+# governed repository (e.g., user cache or application data directory).
+# Revisit once the CLI's output behavior is stable.
 data/
 event-log.jsonl
+
+# Ephemeral CLI documentation projection. Ignore only while it remains an
+# unreviewed, automatically generated artifact. Revisit if it becomes a
+# governed documentation projection.
 docs/generated/
