@@ -50,13 +50,15 @@
     {
       "id": "E4",
       "name": "Domain, types & contracts (packages/domain, packages/types, supabase/)",
-      "status": "registered",
+      "status": "completed",
       "depends_on": ["E1"],
       "gates": [],
       "transformation": "Backend-independent domain layer (aggregates, value objects, domain events), shared contracts, canonical database schema with RLS. Domain package contains no Supabase dependency (MOD-001 purity rule).",
       "evidence_sources": ["TASKPRO-DOM-001", "TASKPRO-DATA-001", "TASKPRO-DB-001", "TASKPRO-API-001", "TASKPRO-API-002", "TASKPRO-MOD-001", "TASKPRO-AUTH-001"],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "completed_at": "2026-07-17T02:26:17Z",
+      "supporting_replay": "bootstrap-e4-0009"
     },
     {
       "id": "E5",

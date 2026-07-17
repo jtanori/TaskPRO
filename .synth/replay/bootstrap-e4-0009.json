@@ -1,0 +1,218 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e4-0009",
+  "preceding_record": "governance-0008",
+  "governing_replay": "governance-0008",
+  "expedition": "E4",
+  "timestamp": "2026-07-17T02:26:17Z",
+  "approved_by": "human governance decision approving E4 bootstrap execution with architectural decisions 1–15",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": ">=20.0.0",
+    "primary_tool_versions": {
+      "turbo": "^2.3.3",
+      "typescript": "^5.7.2",
+      "eslint": "^9.17.0",
+      "prettier": "^3.4.2",
+      "vitest": "^2.1.8"
+    },
+    "note": "Tool versions are an execution snapshot, not normative governance."
+  },
+  "mutations": {
+    "created_files": [
+      "packages/types/src/index.ts",
+      "packages/types/src/branding.ts",
+      "packages/types/src/pagination.ts",
+      "packages/types/src/responses.ts",
+      "packages/types/src/ids/index.ts",
+      "packages/types/src/enums/index.ts",
+      "packages/types/src/dto/index.ts",
+      "packages/types/src/api/index.ts",
+      "packages/types/src/events/index.ts",
+      "packages/types/src/errors/index.ts",
+      "packages/types/src/__tests__/branding.test.ts",
+      "packages/domain/src/index.ts",
+      "packages/domain/src/errors/index.ts",
+      "packages/domain/src/value-objects/index.ts",
+      "packages/domain/src/value-objects/Money.ts",
+      "packages/domain/src/value-objects/Duration.ts",
+      "packages/domain/src/value-objects/Distance.ts",
+      "packages/domain/src/value-objects/Email.ts",
+      "packages/domain/src/value-objects/Phone.ts",
+      "packages/domain/src/value-objects/FullName.ts",
+      "packages/domain/src/value-objects/Address.ts",
+      "packages/domain/src/value-objects/Rating.ts",
+      "packages/domain/src/aggregates/index.ts",
+      "packages/domain/src/aggregates/User.ts",
+      "packages/domain/src/aggregates/Professional.ts",
+      "packages/domain/src/aggregates/Service.ts",
+      "packages/domain/src/aggregates/Booking.ts",
+      "packages/domain/src/aggregates/Task.ts",
+      "packages/domain/src/aggregates/Conversation.ts",
+      "packages/domain/src/aggregates/Review.ts",
+      "packages/domain/src/aggregates/Notification.ts",
+      "packages/domain/src/aggregates/Payment.ts",
+      "packages/domain/src/aggregates/Invoice.ts",
+      "packages/domain/src/events/index.ts",
+      "packages/domain/src/events/identity/UserRegistered.ts",
+      "packages/domain/src/events/booking/BookingRequested.ts",
+      "packages/domain/src/events/booking/BookingAssigned.ts",
+      "packages/domain/src/events/booking/BookingAccepted.ts",
+      "packages/domain/src/events/booking/ProfessionalDeparted.ts",
+      "packages/domain/src/events/booking/ProfessionalArrived.ts",
+      "packages/domain/src/events/execution/WorkStarted.ts",
+      "packages/domain/src/events/execution/WorkCompleted.ts",
+      "packages/domain/src/events/payments/PaymentCaptured.ts",
+      "packages/domain/src/events/reviews/ReviewSubmitted.ts",
+      "packages/domain/src/events/messaging/MessageSent.ts",
+      "packages/domain/src/events/notifications/NotificationDelivered.ts",
+      "packages/domain/src/state-machines/index.ts",
+      "packages/domain/src/state-machines/UserStateMachine.ts",
+      "packages/domain/src/state-machines/ProfessionalStateMachine.ts",
+      "packages/domain/src/state-machines/BookingStateMachine.ts",
+      "packages/domain/src/repositories/index.ts",
+      "packages/domain/src/repositories/UserRepository.ts",
+      "packages/domain/src/repositories/ProfessionalRepository.ts",
+      "packages/domain/src/repositories/BookingRepository.ts",
+      "packages/domain/src/repositories/PaymentRepository.ts",
+      "packages/domain/src/services/index.ts",
+      "packages/domain/src/services/BookingPricingService.ts",
+      "packages/domain/src/use-cases/index.ts",
+      "packages/domain/src/use-cases/RequestBooking.ts",
+      "packages/domain/src/policies/index.ts",
+      "packages/domain/src/policies/BookingCancellationPolicy.ts",
+      "packages/domain/src/__tests__/value-objects/Money.test.ts",
+      "packages/domain/src/__tests__/value-objects/Duration.test.ts",
+      "packages/domain/src/__tests__/value-objects/Email.test.ts",
+      "packages/domain/src/__tests__/value-objects/Rating.test.ts",
+      "packages/domain/src/__tests__/state-machines/BookingStateMachine.test.ts",
+      "packages/domain/src/__tests__/aggregates/Booking.test.ts",
+      "packages/domain/src/__tests__/use-cases/RequestBooking.test.ts",
+      "packages/domain/src/__tests__/repositories/InMemoryBookingRepository.ts",
+      "supabase/migrations/20260716190000_initial_schema.sql"
+    ],
+    "modified_files": [
+      "packages/domain/package.json — added workspace dependency on @taskpro/types.",
+      "packages/types/src/enums/index.ts — added TaskStatus enum after extracting Task aggregate status from domain.",
+      "pnpm-lock.yaml — updated by pnpm install after adding workspace dependency."
+    ],
+    "note": "node_modules/ directories are install artifacts and are not listed as authored mutations."
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "Domain package structure",
+      "choice": "aggregates / value-objects / events / state-machines / repositories / services / use-cases / policies / errors.",
+      "reason": "Approved architectural decision 1; aligns with MOD-001 purity rules."
+    },
+    {
+      "decision": "Types package structure",
+      "choice": "ids / enums / dto / api / events / errors / pagination / responses / branding.",
+      "reason": "Approved architectural decision 2; transport contracts separated from domain DTOs."
+    },
+    {
+      "decision": "Identifier strategy",
+      "choice": "Branded string identifiers via phantom type pattern.",
+      "reason": "Approved architectural decision 3; compile-time safety with zero runtime cost."
+    },
+    {
+      "decision": "UUID strategy",
+      "choice": "PostgreSQL UUID primary keys exposed as branded string IDs in TypeScript.",
+      "reason": "Approved architectural decision 4."
+    },
+    {
+      "decision": "Money representation",
+      "choice": "Integer minor units (amountMinor) with currency.",
+      "reason": "Approved architectural decision 5; avoids floating-point arithmetic."
+    },
+    {
+      "decision": "Duration representation",
+      "choice": "Integer minutes.",
+      "reason": "Approved architectural decision 6."
+    },
+    {
+      "decision": "Distance representation",
+      "choice": "Integer meters internally; UI converts.",
+      "reason": "Approved architectural decision 7."
+    },
+    {
+      "decision": "Rating representation",
+      "choice": "Domain uses number 0–5 with 0.5 precision; SQL uses decimal(2,1).",
+      "reason": "Approved architectural decision 8."
+    },
+    {
+      "decision": "Booking state machine",
+      "choice": "Canonical lifecycle with explicit transitions: Draft → Requested → Accepted → ProfessionalAssigned → EnRoute → Arrived → InProgress → Completed → PaymentPending → Paid → Closed, plus terminal branches.",
+      "reason": "Approved architectural decision 9; invariants centralized despite R1 remaining open."
+    },
+    {
+      "decision": "Domain events organization",
+      "choice": "Events grouped by bounded context under events/{identity,booking,execution,payments,reviews,messaging,notifications}.",
+      "reason": "Approved architectural decision 10."
+    },
+    {
+      "decision": "Organization aggregate",
+      "choice": "Deferred to a future expedition.",
+      "reason": "Approved architectural decision 11; current marketplace is Customer ↔ Professional ↔ Booking."
+    },
+    {
+      "decision": "Database schemas",
+      "choice": "identity, marketplace, booking, execution, communication, payments, reviews, media, documents, notifications, system.",
+      "reason": "Approved architectural decision 12 plus optional system schema."
+    },
+    {
+      "decision": "Migration numbering",
+      "choice": "Timestamp-based filenames (20260716190000_initial_schema.sql).",
+      "reason": "Approved architectural decision 13; easier merge ordering."
+    },
+    {
+      "decision": "Repository interfaces",
+      "choice": "Interfaces live in packages/domain; implementations belong in packages/sdk later.",
+      "reason": "Approved architectural decision 14; dependency inversion."
+    },
+    {
+      "decision": "Testing strategy",
+      "choice": "Value-object validation, state-machine, aggregate invariant, event emission, use-case, and in-memory repository contract tests.",
+      "reason": "Approved architectural decision 15."
+    },
+    {
+      "decision": "Location aggregate",
+      "choice": "Address modeled as a value object and identity.addresses table; standalone Location aggregate deferred.",
+      "reason": "E4 scope does not require a full Location aggregate; address is sufficient for booking and identity."
+    }
+  ],
+  "deviations_from_plan": [
+    {
+      "deviation": "Implemented a single canonical migration file instead of one per bounded context.",
+      "justification": "E4 establishes the initial schema baseline; subsequent expeditions can add focused incremental migrations. Ordering dependencies are still explicit in the single file."
+    }
+  ],
+  "validation_results": {
+    "format": "PASS — pnpm format:check",
+    "typecheck": "PASS — @taskpro/types and @taskpro/domain",
+    "lint": "PASS — @taskpro/types and @taskpro/domain",
+    "test": "PASS — 23 tests across 8 files",
+    "knowledge_hash_unchanged": "PASS (1529ed50…)",
+    "note": "SQL migration syntax was reviewed against DB-001 but not executed against a live database in this expedition."
+  },
+  "exclusions": [
+    "No UI components generated.",
+    "No application screens or Expo Router code generated.",
+    "No repository implementations generated (interfaces only).",
+    "No Supabase client SDK code generated.",
+    "No business logic wired to the mobile app.",
+    "No changes to knowledge/ authored artifacts.",
+    "No changes to .synth/ governance primitives beyond this replay record and governance-0010.",
+    "No git commits, branches, or pushes performed."
+  ],
+  "result": "bootstrap-e4-accepted"
+}

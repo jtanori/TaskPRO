@@ -72,6 +72,10 @@ importers:
         version: 2.1.9(@types/node@26.1.1)(jsdom@29.1.1)(terser@5.49.0)
 
   packages/domain:
+    dependencies:
+      '@taskpro/types':
+        specifier: workspace:*
+        version: link:../types
     devDependencies:
       '@taskpro/config':
         specifier: workspace:*

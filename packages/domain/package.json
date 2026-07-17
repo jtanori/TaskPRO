@@ -11,6 +11,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
+  "dependencies": {
+    "@taskpro/types": "workspace:*"
+  },
   "devDependencies": {
     "@taskpro/config": "workspace:*",
     "typescript": "^5.7.2",

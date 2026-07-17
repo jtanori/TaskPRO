@@ -1,2 +1,9 @@
-// TaskPRO domain layer — populated during E4 (Domain, types & contracts).
-export {};
+export * from './aggregates';
+export * from './errors';
+export * from './events';
+export * from './policies';
+export * from './repositories';
+export * from './services';
+export * from './state-machines';
+export * from './use-cases';
+export * from './value-objects';
