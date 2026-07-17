@@ -1,4 +1,12 @@
-import type { AddressId, BookingId, ProfessionalId, ServiceId, UserId } from '../ids';
+import type {
+  AddressId,
+  BookingId,
+  ConversationId,
+  MessageId,
+  ProfessionalId,
+  ServiceId,
+  UserId,
+} from '../ids';
 import type { BookingStatus, Currency, Locale, UserRole, UserStatus } from '../enums';
 
 export interface MoneyDto {
@@ -105,4 +113,32 @@ export interface ReviewDto {
   dimensions: ReviewDimensionDto[];
   comment?: string;
   createdAt: string;
+}
+
+export interface MessageDto {
+  id: MessageId;
+  senderId: UserId;
+  type: import('../enums').MessageType;
+  content: string;
+  sentAt: string;
+}
+
+export interface ConversationDto {
+  id: ConversationId;
+  participantIds: UserId[];
+  messages: MessageDto[];
+  unreadCount: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface NotificationDto {
+  id: import('../ids').NotificationId;
+  userId: UserId;
+  title: string;
+  body: string;
+  channel: import('../enums').NotificationChannel;
+  status: import('../enums').NotificationStatus;
+  createdAt: string;
+  sentAt?: string;
 }

@@ -1,0 +1,151 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e8-0018",
+  "preceding_record": "governance-0017",
+  "governing_replay": "governance-0017",
+  "expedition": "E8",
+  "timestamp": "2026-07-17T14:02:15Z",
+  "approved_by": "human approval of E8 execution plan for the Communication layer",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": "v24.14.1",
+    "primary_tool_versions": {
+      "turbo": "^2.3.3",
+      "typescript": "^5.7.2",
+      "eslint": "^9.17.0",
+      "prettier": "^3.4.2",
+      "vitest": "^2.1.8",
+      "expo": "~52.0.0",
+      "expo-router": "~4.0.0",
+      "i18next": "^24.2.0",
+      "react-i18next": "^15.4.0",
+      "@supabase/supabase-js": "^2.47.10"
+    },
+    "note": "Tool versions are an execution snapshot, not normative governance."
+  },
+  "mutations": {
+    "created_files": [
+      "apps/mobile/app/(customer)/messages/[id].tsx",
+      "apps/mobile/app/(customer)/messages/index.tsx",
+      "apps/mobile/app/(shared)/notifications.tsx",
+      "apps/mobile/app/(technician)/messages/[id].tsx",
+      "apps/mobile/app/(technician)/messages/index.tsx",
+      "apps/mobile/src/features/communication/ConversationService.ts",
+      "apps/mobile/src/features/communication/FakeConversationService.ts",
+      "apps/mobile/src/features/communication/FakeNotificationService.ts",
+      "apps/mobile/src/features/communication/NotificationService.ts",
+      "apps/mobile/src/features/communication/index.ts",
+      "apps/mobile/src/features/communication/screens/ConversationScreen.tsx",
+      "apps/mobile/src/features/communication/screens/ConversationsListScreen.tsx",
+      "apps/mobile/src/features/communication/screens/NotificationsScreen.tsx",
+      "apps/mobile/src/features/communication/toConversationDto.ts",
+      "apps/mobile/src/features/communication/toNotificationDto.ts",
+      "apps/mobile/src/features/communication/useConversation.ts",
+      "apps/mobile/src/features/communication/useConversations.ts",
+      "apps/mobile/src/features/communication/useNotifications.ts",
+      "apps/mobile/src/features/communication/useSendMessage.ts",
+      "apps/mobile/src/locales/es-MX/communication.json",
+      "packages/domain/src/__tests__/use-cases/Communication.test.ts",
+      "packages/domain/src/repositories/ConversationRepository.ts",
+      "packages/domain/src/repositories/InMemoryConversationRepository.ts",
+      "packages/domain/src/repositories/InMemoryNotificationRepository.ts",
+      "packages/domain/src/repositories/NotificationRepository.ts",
+      "packages/domain/src/use-cases/CreateNotification.ts",
+      "packages/domain/src/use-cases/GetConversation.ts",
+      "packages/domain/src/use-cases/ListConversations.ts",
+      "packages/domain/src/use-cases/ListNotifications.ts",
+      "packages/domain/src/use-cases/MarkConversationRead.ts",
+      "packages/domain/src/use-cases/MarkNotificationRead.ts",
+      "packages/domain/src/use-cases/SendMessage.ts"
+    ],
+    "modified_files": [
+      "apps/mobile/app/(customer)/_layout.tsx — registered messages routes.",
+      "apps/mobile/app/(shared)/_layout.tsx — registered notifications route.",
+      "apps/mobile/app/(technician)/_layout.tsx — registered messages routes.",
+      "apps/mobile/src/features/marketplace/screens/HomeScreen.tsx — added Messages and Notifications quick actions.",
+      "apps/mobile/src/features/technician/screens/TechnicianHomeScreen.tsx — added Messages and Notifications quick actions.",
+      "apps/mobile/src/lib/i18n.ts — registered communication namespace.",
+      "apps/mobile/src/locales/es-MX/marketplace.json — added messages and notifications keys.",
+      "packages/domain/src/aggregates/Conversation.ts — added lastReadAt, unreadCountFor, markReadAsOf, and public getters.",
+      "packages/domain/src/aggregates/Notification.ts — added public getters.",
+      "packages/domain/src/repositories/index.ts — exported conversation and notification repositories.",
+      "packages/domain/src/use-cases/index.ts — exported new communication use cases.",
+      "packages/types/src/dto/index.ts — added MessageDto, ConversationDto, and NotificationDto.",
+      "packages/ui/package.json — added @taskpro/types dependency so UI components can consume DTO contracts.",
+      "packages/ui/src/__tests__/components/scaffolded-components.test.tsx — updated ChatBubble test to use real props.",
+      "packages/ui/src/components/communication/ChatBubble.stories.tsx — stories for incoming/outgoing/system bubbles.",
+      "packages/ui/src/components/communication/ChatBubble.tsx — real implementation using MessageDto.",
+      "packages/ui/src/components/communication/ConversationHeader.stories.tsx — story with title, subtitle, avatar.",
+      "packages/ui/src/components/communication/ConversationHeader.tsx — real header with Avatar and Typography.",
+      "packages/ui/src/components/communication/MessageComposer.stories.tsx — stateful story with value/onSend.",
+      "packages/ui/src/components/communication/MessageComposer.tsx — real composer with TextInput and Button.",
+      "pnpm-lock.yaml — updated by pnpm install after adding @taskpro/types to packages/ui."
+    ],
+    "deleted_files": [],
+    "note": "node_modules/ and .turbo/ directories are install/build artifacts and are not listed as authored mutations."
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "Conversation unread tracking",
+      "choice": "Conversation aggregate stores lastReadAt per participant; unreadCountFor derives from message sentAt.",
+      "reason": "Keeps unread state inside the aggregate while avoiding per-message read flags in E8."
+    },
+    {
+      "decision": "Fake service seeding",
+      "choice": "FakeConversationService and FakeNotificationService seed one demo conversation/notification when a user has none.",
+      "reason": "Provides visible data during development without requiring a backend seed expedition."
+    },
+    {
+      "decision": "Notifications route",
+      "choice": "(shared)/notifications.tsx accessible from both customer and technician home screens.",
+      "reason": "Notifications are cross-role; avoids duplicating the screen under each role layout."
+    },
+    {
+      "decision": "Push notification placeholder",
+      "choice": "FakeNotificationService.notify logs the intended push to the console and creates an in-app notification record.",
+      "reason": "E8 establishes the service contract; native Expo/FCM/APNs integration belongs to a later expedition."
+    },
+    {
+      "decision": "Attachment support",
+      "choice": "MessageComposer supports text only; MessageType enum supports photo/video/file/location for future expansion.",
+      "reason": "Attachments require application-level file picker and upload infrastructure not yet available."
+    }
+  ],
+  "deviations_from_plan": [
+    {
+      "deviation": "Added @taskpro/types as a runtime dependency of packages/ui.",
+      "justification": "ChatBubble consumes MessageDto; the DTO contract must be available to the UI package."
+    },
+    {
+      "deviation": "Implemented ChatBubble, MessageComposer, and ConversationHeader fully rather than leaving them as placeholders.",
+      "justification": "E8 is the communication layer; the existing E3 placeholders became the executable visual contract for this expedition."
+    }
+  ],
+  "validation_results": {
+    "format": "PASS — pnpm format:check",
+    "lint": "PASS — @taskpro/mobile, @taskpro/domain, @taskpro/ui",
+    "typecheck": "PASS — @taskpro/mobile, @taskpro/domain, @taskpro/ui",
+    "test": "PASS — @taskpro/domain 37 tests, @taskpro/mobile 11 tests, @taskpro/ui 22 tests",
+    "knowledge_hash_unchanged": "PASS (1529ed50…)"
+  },
+  "exclusions": [
+    "No real-time messaging backend (WebSocket, Supabase Realtime).",
+    "No native push notification integration.",
+    "No attachment upload or file picker.",
+    "No migrations or Supabase schema changes beyond E4.",
+    "No changes to knowledge/ authored artifacts.",
+    "No changes to .synth/ governance primitives beyond this replay record and governance-0019.",
+    "No git commits, branches, or pushes performed."
+  ],
+  "result": "bootstrap-e8-accepted"
+}

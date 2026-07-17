@@ -27,6 +27,16 @@ export default function TechnicianHomeScreen() {
           onPress={() => router.push('/jobs')}
         />
         <Button
+          title={t('marketplace:messages')}
+          variant="secondary"
+          onPress={() => router.push('/messages')}
+        />
+        <Button
+          title={t('marketplace:notifications')}
+          variant="secondary"
+          onPress={() => router.push('/notifications')}
+        />
+        <Button
           title={t('common:settings')}
           variant="secondary"
           onPress={() => router.push('/settings')}

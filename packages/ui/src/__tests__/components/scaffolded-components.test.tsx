@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import { createMessageId, createUserId, MessageType } from '@taskpro/types';
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 import {
@@ -41,8 +42,19 @@ describe('Scaffolded component groups render within ThemeProvider', () => {
   });
 
   it('communication', () => {
-    renderWithTheme(<ChatBubble />);
-    expect(screen.getByLabelText('ChatBubble')).toBeTruthy();
+    renderWithTheme(
+      <ChatBubble
+        message={{
+          id: createMessageId('msg-1'),
+          senderId: createUserId('sender-1'),
+          type: MessageType.Text,
+          content: 'Hello',
+          sentAt: new Date().toISOString(),
+        }}
+        isCurrentUser={false}
+      />
+    );
+    expect(screen.getByText('Hello')).toBeTruthy();
   });
 
   it('payment', () => {

@@ -34,8 +34,28 @@ export class Notification {
     return this.props.id;
   }
 
+  get userId(): UserId {
+    return this.props.userId;
+  }
+
+  get title(): string {
+    return this.props.title;
+  }
+
+  get body(): string {
+    return this.props.body;
+  }
+
+  get channel(): NotificationChannel {
+    return this.props.channel;
+  }
+
   get status(): NotificationStatus {
     return this.props.status;
+  }
+
+  get createdAt(): Date {
+    return this.props.createdAt;
   }
 
   markDelivered(): void {

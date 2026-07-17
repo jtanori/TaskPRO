@@ -1,33 +1,42 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { tokens } from '@taskpro/design-tokens';
-import { useTheme } from '../../theme/ThemeProvider';
+import { Avatar } from '../foundation/Avatar';
+import { Typography } from '../foundation/Typography';
 
-export type ConversationHeaderProps = object;
+export interface ConversationHeaderProps {
+  title: string;
+  subtitle?: string;
+  avatarInitials?: string;
+}
 
-export function ConversationHeader(_props: ConversationHeaderProps) {
-  const theme = useTheme();
+export function ConversationHeader({ title, subtitle, avatarInitials }: ConversationHeaderProps) {
   return (
-    <View
-      style={[
-        styles.container,
-        { borderColor: theme.colors.border, backgroundColor: theme.colors.surface },
-      ]}
-      accessibilityRole="button"
-      accessibilityLabel="ConversationHeader"
-    >
-      <Text style={[styles.label, { color: theme.colors.text }]}>ConversationHeader</Text>
+    <View style={styles.container}>
+      <Avatar initials={avatarInitials} size="medium" />
+      <View style={styles.text}>
+        <Typography variant="headingS" numberOfLines={1}>
+          {title}
+        </Typography>
+        {subtitle ? (
+          <Typography variant="bodyS" color="textSecondary" numberOfLines={1}>
+            {subtitle}
+          </Typography>
+        ) : null}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: tokens.radius.md,
-    borderWidth: tokens.borderWidth.hairline,
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: tokens.spacing.md,
     padding: tokens.spacing.md,
   },
-  label: {
-    fontSize: tokens.typography.fontSize.bodyM,
+  text: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });

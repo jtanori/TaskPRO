@@ -7,6 +7,8 @@ export default function TechnicianLayout() {
       <Stack.Screen name="index" options={{ title: 'Home' }} />
       <Stack.Screen name="jobs/index" options={{ title: 'My Jobs' }} />
       <Stack.Screen name="jobs/[id]" options={{ title: 'Job Detail' }} />
+      <Stack.Screen name="messages/index" options={{ title: 'Messages' }} />
+      <Stack.Screen name="messages/[id]" options={{ title: 'Conversation' }} />
     </Stack>
   );
 }

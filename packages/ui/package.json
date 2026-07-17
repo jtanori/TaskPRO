@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@taskpro/design-tokens": "workspace:*",
+    "@taskpro/types": "workspace:*",
     "react": "^18.3.1",
     "react-native": "^0.76.5",
     "react-native-safe-area-context": "^4.14.1"

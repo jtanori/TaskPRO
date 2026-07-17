@@ -104,13 +104,16 @@
     {
       "id": "E8",
       "name": "Communication layer (BUILD-001 Phase 3)",
-      "status": "registered",
+      "status": "completed",
       "depends_on": ["E6"],
       "gates": [],
       "transformation": "Conversations, messages, attachments, push notifications, unread indicators.",
       "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-DOM-001", "TASKPRO-API-001", "TASKPRO-TECH-001"],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "completion_evidence": "Conversation and notification aggregates, repositories, use cases, mobile screens, routes, and UI components implemented and tested.",
+      "completed_at": "2026-07-17T14:02:15Z",
+      "supporting_replay": "bootstrap-e8-0018"
     },
     {
       "id": "E9",

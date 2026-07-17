@@ -1,33 +1,61 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { tokens } from '@taskpro/design-tokens';
-import { useTheme } from '../../theme/ThemeProvider';
+import { Button } from '../foundation/Button';
+import { TextInput } from '../foundation/TextInput';
 
-export type MessageComposerProps = object;
+export interface MessageComposerProps {
+  value: string;
+  onChangeText: (text: string) => void;
+  onSend: () => void;
+  placeholder?: string;
+  disabled?: boolean;
+  loading?: boolean;
+}
 
-export function MessageComposer(_props: MessageComposerProps) {
-  const theme = useTheme();
+export function MessageComposer({
+  value,
+  onChangeText,
+  onSend,
+  placeholder = 'Escribe un mensaje...',
+  disabled = false,
+  loading = false,
+}: MessageComposerProps) {
+  const handleSubmit = () => {
+    if (value.trim().length === 0 || disabled || loading) return;
+    onSend();
+  };
+
   return (
-    <View
-      style={[
-        styles.container,
-        { borderColor: theme.colors.border, backgroundColor: theme.colors.surface },
-      ]}
-      accessibilityRole="button"
-      accessibilityLabel="MessageComposer"
-    >
-      <Text style={[styles.label, { color: theme.colors.text }]}>MessageComposer</Text>
+    <View style={styles.container}>
+      <View style={styles.inputWrapper}>
+        <TextInput
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+          onSubmitEditing={handleSubmit}
+          returnKeyType="send"
+          editable={!disabled && !loading}
+        />
+      </View>
+      <Button
+        title="Enviar"
+        onPress={handleSubmit}
+        disabled={value.trim().length === 0 || disabled}
+        loading={loading}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: tokens.radius.md,
-    borderWidth: tokens.borderWidth.hairline,
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: tokens.spacing.sm,
     padding: tokens.spacing.md,
   },
-  label: {
-    fontSize: tokens.typography.fontSize.bodyM,
+  inputWrapper: {
+    flex: 1,
   },
 });

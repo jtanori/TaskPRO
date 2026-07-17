@@ -13,6 +13,7 @@ export interface ConversationProps {
   id: ConversationId;
   participantIds: UserId[];
   messages: Message[];
+  lastReadAt: Map<UserId, Date>;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -23,12 +24,13 @@ export class Conversation {
   private constructor(private props: ConversationProps) {}
 
   static create(
-    props: Omit<ConversationProps, 'messages' | 'createdAt' | 'updatedAt'>
+    props: Omit<ConversationProps, 'messages' | 'lastReadAt' | 'createdAt' | 'updatedAt'>
   ): Conversation {
     const now = new Date();
     return new Conversation({
       ...props,
       messages: [],
+      lastReadAt: new Map(),
       createdAt: now,
       updatedAt: now,
     });
@@ -42,10 +44,41 @@ export class Conversation {
     return this.props.id;
   }
 
+  get participantIds(): readonly UserId[] {
+    return this.props.participantIds;
+  }
+
+  get messages(): readonly Message[] {
+    return this.props.messages;
+  }
+
+  get updatedAt(): Date {
+    return this.props.updatedAt;
+  }
+
+  get createdAt(): Date {
+    return this.props.createdAt;
+  }
+
   sendMessage(message: Message): void {
     this.props.messages.push(message);
     this.props.updatedAt = new Date();
     this.record(new MessageSent(message.id, this.props.id, message.senderId));
+  }
+
+  markReadAsOf(userId: UserId, asOf: Date): void {
+    const current = this.props.lastReadAt.get(userId);
+    if (!current || asOf.getTime() > current.getTime()) {
+      this.props.lastReadAt.set(userId, asOf);
+    }
+  }
+
+  unreadCountFor(userId: UserId): number {
+    const lastRead = this.props.lastReadAt.get(userId);
+    return this.props.messages.filter((message) => {
+      if (message.senderId === userId) return false;
+      return lastRead ? message.sentAt.getTime() > lastRead.getTime() : true;
+    }).length;
   }
 
   private record(event: unknown): void {

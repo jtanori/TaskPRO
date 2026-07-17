@@ -1,0 +1,11 @@
+{
+  "messages": "Mensajes",
+  "notifications": "Notificaciones",
+  "noConversations": "No tienes conversaciones aún",
+  "noMessages": "Sin mensajes",
+  "noNotifications": "No tienes notificaciones",
+  "conversationTitle": "Conversación",
+  "messagePlaceholder": "Escribe un mensaje...",
+  "quickMessages": "Mensajes",
+  "quickNotifications": "Notificaciones"
+}

@@ -41,6 +41,16 @@ export default function HomeScreen() {
           variant="secondary"
           onPress={() => router.push('/bookings')}
         />
+        <Button
+          title={t('marketplace:messages')}
+          variant="secondary"
+          onPress={() => router.push('/messages')}
+        />
+        <Button
+          title={t('marketplace:notifications')}
+          variant="secondary"
+          onPress={() => router.push('/notifications')}
+        />
       </Card>
 
       <Typography variant="headingM">{t('marketplace:categoriesTitle')}</Typography>
