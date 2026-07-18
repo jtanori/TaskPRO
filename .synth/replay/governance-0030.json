@@ -1,0 +1,30 @@
+{
+  "primitive": "Replay",
+  "record_type": "GovernanceUpdate",
+  "record_id": "governance-0030",
+  "preceding_record": "governance-0028",
+  "timestamp": "2026-07-18T04:30:00Z",
+  "approved_by": "human governance decision to attach execution plans to pending expeditions E14–E20",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "changes": [
+    {
+      "target": ".synth/expeditions.json",
+      "change": "Added execution_plan objects to E14, E15, E16, E17, E18, E19, and E20.",
+      "justification": "Plans are expedition-local metadata describing the intended transformation, prerequisites, deliverables, validation, and exclusions. Storing them in the Expedition primitive keeps planning state inside governance without invoking implementation capabilities."
+    }
+  ],
+  "invariants_verified": [
+    "knowledge/ untouched: input snapshot hash identical to genesis-0001.",
+    "No implementation capabilities invoked during this governance update.",
+    "Every plan traces to TASKPRO-BUILD-002 and the existing expedition transformation.",
+    "Completed expeditions E1–E13 were not modified."
+  ],
+  "result": "governed-updated"
+}

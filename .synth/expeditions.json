@@ -11,7 +11,12 @@
       "depends_on": [],
       "gates": [],
       "transformation": "TurboRepo monorepo skeleton: apps/ and packages/ layout, strict TypeScript config, ESLint/Prettier/Husky, CI scaffold.",
-      "evidence_sources": ["TASKPRO-MOD-001", "TASKPRO-TECH-001", "TASKPRO-OPS-001", "TASKPRO-BUILD-001"],
+      "evidence_sources": [
+        "TASKPRO-MOD-001",
+        "TASKPRO-TECH-001",
+        "TASKPRO-OPS-001",
+        "TASKPRO-BUILD-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "expedition_local_decisions": [
@@ -25,10 +30,15 @@
       "id": "E2",
       "name": "Design tokens & theme (packages/design-tokens)",
       "status": "completed",
-      "depends_on": ["E1"],
+      "depends_on": [
+        "E1"
+      ],
       "gates": [],
       "transformation": "Token hierarchy (global/alias/semantic/component) and theme system (light/dark/high-contrast, semantic remapping) as a compilable package.",
-      "evidence_sources": ["TASKPRO-DS-001", "TASKPRO-DS-005"],
+      "evidence_sources": [
+        "TASKPRO-DS-001",
+        "TASKPRO-DS-005"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completed_at": "2026-07-16T22:42:23Z",
@@ -38,10 +48,19 @@
       "id": "E3",
       "name": "UI component library (packages/ui) + Storybook",
       "status": "completed",
-      "depends_on": ["E2"],
+      "depends_on": [
+        "E2"
+      ],
       "gates": [],
       "transformation": "Foundation/navigation/form/service/marketplace/workflow/communication/payment/professional/AI components with variants, states, interaction and motion rules; Storybook visual harness.",
-      "evidence_sources": ["TASKPRO-DS-002", "TASKPRO-DS-003", "TASKPRO-DS-004", "TASKPRO-COMP-001", "TASKPRO-UI-ASSETS", "TASKPRO-TEST-001"],
+      "evidence_sources": [
+        "TASKPRO-DS-002",
+        "TASKPRO-DS-003",
+        "TASKPRO-DS-004",
+        "TASKPRO-COMP-001",
+        "TASKPRO-UI-ASSETS",
+        "TASKPRO-TEST-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completed_at": "2026-07-17T01:03:38Z",
@@ -51,10 +70,20 @@
       "id": "E4",
       "name": "Domain, types & contracts (packages/domain, packages/types, supabase/)",
       "status": "completed",
-      "depends_on": ["E1"],
+      "depends_on": [
+        "E1"
+      ],
       "gates": [],
       "transformation": "Backend-independent domain layer (aggregates, value objects, domain events), shared contracts, canonical database schema with RLS. Domain package contains no Supabase dependency (MOD-001 purity rule).",
-      "evidence_sources": ["TASKPRO-DOM-001", "TASKPRO-DATA-001", "TASKPRO-DB-001", "TASKPRO-API-001", "TASKPRO-API-002", "TASKPRO-MOD-001", "TASKPRO-AUTH-001"],
+      "evidence_sources": [
+        "TASKPRO-DOM-001",
+        "TASKPRO-DATA-001",
+        "TASKPRO-DB-001",
+        "TASKPRO-API-001",
+        "TASKPRO-API-002",
+        "TASKPRO-MOD-001",
+        "TASKPRO-AUTH-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completed_at": "2026-07-17T02:26:17Z",
@@ -64,10 +93,20 @@
       "id": "E5",
       "name": "Application shell (apps/mobile route groups, providers, auth session)",
       "status": "completed",
-      "depends_on": ["E2", "E3", "E4"],
+      "depends_on": [
+        "E2",
+        "E3",
+        "E4"
+      ],
       "gates": [],
       "transformation": "Expo Router structure with (auth)/(customer)/(technician)/(shared) route groups, root providers, session restoration, role-based routing, deep links.",
-      "evidence_sources": ["TASKPRO-NAV-001", "TASKPRO-ARCH-001", "TASKPRO-AUTH-001", "TASKPRO-TECH-001", "TASKPRO-UI-001-PLAN"],
+      "evidence_sources": [
+        "TASKPRO-NAV-001",
+        "TASKPRO-ARCH-001",
+        "TASKPRO-AUTH-001",
+        "TASKPRO-TECH-001",
+        "TASKPRO-UI-001-PLAN"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completion_evidence": "BUILD-001 Phase 0 completion: app launches, navigates, renders themed components, executes tests.",
@@ -78,10 +117,20 @@
       "id": "E6",
       "name": "Identity & discovery vertical slice (BUILD-001 Phase 1)",
       "status": "completed",
-      "depends_on": ["E5"],
+      "depends_on": [
+        "E5"
+      ],
       "gates": [],
-      "transformation": "Registration, login, session handling, profile setup, home dashboard, service search/categories/listings/detail — first usable capability: register -> login -> browse services.",
-      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-AUTH-001", "TASKPRO-UI-001", "TASKPRO-SCREEN-001", "TASKPRO-CAP-001", "TASKPRO-UI-ASSETS", "TASKPRO-I18N-001"],
+      "transformation": "Registration, login, session handling, profile setup, home dashboard, service search/categories/listings/detail \u2014 first usable capability: register -> login -> browse services.",
+      "evidence_sources": [
+        "TASKPRO-BUILD-001",
+        "TASKPRO-AUTH-001",
+        "TASKPRO-UI-001",
+        "TASKPRO-SCREEN-001",
+        "TASKPRO-CAP-001",
+        "TASKPRO-UI-ASSETS",
+        "TASKPRO-I18N-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completed_at": "2026-07-17T05:03:13Z",
@@ -91,10 +140,18 @@
       "id": "E7",
       "name": "Booking & task lifecycle (BUILD-001 Phase 2)",
       "status": "completed",
-      "depends_on": ["E6"],
+      "depends_on": [
+        "E6"
+      ],
       "gates": [],
-      "transformation": "Booking request, scheduling, confirmation, task timeline, status updates, completion flow, payment capture — a complete service transaction.",
-      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-FLOW-001", "TASKPRO-STATE-002", "TASKPRO-DOM-001", "TASKPRO-API-001"],
+      "transformation": "Booking request, scheduling, confirmation, task timeline, status updates, completion flow, payment capture \u2014 a complete service transaction.",
+      "evidence_sources": [
+        "TASKPRO-BUILD-001",
+        "TASKPRO-FLOW-001",
+        "TASKPRO-STATE-002",
+        "TASKPRO-DOM-001",
+        "TASKPRO-API-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completion_evidence": "Booking lifecycle use cases, in-memory repository, customer/technician screens, route groups, and domain tests pass.",
@@ -105,10 +162,17 @@
       "id": "E8",
       "name": "Communication layer (BUILD-001 Phase 3)",
       "status": "completed",
-      "depends_on": ["E6"],
+      "depends_on": [
+        "E6"
+      ],
       "gates": [],
       "transformation": "Conversations, messages, attachments, push notifications, unread indicators.",
-      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-DOM-001", "TASKPRO-API-001", "TASKPRO-TECH-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-001",
+        "TASKPRO-DOM-001",
+        "TASKPRO-API-001",
+        "TASKPRO-TECH-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completion_evidence": "Conversation and notification aggregates, repositories, use cases, mobile screens, routes, and UI components implemented and tested.",
@@ -119,10 +183,16 @@
       "id": "E9",
       "name": "Marketplace expansion (BUILD-001 Phase 4)",
       "status": "completed",
-      "depends_on": ["E7"],
+      "depends_on": [
+        "E7"
+      ],
       "gates": [],
       "transformation": "Listings, seller profiles, transactions, payment integration hardening.",
-      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-DOM-001", "TASKPRO-API-002"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-001",
+        "TASKPRO-DOM-001",
+        "TASKPRO-API-002"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completion_evidence": "Payment and payout aggregates, in-memory repositories, mobile marketplace and payment screens, routes, and UI components implemented and tested.",
@@ -133,10 +203,17 @@
       "id": "E10",
       "name": "Trust & platform maturity (BUILD-001 Phase 5)",
       "status": "completed",
-      "depends_on": ["E7", "E8"],
+      "depends_on": [
+        "E7",
+        "E8"
+      ],
       "gates": [],
       "transformation": "Provider verification, reputation, analytics, monitoring, production readiness.",
-      "evidence_sources": ["TASKPRO-BUILD-001", "TASKPRO-OPS-001", "TASKPRO-TEST-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-001",
+        "TASKPRO-OPS-001",
+        "TASKPRO-TEST-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completion_evidence": "Review and verification aggregates, in-memory repositories, mobile trust screens, analytics dashboard, adapter ports, and production-readiness CI scaffolding implemented and tested.",
@@ -150,7 +227,11 @@
       "depends_on": [],
       "gates": [],
       "transformation": "Centralized mobile configuration system with environment-specific values, feature flags, and runtime validation.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001", "TASKPRO-TECH-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-OPS-001",
+        "TASKPRO-TECH-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completion_evidence": "apps/mobile/src/config/* implements Environment, Config, FeatureFlags with tests; .env.example updated; no process.env leakage outside config layer.",
@@ -161,10 +242,15 @@
       "id": "E12",
       "name": "Build Profiles & Local Artifacts (BUILD-002 W12)",
       "status": "completed",
-      "depends_on": ["E11"],
+      "depends_on": [
+        "E11"
+      ],
       "gates": [],
       "transformation": "EAS build profiles and package scripts for development, local APK, staging APK, and production AAB artifacts.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-TECH-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-TECH-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completion_evidence": "apps/mobile/eas.json defines development/preview/staging/production profiles; root and mobile package.json expose mobile:dev, mobile:build:local/staging/production scripts; eas-cli installed.",
@@ -175,10 +261,15 @@
       "id": "E13",
       "name": "GitHub Actions CI (BUILD-002 W13)",
       "status": "completed",
-      "depends_on": ["E12"],
+      "depends_on": [
+        "E12"
+      ],
       "gates": [],
       "transformation": "CI workflows for validation, local APK artifact creation, and staging APK artifact creation.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-OPS-001"
+      ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
       "completion_evidence": ".github/workflows/ci.yml refactored with artifact upload; build-local.yml and build-staging.yml added; YAML syntax validated; lint/typecheck/test/format pass.",
@@ -189,7 +280,9 @@
       "id": "E14",
       "name": "Google Play Internal Testing (BUILD-002 W14)",
       "status": "registered",
-      "depends_on": ["E13"],
+      "depends_on": [
+        "E13"
+      ],
       "gates": [
         "Google Play Developer account",
         "Play Console app with package name configured",
@@ -197,15 +290,46 @@
         "Google Service Account key with Play Internal Testing upload permission"
       ],
       "transformation": "Automated upload of staging builds to the Google Play Internal Testing track via EAS Submit.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-OPS-001"
+      ],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "execution_plan": {
+        "scope": "Automate upload of staging builds to the Google Play Internal Testing track via EAS Submit.",
+        "prerequisites": [
+          "Google Play Developer account",
+          "Play Console app with package name matching app.json",
+          "EAS_ACCESS_TOKEN GitHub secret",
+          "Google Service Account key with Play Internal Testing upload permission (GOOGLE_SERVICE_ACCOUNT_KEY secret)"
+        ],
+        "deliverables": [
+          ".github/workflows/play-store-internal.yml triggered on merge to main",
+          "EAS Submit configuration in eas.json for the staging profile",
+          "Build-staging workflow artifact handoff to play-store-internal workflow",
+          "Credential-gated execution so the workflow stays green before secrets are added"
+        ],
+        "validation": [
+          "Workflow YAML parses",
+          "Workflow references existing build-staging workflow and dist/taskpro-staging.apk artifact",
+          "If credentials are present, EAS Submit dry-run succeeds",
+          "If credentials are absent, the workflow skips with a clear notice"
+        ],
+        "out_of_scope": [
+          "Production track deployment (E16)",
+          "Staged rollout configuration",
+          "App review or store listing management"
+        ]
+      }
     },
     {
       "id": "E15",
       "name": "Staging Environment (BUILD-002 W15)",
       "status": "registered",
-      "depends_on": ["E13"],
+      "depends_on": [
+        "E13"
+      ],
       "gates": [
         "Staging Supabase project",
         "Staging Stripe account",
@@ -214,15 +338,49 @@
         "Staging app icon and branding assets"
       ],
       "transformation": "Dedicated staging backend and branded TaskPRO Staging application.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-OPS-001"
+      ],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "execution_plan": {
+        "scope": "Create a dedicated staging variant of the mobile app with its own backend environment and branding.",
+        "prerequisites": [
+          "Staging Supabase project URL and key",
+          "Staging Stripe account (or test mode keys)",
+          "Staging PostHog project and DSN",
+          "Staging Sentry project and DSN",
+          "Staging app icon and splash assets"
+        ],
+        "deliverables": [
+          "app.json config plugin or environment-driven app name/icon so the staging app is visually distinct (TaskPRO Staging)",
+          "Environment config values for staging backend services",
+          ".env.staging.example template",
+          "eas.json staging profile wired to staging environment",
+          "Updated Config tests covering staging values"
+        ],
+        "validation": [
+          "Staging profile builds successfully",
+          "Installed staging APK shows TaskPRO Staging name/icon",
+          "Config validation accepts staging variables",
+          "No production or development credentials required for the staging build"
+        ],
+        "out_of_scope": [
+          "Production environment configuration",
+          "Google Play upload (E14)",
+          "Release automation (E20)"
+        ]
+      }
     },
     {
       "id": "E16",
       "name": "Production Releases (BUILD-002 W16)",
       "status": "registered",
-      "depends_on": ["E14", "E15"],
+      "depends_on": [
+        "E14",
+        "E15"
+      ],
       "gates": [
         "Production Supabase project",
         "Production Stripe account",
@@ -232,66 +390,230 @@
         "Manual approval gate configured"
       ],
       "transformation": "Tagged production releases with signed AAB and Play Store Production track deployment.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-OPS-001"
+      ],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "execution_plan": {
+        "scope": "Implement tagged production releases with manual approval, signed AAB build, and Play Store Production deployment.",
+        "prerequisites": [
+          "Production Supabase project",
+          "Production Stripe account",
+          "Production PostHog and Sentry credentials",
+          "Google Play Production track access",
+          "App signing key configured in Play Console",
+          "EAS_ACCESS_TOKEN and GOOGLE_SERVICE_ACCOUNT_KEY secrets"
+        ],
+        "deliverables": [
+          ".github/workflows/production.yml triggered by version tags (v*)",
+          "Manual approval gate before deployment",
+          "EAS production build producing dist/taskpro-production.aab",
+          "EAS Submit to Play Store Production track",
+          "GitHub Release creation with release notes",
+          "Version-bump enforcement script or check"
+        ],
+        "validation": [
+          "Workflow YAML parses",
+          "Tag filter matches semantic-version tags",
+          "If credentials are present, production build and submit succeed",
+          "If credentials are absent, workflow skips or requires approval"
+        ],
+        "out_of_scope": [
+          "Internal testing track (E14)",
+          "OTA updates (E17)",
+          "Release notes content generation (E20)"
+        ]
+      }
     },
     {
       "id": "E17",
       "name": "OTA Updates (BUILD-002 W17)",
       "status": "registered",
-      "depends_on": ["E13"],
+      "depends_on": [
+        "E13"
+      ],
       "gates": [
         "EAS Update configured",
         "Update channels mapped to environments"
       ],
       "transformation": "EAS Update channels for non-native changes without store submissions.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-TECH-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-TECH-001"
+      ],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "execution_plan": {
+        "scope": "Configure EAS Update channels so non-native changes can be deployed without store submissions.",
+        "prerequisites": [
+          "EAS Update enabled on the EAS project",
+          "EAS_ACCESS_TOKEN secret",
+          "Branch/channel mapping defined (e.g., main -> production, release/* -> preview)"
+        ],
+        "deliverables": [
+          "EAS Update channel configuration in eas.json",
+          "Runtime update check hook integrated in RootProviders",
+          ".github/workflows/ota-update.yml to publish updates on merges to main or release branches",
+          "Documentation of update policy (force update vs optional update)"
+        ],
+        "validation": [
+          "Build includes EAS Update runtime configuration",
+          "Workflow YAML parses",
+          "Update check hook does not crash when offline",
+          "OTA publish step is gated by EAS credentials"
+        ],
+        "out_of_scope": [
+          "Native code changes that require store submissions",
+          "Rollback orchestration (can be added later)"
+        ]
+      }
     },
     {
       "id": "E18",
       "name": "Observability (BUILD-002 W18)",
       "status": "registered",
-      "depends_on": ["E13"],
+      "depends_on": [
+        "E13"
+      ],
       "gates": [
         "PostHog project and API key",
         "Sentry project and DSN"
       ],
       "transformation": "Replace console analytics and crash reporting placeholders with PostHog and Sentry.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-OPS-001"
+      ],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "execution_plan": {
+        "scope": "Replace console-only analytics and crash reporting placeholders with PostHog and Sentry adapters.",
+        "prerequisites": [
+          "PostHog project and API key",
+          "Sentry project and DSN"
+        ],
+        "deliverables": [
+          "PostHogAnalyticsService adapter implementing the existing AnalyticsService interface",
+          "SentryCrashReporter adapter implementing the existing CrashReportingService interface",
+          "Environment config keys for PostHog and Sentry",
+          "Console fallback implementations kept active when keys are missing",
+          "Default error boundary reports unhandled errors to Sentry",
+          "CI validation that DSNs/API keys are present for staging and production builds"
+        ],
+        "validation": [
+          "Unit tests for adapter initialization and event capture",
+          "Typecheck passes",
+          "Lint passes",
+          "App launches without keys using console fallback"
+        ],
+        "out_of_scope": [
+          "Performance monitoring beyond crash reporting",
+          "User identification and privacy consent flows (can be added later)"
+        ]
+      }
     },
     {
       "id": "E19",
       "name": "End-to-End Testing (BUILD-002 W19)",
       "status": "registered",
-      "depends_on": ["E13"],
+      "depends_on": [
+        "E13"
+      ],
       "gates": [
         "Maestro installed and flows authored",
         "Device or simulator runtime available in CI"
       ],
       "transformation": "Maestro E2E flows integrated into CI.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-TEST-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-TEST-001"
+      ],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "execution_plan": {
+        "scope": "Establish a Maestro-based E2E test suite that exercises core product flows against the fake in-memory backend.",
+        "prerequisites": [
+          "Maestro CLI installed locally",
+          "Android SDK or Xcode simulator available",
+          "Local APK build capability (W12)"
+        ],
+        "deliverables": [
+          ".maestro/flows/ directory with Maestro flows",
+          "Setup documentation for local E2E execution",
+          "Root script e2e:local to run the flows",
+          "testID props added to key interactive elements in auth, booking, payment, technician, and communication screens",
+          "CI skeleton .github/workflows/e2e.yml gated by emulator availability and EAS credentials"
+        ],
+        "validation": [
+          "All Maestro YAML files parse",
+          "All referenced testIDs are wired to components",
+          "pnpm format:check, lint, typecheck, test pass",
+          "Flows can be executed locally against the local APK (execution is the heavy operation left to the user)"
+        ],
+        "out_of_scope": [
+          "Running Maestro on physical devices in this session",
+          "Maestro Cloud integration (requires MAESTRO_API_KEY)",
+          "CI emulator execution in this session"
+        ],
+        "proposed_flows": [
+          "auth/register-and-login.yaml",
+          "customer/book-service.yaml",
+          "technician/complete-job.yaml",
+          "shared/conversation.yaml",
+          "shared/notification.yaml"
+        ]
+      }
     },
     {
       "id": "E20",
       "name": "Release Automation (BUILD-002 W20)",
       "status": "registered",
-      "depends_on": ["E14", "E16", "E17", "E18", "E19"],
+      "depends_on": [
+        "E14",
+        "E16",
+        "E17",
+        "E18",
+        "E19"
+      ],
       "gates": [
         "Versioning policy defined",
         "Changelog process defined",
         "Artifact retention policy defined"
       ],
       "transformation": "Automated versioning, changelogs, release notes, and artifact retention.",
-      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "evidence_sources": [
+        "TASKPRO-BUILD-002",
+        "TASKPRO-OPS-001"
+      ],
       "derivation_type": "DIRECT",
-      "confidence": "HIGH"
+      "confidence": "HIGH",
+      "execution_plan": {
+        "scope": "Automate versioning, changelogs, release notes, and artifact retention for predictable releases.",
+        "prerequisites": [
+          "Conventional commits in use",
+          "Version tag format defined (e.g., v1.2.3)",
+          "GitHub Releases enabled"
+        ],
+        "deliverables": [
+          "Version bump script or pnpm script (pnpm version:patch/minor/major)",
+          "Changelog generation from conventional commits",
+          "Release notes template",
+          ".github/workflows/release.yml that creates a GitHub Release from a tag",
+          "Pre-release verification checklist: version bump, changelog entry, migration status, environment consistency, signing config"
+        ],
+        "validation": [
+          "Version bump script runs locally and updates package.json and app config",
+          "Changelog generation produces expected output",
+          "Workflow YAML parses",
+          "Release workflow is gated by tag and manual approval"
+        ],
+        "out_of_scope": [
+          "Store submission logic (E14/E16)",
+          "OTA update publishing (E17)"
+        ]
+      }
     }
   ]
 }
