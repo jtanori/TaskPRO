@@ -2,7 +2,7 @@
 
 ## Status
 
-In planning.
+In progress.
 
 ## Goal
 
@@ -22,18 +22,18 @@ With the product implementation complete, the focus shifts to the machinery that
 
 ## Workstreams
 
-| ID  | Workstream                       | Outcome                                                              |
-| --- | -------------------------------- | -------------------------------------------------------------------- |
-| W11 | Environment & Configuration      | Centralized configuration system and feature flags.                  |
-| W12 | Build Profiles & Local Artifacts | Local APKs, staging APKs, production AABs, and EAS build profiles.   |
-| W13 | GitHub Actions CI                | Lint, typecheck, tests, coverage, builds, and artifact publishing.   |
-| W14 | Google Play Internal Testing     | Automatic upload to the Play Console Internal Testing track.         |
-| W15 | Staging Environment              | Dedicated staging backend and branded `TaskPRO Staging` application. |
-| W16 | Production Releases              | Tagged releases with approval gates and Play Store deployment.       |
-| W17 | OTA Updates                      | EAS Update channels for non-native changes.                          |
-| W18 | Observability                    | PostHog, Sentry, and performance monitoring integration.             |
-| W19 | End-to-End Testing               | Maestro flows integrated into CI.                                    |
-| W20 | Release Automation               | Versioning, changelogs, release notes, and artifact retention.       |
+| ID  | Workstream                       | Outcome                                                              | Status      |
+| --- | -------------------------------- | -------------------------------------------------------------------- | ----------- |
+| W11 | Environment & Configuration      | Centralized configuration system and feature flags.                  | Completed   |
+| W12 | Build Profiles & Local Artifacts | Local APKs, staging APKs, production AABs, and EAS build profiles.   | Not started |
+| W13 | GitHub Actions CI                | Lint, typecheck, tests, coverage, builds, and artifact publishing.   | Not started |
+| W14 | Google Play Internal Testing     | Automatic upload to the Play Console Internal Testing track.         | Not started |
+| W15 | Staging Environment              | Dedicated staging backend and branded `TaskPRO Staging` application. | Not started |
+| W16 | Production Releases              | Tagged releases with approval gates and Play Store deployment.       | Not started |
+| W17 | OTA Updates                      | EAS Update channels for non-native changes.                          | Not started |
+| W18 | Observability                    | PostHog, Sentry, and performance monitoring integration.             | Not started |
+| W19 | End-to-End Testing               | Maestro flows integrated into CI.                                    | Not started |
+| W20 | Release Automation               | Versioning, changelogs, release notes, and artifact retention.       | Not started |
 
 ## Environments
 
