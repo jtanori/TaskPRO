@@ -16,7 +16,11 @@
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "mobile:dev": "pnpm --filter @taskpro/mobile dev",
+    "mobile:build:local": "pnpm --filter @taskpro/mobile build:local",
+    "mobile:build:staging": "pnpm --filter @taskpro/mobile build:staging",
+    "mobile:build:production": "pnpm --filter @taskpro/mobile build:production"
   },
   "devDependencies": {
     "@taskpro/config": "workspace:*",

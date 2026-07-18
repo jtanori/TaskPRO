@@ -28,6 +28,8 @@ module.exports = [
       '**/.expo/**',
       '**/coverage/**',
       '**/scripts/**',
+      '**/*.d.ts',
+      '**/*.js',
     ],
   },
 ];

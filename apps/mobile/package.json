@@ -7,6 +7,9 @@
   "scripts": {
     "dev": "expo start",
     "build": "echo 'Mobile build configured in later expedition'",
+    "build:local": "node -e \"require('fs').mkdirSync('../../dist',{recursive:true})\" && eas build --platform android --profile preview --local --non-interactive --output ../../dist/taskpro-local.apk",
+    "build:staging": "node -e \"require('fs').mkdirSync('../../dist',{recursive:true})\" && eas build --platform android --profile staging --local --non-interactive --output ../../dist/taskpro-staging.apk",
+    "build:production": "node -e \"require('fs').mkdirSync('../../dist',{recursive:true})\" && eas build --platform android --profile production --local --non-interactive --output ../../dist/taskpro-production.aab",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
@@ -37,6 +40,7 @@
     "@taskpro/config": "workspace:*",
     "@taskpro/eslint": "workspace:*",
     "@types/react": "^18.3.12",
+    "eas-cli": "^12.0.0",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   }

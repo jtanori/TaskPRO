@@ -8,6 +8,28 @@ build/
 storybook-static/
 *.tsbuildinfo
 
+# Emitted artifacts that should never live next to source
+apps/api/src/**/*.js
+apps/api/src/**/*.js.map
+apps/api/src/**/*.d.ts
+apps/api/src/**/*.d.ts.map
+apps/mobile/app/**/*.js
+apps/mobile/app/**/*.js.map
+apps/mobile/app/**/*.d.ts
+apps/mobile/app/**/*.d.ts.map
+apps/mobile/src/**/*.js
+apps/mobile/src/**/*.js.map
+apps/mobile/src/**/*.d.ts
+apps/mobile/src/**/*.d.ts.map
+packages/*/src/**/*.js
+packages/*/src/**/*.js.map
+packages/*/src/**/*.d.ts
+packages/*/src/**/*.d.ts.map
+packages/ui/vite.config.js
+packages/ui/vite.config.js.map
+packages/ui/vite.config.d.ts
+packages/ui/vite.config.d.ts.map
+
 # Logs
 *.log
 npm-debug.log*
@@ -24,6 +46,12 @@ pnpm-debug.log*
 # Expo
 .expo/
 expo-env.d.ts
+
+# Transient mobile build artifacts (emitted JS/d.ts next to source)
+apps/mobile/app/**/*.js
+apps/mobile/app/**/*.d.ts
+apps/mobile/src/**/*.js
+apps/mobile/src/**/*.d.ts
 
 # IDE
 .vscode/

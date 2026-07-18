@@ -25,7 +25,7 @@ With the product implementation complete, the focus shifts to the machinery that
 | ID  | Workstream                       | Outcome                                                              | Status      |
 | --- | -------------------------------- | -------------------------------------------------------------------- | ----------- |
 | W11 | Environment & Configuration      | Centralized configuration system and feature flags.                  | Completed   |
-| W12 | Build Profiles & Local Artifacts | Local APKs, staging APKs, production AABs, and EAS build profiles.   | Not started |
+| W12 | Build Profiles & Local Artifacts | Local APKs, staging APKs, production AABs, and EAS build profiles.   | Completed   |
 | W13 | GitHub Actions CI                | Lint, typecheck, tests, coverage, builds, and artifact publishing.   | Not started |
 | W14 | Google Play Internal Testing     | Automatic upload to the Play Console Internal Testing track.         | Not started |
 | W15 | Staging Environment              | Dedicated staging backend and branded `TaskPRO Staging` application. | Not started |

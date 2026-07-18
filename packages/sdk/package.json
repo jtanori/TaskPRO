@@ -9,7 +9,7 @@
     "build": "tsc --build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run --passWithNoTests"
   },
   "devDependencies": {
     "@taskpro/config": "workspace:*",

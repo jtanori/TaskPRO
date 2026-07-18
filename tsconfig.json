@@ -2,6 +2,7 @@
   "extends": "@taskpro/config/tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "noEmit": true,
     "paths": {
       "@taskpro/config": ["packages/config"],
       "@taskpro/eslint": ["packages/eslint"],

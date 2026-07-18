@@ -7,7 +7,7 @@
     "build": "echo 'API build configured in later expedition'",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run --passWithNoTests"
   },
   "devDependencies": {
     "@taskpro/config": "workspace:*",

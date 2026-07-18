@@ -8,6 +8,17 @@ storybook-static
 .env.local
 .env.*.local
 .expo
+*.tsbuildinfo
+
+# Emitted artifacts next to source
+**/*.d.ts
+**/*.d.ts.map
+**/*.js.map
+apps/api/src/**/*.js
+apps/mobile/app/**/*.js
+apps/mobile/src/**/*.js
+packages/*/src/**/*.js
+packages/ui/vite.config.js
 
 # Governance and authored knowledge are intentionally excluded from formatting.
 .synth/
