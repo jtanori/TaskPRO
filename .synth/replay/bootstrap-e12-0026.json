@@ -1,0 +1,78 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e12-0026",
+  "preceding_record": "bootstrap-e11-0025",
+  "governing_replay": "governance-0024",
+  "expedition": "E12",
+  "timestamp": "2026-07-18T03:57:05Z",
+  "approved_by": "human governance decision following approved W12 execution plan with adjustments",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "git_commit": "cfe419b5d332ddeb0a223de467e6718076e135be",
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": ">=20.0.0"
+  },
+  "mutations": {
+    "created_files": [
+      "apps/mobile/eas.json"
+    ],
+    "modified_files": [
+      ".gitignore",
+      ".prettierignore",
+      "apps/api/package.json",
+      "apps/mobile/package.json",
+      "docs/roadmaps/BUILD-002.md",
+      "package.json",
+      "packages/eslint/index.js",
+      "packages/sdk/package.json",
+      "packages/testing/package.json",
+      "pnpm-lock.yaml",
+      "tsconfig.json"
+    ]
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "EAS profiles",
+      "choice": "development, preview (local APK), staging (APK), production (AAB)",
+      "reason": "Approved W12 plan."
+    },
+    {
+      "decision": "Build script outputs",
+      "choice": "dist/taskpro-local.apk, dist/taskpro-staging.apk, dist/taskpro-production.aab",
+      "reason": "Keeps artifacts in a single ignored directory."
+    },
+    {
+      "decision": "Emitted artifact hygiene",
+      "choice": "Added ignore rules and tsconfig noEmit to prevent accidental .js/.d.ts/.map files next to source.",
+      "reason": "Discovered during validation; root tsc without noEmit had polluted the working tree."
+    },
+    {
+      "decision": "Test scripts for empty test packages",
+      "choice": "Added --passWithNoTests to @taskpro/api, @taskpro/sdk, @taskpro/testing.",
+      "reason": "Discovered during validation; allows root pnpm test to pass without placeholder test files."
+    }
+  ],
+  "deviations_from_plan": [],
+  "validation_results": {
+    "format_check": "PASS",
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "test": "PASS",
+    "knowledge_hash_unchanged": "PASS (1529ed509d340aed...)"
+  },
+  "exclusions": [
+    "No actual EAS build executed; scripts are in place for manual invocation.",
+    "No EAS project credentials configured.",
+    "No changes to knowledge/ during execution."
+  ],
+  "result": "bootstrap-e12-accepted"
+}

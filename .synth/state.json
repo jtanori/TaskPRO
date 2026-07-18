@@ -2,8 +2,8 @@
   "primitive": "State",
   "version": "1.0",
   "phase": {
-    "claim": "governed / implementation complete; knowledge complete; E1–E10 completed",
-    "evidence_sources": ["TASKPRO-GAPS-001-CONTAINER", "TASKPRO-BUILD-001"],
+    "claim": "governed / product implementation complete; release engineering in progress; E1–E10 completed; E11–E13 completed; E14–E20 registered",
+    "evidence_sources": ["TASKPRO-GAPS-001-CONTAINER", "TASKPRO-BUILD-001", "TASKPRO-BUILD-002"],
     "derivation_type": "INFERRED",
     "confidence": "HIGH"
   },

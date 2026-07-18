@@ -1,0 +1,66 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e13-0027",
+  "preceding_record": "bootstrap-e12-0026",
+  "governing_replay": "governance-0024",
+  "expedition": "E13",
+  "timestamp": "2026-07-18T04:16:13Z",
+  "approved_by": "human governance decision following approved W13 execution plan",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "git_commit": "51cddfbda2d7e086add9dd51a920fa259304f920",
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": ">=20.0.0"
+  },
+  "mutations": {
+    "created_files": [
+      ".github/workflows/build-local.yml",
+      ".github/workflows/build-staging.yml"
+    ],
+    "modified_files": [
+      ".github/workflows/ci.yml",
+      "docs/roadmaps/BUILD-002.md"
+    ]
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "CI workflow triggers",
+      "choice": "ci.yml on push/PR to main; build-local.yml on push to main and workflow_dispatch; build-staging.yml on push to main/release/* and workflow_dispatch.",
+      "reason": "Matches BUILD-002 pipeline description."
+    },
+    {
+      "decision": "EAS build gating",
+      "choice": "build-local and build-staging skip the EAS step unless EAS_ACCESS_TOKEN is configured.",
+      "reason": "Keeps CI green before Play Console / EAS credentials are available."
+    },
+    {
+      "decision": "Artifact uploads",
+      "choice": "ci.yml uploads package dist directories; build-local/build-staging upload APK artifacts when credentials are present.",
+      "reason": "Provides build outputs without requiring store credentials."
+    }
+  ],
+  "deviations_from_plan": [],
+  "validation_results": {
+    "format_check": "PASS",
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "test": "PASS",
+    "yaml_parseable": "PASS (Python yaml.safe_load)",
+    "knowledge_hash_unchanged": "PASS (1529ed509d340aed...)"
+  },
+  "exclusions": [
+    "No live CI run triggered or validated with act.",
+    "No EAS credentials configured; EAS build steps are no-ops until secrets are added.",
+    "No changes to knowledge/ during execution."
+  ],
+  "result": "bootstrap-e13-accepted"
+}

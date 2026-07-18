@@ -142,6 +142,156 @@
       "completion_evidence": "Review and verification aggregates, in-memory repositories, mobile trust screens, analytics dashboard, adapter ports, and production-readiness CI scaffolding implemented and tested.",
       "completed_at": "2026-07-18T01:44:02Z",
       "supporting_replay": "bootstrap-e10-0023"
+    },
+    {
+      "id": "E11",
+      "name": "Environment & Configuration (BUILD-002 W11)",
+      "status": "completed",
+      "depends_on": [],
+      "gates": [],
+      "transformation": "Centralized mobile configuration system with environment-specific values, feature flags, and runtime validation.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001", "TASKPRO-TECH-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "completion_evidence": "apps/mobile/src/config/* implements Environment, Config, FeatureFlags with tests; .env.example updated; no process.env leakage outside config layer.",
+      "completed_at": "2026-07-18T03:06:00Z",
+      "supporting_replay": "bootstrap-e11-0025"
+    },
+    {
+      "id": "E12",
+      "name": "Build Profiles & Local Artifacts (BUILD-002 W12)",
+      "status": "completed",
+      "depends_on": ["E11"],
+      "gates": [],
+      "transformation": "EAS build profiles and package scripts for development, local APK, staging APK, and production AAB artifacts.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-TECH-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "completion_evidence": "apps/mobile/eas.json defines development/preview/staging/production profiles; root and mobile package.json expose mobile:dev, mobile:build:local/staging/production scripts; eas-cli installed.",
+      "completed_at": "2026-07-18T03:57:05Z",
+      "supporting_replay": "bootstrap-e12-0026"
+    },
+    {
+      "id": "E13",
+      "name": "GitHub Actions CI (BUILD-002 W13)",
+      "status": "completed",
+      "depends_on": ["E12"],
+      "gates": [],
+      "transformation": "CI workflows for validation, local APK artifact creation, and staging APK artifact creation.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH",
+      "completion_evidence": ".github/workflows/ci.yml refactored with artifact upload; build-local.yml and build-staging.yml added; YAML syntax validated; lint/typecheck/test/format pass.",
+      "completed_at": "2026-07-18T04:16:13Z",
+      "supporting_replay": "bootstrap-e13-0027"
+    },
+    {
+      "id": "E14",
+      "name": "Google Play Internal Testing (BUILD-002 W14)",
+      "status": "registered",
+      "depends_on": ["E13"],
+      "gates": [
+        "Google Play Developer account",
+        "Play Console app with package name configured",
+        "EAS_ACCESS_TOKEN GitHub secret",
+        "Google Service Account key with Play Internal Testing upload permission"
+      ],
+      "transformation": "Automated upload of staging builds to the Google Play Internal Testing track via EAS Submit.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "E15",
+      "name": "Staging Environment (BUILD-002 W15)",
+      "status": "registered",
+      "depends_on": ["E13"],
+      "gates": [
+        "Staging Supabase project",
+        "Staging Stripe account",
+        "Staging PostHog project and DSN",
+        "Staging Sentry project and DSN",
+        "Staging app icon and branding assets"
+      ],
+      "transformation": "Dedicated staging backend and branded TaskPRO Staging application.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "E16",
+      "name": "Production Releases (BUILD-002 W16)",
+      "status": "registered",
+      "depends_on": ["E14", "E15"],
+      "gates": [
+        "Production Supabase project",
+        "Production Stripe account",
+        "Production PostHog project and DSN",
+        "Production Sentry project and DSN",
+        "Google Play Production track access",
+        "Manual approval gate configured"
+      ],
+      "transformation": "Tagged production releases with signed AAB and Play Store Production track deployment.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "E17",
+      "name": "OTA Updates (BUILD-002 W17)",
+      "status": "registered",
+      "depends_on": ["E13"],
+      "gates": [
+        "EAS Update configured",
+        "Update channels mapped to environments"
+      ],
+      "transformation": "EAS Update channels for non-native changes without store submissions.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-TECH-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "E18",
+      "name": "Observability (BUILD-002 W18)",
+      "status": "registered",
+      "depends_on": ["E13"],
+      "gates": [
+        "PostHog project and API key",
+        "Sentry project and DSN"
+      ],
+      "transformation": "Replace console analytics and crash reporting placeholders with PostHog and Sentry.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "E19",
+      "name": "End-to-End Testing (BUILD-002 W19)",
+      "status": "registered",
+      "depends_on": ["E13"],
+      "gates": [
+        "Maestro installed and flows authored",
+        "Device or simulator runtime available in CI"
+      ],
+      "transformation": "Maestro E2E flows integrated into CI.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-TEST-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "E20",
+      "name": "Release Automation (BUILD-002 W20)",
+      "status": "registered",
+      "depends_on": ["E14", "E16", "E17", "E18", "E19"],
+      "gates": [
+        "Versioning policy defined",
+        "Changelog process defined",
+        "Artifact retention policy defined"
+      ],
+      "transformation": "Automated versioning, changelogs, release notes, and artifact retention.",
+      "evidence_sources": ["TASKPRO-BUILD-002", "TASKPRO-OPS-001"],
+      "derivation_type": "DIRECT",
+      "confidence": "HIGH"
     }
   ]
 }

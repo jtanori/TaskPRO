@@ -1,0 +1,72 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e11-0025",
+  "preceding_record": "governance-0024",
+  "governing_replay": "governance-0024",
+  "expedition": "E11",
+  "timestamp": "2026-07-18T03:06:00Z",
+  "approved_by": "human governance decision following approved W11 execution plan",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "git_commit": "b81d28b8372798ba131fff859103b226c08a5500",
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": ">=20.0.0"
+  },
+  "mutations": {
+    "created_files": [
+      "apps/mobile/src/config/Config.ts",
+      "apps/mobile/src/config/Environment.ts",
+      "apps/mobile/src/config/FeatureFlags.ts",
+      "apps/mobile/src/config/__tests__/Config.test.ts",
+      "apps/mobile/src/config/index.ts"
+    ],
+    "modified_files": [
+      ".env.example",
+      "apps/mobile/src/lib/supabase.ts",
+      "docs/roadmaps/BUILD-002.md"
+    ],
+    "deleted_files": [
+      "apps/mobile/.env.example"
+    ]
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "Configuration access pattern",
+      "choice": "All environment-dependent values accessed through apps/mobile/src/config/Config.ts; no process.env usage outside config layer.",
+      "reason": "Approved W11 plan requires centralized configuration."
+    },
+    {
+      "decision": "Environment enumeration",
+      "choice": "development | local | staging | production",
+      "reason": "Matches BUILD-002 environment table."
+    },
+    {
+      "decision": "Feature flags",
+      "choice": "Runtime boolean flags driven by Config, defaulting to safe values per environment.",
+      "reason": "Enables toggling capabilities without rebuilding."
+    }
+  ],
+  "deviations_from_plan": [],
+  "validation_results": {
+    "format_check": "PASS",
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "test": "PASS (mobile config tests)",
+    "knowledge_hash_unchanged": "PASS (1529ed509d340aed...)"
+  },
+  "exclusions": [
+    "No external environment secrets committed.",
+    "No runtime backend integration performed; configuration remains client-side.",
+    "No changes to knowledge/ or .synth/ governance files during execution."
+  ],
+  "result": "bootstrap-e11-accepted"
+}
