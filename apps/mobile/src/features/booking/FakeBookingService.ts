@@ -26,8 +26,10 @@ import {
 import type { BookingService, RequestBookingInput } from './BookingService';
 import { toBookingDto } from './toBookingDto';
 
+export const bookingRepository = new InMemoryBookingRepository();
+
 export class FakeBookingService implements BookingService {
-  private readonly repository = new InMemoryBookingRepository();
+  private readonly repository = bookingRepository;
 
   async requestBooking(input: RequestBookingInput): Promise<BookingDto> {
     const requestBooking = new RequestBooking(this.repository);

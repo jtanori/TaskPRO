@@ -5,11 +5,21 @@ import type {
   MessageId,
   PayoutId,
   ProfessionalId,
+  ReviewId,
   ServiceId,
   TransactionId,
   UserId,
 } from '../ids';
-import type { BookingStatus, Currency, Locale, UserRole, UserStatus } from '../enums';
+import type {
+  AnalyticsEventType,
+  BookingStatus,
+  Currency,
+  Locale,
+  UserRole,
+  UserStatus,
+  VerificationDocumentType,
+  VerificationStatus,
+} from '../enums';
 
 export interface MoneyDto {
   amountMinor: number;
@@ -74,7 +84,7 @@ export interface ProfessionalDto {
   rating: RatingDto;
   reviewCount: number;
   travelRadiusMeters: number;
-  verificationStatus: string;
+  verification: VerificationDto;
   isAvailable: boolean;
 }
 
@@ -108,13 +118,36 @@ export interface ReviewDimensionDto {
 }
 
 export interface ReviewDto {
-  id: string;
+  id: ReviewId;
   bookingId: BookingId;
   reviewerId: UserId;
-  revieweeId: UserId;
+  revieweeId: ProfessionalId;
   dimensions: ReviewDimensionDto[];
   comment?: string;
   createdAt: string;
+}
+
+export interface VerificationDto {
+  status: VerificationStatus;
+  documentType?: VerificationDocumentType;
+  documentUrl?: string;
+  submittedAt?: string;
+  verifiedAt?: string;
+}
+
+export interface MetricDto {
+  name: string;
+  value: number;
+  unit?: string;
+  change?: number;
+  period: string;
+}
+
+export interface AnalyticsEventDto {
+  type: AnalyticsEventType;
+  properties: Record<string, unknown>;
+  timestamp: string;
+  userId?: UserId;
 }
 
 export interface MessageDto {

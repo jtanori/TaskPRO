@@ -7,9 +7,9 @@
 
 ## Repository status
 
-- **Phase:** governed / implementation in progress. Knowledge complete; E1–E9 completed; E10 registered.
+- **Phase:** governed / implementation complete. Knowledge complete; E1–E10 completed.
 - **Genesis:** `.synth/replay/genesis-0001.json` (input snapshot sha256 `2c38853a…`, 119 files).
-- **Latest update:** `.synth/replay/governance-0022.json` (E9 completed; D2 payment-gateway-sequencing confidence promoted to HIGH).
+- **Latest update:** `.synth/replay/governance-0024.json` (E10 completed; all registered expeditions finished).
 - **Mission:** Synthesize the TaskPRO platform from canonical knowledge into a TurboRepo
   monorepo — Expo/React Native mobile app (customer + technician) with Supabase backend —
   delivered in BUILD-001 phase order, each phase a usable vertical slice.
@@ -48,7 +48,7 @@ COMP-001.md.txt embeds NAV-001. Full registry: `.synth/evidence.json`.
 
 E1 Foundation & toolchain ✅ → E2 Design tokens & theme ✅ → E3 UI library ✅ → E4 Domain & contracts ✅ →
 E5 Application shell ✅ → E6 Identity & discovery slice ✅ → E7 Booking lifecycle ✅ →
-E8 Communication ✅ → E9 Marketplace ✅ → E10 Trust & maturity (registered).
+E8 Communication ✅ → E9 Marketplace ✅ → E10 Trust & maturity ✅.
 
 ## Open governance items (resolve explicitly, never silently)
 

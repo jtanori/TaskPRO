@@ -8,5 +8,6 @@ export * from './execution/WorkStarted';
 export * from './execution/WorkCompleted';
 export * from './payments/PaymentCaptured';
 export * from './reviews/ReviewSubmitted';
+export * from './professional/ProfessionalVerified';
 export * from './messaging/MessageSent';
 export * from './notifications/NotificationDelivered';

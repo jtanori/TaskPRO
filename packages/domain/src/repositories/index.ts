@@ -9,4 +9,7 @@ export * from './NotificationRepository';
 export * from './PaymentRepository';
 export * from './PayoutRepository';
 export * from './ProfessionalRepository';
+export * from './InMemoryProfessionalRepository';
+export * from './ReviewRepository';
+export * from './InMemoryReviewRepository';
 export * from './UserRepository';

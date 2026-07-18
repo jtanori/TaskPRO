@@ -2,7 +2,7 @@
   "primitive": "State",
   "version": "1.0",
   "phase": {
-    "claim": "governed / pre-implementation; knowledge complete; no expedition started",
+    "claim": "governed / implementation complete; knowledge complete; E1–E10 completed",
     "evidence_sources": ["TASKPRO-GAPS-001-CONTAINER", "TASKPRO-BUILD-001"],
     "derivation_type": "INFERRED",
     "confidence": "HIGH"

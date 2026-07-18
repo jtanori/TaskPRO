@@ -12,6 +12,8 @@ export default function TechnicianLayout() {
       <Stack.Screen name="services/index" options={{ title: 'My Services' }} />
       <Stack.Screen name="services/add" options={{ title: 'Add Service' }} />
       <Stack.Screen name="earnings" options={{ title: 'Earnings' }} />
+      <Stack.Screen name="verification" options={{ title: 'Verification' }} />
+      <Stack.Screen name="analytics" options={{ title: 'Analytics' }} />
     </Stack>
   );
 }

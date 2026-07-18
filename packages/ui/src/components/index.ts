@@ -7,4 +7,6 @@ export * from './workflow';
 export * from './communication';
 export * from './payment';
 export * from './professional';
+export * from './review';
+export * from './analytics';
 export * from './ai';

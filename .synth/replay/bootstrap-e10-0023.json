@@ -1,0 +1,174 @@
+{
+  "primitive": "Replay",
+  "record_type": "BootstrapExecution",
+  "record_id": "bootstrap-e10-0023",
+  "preceding_record": "governance-0022",
+  "governing_replay": "governance-0022",
+  "expedition": "E10",
+  "timestamp": "2026-07-18T01:44:02Z",
+  "approved_by": "human approval of E10 execution plan for Trust & platform maturity",
+  "contract_version": "synth-init-semantics v1.1",
+  "input_snapshot": {
+    "root": "knowledge/",
+    "algorithm": "sha256 over sorted per-file sha256 digests (excluding .DS_Store)",
+    "hash": "1529ed509d340aed8750e4592370bd83044d1b58c42353a9fa7090c2ffe324e0",
+    "file_count": 119,
+    "unchanged_since": "genesis-0001"
+  },
+  "execution_metadata": {
+    "package_manager": "pnpm",
+    "pnpm_version": "9.15.0",
+    "node_version": "v24.14.1",
+    "primary_tool_versions": {
+      "turbo": "^2.3.3",
+      "typescript": "^5.7.2",
+      "eslint": "^9.17.0",
+      "prettier": "^3.4.2",
+      "vitest": "^2.1.8",
+      "expo": "~52.0.0",
+      "expo-router": "~4.0.0",
+      "i18next": "^24.2.0",
+      "react-i18next": "^15.4.0",
+      "@supabase/supabase-js": "^2.47.10"
+    },
+    "note": "Tool versions are an execution snapshot, not normative governance."
+  },
+  "mutations": {
+    "created_files": [
+      ".env.example — template for Supabase, PostHog, Sentry, and Stripe environment variables.",
+      "apps/mobile/app/(customer)/bookings/[id]/review.tsx — route for submitting a review after a completed booking.",
+      "apps/mobile/app/(shared)/reviews/[professionalId].tsx — route for listing a professional's reviews.",
+      "apps/mobile/app/(technician)/analytics.tsx — technician analytics dashboard route.",
+      "apps/mobile/app/(technician)/verification.tsx — technician identity verification route.",
+      "apps/mobile/src/features/analytics/AnalyticsService.ts — analytics port contract.",
+      "apps/mobile/src/features/analytics/FakeAnalyticsService.ts — in-memory analytics service returning sample metrics.",
+      "apps/mobile/src/features/analytics/index.ts — analytics feature exports.",
+      "apps/mobile/src/features/analytics/screens/AnalyticsDashboardScreen.tsx — technician analytics dashboard screen.",
+      "apps/mobile/src/features/analytics/useAnalytics.ts — analytics data hook.",
+      "apps/mobile/src/features/reviews/FakeReviewService.ts — in-memory review service using domain SubmitReview use case.",
+      "apps/mobile/src/features/reviews/ReviewService.ts — review service contract.",
+      "apps/mobile/src/features/reviews/index.ts — review feature exports.",
+      "apps/mobile/src/features/reviews/screens/ReviewsScreen.tsx — professional reviews list screen.",
+      "apps/mobile/src/features/reviews/screens/SubmitReviewScreen.tsx — customer review submission screen.",
+      "apps/mobile/src/features/reviews/toReviewDto.ts — domain Review to ReviewDto mapper.",
+      "apps/mobile/src/features/reviews/useReviews.ts — hooks for loading and submitting reviews.",
+      "apps/mobile/src/features/verification/FakeVerificationService.ts — in-memory verification service using domain Verification value object.",
+      "apps/mobile/src/features/verification/VerificationService.ts — verification service contract.",
+      "apps/mobile/src/features/verification/index.ts — verification feature exports.",
+      "apps/mobile/src/features/verification/screens/VerificationScreen.tsx — technician verification status and submission screen.",
+      "apps/mobile/src/features/verification/useVerification.ts — verification data hook.",
+      "apps/mobile/src/locales/es-MX/analytics.json — analytics UI copy.",
+      "apps/mobile/src/locales/es-MX/reviews.json — reviews UI copy.",
+      "apps/mobile/src/locales/es-MX/verification.json — verification UI copy.",
+      "apps/mobile/src/services/AnalyticsService.ts — global analytics adapter port with console implementation.",
+      "apps/mobile/src/services/CrashReportingService.ts — global crash reporting adapter port with console implementation.",
+      "packages/domain/src/__tests__/use-cases/Review.test.ts — tests for review submission, professional rating update, and verification approval.",
+      "packages/domain/src/events/professional/ProfessionalVerified.ts — domain event emitted when a professional is verified.",
+      "packages/domain/src/repositories/InMemoryProfessionalRepository.ts — in-memory professional repository.",
+      "packages/domain/src/repositories/InMemoryReviewRepository.ts — in-memory review repository.",
+      "packages/domain/src/repositories/ReviewRepository.ts — review repository interface.",
+      "packages/domain/src/use-cases/ApproveProfessionalVerification.ts — use case to approve a pending professional verification.",
+      "packages/domain/src/use-cases/GetReviewsForProfessional.ts — use case to list reviews for a professional.",
+      "packages/domain/src/use-cases/SubmitReview.ts — use case to submit a review for a completed booking and update the professional's rating.",
+      "packages/domain/src/value-objects/Verification.ts — immutable value object for professional verification documents and status.",
+      "packages/ui/src/__tests__/components/MetricCard.test.tsx — MetricCard unit test.",
+      "packages/ui/src/__tests__/components/RatingInput.test.tsx — RatingInput unit test.",
+      "packages/ui/src/__tests__/components/ReviewCard.test.tsx — ReviewCard unit test.",
+      "packages/ui/src/components/analytics/AnalyticsChart.stories.tsx — AnalyticsChart Storybook stories.",
+      "packages/ui/src/components/analytics/AnalyticsChart.tsx — placeholder bar-chart component for analytics.",
+      "packages/ui/src/components/analytics/MetricCard.stories.tsx — MetricCard Storybook stories.",
+      "packages/ui/src/components/analytics/MetricCard.tsx — metric summary card component.",
+      "packages/ui/src/components/analytics/index.ts — analytics component exports.",
+      "packages/ui/src/components/professional/VerificationBadge.stories.tsx — VerificationBadge stories.",
+      "packages/ui/src/components/professional/VerificationBadge.tsx — verification status badge component.",
+      "packages/ui/src/components/review/RatingInput.stories.tsx — RatingInput stories.",
+      "packages/ui/src/components/review/RatingInput.tsx — interactive star-rating input component.",
+      "packages/ui/src/components/review/ReviewCard.stories.tsx — ReviewCard stories.",
+      "packages/ui/src/components/review/ReviewCard.tsx — review display card component.",
+      "packages/ui/src/components/review/ReviewList.stories.tsx — ReviewList stories.",
+      "packages/ui/src/components/review/ReviewList.tsx — scrollable review list component.",
+      "packages/ui/src/components/review/index.ts — review component exports."
+    ],
+    "modified_files": [
+      ".github/workflows/ci.yml — added package build step and placeholder production-readiness job.",
+      "apps/mobile/app/(shared)/_layout.tsx — registered reviews/[professionalId] route.",
+      "apps/mobile/app/(technician)/_layout.tsx — registered verification and analytics routes.",
+      "apps/mobile/src/features/booking/FakeBookingService.ts — exported shared bookingRepository singleton so review use case can access booking state.",
+      "apps/mobile/src/features/booking/components/BookingActionBar.tsx — added optional onReview action for closed bookings.",
+      "apps/mobile/src/features/booking/screens/CustomerBookingDetailScreen.tsx — navigate to review screen when booking is closed.",
+      "apps/mobile/src/features/marketplace/FakeServiceCatalogService.ts — exported PROFESSIONALS seed array; updated DTOs to use typed verification object.",
+      "apps/mobile/src/features/marketplace/screens/ProfessionalProfileScreen.tsx — display VerificationBadge and link to reviews.",
+      "apps/mobile/src/features/technician/screens/TechnicianHomeScreen.tsx — added verification and analytics quick actions.",
+      "apps/mobile/src/lib/i18n.ts — registered analytics, reviews, and verification namespaces.",
+      "apps/mobile/src/locales/es-MX/booking.json — added leaveReview key.",
+      "apps/mobile/src/locales/es-MX/marketplace.json — added verification, analytics, reviewsCount, and seeReviews keys.",
+      "packages/domain/src/aggregates/Professional.ts — replaced verificationStatus string with typed Verification value object; added submitVerification and approveVerification methods.",
+      "packages/domain/src/aggregates/Review.ts — added getters and typed revieweeId as ProfessionalId.",
+      "packages/domain/src/events/index.ts — exported ProfessionalVerified event.",
+      "packages/domain/src/repositories/index.ts — exported InMemoryProfessionalRepository, ReviewRepository, and InMemoryReviewRepository.",
+      "packages/domain/src/use-cases/index.ts — exported SubmitReview, GetReviewsForProfessional, and ApproveProfessionalVerification.",
+      "packages/domain/src/value-objects/index.ts — exported Verification value object.",
+      "packages/types/src/dto/index.ts — added VerificationDto, MetricDto, AnalyticsEventDto; updated ReviewDto and ProfessionalDto to use typed verification.",
+      "packages/types/src/enums/index.ts — added VerificationStatus, VerificationDocumentType, and AnalyticsEventType enums.",
+      "packages/ui/src/__tests__/components/scaffolded-components.test.tsx — updated ProfessionalCard test fixture to use typed verification object.",
+      "packages/ui/src/components/index.ts — exported review and analytics component groups.",
+      "packages/ui/src/components/marketplace/ProfessionalCard.stories.tsx — updated fixture to use typed verification object.",
+      "packages/ui/src/components/marketplace/ProfessionalCard.tsx — render verification.status instead of verificationStatus string.",
+      "packages/ui/src/components/professional/index.ts — exported VerificationBadge."
+    ],
+    "deleted_files": [],
+    "note": "node_modules/ and .turbo/ directories are install/build artifacts and are not listed as authored mutations."
+  },
+  "local_decisions_finalized": [
+    {
+      "decision": "Professional verification model",
+      "choice": "Verification is an immutable domain value object; Professional aggregate manages submission and approval through the existing ProfessionalStateMachine.",
+      "reason": "Keeps verification logic pure and enforces that only pending verifications can be approved."
+    },
+    {
+      "decision": "Review reviewee type",
+      "choice": "ReviewDto and ReviewProps use ProfessionalId for revieweeId instead of UserId.",
+      "reason": "A review is always about a professional; the typed ID prevents accidental assignment of a customer ID."
+    },
+    {
+      "decision": "Shared fake booking repository",
+      "choice": "FakeBookingService now exports a singleton bookingRepository used by FakeReviewService.",
+      "reason": "Allows the domain SubmitReview use case to enforce the completed-booking invariant against the same in-memory state used by the booking feature."
+    },
+    {
+      "decision": "Analytics and crash reporting adapters",
+      "choice": "Console implementations under apps/mobile/src/services/; live PostHog/Sentry integration deferred.",
+      "reason": "Establishes the application-level port contract without adding external SDK dependencies or network calls in E10."
+    },
+    {
+      "decision": "CI production-readiness job",
+      "choice": "Added build step and a deterministic placeholder job (env example check).",
+      "reason": "Lays the CI foundation for future bundle-size budgets, secret scanning, and E2E without requiring tools that need external configuration."
+    }
+  ],
+  "deviations_from_plan": [
+    {
+      "deviation": "ReviewDto.revieweeId changed from UserId to ProfessionalId.",
+      "justification": "The reviewee in TaskPRO is always a professional; using ProfessionalId is a domain accuracy improvement derived from DOM-001 and avoids unsafe casts."
+    }
+  ],
+  "validation_results": {
+    "format": "PASS — pnpm format:check",
+    "lint": "PASS — @taskpro/domain, @taskpro/types, @taskpro/ui, @taskpro/mobile (no errors)",
+    "typecheck": "PASS — @taskpro/domain, @taskpro/types, @taskpro/ui, @taskpro/mobile",
+    "test": "PASS — @taskpro/domain 43 tests, @taskpro/types 3 tests, @taskpro/ui 26 tests",
+    "build": "PASS — pnpm build (8 packages)",
+    "knowledge_hash_unchanged": "PASS (1529ed50…)"
+  },
+  "exclusions": [
+    "No live Stripe API calls or Stripe Connect onboarding.",
+    "No live PostHog/Sentry integration; console adapters only.",
+    "No real document upload or identity verification backend.",
+    "No new Supabase migrations or schema changes beyond E4.",
+    "No organization, location, team, or branch aggregates.",
+    "No changes to knowledge/ authored artifacts.",
+    "No changes to .synth/ governance primitives beyond this replay record, governance-0024, and the E10 expedition state projection.",
+    "No git commits, branches, tags, or pushes performed."
+  ],
+  "result": "bootstrap-e10-accepted"
+}

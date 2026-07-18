@@ -7,3 +7,4 @@ export * from './Money';
 export * from './Password';
 export * from './Phone';
 export * from './Rating';
+export * from './Verification';

@@ -101,6 +101,29 @@ export enum ReviewDimension {
   Overall = 'overall',
 }
 
+export enum VerificationStatus {
+  Unverified = 'unverified',
+  Pending = 'pending',
+  Verified = 'verified',
+  Rejected = 'rejected',
+}
+
+export enum VerificationDocumentType {
+  GovernmentId = 'government_id',
+  License = 'license',
+  Certification = 'certification',
+  Insurance = 'insurance',
+  AddressProof = 'address_proof',
+}
+
+export enum AnalyticsEventType {
+  ScreenViewed = 'screen_viewed',
+  BookingCreated = 'booking_created',
+  BookingCompleted = 'booking_completed',
+  ReviewSubmitted = 'review_submitted',
+  ProfessionalVerified = 'professional_verified',
+}
+
 export enum Currency {
   USD = 'USD',
   MXN = 'MXN',

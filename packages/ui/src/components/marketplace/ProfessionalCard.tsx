@@ -35,7 +35,7 @@ export function ProfessionalCard({ professional }: ProfessionalCardProps) {
           {professional.reviewCount} reseñas
         </Typography>
         <Typography variant="bodyM" color="success">
-          {professional.verificationStatus}
+          {professional.verification.status}
         </Typography>
       </View>
     </Card>

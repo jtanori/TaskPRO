@@ -1,4 +1,4 @@
-import { BookingId, ReviewDimension, ReviewId, UserId } from '@taskpro/types';
+import { BookingId, ProfessionalId, ReviewDimension, ReviewId, UserId } from '@taskpro/types';
 import { Rating } from '../value-objects';
 import { ReviewSubmitted } from '../events/reviews/ReviewSubmitted';
 
@@ -11,7 +11,7 @@ export interface ReviewProps {
   id: ReviewId;
   bookingId: BookingId;
   reviewerId: UserId;
-  revieweeId: UserId;
+  revieweeId: ProfessionalId;
   dimensions: ReviewDimensionScore[];
   comment?: string;
   createdAt: Date;
@@ -34,6 +34,30 @@ export class Review {
 
   get id(): ReviewId {
     return this.props.id;
+  }
+
+  get bookingId(): BookingId {
+    return this.props.bookingId;
+  }
+
+  get reviewerId(): UserId {
+    return this.props.reviewerId;
+  }
+
+  get revieweeId(): ProfessionalId {
+    return this.props.revieweeId;
+  }
+
+  get dimensions(): ReviewDimensionScore[] {
+    return this.props.dimensions;
+  }
+
+  get comment(): string | undefined {
+    return this.props.comment;
+  }
+
+  get createdAt(): Date {
+    return this.props.createdAt;
   }
 
   get overallRating(): Rating {

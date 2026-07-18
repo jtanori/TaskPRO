@@ -13,6 +13,7 @@ interface BookingActionBarProps {
   actorId: ProfessionalId;
   onUpdated: (booking: BookingDto) => void;
   onPay?: () => void;
+  onReview?: () => void;
 }
 
 export function BookingActionBar({
@@ -21,6 +22,7 @@ export function BookingActionBar({
   actorId,
   onUpdated,
   onPay,
+  onReview,
 }: BookingActionBarProps) {
   const { t } = useTranslation('booking');
   const {
@@ -65,6 +67,14 @@ export function BookingActionBar({
           title={t('payNow')}
           loading={status === 'loading'}
           onPress={() => (onPay ? onPay() : void handle(confirmPayment(booking.id)))}
+        />
+      ) : null}
+
+      {isCustomer && booking.status === BookingStatus.Closed ? (
+        <Button
+          title={t('leaveReview')}
+          loading={status === 'loading'}
+          onPress={() => onReview?.()}
         />
       ) : null}
 

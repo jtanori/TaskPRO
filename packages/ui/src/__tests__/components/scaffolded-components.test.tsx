@@ -54,7 +54,7 @@ describe('Scaffolded component groups render within ThemeProvider', () => {
           rating: { value: 4.8, max: 5, precision: 0.5 },
           reviewCount: 10,
           travelRadiusMeters: 10000,
-          verificationStatus: 'verified',
+          verification: { status: 'verified' as import('@taskpro/types').VerificationStatus },
           isAvailable: true,
         }}
       />

@@ -2,7 +2,14 @@ import React from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Card, ProfessionalCard, ServiceCard, Typography } from '@taskpro/ui';
+import {
+  Button,
+  Card,
+  ProfessionalCard,
+  ServiceCard,
+  Typography,
+  VerificationBadge,
+} from '@taskpro/ui';
 import { tokens } from '@taskpro/design-tokens';
 import { useProfessionalProfile } from '../useServiceCatalog';
 
@@ -25,6 +32,7 @@ export default function ProfessionalProfileScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <ProfessionalCard professional={professional} />
+      <VerificationBadge status={professional.verification.status} />
 
       <Typography variant="headingM">{t('servicesTitle')}</Typography>
       {services.length === 0 ? (
@@ -45,8 +53,9 @@ export default function ProfessionalProfileScreen() {
       <Card style={styles.reviewsCard}>
         <Typography variant="headingS">{t('reviewsTitle')}</Typography>
         <Typography variant="bodyM" color="textSecondary">
-          {t('reviewsPlaceholder')}
+          {professional.reviewCount} {t('reviewsCount')}
         </Typography>
+        <Button title={t('seeReviews')} onPress={() => router.push(`/reviews/${id}`)} />
       </Card>
     </ScrollView>
   );

@@ -1,0 +1,7 @@
+{
+  "title": "Verificación de identidad",
+  "statusLabel": "Estado de verificación",
+  "submitDocument": "Enviar documento de verificación",
+  "pendingMessage": "Tu documento está siendo revisado.",
+  "verifiedMessage": "Tu identidad ha sido verificada."
+}

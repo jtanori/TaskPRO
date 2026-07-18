@@ -18,3 +18,6 @@ export * from './RequestBooking';
 export * from './SendMessage';
 export * from './StartTravel';
 export * from './StartWork';
+export * from './SubmitReview';
+export * from './GetReviewsForProfessional';
+export * from './ApproveProfessionalVerification';

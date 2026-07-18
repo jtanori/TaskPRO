@@ -20,7 +20,7 @@ export const Default: Story = {
       rating: { value: 4.8, max: 5, precision: 0.5 },
       reviewCount: 124,
       travelRadiusMeters: 15000,
-      verificationStatus: 'verified',
+      verification: { status: 'verified' as import('@taskpro/types').VerificationStatus },
       isAvailable: true,
     },
   },

@@ -65,6 +65,7 @@ export default function CustomerBookingDetailScreen() {
             router.replace(`/bookings/${booking.id}`);
           }}
           onPay={() => router.push(`/bookings/${booking.id}/pay`)}
+          onReview={() => router.push(`/bookings/${booking.id}/review`)}
         />
       ) : null}
     </ScrollView>

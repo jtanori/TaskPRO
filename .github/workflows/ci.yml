@@ -42,3 +42,33 @@ jobs:
 
       - name: Check formatting
         run: pnpm format:check
+
+      - name: Build packages
+        run: pnpm build
+
+  production-readiness:
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify environment example exists
+        run: test -f .env.example
+
+      - name: Placeholder production checks
+        run: echo "E10 production-readiness checks (bundle size, secret scan, E2E) are intentionally placeholders."

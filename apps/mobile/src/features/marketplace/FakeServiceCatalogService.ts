@@ -1,4 +1,4 @@
-import { Currency, createCategoryId, createServiceId } from '@taskpro/types';
+import { Currency, createCategoryId, createServiceId, VerificationStatus } from '@taskpro/types';
 import type { MoneyDto, ProfessionalDto, ServiceDto } from '@taskpro/types';
 import type {
   ServiceCatalogService,
@@ -75,7 +75,7 @@ const SERVICES: ServiceDto[] = [
   },
 ];
 
-const PROFESSIONALS: ProfessionalDto[] = [
+export const PROFESSIONALS: ProfessionalDto[] = [
   {
     id: 'pro-1' as ProfessionalDto['id'],
     userId: 'user-1' as ProfessionalDto['userId'],
@@ -84,7 +84,7 @@ const PROFESSIONALS: ProfessionalDto[] = [
     rating: { value: 4.8, max: 5, precision: 0.5 },
     reviewCount: 124,
     travelRadiusMeters: 15000,
-    verificationStatus: 'verified',
+    verification: { status: VerificationStatus.Verified },
     isAvailable: true,
   },
   {
@@ -95,7 +95,7 @@ const PROFESSIONALS: ProfessionalDto[] = [
     rating: { value: 4.9, max: 5, precision: 0.5 },
     reviewCount: 89,
     travelRadiusMeters: 20000,
-    verificationStatus: 'verified',
+    verification: { status: VerificationStatus.Verified },
     isAvailable: true,
   },
 ];
