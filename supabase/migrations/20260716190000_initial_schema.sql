@@ -527,7 +527,12 @@ CREATE POLICY preferences_self ON notifications.preferences
 -- The statements below ensure the publication exists and includes the tables
 -- that drive real-time updates without assuming a fresh project.
 
-CREATE PUBLICATION IF NOT EXISTS supabase_realtime;
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_publication WHERE pubname = 'supabase_realtime') THEN
+    CREATE PUBLICATION supabase_realtime;
+  END IF;
+END $$;
 
 ALTER PUBLICATION supabase_realtime ADD TABLE booking.bookings;
 ALTER PUBLICATION supabase_realtime ADD TABLE communication.messages;

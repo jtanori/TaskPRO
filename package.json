@@ -40,5 +40,14 @@
     "*.{json,md,yml,yaml}": [
       "prettier --write"
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "19.1.4",
+      "react-dom": "19.1.4",
+      "@types/react": "19.1.17",
+      "@types/react-dom": "19.1.0",
+      "@expo/metro-runtime": "^6.1.2"
+    }
   }
 }

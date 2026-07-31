@@ -1,0 +1,235 @@
+{
+  "id": "50018356c75ad883",
+  "createdAt": 1785403915988,
+  "observations": [
+    {
+      "id": "obs-mission-establish-governance-baseline-and-archive-legacy-synth-v1-state",
+      "sourceAdapter": "synth-cli",
+      "type": "mission",
+      "payload": {
+        "subject": "Establish governance baseline and archive legacy Synth v1 state",
+        "name": "Establish governance baseline and archive legacy Synth v1 state",
+        "purpose": "Capture the current repository state; acknowledge the legacy Synth v1 governance archive in .synth_bk/ (expeditions E1-E20, replay files, and state); and establish a clean Synth v2 baseline without recreating live expeditions for historical work."
+      },
+      "evidenceReference": "evidence-mission-Establish governance baseline and archive legacy Synth v1 state",
+      "confidence": "high",
+      "timestamp": 1785403855688
+    },
+    {
+      "id": "obs-evidence-legacy-synth-v1-archive-exists-at-.synth_bk/",
+      "sourceAdapter": "synth-cli",
+      "type": "evidence",
+      "payload": {
+        "subject": "Legacy Synth v1 archive exists at .synth_bk/",
+        "name": "Legacy Synth v1 archive exists at .synth_bk/",
+        "description": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+        "purpose": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events."
+      },
+      "evidenceReference": "evidence-evidence-Legacy Synth v1 archive exists at .synth_bk/",
+      "confidence": "high",
+      "timestamp": 1785403902512
+    },
+    {
+      "id": "obs-evidence-clean-synth-v2-state-initialized",
+      "sourceAdapter": "synth-cli",
+      "type": "evidence",
+      "payload": {
+        "subject": "Clean Synth v2 state initialized",
+        "name": "Clean Synth v2 state initialized",
+        "description": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+        "purpose": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance."
+      },
+      "evidenceReference": "evidence-evidence-Clean Synth v2 state initialized",
+      "confidence": "high",
+      "timestamp": 1785403915988
+    }
+  ],
+  "evidence": {
+    "evidence": [
+      {
+        "id": "9e4d2699e6ad8190",
+        "observationId": "obs-mission-establish-governance-baseline-and-archive-legacy-synth-v1-state",
+        "source": "synth-cli",
+        "description": "mission observation from synth-cli",
+        "snippet": "{\"subject\":\"Establish governance baseline and archive legacy Synth v1 state\",\"name\":\"Establish governance baseline and archive legacy Synth v1 state\",\"purpose\":\"Capture the current repository state; a",
+        "fingerprint": "e22bec3dee0df1b3",
+        "immutable": true
+      },
+      {
+        "id": "5288fd496245f0b3",
+        "observationId": "obs-evidence-legacy-synth-v1-archive-exists-at-.synth_bk/",
+        "source": "synth-cli",
+        "description": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+        "snippet": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+        "fingerprint": "bc156a4d5d81e5d6",
+        "immutable": true
+      },
+      {
+        "id": "040135e6a2eb9ea9",
+        "observationId": "obs-evidence-clean-synth-v2-state-initialized",
+        "source": "synth-cli",
+        "description": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+        "snippet": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+        "fingerprint": "2ab6caa596afd4d7",
+        "immutable": true
+      }
+    ],
+    "byObservationId": [
+      [
+        "obs-mission-establish-governance-baseline-and-archive-legacy-synth-v1-state",
+        {
+          "id": "9e4d2699e6ad8190",
+          "observationId": "obs-mission-establish-governance-baseline-and-archive-legacy-synth-v1-state",
+          "source": "synth-cli",
+          "description": "mission observation from synth-cli",
+          "snippet": "{\"subject\":\"Establish governance baseline and archive legacy Synth v1 state\",\"name\":\"Establish governance baseline and archive legacy Synth v1 state\",\"purpose\":\"Capture the current repository state; a",
+          "fingerprint": "e22bec3dee0df1b3",
+          "immutable": true
+        }
+      ],
+      [
+        "obs-evidence-legacy-synth-v1-archive-exists-at-.synth_bk/",
+        {
+          "id": "5288fd496245f0b3",
+          "observationId": "obs-evidence-legacy-synth-v1-archive-exists-at-.synth_bk/",
+          "source": "synth-cli",
+          "description": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+          "snippet": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+          "fingerprint": "bc156a4d5d81e5d6",
+          "immutable": true
+        }
+      ],
+      [
+        "obs-evidence-clean-synth-v2-state-initialized",
+        {
+          "id": "040135e6a2eb9ea9",
+          "observationId": "obs-evidence-clean-synth-v2-state-initialized",
+          "source": "synth-cli",
+          "description": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+          "snippet": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+          "fingerprint": "2ab6caa596afd4d7",
+          "immutable": true
+        }
+      ]
+    ]
+  },
+  "questions": [],
+  "unknowns": [],
+  "confidence": {
+    "overall": 0.71,
+    "observationCoverage": 0.3,
+    "evidenceQuality": 0.8000000000000002,
+    "consistency": 1,
+    "completeness": 1,
+    "inferenceDepth": 1,
+    "unknownImpact": 0,
+    "contradictionCount": 0
+  },
+  "worldModel": {
+    "version": 1,
+    "nodes": [
+      [
+        "3efa0a0c5609afb5",
+        {
+          "id": "3efa0a0c5609afb5",
+          "kind": "mission",
+          "name": "Establish governance baseline and archive legacy Synth v1 state",
+          "description": "Capture the current repository state; acknowledge the legacy Synth v1 governance archive in .synth_bk/ (expeditions E1-E20, replay files, and state); and establish a clean Synth v2 baseline without recreating live expeditions for historical work.",
+          "purpose": "Capture the current repository state; acknowledge the legacy Synth v1 governance archive in .synth_bk/ (expeditions E1-E20, replay files, and state); and establish a clean Synth v2 baseline without recreating live expeditions for historical work.",
+          "expeditionIds": [],
+          "observationIds": [
+            "obs-mission-establish-governance-baseline-and-archive-legacy-synth-v1-state"
+          ],
+          "evidenceRefs": [
+            "9e4d2699e6ad8190"
+          ],
+          "confidence": 0.8
+        }
+      ]
+    ],
+    "edges": [],
+    "evidence": {
+      "evidence": [
+        {
+          "id": "9e4d2699e6ad8190",
+          "observationId": "obs-mission-establish-governance-baseline-and-archive-legacy-synth-v1-state",
+          "source": "synth-cli",
+          "description": "mission observation from synth-cli",
+          "snippet": "{\"subject\":\"Establish governance baseline and archive legacy Synth v1 state\",\"name\":\"Establish governance baseline and archive legacy Synth v1 state\",\"purpose\":\"Capture the current repository state; a",
+          "fingerprint": "e22bec3dee0df1b3",
+          "immutable": true
+        },
+        {
+          "id": "5288fd496245f0b3",
+          "observationId": "obs-evidence-legacy-synth-v1-archive-exists-at-.synth_bk/",
+          "source": "synth-cli",
+          "description": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+          "snippet": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+          "fingerprint": "bc156a4d5d81e5d6",
+          "immutable": true
+        },
+        {
+          "id": "040135e6a2eb9ea9",
+          "observationId": "obs-evidence-clean-synth-v2-state-initialized",
+          "source": "synth-cli",
+          "description": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+          "snippet": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+          "fingerprint": "2ab6caa596afd4d7",
+          "immutable": true
+        }
+      ],
+      "byObservationId": [
+        [
+          "obs-mission-establish-governance-baseline-and-archive-legacy-synth-v1-state",
+          {
+            "id": "9e4d2699e6ad8190",
+            "observationId": "obs-mission-establish-governance-baseline-and-archive-legacy-synth-v1-state",
+            "source": "synth-cli",
+            "description": "mission observation from synth-cli",
+            "snippet": "{\"subject\":\"Establish governance baseline and archive legacy Synth v1 state\",\"name\":\"Establish governance baseline and archive legacy Synth v1 state\",\"purpose\":\"Capture the current repository state; a",
+            "fingerprint": "e22bec3dee0df1b3",
+            "immutable": true
+          }
+        ],
+        [
+          "obs-evidence-legacy-synth-v1-archive-exists-at-.synth_bk/",
+          {
+            "id": "5288fd496245f0b3",
+            "observationId": "obs-evidence-legacy-synth-v1-archive-exists-at-.synth_bk/",
+            "source": "synth-cli",
+            "description": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+            "snippet": "The previous governance state is preserved in .synth_bk/ including expeditions.json with E1-E20 records and replay files, so the v2 baseline can reference it without importing stale events.",
+            "fingerprint": "bc156a4d5d81e5d6",
+            "immutable": true
+          }
+        ],
+        [
+          "obs-evidence-clean-synth-v2-state-initialized",
+          {
+            "id": "040135e6a2eb9ea9",
+            "observationId": "obs-evidence-clean-synth-v2-state-initialized",
+            "source": "synth-cli",
+            "description": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+            "snippet": "The new .synth/ directory contains a fresh Synth v2 manifest, context, event log, and canonical state with no historical expeditions, providing a clean baseline for future governance.",
+            "fingerprint": "2ab6caa596afd4d7",
+            "immutable": true
+          }
+        ]
+      ]
+    },
+    "unknowns": [],
+    "confidence": {
+      "overall": 0.71,
+      "observationCoverage": 0.3,
+      "evidenceQuality": 0.8000000000000002,
+      "consistency": 1,
+      "completeness": 1,
+      "inferenceDepth": 1,
+      "unknownImpact": 0,
+      "contradictionCount": 0
+    },
+    "planningDecisions": []
+  },
+  "planningDecisions": [],
+  "approvalState": "draft"
+}

@@ -1,0 +1,208 @@
+{
+  "id": "13ab9c79dcf6552c",
+  "createdAt": 1785405542165,
+  "observations": [
+    {
+      "id": "obs-mission-3efa0a0c5609afb5",
+      "sourceAdapter": "synth-cli",
+      "type": "mission",
+      "payload": {
+        "subject": "3efa0a0c5609afb5",
+        "name": "3efa0a0c5609afb5",
+        "purpose": "Auto-created from CLI"
+      },
+      "evidenceReference": "evidence-mission-3efa0a0c5609afb5",
+      "confidence": "high",
+      "timestamp": 1785405542165
+    },
+    {
+      "id": "obs-expedition-fix-mobile-runtime-defects",
+      "sourceAdapter": "synth-cli",
+      "type": "expedition",
+      "payload": {
+        "subject": "Fix mobile runtime defects",
+        "name": "Fix mobile runtime defects",
+        "goal": "Resolve the runtime errors preventing the mobile app from starting locally: React/react-native-renderer version mismatch, missing PlatformConstants TurboModule, missing Supabase URL, StyleSheet.create failure in Typography.tsx, and ReactNative renderer 'default' undefined errors. Ensure the app launches without these fatal errors.",
+        "missionSubject": "3efa0a0c5609afb5"
+      },
+      "evidenceReference": "evidence-expedition-Fix mobile runtime defects",
+      "confidence": "high",
+      "timestamp": 1785405542165
+    }
+  ],
+  "evidence": {
+    "evidence": [
+      {
+        "id": "c0c3df7e0d2f1c79",
+        "observationId": "obs-mission-3efa0a0c5609afb5",
+        "source": "synth-cli",
+        "description": "mission observation from synth-cli",
+        "snippet": "{\"subject\":\"3efa0a0c5609afb5\",\"name\":\"3efa0a0c5609afb5\",\"purpose\":\"Auto-created from CLI\"}",
+        "fingerprint": "505c2700413bd5d7",
+        "immutable": true
+      },
+      {
+        "id": "d7214953a8eb7827",
+        "observationId": "obs-expedition-fix-mobile-runtime-defects",
+        "source": "synth-cli",
+        "description": "expedition observation from synth-cli",
+        "snippet": "{\"subject\":\"Fix mobile runtime defects\",\"name\":\"Fix mobile runtime defects\",\"goal\":\"Resolve the runtime errors preventing the mobile app from starting locally: React/react-native-renderer version mism",
+        "fingerprint": "ebec36203300d149",
+        "immutable": true
+      }
+    ],
+    "byObservationId": [
+      [
+        "obs-mission-3efa0a0c5609afb5",
+        {
+          "id": "c0c3df7e0d2f1c79",
+          "observationId": "obs-mission-3efa0a0c5609afb5",
+          "source": "synth-cli",
+          "description": "mission observation from synth-cli",
+          "snippet": "{\"subject\":\"3efa0a0c5609afb5\",\"name\":\"3efa0a0c5609afb5\",\"purpose\":\"Auto-created from CLI\"}",
+          "fingerprint": "505c2700413bd5d7",
+          "immutable": true
+        }
+      ],
+      [
+        "obs-expedition-fix-mobile-runtime-defects",
+        {
+          "id": "d7214953a8eb7827",
+          "observationId": "obs-expedition-fix-mobile-runtime-defects",
+          "source": "synth-cli",
+          "description": "expedition observation from synth-cli",
+          "snippet": "{\"subject\":\"Fix mobile runtime defects\",\"name\":\"Fix mobile runtime defects\",\"goal\":\"Resolve the runtime errors preventing the mobile app from starting locally: React/react-native-renderer version mism",
+          "fingerprint": "ebec36203300d149",
+          "immutable": true
+        }
+      ]
+    ]
+  },
+  "questions": [],
+  "unknowns": [],
+  "confidence": {
+    "overall": 0.6900000000000001,
+    "observationCoverage": 0.2,
+    "evidenceQuality": 0.8,
+    "consistency": 1,
+    "completeness": 1,
+    "inferenceDepth": 1,
+    "unknownImpact": 0,
+    "contradictionCount": 0
+  },
+  "worldModel": {
+    "version": 1,
+    "nodes": [
+      [
+        "4d18dbee55b866ff",
+        {
+          "id": "4d18dbee55b866ff",
+          "kind": "mission",
+          "name": "3efa0a0c5609afb5",
+          "description": "Auto-created from CLI",
+          "purpose": "Auto-created from CLI",
+          "expeditionIds": [],
+          "observationIds": [
+            "obs-mission-3efa0a0c5609afb5"
+          ],
+          "evidenceRefs": [
+            "c0c3df7e0d2f1c79"
+          ],
+          "confidence": 0.8
+        }
+      ],
+      [
+        "92d2f338311f60a6",
+        {
+          "id": "92d2f338311f60a6",
+          "kind": "expedition",
+          "name": "Fix mobile runtime defects",
+          "description": "Resolve the runtime errors preventing the mobile app from starting locally: React/react-native-renderer version mismatch, missing PlatformConstants TurboModule, missing Supabase URL, StyleSheet.create failure in Typography.tsx, and ReactNative renderer 'default' undefined errors. Ensure the app launches without these fatal errors.",
+          "missionId": "4d18dbee55b866ff",
+          "goal": "Resolve the runtime errors preventing the mobile app from starting locally: React/react-native-renderer version mismatch, missing PlatformConstants TurboModule, missing Supabase URL, StyleSheet.create failure in Typography.tsx, and ReactNative renderer 'default' undefined errors. Ensure the app launches without these fatal errors.",
+          "objectiveIds": [],
+          "observationIds": [
+            "obs-expedition-fix-mobile-runtime-defects"
+          ],
+          "evidenceRefs": [
+            "d7214953a8eb7827"
+          ],
+          "confidence": 0.8
+        }
+      ]
+    ],
+    "edges": [
+      {
+        "id": "eb846e5801a5ce22",
+        "source": "92d2f338311f60a6",
+        "target": "4d18dbee55b866ff",
+        "relation": "parent_of",
+        "observationIds": [
+          "obs-expedition-fix-mobile-runtime-defects"
+        ]
+      }
+    ],
+    "evidence": {
+      "evidence": [
+        {
+          "id": "c0c3df7e0d2f1c79",
+          "observationId": "obs-mission-3efa0a0c5609afb5",
+          "source": "synth-cli",
+          "description": "mission observation from synth-cli",
+          "snippet": "{\"subject\":\"3efa0a0c5609afb5\",\"name\":\"3efa0a0c5609afb5\",\"purpose\":\"Auto-created from CLI\"}",
+          "fingerprint": "505c2700413bd5d7",
+          "immutable": true
+        },
+        {
+          "id": "d7214953a8eb7827",
+          "observationId": "obs-expedition-fix-mobile-runtime-defects",
+          "source": "synth-cli",
+          "description": "expedition observation from synth-cli",
+          "snippet": "{\"subject\":\"Fix mobile runtime defects\",\"name\":\"Fix mobile runtime defects\",\"goal\":\"Resolve the runtime errors preventing the mobile app from starting locally: React/react-native-renderer version mism",
+          "fingerprint": "ebec36203300d149",
+          "immutable": true
+        }
+      ],
+      "byObservationId": [
+        [
+          "obs-mission-3efa0a0c5609afb5",
+          {
+            "id": "c0c3df7e0d2f1c79",
+            "observationId": "obs-mission-3efa0a0c5609afb5",
+            "source": "synth-cli",
+            "description": "mission observation from synth-cli",
+            "snippet": "{\"subject\":\"3efa0a0c5609afb5\",\"name\":\"3efa0a0c5609afb5\",\"purpose\":\"Auto-created from CLI\"}",
+            "fingerprint": "505c2700413bd5d7",
+            "immutable": true
+          }
+        ],
+        [
+          "obs-expedition-fix-mobile-runtime-defects",
+          {
+            "id": "d7214953a8eb7827",
+            "observationId": "obs-expedition-fix-mobile-runtime-defects",
+            "source": "synth-cli",
+            "description": "expedition observation from synth-cli",
+            "snippet": "{\"subject\":\"Fix mobile runtime defects\",\"name\":\"Fix mobile runtime defects\",\"goal\":\"Resolve the runtime errors preventing the mobile app from starting locally: React/react-native-renderer version mism",
+            "fingerprint": "ebec36203300d149",
+            "immutable": true
+          }
+        ]
+      ]
+    },
+    "unknowns": [],
+    "confidence": {
+      "overall": 0.6900000000000001,
+      "observationCoverage": 0.2,
+      "evidenceQuality": 0.8,
+      "consistency": 1,
+      "completeness": 1,
+      "inferenceDepth": 1,
+      "unknownImpact": 0,
+      "contradictionCount": 0
+    },
+    "planningDecisions": []
+  },
+  "planningDecisions": [],
+  "approvalState": "draft"
+}

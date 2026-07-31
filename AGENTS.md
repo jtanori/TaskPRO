@@ -7,9 +7,9 @@
 
 ## Repository status
 
-- **Phase:** governed / implementation complete. Knowledge complete; E1–E10 completed.
+- **Phase:** governed / product implementation complete; release engineering in progress; E1–E10 completed; E11–E13 completed; E14–E20 registered (E18 in progress).
 - **Genesis:** `.synth/replay/genesis-0001.json` (input snapshot sha256 `2c38853a…`, 119 files).
-- **Latest update:** `.synth/replay/governance-0024.json` (E10 completed; all registered expeditions finished).
+- **Latest update:** `.synth/replay/governance-0033.json` (R2 resolved; E18 peer-dependency work recorded).
 - **Mission:** Synthesize the TaskPRO platform from canonical knowledge into a TurboRepo
   monorepo — Expo/React Native mobile app (customer + technician) with Supabase backend —
   delivered in BUILD-001 phase order, each phase a usable vertical slice.
@@ -48,15 +48,19 @@ COMP-001.md.txt embeds NAV-001. Full registry: `.synth/evidence.json`.
 
 E1 Foundation & toolchain ✅ → E2 Design tokens & theme ✅ → E3 UI library ✅ → E4 Domain & contracts ✅ →
 E5 Application shell ✅ → E6 Identity & discovery slice ✅ → E7 Booking lifecycle ✅ →
-E8 Communication ✅ → E9 Marketplace ✅ → E10 Trust & maturity ✅.
+E8 Communication ✅ → E9 Marketplace ✅ → E10 Trust & maturity ✅ →
+E11 Environment & configuration ✅ → E12 Build profiles & local artifacts ✅ → E13 GitHub Actions CI ✅ →
+E14 Google Play Internal Testing ⏸ → E15 Staging Environment ⏸ → E16 Production Releases ⏸ →
+E17 OTA Updates ⏸ → E18 Observability 🔄 → E19 End-to-End Testing ⏸ → E20 Release Automation ⏸.
 
 ## Open governance items (resolve explicitly, never silently)
 
-- **R2** — `knowledge/Docs/DS-05.md:1` stray character in header. Approval-gated authored-artifact fix.
+None.
 
 ## Resolved governance items
 
 - **R1** — Booking state-machine vocabulary conflict (FLOW-001 vs DOM-001). Resolved: E4 canonical state machine adopted.
+- **R2** — `knowledge/Docs/DS-05.md:1` stray character in header. Resolved: header cleaned to `# TASKPRO-DS-005 — TaskPRO Theme System Specification v1.0`.
 - **R3** — DEV-001 React Navigation text: superseded by registry (document untouched).
 - **R4** — DS filename ↔ canonical ID mismatch: resolved by registry (optional rename approval-gated).
 - **R5** — API-002.md.txt header collision: resolved by registry normalization/disambiguation (artifact untouched).

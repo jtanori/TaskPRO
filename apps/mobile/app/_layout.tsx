@@ -6,6 +6,39 @@ import { UserRole } from '@taskpro/types';
 import { useAuth } from '../src/features/auth';
 import { useProfile } from '../src/features/profile';
 import { RootProviders } from '../src/providers/RootProviders';
+import { Config } from '../src/config';
+import * as Sentry from '@sentry/react-native';
+
+function isValidSentryDsn(dsn: string): boolean {
+  // A Sentry DSN must be an HTTPS URL containing a public key and project id.
+  try {
+    const url = new URL(dsn);
+    return url.protocol === 'https:' && url.username.length > 0 && url.pathname.length > 1;
+  } catch {
+    return false;
+  }
+}
+
+if (Config.sentry.dsn && isValidSentryDsn(Config.sentry.dsn)) {
+  Sentry.init({
+    dsn: Config.sentry.dsn,
+
+    // Adds more context data to events (IP address, cookies, user, etc.)
+    // For more information, visit: https://docs.sentry.io/platforms/react-native/data-management/data-collected/
+    sendDefaultPii: true,
+
+    // Enable Logs
+    enableLogs: true,
+
+    // Configure Session Replay
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1,
+    integrations: [Sentry.mobileReplayIntegration()],
+
+    // uncomment the line below to enable Spotlight (https://spotlightjs.com)
+    // spotlight: __DEV__,
+  });
+}
 
 function NavigationGuard() {
   const { session, isLoading: authLoading } = useAuth();
@@ -40,7 +73,7 @@ function NavigationGuard() {
   return null;
 }
 
-export default function RootLayout() {
+function RootLayout() {
   return (
     <RootProviders>
       <NavigationGuard />
@@ -55,3 +88,7 @@ export default function RootLayout() {
     </RootProviders>
   );
 }
+
+export default Config.sentry.dsn && isValidSentryDsn(Config.sentry.dsn)
+  ? Sentry.wrap(RootLayout)
+  : RootLayout;

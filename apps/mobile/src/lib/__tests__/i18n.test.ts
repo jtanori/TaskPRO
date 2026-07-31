@@ -1,10 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('expo-localization', () => ({
-  locale: 'es-MX',
-  locales: ['es-MX'],
+  getLocales: () => [{ languageTag: 'es-MX' }],
+  getCalendars: () => [],
   timezone: 'America/Mexico_City',
-  isoCurrencyCodes: ['MXN'],
 }));
 
 describe('i18n', () => {
