@@ -1,0 +1,100 @@
+{
+  "schema": "synth-capability-validation-map-v1",
+  "version": "1.0.0",
+  "project": "TaskPRO",
+  "capabilities": [
+    {
+      "name": "repository",
+      "description": "Repository structure and layout governance",
+      "validations": [
+        { "check": "manifest-exists", "target": ".synth/manifest.json" },
+        { "check": "event-log-exists", "target": ".synth/data/event-log.jsonl" },
+        { "check": "canonical-state-exists", "target": ".synth/data/canonical-state.json" }
+      ]
+    },
+    {
+      "name": "github",
+      "description": "GitHub workflows and release governance",
+      "validations": [{ "check": "workflows-dir-exists", "target": ".github/workflows" }]
+    },
+    {
+      "name": "tdd",
+      "description": "Test-driven development practices",
+      "validations": [{ "check": "test-runner-configured", "target": "vitest.config.*" }]
+    },
+    {
+      "name": "bdd",
+      "description": "Behavior-driven development practices",
+      "validations": [{ "check": "feature-specs-dir-exists", "target": "docs/testing" }]
+    },
+    {
+      "name": "conversation",
+      "description": "Conversation and interaction governance",
+      "validations": []
+    },
+    {
+      "name": "document",
+      "description": "Documentation generation and maintenance",
+      "validations": [{ "check": "generated-docs-dir-exists", "target": "docs/generated" }]
+    },
+    {
+      "name": "filesystem",
+      "description": "Filesystem operations and layout",
+      "validations": [{ "check": "workspace-root-exists", "target": "." }]
+    },
+    {
+      "name": "specification",
+      "description": "Technical specification extraction",
+      "validations": [{ "check": "knowledge-dir-exists", "target": "knowledge" }]
+    },
+    {
+      "name": "knowledge-extraction",
+      "description": "Canonical knowledge extraction",
+      "validations": [{ "check": "knowledge-dir-exists", "target": "knowledge" }]
+    },
+    {
+      "name": "confidence",
+      "description": "Confidence and provenance tracking",
+      "validations": [{ "check": "evidence-registered", "target": ".synth/data/event-log.jsonl" }]
+    },
+    {
+      "name": "dependency",
+      "description": "Dependency ordering and gates",
+      "validations": [
+        {
+          "check": "expedition-dependencies-resolvable",
+          "target": ".synth/data/canonical-state.json"
+        }
+      ]
+    },
+    {
+      "name": "architecture",
+      "description": "Architecture and design governance",
+      "validations": [{ "check": "architecture-docs-exist", "target": "docs/architecture" }]
+    },
+    {
+      "name": "mission-builder",
+      "description": "Mission creation and lifecycle",
+      "validations": [
+        { "check": "mission-state-valid", "target": ".synth/data/canonical-state.json" }
+      ]
+    },
+    {
+      "name": "expedition-builder",
+      "description": "Expedition creation and lifecycle",
+      "validations": [
+        { "check": "expedition-state-valid", "target": ".synth/data/canonical-state.json" }
+      ]
+    },
+    {
+      "name": "objective-builder",
+      "description": "Objective decomposition",
+      "validations": []
+    },
+    {
+      "name": "wizard",
+      "description": "Interactive onboarding wizard",
+      "validations": []
+    }
+  ]
+}

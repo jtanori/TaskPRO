@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-07-30T08:58:13.273Z",
+  "synthVersion": "{\n  \"status\": \"ok\",\n  \"version\": \"2.4.1\",\n  \"name\": \"synth\",\n  \"schema\": \"synth-cli-v1\"\n}",
+  "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0
+  },
+  "scenarios": [],
+  "matrix": {
+    "Discovery": {
+      "lifecycle": false,
+      "persistence": false,
+      "replay": false,
+      "operator": false,
+      "environment": false
+    },
+    "Bootstrap": {
+      "lifecycle": false,
+      "persistence": false,
+      "replay": false,
+      "operator": false,
+      "environment": false
+    },
+    "Mission": {
+      "lifecycle": false,
+      "persistence": false,
+      "replay": false,
+      "operator": false,
+      "environment": false
+    },
+    "Expedition": {
+      "lifecycle": false,
+      "persistence": false,
+      "replay": false,
+      "operator": false,
+      "environment": false
+    },
+    "Replay": {
+      "lifecycle": false,
+      "persistence": false,
+      "replay": false,
+      "operator": false,
+      "environment": false
+    },
+    "Governance": {
+      "lifecycle": false,
+      "persistence": false,
+      "replay": false,
+      "operator": false,
+      "environment": false
+    }
+  }
+}

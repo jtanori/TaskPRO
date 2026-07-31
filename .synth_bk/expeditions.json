@@ -473,7 +473,7 @@
     {
       "id": "E18",
       "name": "Observability (BUILD-002 W18)",
-      "status": "registered",
+      "status": "in_progress",
       "depends_on": [
         "E13"
       ],
@@ -488,6 +488,15 @@
       ],
       "derivation_type": "DIRECT",
       "confidence": "HIGH",
+      "supporting_replay": "governance-0031",
+      "progress": [
+        "Moved @sentry/react-native from root package.json to apps/mobile/package.json",
+        "Wired Sentry.init to Config.sentry.dsn (EXPO_PUBLIC_SENTRY_DSN)",
+        "Made Sentry initialization conditional on presence of DSN",
+        "Added pnpm overrides to enforce single React 19 / React DOM 19 tree across the workspace",
+        "Added @expo/metro-runtime@^6.1.2 to apps/mobile to satisfy Expo SDK 54 peer dependencies",
+        "Verified workspace installs with zero peer-dependency warnings"
+      ],
       "execution_plan": {
         "scope": "Replace console-only analytics and crash reporting placeholders with PostHog and Sentry adapters.",
         "prerequisites": [
