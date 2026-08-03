@@ -1,1 +1,0 @@
-{"id":"GENESIS","type":"SYSTEM_GENESIS","timestamp":1784351885244,"transactionId":"genesis-tx","capability":"Genesis","actor":"system","payload":{"projectName":"Synth Project","systemId":"synth-cli-status","partitions":1},"eventHash":"2afca321e3485e55d8b0f441bc92bdbf509b27d01c70136cf7ccf0269b771aa2","previousHash":"genesis"}

@@ -43,6 +43,10 @@ pnpm-debug.log*
 # OS
 .DS_Store
 
+# Synth runtime state (derived; canonical config lives in .synth/manifest.json)
+.synth/data/
+.synth/cache/
+
 # Expo
 .expo/
 expo-env.d.ts
