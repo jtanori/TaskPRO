@@ -28,12 +28,11 @@ If any step fails, stop and ask the operator for the next step.
 ## Repository status
 
 - **Phase:** executing
-- **Active Mission:** `3efa0a0c5609afb5` — Establish governance baseline and
-  archive legacy Synth v1 state
-- **Executing Expedition:** `13ab9c79dcf6552c` — Fix mobile runtime defects
+- **Active Mission:** `c545dd875a94d8ca` — TaskPRO continuous development
+- **Executing Expedition:** `12008eef8dbd95d6` — Fix mobile runtime defects
 - **Governance version:** Synth v2.1
-- **Legacy archive:** `.synth_bk/` contains the old Synth v1 state (expeditions
-  E1–E20, replay files, and snapshots). It is read-only.
+- **Legacy archive:** Removed. The previous Synth v1 state in `.synth_bk/`
+  was archived out of band and removed during the Synth v2 re-bootstrap.
 - **Mission:** Synthesize the TaskPRO platform from canonical knowledge into a
   TurboRepo monorepo — Expo/React Native mobile app (customer + technician)
   with Supabase backend — delivered in BUILD-001 phase order.
